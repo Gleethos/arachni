@@ -15,4 +15,9 @@ public class TestPlugin implements IPlugin
     public IResponse handle(IRequest req) {
         return null;
     }
+
+    @Override
+    public String toString(){
+        return "TestPlugin";
+    }
 }

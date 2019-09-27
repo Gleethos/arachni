@@ -1,0 +1,26 @@
+language: java
+install: true
+
+os: linux
+dist: trusty
+jdk: oraclejdk11
+
+env:
+  - CODECOV_TOKEN="cd19009d-e1e2-4f2f-98d2-927e7632e0de"
+
+#================================
+
+before_install:
+  - chmod +x gradlew
+  - sudo apt update
+  #- sudo apt install ocl-icd-opencl-dev
+  #- sudo apt-get -qq update
+
+script:
+  - chmod +x gradlew
+  - ./gradlew test --info
+  - ./gradlew check
+  #- ./gradlew codeCoverageReport
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

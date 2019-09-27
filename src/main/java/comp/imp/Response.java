@@ -10,11 +10,6 @@ import java.util.StringTokenizer;
 
 public class Response implements IResponse {
 
-    static final File WEB_ROOT = new File(".");
-    static final String DEFAULT_FILE = "index.html";
-    static final String FILE_NOT_FOUND = "404.html";
-    static final String METHOD_NOT_SUPPORTED = "not_supported.html";
-
     Map<String, String> _headers = new HashMap<>();
     String _content_type = "";
     int _status_code = 0;
@@ -103,27 +98,6 @@ public class Response implements IResponse {
         System.out.println("File: "+fileRequested);
     }
 
-    private byte[] readFileData(File file, int fileLength) throws IOException {
-        FileInputStream fileIn = null;
-        byte[] fileData = new byte[fileLength];
-
-        try {
-            fileIn = new FileInputStream(file);
-            fileIn.read(fileData);
-        } finally {
-            if (fileIn != null)
-                fileIn.close();
-        }
-        return fileData;
-    }
-    // return supported MIME Types
-    private String getContentType(String fileRequested) {
-        if (fileRequested.endsWith(".htm")  ||  fileRequested.endsWith(".html"))
-            return "text/html";
-        else
-            return "text/plain";
-    }
-
     @Override
     public void send(OutputStream network)
     {
@@ -150,4 +124,10 @@ public class Response implements IResponse {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString(){
+        return  "[Response]:(S-"+this.getStatus()+", "+"C-"+this._content_type+", L-"+this.getContentLength()+"); ";
+    }
+
 }

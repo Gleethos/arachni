@@ -38,7 +38,7 @@ public class Request implements IRequest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if(!input.equals("")){
+            if(input!=null && !input.equals("")){
                 StringTokenizer parse = new StringTokenizer(input);
                 String key = parse.nextToken();
                 key = (key.lastIndexOf(":")==key.length()-1)?key.substring(0, key.length()-1):key;

@@ -21,4 +21,11 @@ public interface IPlugin {
 	 * @return A new response object.
 	 */
 	IResponse handle(IRequest req);
+
+	/**
+	 * Name of plugin
+	 *
+	 * @return
+	 */
+	String toString();
 }

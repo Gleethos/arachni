@@ -26,7 +26,7 @@ public class ConsoleFrame extends JFrame{
 			this.setLocationRelativeTo(null);
 
 		outputField = new JTextArea();
-		outputField.setText("This little area here is where you getFrom your feedback:  :D " + "\n");
+		outputField.setText("");
 		// outputField.setBorder(BorderFactory.createLineBorder(Color.black));
 		outputField.setEditable(false);
 
@@ -45,20 +45,20 @@ public class ConsoleFrame extends JFrame{
 		scroll.getVerticalScrollBar().setBackground(Color.DARK_GRAY);
 		scroll.getHorizontalScrollBar().setBackground(Color.DARK_GRAY);
 
-		 scroll.getVerticalScrollBar().addAdjustmentListener(
-				new AdjustmentListener() {
-					public void adjustmentValueChanged(AdjustmentEvent e) {
-						e.getAdjustable().setValue(
-								e.getAdjustable().getMaximum());
-					}
-				});
-		scroll.getHorizontalScrollBar().addAdjustmentListener(
-				new AdjustmentListener() {
-					public void adjustmentValueChanged(AdjustmentEvent e) {
-						e.getAdjustable().setValue(
-								e.getAdjustable().getMaximum());
-					}
-				});
+		//scroll.getVerticalScrollBar().addAdjustmentListener(
+		//		new AdjustmentListener() {
+		//			public void adjustmentValueChanged(AdjustmentEvent e) {
+		//				e.getAdjustable().setValue(
+		//						e.getAdjustable().getMaximum());
+		//			}
+		//		});
+		//scroll.getHorizontalScrollBar().addAdjustmentListener(
+		//		new AdjustmentListener() {
+		//			public void adjustmentValueChanged(AdjustmentEvent e) {
+		//				e.getAdjustable().setValue(
+		//						e.getAdjustable().getMaximum());
+		//			}
+		//		});
 		this.add(scroll, BorderLayout.CENTER);
 
 		// this.addInto(outputField, BorderLayout.CENTER);
@@ -85,7 +85,7 @@ public class ConsoleFrame extends JFrame{
 		this.setVisible(true);
 	}
 
-	public void println(String text) {
+	public synchronized void println(String text) {
 		outputField.setText(outputField.getText() + text + "\n");
 		if (outputField.getLineCount() > linecount) {
 			try {
@@ -96,19 +96,18 @@ public class ConsoleFrame extends JFrame{
 		}
 	}
 
-	public void print(String text) {
+	public synchronized void print(String text) {
 		outputField.setText(outputField.getText() + text);
 		if (outputField.getLineCount() > linecount) {
 			try {
-				outputField
-						.replaceRange("", 0, outputField.getLineEndOffset(0));
+				outputField.replaceRange("", 0, outputField.getLineEndOffset(0));
 			} catch (BadLocationException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public String read() {
+	public synchronized String read() {
 		entered = false;
 		while (!entered) {
 			try {

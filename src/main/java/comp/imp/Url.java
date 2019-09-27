@@ -30,8 +30,13 @@ public class Url implements IUrl {
             path += parts[i]+"/";
         }
         _path = path;
-        _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1];
-        _extension = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[1]:"";
+        if(parts.length>0){
+            _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1];
+            _extension = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[1]:"";
+        } else {
+            _filename = "";
+            _extension = "";
+        }
         _fragment = (_raw_url.contains("#"))?_raw_url.split("#")[1]:"";
     }
 

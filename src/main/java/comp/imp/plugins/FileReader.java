@@ -35,16 +35,12 @@ public class FileReader implements IPlugin {
 
     @Override
     public IResponse handle(IRequest req) {
-        //InputStream stream = req.getContentStream();
-        //BufferedReader in = new BufferedReader(new InputStreamReader(stream));
         String method = req.getMethod();
         String fileRequested = req.getUrl().getFileName();
 
         System.out.println("File: "+fileRequested);
         //-------------------------------------------------------
-        String contentMimeType = "text/html";
         IResponse response = new Response();
-        File test = WEB_ROOT;
         File file = new File(WEB_ROOT, fileRequested);
         int fileLength = (int) file.length();
         String content = getContentType(fileRequested);
@@ -60,19 +56,16 @@ public class FileReader implements IPlugin {
                 } catch (IOException ioe) {
                     System.err.println("Error with file not found exception : " + ioe.getMessage());
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
         if (verbose) {
             System.out.println("File " + fileRequested + " of type " + content + " returned");
         }
-
         response.setServerHeader("Webio Java HTTP Server : 1.0");
         response.getHeaders().put("Date", new Date().toString());
-        response.getHeaders().put("Content-type", contentMimeType);
+        response.getHeaders().put("Content-type", content);
         response.getHeaders().put("Content-length", String.valueOf(fileLength));
 
         if (fileRequested.equals("")) {
@@ -86,7 +79,6 @@ public class FileReader implements IPlugin {
             if (verbose) {
                 System.out.println("File " + fileRequested + " of type " + content + " returned");
             }
-
         }
         return response;
     }
@@ -102,7 +94,6 @@ public class FileReader implements IPlugin {
             if (fileIn != null)
                 fileIn.close();
         }
-
         return fileData;
     }
 
@@ -121,15 +112,20 @@ public class FileReader implements IPlugin {
         int fileLength = (int) file.length();
         String content = "text/html";
         byte[] fileData = readFileData(file, fileLength);
-
-        response.setServerHeader("Webio Java HTTP Server : 1.0");
-        response.getHeaders().put("Date", new Date().toString());
-        response.getHeaders().put("Content-type", content);
-        response.getHeaders().put("Content-length", String.valueOf(fileLength));
+        response.setContent(fileData);
+        //response.setServerHeader("Webio Java HTTP Server : 1.0");
+        //response.getHeaders().put("Date", new Date().toString());
+        //response.getHeaders().put("Content-type", content);
+        //response.getHeaders().put("Content-length", String.valueOf(fileLength));
 
         if (verbose) {
             System.out.println("File " + fileRequested + " not found");
         }
+    }
+
+    @Override
+    public String toString(){
+        return "FileReader";
     }
 
 }
