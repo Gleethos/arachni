@@ -69,7 +69,6 @@ public class Server
                     }
                     break;
             }
-            System.out.println("HERE!");
         }
     }
 
