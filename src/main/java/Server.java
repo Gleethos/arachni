@@ -35,7 +35,8 @@ public class Server
 
         /** User Interface: **/
         IOFrame user = new IOFrame("Webio - Server - commandline", 1000, true);
-        while(true){
+        while(true)//TODO: add quit command!
+        {
             String command = user.read();
             user.println(command);
             switch(command)
@@ -79,7 +80,7 @@ public class Server
             log.println("[SERVER]: started! ");
             log.println("[SERVER]: Listening for connections on port : " + PORT + " ...\n");
             // we listen until user halts server execution
-            while (settings[0]) {
+            while (settings[IS_ALIVE]) {
                 Socket client = serverConnect.accept();
                 log.println("[SERVER]: Connection opened with: "+client.toString()+" (" + new Date() + ")");
                 ClientHandler handler = new ClientHandler(client, _manager, log);
