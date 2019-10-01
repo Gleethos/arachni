@@ -12,9 +12,9 @@ public class ClientHandler implements Runnable
     // Client Connection via Socket Class
     private Socket _socket;
     private PluginManager _manager;
-    private ConsoleFrame _console;
+    private IOFrame _console;
 
-    public ClientHandler(Socket socket, PluginManager manager, ConsoleFrame console) {
+    public ClientHandler(Socket socket, PluginManager manager, IOFrame console) {
         _socket = socket;
         _manager = manager;
         _console = console;

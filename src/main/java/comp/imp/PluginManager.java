@@ -2,11 +2,7 @@ package comp.imp;
 
 import comp.IPlugin;
 import comp.IPluginManager;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.util.*;
-import comp.imp.plugins.*;
 
 public class PluginManager implements IPluginManager {
 
