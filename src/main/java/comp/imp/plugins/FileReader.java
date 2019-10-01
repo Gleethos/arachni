@@ -10,12 +10,12 @@ import java.util.Date;
 
 public class FileReader implements IPlugin {
 
-    static final File WEB_ROOT = new File(".");
-    static final String DEFAULT_FILE = "index.html";
-    static final String FILE_NOT_FOUND = "404.html";
+    private static final File WEB_ROOT = new File(".");
+    private static final String DEFAULT_FILE = "index.html";
+    private static final String FILE_NOT_FOUND = "404.html";
 
-    // verbose mode
-    static final boolean verbose = true;
+    // VERBOSE mode
+    private static final boolean VERBOSE = true;
 
 
     @Override
@@ -60,7 +60,7 @@ public class FileReader implements IPlugin {
                 e.printStackTrace();
             }
         }
-        if (verbose) {
+        if (VERBOSE) {
             System.out.println("File " + fileRequested + " of type " + content + " returned");
         }
         response.setServerHeader("Webio Java HTTP Server : 1.0");
@@ -76,7 +76,7 @@ public class FileReader implements IPlugin {
         {
             //NOT SUPPORTED ERROR!!
         } else {
-            if (verbose) {
+            if (VERBOSE) {
                 System.out.println("File " + fileRequested + " of type " + content + " returned");
             }
         }
@@ -110,7 +110,7 @@ public class FileReader implements IPlugin {
     {
         File file = new File(WEB_ROOT, FILE_NOT_FOUND);
         int fileLength = (int) file.length();
-        String content = "text/html";
+        //String content = "text/html";
         byte[] fileData = readFileData(file, fileLength);
         response.setContent(fileData);
         //response.setServerHeader("Webio Java HTTP Server : 1.0");
@@ -118,7 +118,7 @@ public class FileReader implements IPlugin {
         //response.getHeaders().put("Content-type", content);
         //response.getHeaders().put("Content-length", String.valueOf(fileLength));
 
-        if (verbose) {
+        if (VERBOSE) {
             System.out.println("File " + fileRequested + " not found");
         }
     }

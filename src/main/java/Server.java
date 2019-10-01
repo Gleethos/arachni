@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class Server
 {
-
     private static final int PORT = 8080;// port to listen connection
 
     /** Settings - Index Meaning:  **/
