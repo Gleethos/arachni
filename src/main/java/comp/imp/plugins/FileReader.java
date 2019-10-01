@@ -34,9 +34,10 @@ public class FileReader implements IPlugin {
     }
 
     @Override
-    public IResponse handle(IRequest req) {
+    public IResponse handle(IRequest req)
+    {
         String method = req.getMethod();
-        String fileRequested = req.getUrl().getFileName();
+        String fileRequested = req.getUrl().getFileName()+"."+req.getUrl().getExtension();
 
         System.out.println("File: "+fileRequested);
         //-------------------------------------------------------

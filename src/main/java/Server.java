@@ -1,4 +1,5 @@
 
+import comp.IPlugin;
 import comp.imp.PluginManager;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -19,6 +20,7 @@ public class Server
     Server(){
         _manager = new PluginManager();
         _manager.add("FileReader");
+        _manager.add("TestPlugin");
     }
 
     public void start()
@@ -61,6 +63,11 @@ public class Server
                     }
                     break;
 
+                case "plugins":
+                    for (IPlugin plugin : _manager.getPlugins()) {
+                        user.println("[INFO]: "+plugin.toString());
+                    }
+                    break;
             }
             System.out.println("HERE!");
         }
