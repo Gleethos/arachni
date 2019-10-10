@@ -28,7 +28,6 @@ public class PluginManager implements IPluginManager {
         } catch (ServiceConfigurationError serviceError) {
             serviceError.printStackTrace();
         }
-
     }
 
     @Override

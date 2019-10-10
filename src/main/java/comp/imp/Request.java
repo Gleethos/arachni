@@ -46,19 +46,20 @@ public class Request implements IRequest {
                 while(parse.hasMoreElements()){
                     value += (((value!="")?" ":"")+parse.nextToken());
                 }
-                _headers.put(key, value);
+                _headers.put(key.toLowerCase(), value);
             }
         }
 
         for(String method : METHODS){
-            if(_headers.containsKey(method)){
+            if(_headers.containsKey(method.toLowerCase())){
                 _method = method; break;
             }
         }
-        _url = new Url(_headers.get(_method));
+        _url = new Url(_headers.get(_method.toLowerCase()));
         if(_method!="GET"){
             try {
-                _content = in.readLine().getBytes();
+                String line = in.readLine();
+                _content = (line!=null)?line.getBytes():_content;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,8 +96,8 @@ public class Request implements IRequest {
 
     @Override
     public String getUserAgent() {
-        if(_headers.containsKey("User-Agent")){
-            return _headers.get("User-Agent");
+        if(_headers.containsKey("user-agent")){
+            return _headers.get("user-agent");
         }
         return "";
     }
@@ -108,8 +109,8 @@ public class Request implements IRequest {
 
     @Override
     public String getContentType() {
-        if(_headers.containsKey("Content-Type")){
-            return _headers.get("Content-Type");
+        if(_headers.containsKey("Content-Type".toLowerCase())){
+            return _headers.get("Content-Type".toLowerCase());
         }
         return "";
     }

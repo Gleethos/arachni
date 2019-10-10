@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import BIF.SWE1.uebungen.UEB6;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,7 +23,6 @@ import org.junit.Test;
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
-import uebungen.UEB6;
 
 
 /* Placeholder */

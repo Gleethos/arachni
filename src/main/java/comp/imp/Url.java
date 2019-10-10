@@ -8,17 +8,20 @@ import java.util.Map;
 public class Url implements IUrl {
 
     private Map<String, String> _parameter = new HashMap<>();
-    private String _raw_url;
-    private String _path;
-    private String _filename;
-    private String _extension;
-    private String _fragment;
+    private String _raw_url = "";
+    private String _path = "";
+    private String _filename = "";
+    private String _extension = "";
+    private String _fragment = "";
 
     public Url(String url){
+        if(url==null){
+            return;
+        }
         _raw_url = url.split(" ")[0];
         String[] parts = url.split("\\?");
         if(parts.length>1){
-            String[] pairs = parts[1].split(";");
+            String[] pairs = parts[1].split("&");
             for(String pair : pairs){
                 String[] split = pair.split("=");
                 _parameter.put(split[0], split[1]);
@@ -33,9 +36,8 @@ public class Url implements IUrl {
         if(parts.length>0){
             _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1];
             _extension = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[1]:"";
-        } else {
-            _filename = "";
-            _extension = "";
+            _extension = _extension.split("\\?")[0];
+            _extension = _extension.split("#")[0];
         }
         _fragment = (_raw_url.contains("#"))?_raw_url.split("#")[1]:"";
     }
@@ -47,7 +49,7 @@ public class Url implements IUrl {
 
     @Override
     public String getPath() {
-        return _path;
+        return _path + ((!getFileName().equals(""))?(getFileName() + "." + getExtension()):"");
     }
 
     @Override

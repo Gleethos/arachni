@@ -1,4 +1,4 @@
-package uebungen;
+package BIF.SWE1.uebungen;
 
 import java.io.InputStream;
 import java.time.LocalDate;

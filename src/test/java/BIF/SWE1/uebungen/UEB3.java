@@ -1,10 +1,14 @@
-package uebungen;
+package BIF.SWE1.uebungen;
 
 import java.io.InputStream;
 
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
+import comp.imp.Request;
+import comp.imp.Response;
+import comp.imp.plugins.FileReader;
+import comp.imp.plugins.TestPlugin;
 
 public class UEB3 {
 
@@ -13,14 +17,14 @@ public class UEB3 {
 	}
 
 	public IRequest getRequest(InputStream inputStream) {
-		return null;
+		return new Request(inputStream);
 	}
 
 	public IResponse getResponse() {
-		return null;
+		return new Response();
 	}
 
 	public IPlugin getTestPlugin() {
-		return null;
+		return new FileReader();//TestPlugin();
 	}
 }

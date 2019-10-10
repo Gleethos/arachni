@@ -21,6 +21,8 @@ public class FileReader implements IPlugin {
     @Override
     public float canHandle(IRequest req) {
         float abillity = BASELINE;
+        abillity *= 1 + (0.5 * (1-abillity));
+
         if(req.getMethod().equals("GET")){
             abillity *= 1 + (0.1 * (1-abillity));
         }
@@ -42,6 +44,7 @@ public class FileReader implements IPlugin {
         System.out.println("File: "+fileRequested);
         //-------------------------------------------------------
         IResponse response = new Response();
+        response.setStatusCode(200);
         File file = new File(WEB_ROOT, fileRequested);
         int fileLength = (int) file.length();
         String content = getContentType(fileRequested);
@@ -64,7 +67,7 @@ public class FileReader implements IPlugin {
         if (VERBOSE) {
             System.out.println("File " + fileRequested + " of type " + content + " returned");
         }
-        response.setServerHeader("Webio Java HTTP Server : 1.0");
+        response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("Date", new Date().toString());
         response.getHeaders().put("Content-type", content);
         response.getHeaders().put("Content-length", String.valueOf(fileLength));
@@ -114,7 +117,7 @@ public class FileReader implements IPlugin {
         //String content = "text/html";
         byte[] fileData = readFileData(file, fileLength);
         response.setContent(fileData);
-        //response.setServerHeader("Webio Java HTTP Server : 1.0");
+        //response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         //response.getHeaders().put("Date", new Date().toString());
         //response.getHeaders().put("Content-type", content);
         //response.getHeaders().put("Content-length", String.valueOf(fileLength));

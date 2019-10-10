@@ -1,3 +1,4 @@
+package core;
 
 import comp.IPlugin;
 import comp.imp.PluginManager;
@@ -6,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class Server
+public class WebioServer
 {
     private static final int PORT = 8080;// port to listen connection
 
@@ -17,7 +18,7 @@ public class Server
     private PluginManager _manager;
 
     /**==============================================================================================================**/
-    Server(){
+    public WebioServer(){
         _manager = new PluginManager();
         _manager.add("FileReader");
         _manager.add("TestPlugin");
@@ -25,16 +26,16 @@ public class Server
 
     public void start()
     {
-        /** Server Thread:  **/
+        /** core.WebioServer Thread:  **/
         Thread serverRunner = null;
 
-        /** Shared State:  (Server Thread <-> User Thread communication!) **/
+        /** Shared State:  (core.WebioServer Thread <-> User Thread communication!) **/
         boolean[] settings = {
             false, //alive / dead
         };
 
         /** User Interface: **/
-        IOFrame user = new IOFrame("Webio - Server - commandline", 1000, true);
+        IOFrame user = new IOFrame("Webio - core.WebioServer - commandline", 1000, true);
         while(true)//TODO: add quit command!
         {
             String command = user.read();
@@ -50,7 +51,7 @@ public class Server
                         serverRunner.start();
                         settings[IS_ALIVE] = true;
                     } else {
-                        user.println("[Warning]: Server already running!");
+                        user.println("[Warning]: core.WebioServer already running!");
                     }
                     break;
 
@@ -60,7 +61,7 @@ public class Server
                         settings[IS_ALIVE] = false;
                         serverRunner = null;
                     } else {
-                        user.println("[Warning]: Server not running!");
+                        user.println("[Warning]: core.WebioServer not running!");
                     }
                     break;
 
@@ -74,7 +75,7 @@ public class Server
     }
 
     private void _run(boolean[]  settings){
-        IOFrame log = new IOFrame("Webio - Server", 1000, false);
+        IOFrame log = new IOFrame("Webio - core.WebioServer", 1000, false);
         try {
             ServerSocket serverConnect = new ServerSocket(PORT);
             log.println("[SERVER]: started! ");

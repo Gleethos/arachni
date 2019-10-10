@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uebungen.UEB3;
+import BIF.SWE1.uebungen.UEB3;
 
 /* Placeholder */
 public class UEB3Test extends AbstractTestFixture<UEB3> {
@@ -138,7 +138,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 	public void response_should_return_default_serverheader() throws Exception {
 		IResponse obj = createInstance().getResponse();
 		assertNotNull("UEB3.GetResponse returned null", obj);
-		assertEquals("BIF-SWE1-Server", obj.getServerHeader());
+		assertEquals("BIF-SWE1-core.WebioServer", obj.getServerHeader());
 	}
 
 	@Test
@@ -218,20 +218,21 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		String header_value = "val_" + java.util.UUID.randomUUID();
 		obj.addHeader(header, header_value);
 		ByteArrayOutputStream ms = new ByteArrayOutputStream();
+		String line = "";
 		try {
 			obj.send(ms);
 			assertTrue(ms.size() > 0);
 			BufferedReader sr = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(ms.toByteArray()), "UTF-8"));
 			String expected = String.format("%s: %s", header, header_value);
-			String line;
-			while ((line = sr.readLine()) != null) {
+
+			while (!(line = sr.readLine()).equals("")) {//was  != null
 				if (expected.equals(line))
 					return;
 			}
 		} finally {
 			ms.close();
 		}
-		fail("Header not found.");
+		fail("Header not found. line: "+line);
 	}
 
 	@Test
@@ -239,7 +240,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		IResponse obj = createInstance().getResponse();
 		assertNotNull("UEB3.GetResponse returned null", obj);
 		obj.setStatusCode(200);
-		String header = "Server";
+		String header = "core.WebioServer";
 		String header_value = "server_" + java.util.UUID.randomUUID();
 		obj.setServerHeader(header_value);
 		ByteArrayOutputStream ms = new ByteArrayOutputStream();
@@ -249,7 +250,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 			BufferedReader sr = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(ms.toByteArray()), "UTF-8"));
 			String expected = String.format("%s: %s", header, header_value);
 			String line;
-			while ((line = sr.readLine()) != null) {
+			while ((line = sr.readLine()) != "") {// was != null
 				if (expected.equals(line))
 					return;
 			}
@@ -297,7 +298,6 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		obj.setStatusCode(200);
         // Setting a content type but no content is not allowed
 		obj.setContentType("text/html");
-
 		assertThrows(() -> {
 			ByteArrayOutputStream ms = new ByteArrayOutputStream();
 			obj.send(ms);
@@ -319,7 +319,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 			boolean header_end_found = false;
 			for (int i = 0; i < 1000; i++) {
 				String line = sr.readLine();
-				if (line == null)
+				if (line == null || line == "")// I added line == ""
 					break;
 				if (line.trim().equals("")) {
 					header_end_found = true;

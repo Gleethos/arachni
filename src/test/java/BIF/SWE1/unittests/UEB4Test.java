@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.util.stream.StreamSupport;
 
+import BIF.SWE1.uebungen.UEB4;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +19,6 @@ import comp.IPlugin;
 import comp.IPluginManager;
 import comp.IRequest;
 import comp.IResponse;
-import uebungen.UEB4;
 
 /* Placeholder */
 public class UEB4Test extends AbstractTestFixture<UEB4> {

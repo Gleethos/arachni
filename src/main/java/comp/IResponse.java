@@ -56,12 +56,12 @@ public interface IResponse {
 	void addHeader(String header, String value);
 	
 	/**
-	 * @return Returns the Server response header. Defaults to "BIF-SWE1-Server".
+	 * @return Returns the core.WebioServer response header. Defaults to "BIF-SWE1-core.WebioServer".
 	 */
 	String getServerHeader();
 	
 	/**
-	 * Sets the Server response header.
+	 * Sets the core.WebioServer response header.
 	 * @param server 
 	 */
 	void setServerHeader(String server);

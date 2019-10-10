@@ -19,7 +19,14 @@ dependencies {
 }
 
 jar {
-    mainClassName = 'JavaHTTPServer'
+    mainClassName = 'Main'
     from configurations.compile.collect{ zipTree it }
-    manifest.attributes "Main-Class" : "JavaHTTPServer"
+    manifest.attributes "Main-Class" : "Main"
+}
+
+test {
+    //filter {
+    //    //specific test method
+    //    //includeTestsMatching "*TestWeb*"
+    //}
 }

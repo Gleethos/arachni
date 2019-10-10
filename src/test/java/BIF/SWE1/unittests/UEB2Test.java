@@ -11,7 +11,7 @@ import comp.IResponse;
 import comp.IUrl;
 import org.junit.Test;
 
-import uebungen.UEB2;
+import BIF.SWE1.uebungen.UEB2;
 
 public class UEB2Test extends AbstractTestFixture<UEB2> {
 	@Test

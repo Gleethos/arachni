@@ -1,3 +1,5 @@
+import core.WebioServer;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -6,7 +8,7 @@ public class Main {
 
     public static void initialize(){
 
-        Server server = new Server();
+        WebioServer server = new WebioServer();
         server.start();
 
     }

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import comp.IUrl;
 import org.junit.*;
 
-import uebungen.UEB1;
+import BIF.SWE1.uebungen.UEB1;
 
 public class UEB1Test extends AbstractTestFixture<UEB1> {
 

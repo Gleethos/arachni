@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 
+import BIF.SWE1.uebungen.UEB5;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,7 +26,6 @@ import comp.IPlugin;
 import comp.IPluginManager;
 import comp.IRequest;
 import comp.IResponse;
-import uebungen.UEB5;
 
 /* Placeholder */
 public class UEB5Test extends AbstractTestFixture<UEB5> {

@@ -1,3 +1,5 @@
+package core;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import java.awt.*;

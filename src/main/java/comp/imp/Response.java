@@ -12,7 +12,7 @@ public class Response implements IResponse {
 
     Map<String, String> _headers = new HashMap<>();
     String _content_type = "";
-    int _status_code = 0;
+    int _status_code = -1;
     byte[] _content;
 
     @Override
@@ -37,6 +37,9 @@ public class Response implements IResponse {
 
     @Override
     public int getStatusCode() {
+        if(_status_code==-1){
+            throw new RuntimeException("[RESPONSE]: ERROR. Status code not set!");
+        }
         return _status_code;
     }
 
@@ -47,7 +50,16 @@ public class Response implements IResponse {
 
     @Override
     public String getStatus() {
-        return null;
+        if(_status_code==-1){
+            throw new RuntimeException("[RESPONSE]: ERROR. Status code not set!");
+        }
+        String code = String.valueOf(_status_code);
+        switch(_status_code){
+            case 200: return code+"ok";
+            case 404: return code+"notfound";
+            case 500: return code+"internalservererror";
+        }
+        return code;
     }
 
     @Override
@@ -57,17 +69,21 @@ public class Response implements IResponse {
 
     @Override
     public String getServerHeader() {
-        return _headers.get("Server");
+        return _headers.get("core.WebioServer");
     }
 
     @Override
     public void setServerHeader(String server) {
-        _headers.put("Server", server);
+        _headers.put("core.WebioServer", server);
     }
 
     @Override
     public void setContent(String content) {
-
+        try {
+            _content = content.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -98,21 +114,52 @@ public class Response implements IResponse {
         System.out.println("File: "+fileRequested);
     }
 
+    private String _getHeaderString(){
+        String[] header = {""};
+        _headers.forEach((k, v)->{
+            header[0] += k+": "+v+"\n";
+
+        });
+        header[0]+="\n";
+        return header[0];
+    }
+
     @Override
     public void send(OutputStream network)
     {
+        if(getContentLength()==0 && getContentType().equals("text/html")){
+           throw new RuntimeException("[RESPONSE]: Sending failed! Content of type text/html is empty!");
+        }
         PrintWriter out = new PrintWriter(network);
-        BufferedOutputStream dataOut = new BufferedOutputStream(network);
+        OutputStream dataOut = network;//new BufferedOutputStream(network);
         byte[] fileData = _content;// send HTTP Headers
-        out.println("HTTP/1.1 200 OK");
-        out.println("Server: Java HTTP Server from SSaurel : 1.0");
-        out.println("Date: " + new Date());
-        out.println("Content-type: " + "text/html");
-        out.println("Content-length: " + getContentLength());
-        out.println(); // blank line between headers and content, very important !
-        out.flush(); // flush character output stream buffer
+
+        String header = "HTTP/1.1 "+getStatus()+"\n"+
+                        "core.WebioServer: Webio!\n"+
+                        "Date: " + new Date()+"\n"+
+                        "Content-type: " + "text/html\n"+
+                        "Content-length: " + getContentLength()+"\n\n";
+        header = _getHeaderString();
+        if(!header.contains("HTTP/1.") || !header.substring(0, 7).equals("HTTP/1.")){
+            header = "HTTP/1. "+getServerHeader()+" "+getStatus()+header;
+        }
+
+
+
+        byte[] headerBytes = new byte[0];
+        try {
+            headerBytes = header.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        try{
+        dataOut.write(headerBytes, 0, headerBytes.length);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if(_content!=null) {
             try {
+                //out.println(new String(_content));
                 dataOut.write(fileData, 0, getContentLength());
             } catch (IOException e) {
                 e.printStackTrace();
