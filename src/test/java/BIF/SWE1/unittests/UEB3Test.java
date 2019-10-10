@@ -319,7 +319,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 			boolean header_end_found = false;
 			for (int i = 0; i < 1000; i++) {
 				String line = sr.readLine();
-				if (line == null || line == "")// I added line == ""
+				if (line == null)// I added line == ""
 					break;
 				if (line.trim().equals("")) {
 					header_end_found = true;

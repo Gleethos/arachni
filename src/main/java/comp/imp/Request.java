@@ -13,15 +13,10 @@ public class Request implements IRequest {
     private static final String[] METHODS = {
             "GET", "POST",
     };
-    private String _method = null;
-    private IUrl _url = null;
+    private String _method = "";
+    private IUrl _url;
     byte[] _content;
     InputStream _stream;
-
-    static final File WEB_ROOT = new File(".");
-    static final String DEFAULT_FILE = "index.html";
-    static final String FILE_NOT_FOUND = "404.html";
-    static final String METHOD_NOT_SUPPORTED = "not_supported.html";
 
     Map<String, String> _headers = new HashMap<>();
     String _content_type = "";
@@ -68,7 +63,7 @@ public class Request implements IRequest {
 
     @Override
     public boolean isValid() {
-        if(_method==null){
+        if(_method.equals("")){
             return false;
         }
         return true;

@@ -1,0 +1,12 @@
+
+WORKS!!!
+	File: .
+&File . of type text/plain sending...
+File . not found
+$File . of type text/plain returned
+File: index.html
+.File index.html of type text/html sending...
+,File index.html of type text/html returned
+File: gradlew.
+-File gradlew. of type text/plain sending...
++File gradlew. of type text/plain returned

@@ -25,6 +25,6 @@ public class UEB3 {
 	}
 
 	public IPlugin getTestPlugin() {
-		return new FileReader();//TestPlugin();
+		return new TestPlugin();//FileReader();//TestPlugin();
 	}
 }

@@ -62,6 +62,19 @@ public class Response implements IResponse {
         return code;
     }
 
+    public String _getStatus(){
+        if(_status_code==-1){
+            throw new RuntimeException("[RESPONSE]: ERROR. Status code not set!");
+        }
+        String code = String.valueOf(_status_code);
+        switch(_status_code){
+            case 200: return code+" OK";
+            case 404: return code+" Not Found";
+            case 500: return code+" Internal Server Error";
+        }
+        return code;
+    }
+
     @Override
     public void addHeader(String header, String value) {
         _headers.put(header, value);
@@ -120,7 +133,7 @@ public class Response implements IResponse {
             header[0] += k+": "+v+"\n";
 
         });
-        header[0]+="\n";
+        header[0]+="\n"+((_headers.size()==0)?"\n":"");
         return header[0];
     }
 
@@ -141,7 +154,7 @@ public class Response implements IResponse {
                         "Content-length: " + getContentLength()+"\n\n";
         header = _getHeaderString();
         if(!header.contains("HTTP/1.") || !header.substring(0, 7).equals("HTTP/1.")){
-            header = "HTTP/1. "+getServerHeader()+" "+getStatus()+header;
+            header = "HTTP/1. "+getServerHeader()+" "+_getStatus()+((header.substring(1).equals("\n"))?"":"\n")+header;
         }
 
 

@@ -32,6 +32,7 @@ public class FileReader implements IPlugin {
         if(!req.getUrl().getExtension().equals("")){
             abillity *= 1 + (0.15 * (1-abillity));
         }
+        //abillity *= ((req.getContentType().equals("")?0:1));
         return abillity;
     }
 
@@ -48,7 +49,13 @@ public class FileReader implements IPlugin {
         File file = new File(WEB_ROOT, fileRequested);
         int fileLength = (int) file.length();
         String content = getContentType(fileRequested);
-
+        if (VERBOSE) {
+            System.out.println("File " + fileRequested + " of type " + content + " sending...");
+        }
+        response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
+        response.getHeaders().put("date", new Date().toString());
+        response.getHeaders().put("content-type", content);
+        response.getHeaders().put("content-length", String.valueOf(fileLength));
         if (method.equals("GET")) // GET method so we return content
         {
             try {
@@ -64,13 +71,6 @@ public class FileReader implements IPlugin {
                 e.printStackTrace();
             }
         }
-        if (VERBOSE) {
-            System.out.println("File " + fileRequested + " of type " + content + " returned");
-        }
-        response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
-        response.getHeaders().put("Date", new Date().toString());
-        response.getHeaders().put("Content-type", content);
-        response.getHeaders().put("Content-length", String.valueOf(fileLength));
 
         if (fileRequested.equals("")) {
             fileRequested += DEFAULT_FILE;
@@ -114,7 +114,8 @@ public class FileReader implements IPlugin {
     {
         File file = new File(WEB_ROOT, FILE_NOT_FOUND);
         int fileLength = (int) file.length();
-        //String content = "text/html";
+        String content = "text/html";
+        response.getHeaders().put("content-type", content);
         byte[] fileData = readFileData(file, fileLength);
         response.setContent(fileData);
         //response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
