@@ -138,7 +138,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 	public void response_should_return_default_serverheader() throws Exception {
 		IResponse obj = createInstance().getResponse();
 		assertNotNull("UEB3.GetResponse returned null", obj);
-		assertEquals("BIF-SWE1-core.WebioServer", obj.getServerHeader());
+		assertEquals("Webio-Server", obj.getServerHeader());
 	}
 
 	@Test
@@ -240,7 +240,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		IResponse obj = createInstance().getResponse();
 		assertNotNull("UEB3.GetResponse returned null", obj);
 		obj.setStatusCode(200);
-		String header = "core.WebioServer";
+		String header = "Webio-Server";
 		String header_value = "server_" + java.util.UUID.randomUUID();
 		obj.setServerHeader(header_value);
 		ByteArrayOutputStream ms = new ByteArrayOutputStream();

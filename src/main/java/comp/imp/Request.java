@@ -65,6 +65,8 @@ public class Request implements IRequest {
     public boolean isValid() {
         if(_method.equals("")){
             return false;
+        } else if(_headers.containsKey("get")&&_headers.get("get").equals("")){
+            return false;
         }
         return true;
     }

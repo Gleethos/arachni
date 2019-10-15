@@ -8,7 +8,6 @@ public class TestWeb {
 
     @Test
     public void testRequest(){
-        System.out.println("WORKS!!!");
         WebioServer server = new WebioServer();
         server.start();
     }

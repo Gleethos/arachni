@@ -64,7 +64,9 @@ public class Url implements IUrl {
 
     @Override
     public String[] getSegments() {
-        return _path.split("/");
+        return (getRawUrl().substring(0, 1).equals("/"))
+                ?getRawUrl().substring(1, getRawUrl().length()).split("/")
+                :getRawUrl().split("/");
     }
 
     @Override

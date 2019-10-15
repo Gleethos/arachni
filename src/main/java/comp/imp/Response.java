@@ -15,6 +15,10 @@ public class Response implements IResponse {
     int _status_code = -1;
     byte[] _content;
 
+    public Response(){
+        setServerHeader("Webio-Server");
+    }
+
     @Override
     public Map<String, String> getHeaders() {
         return _headers;
@@ -82,12 +86,12 @@ public class Response implements IResponse {
 
     @Override
     public String getServerHeader() {
-        return _headers.get("core.WebioServer");
+        return _headers.get("Webio-Server");
     }
 
     @Override
     public void setServerHeader(String server) {
-        _headers.put("core.WebioServer", server);
+        _headers.put("Webio-Server", server);
     }
 
     @Override

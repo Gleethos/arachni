@@ -26,10 +26,12 @@ public class TestPlugin implements IPlugin
         if(req.getUrl().getPath().contains("test")){
             return new FileReader().handle(req);
         }
-        IResponse r = new Response();
-        r.setStatusCode(200);
-        r.setContent(req.getContentBytes());
-        return r;
+        FileReader reader = new FileReader();
+        return reader.handle(req);
+        //IResponse r = new Response();
+        //r.setStatusCode(200);
+        //r.setContent(req.getContentBytes());
+        //return r;
     }
 
     @Override
