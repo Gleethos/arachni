@@ -5,30 +5,36 @@ import java.io.InputStream;
 import comp.IPlugin;
 import comp.IPluginManager;
 import comp.IRequest;
+import comp.imp.PluginManager;
+import comp.imp.Request;
+import comp.imp.plugins.FileReader;
+import comp.imp.Url;
 
 public class UEB5 {
+
+	String _path = "";
 
 	public void helloWorld() {
 
 	}
 
 	public IRequest getRequest(InputStream inputStream) {
-		return null;
+		return new Request(inputStream);
 	}
 
 	public IPluginManager getPluginManager() {
-		return null;
+		return new PluginManager();
 	}
 
 	public IPlugin getStaticFilePlugin() {
-		return null;
+		return new FileReader();
 	}
 
-	public void setStatiFileFolder(String s) {
-
+	public void setStaticFileFolder(String s) {
+		_path = s;
 	}
 
 	public String getStaticFileUrl(String s) {
-		return null;
+		return _path+"/"+s;
 	}
 }

@@ -1,3 +1,5 @@
 comp.imp.plugins.FileReader
 comp.imp.plugins.TestPlugin
 comp.imp.plugins.Navigator
+comp.imp.plugins.TemperatureReader
+comp.imp.plugins.ToLower

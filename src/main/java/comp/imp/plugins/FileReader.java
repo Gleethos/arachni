@@ -6,6 +6,8 @@ import comp.IResponse;
 import comp.imp.Response;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.Date;
 
 public class FileReader implements IPlugin {
@@ -39,10 +41,17 @@ public class FileReader implements IPlugin {
     @Override
     public IResponse handle(IRequest req)
     {
+        //Path path = FileSystems.getDefault().getPath(".").toAbsolutePath();
+        //System.out.println(path);
         String method = req.getMethod();
         String fileRequested = req.getUrl().getFileName()+"."+req.getUrl().getExtension();
 
         System.out.println("File: "+fileRequested);
+        if(fileRequested.equals(".")){
+            fileRequested = "index"+fileRequested+"html";
+        } else {
+            fileRequested = req.getUrl().getPath();
+        }
         //-------------------------------------------------------
         IResponse response = new Response();
         response.setStatusCode(200);
@@ -112,6 +121,7 @@ public class FileReader implements IPlugin {
 
     private void fileNotFound(IResponse response, String fileRequested) throws IOException
     {
+        response.setStatusCode(404);
         File file = new File(WEB_ROOT, FILE_NOT_FOUND);
         int fileLength = (int) file.length();
         String content = "text/html";

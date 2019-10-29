@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB6Test" tests="17" skipped="0" failures="13" errors="0" timestamp="2019-10-29T14:07:14" hostname="DESKTOP-6UFJ24U" time="0.009">
+<testsuite name="BIF.SWE1.unittests.UEB6Test" tests="17" skipped="0" failures="13" errors="0" timestamp="2019-10-29T17:36:16" hostname="DESKTOP-6UFJ24U" time="0.015">
   <properties/>
-  <testcase name="navi_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
-  <testcase name="temp_plugin_get_rest_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.002">
+  <testcase name="navi_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="temp_plugin_get_rest_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.004">
     <failure message="java.lang.AssertionError: IUEB6.getTemperatureUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)
@@ -120,7 +120,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="temp_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.0">
+  <testcase name="temp_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.001">
     <failure message="java.lang.AssertionError: IUEB6.getTemperatureUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)
@@ -179,7 +179,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="lower_plugin_handle_empty" classname="BIF.SWE1.unittests.UEB6Test" time="0.001">
+  <testcase name="lower_plugin_handle_empty" classname="BIF.SWE1.unittests.UEB6Test" time="0.0">
     <failure message="java.lang.AssertionError: IUEB6.getToLowerUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getToLowerUrl returned null
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)
@@ -415,7 +415,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
   <testcase name="lower_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.0">
     <failure message="java.lang.AssertionError: IUEB6.getToLowerUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getToLowerUrl returned null
 	at org.junit.Assert.fail(Assert.java:88)
@@ -593,7 +593,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="lower_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="lower_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
   <testcase name="temp_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
   <testcase name="navi_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.0">
     <failure message="java.lang.AssertionError: IUEB6.getNaviUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getNaviUrl returned null
@@ -654,7 +654,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="temp_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.0">
+  <testcase name="temp_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.001">
     <failure message="java.lang.AssertionError: IUEB6.getTemperatureUrl returned null" type="java.lang.AssertionError">java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)

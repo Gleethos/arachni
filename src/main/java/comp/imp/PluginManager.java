@@ -2,6 +2,10 @@ package comp.imp;
 
 import comp.IPlugin;
 import comp.IPluginManager;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class PluginManager implements IPluginManager {
@@ -12,6 +16,10 @@ public class PluginManager implements IPluginManager {
     public PluginManager(){
         _loadClasses();
         this.add("TestPlugin");
+        this.add("FileReader");
+        this.add("Navigator");
+        this.add("TemperatureReader");
+        this.add("ToLower");
     }
 
     private void _loadClasses(){
@@ -50,6 +58,45 @@ public class PluginManager implements IPluginManager {
             _loadClasses();
             if(_available.containsKey(plugin)){
                 _plugins.put(plugin, _available.get(plugin));
+            } else {
+                Map<String, Class> Classes = new HashMap<>();
+                ClassLoader classLoader = null;
+                Field f;// Class context finding!
+                try {
+                    f = ClassLoader.class.getDeclaredField("classes");
+                    f.setAccessible(true);
+                    classLoader = Thread.currentThread().getContextClassLoader();
+                    try {
+                        classLoader.loadClass(plugin);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    Vector<Class> classes =  (Vector<Class>) f.get(classLoader);
+                    for(Class cls : classes){
+                        //java.net.URL location = cls.getResource('/' + cls.getName().replace('.',
+                        //        '/') + ".class");
+                        //System.out.println("<p>"+location +"<p/> ... "+cls.getName());
+                        Classes.put(cls.getName(), cls);
+                        String[] expl = cls.getName().split("\\.");
+                        Classes.put(expl[expl.length-1], cls);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Class c = Classes.get(plugin);
+                Constructor constructor = c.getConstructors()[0];
+                try {
+                    Object instance = constructor.newInstance();
+                    _plugins.put(plugin, (IPlugin) instance);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("");
+
             }
         }
     }

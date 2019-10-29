@@ -238,7 +238,7 @@ public class UEB5Test extends AbstractTestFixture<UEB5> {
 			out.write(static_file_content);
 		}
 
-		ueb.setStatiFileFolder(folder.getName());
+		ueb.setStaticFileFolder(folder.getName());
 	}
 
 	@Test
