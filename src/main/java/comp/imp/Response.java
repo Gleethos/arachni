@@ -26,6 +26,11 @@ public class Response implements IResponse {
 
     @Override
     public int getContentLength() {
+        if(_content == null){
+            if(_headers.containsKey("content-length")){
+                Integer.valueOf(_headers.get("content-length"));
+            }
+        }
         return (_content!=null)?_content.length:0;
     }
 
@@ -120,15 +125,22 @@ public class Response implements IResponse {
             e.printStackTrace();
         }
         // we parse the request with a string tokenizer
-        StringTokenizer parse = new StringTokenizer(input);
-        String method = parse.nextToken().toUpperCase(); // we get the HTTP method of the client
-        _headers.put("GET", method);
-        while(parse.hasMoreTokens()){
-            _headers.put(parse.toString(), parse.nextToken());
+        //StringTokenizer parse = new StringTokenizer(input);
+        //String method = parse.nextToken().toUpperCase(); // we get the HTTP method of the client
+        //_headers.put("GET", method);
+        //while(parse.hasMoreTokens()){
+        //    _headers.put(parse.toString(), parse.nextToken());
+        //}
+
+        try {
+            _content = input.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            _content = input.getBytes();
         }
         // we get file requested
-        String fileRequested = parse.nextToken().toLowerCase();
-        System.out.println("File: "+fileRequested);
+        //String fileRequested = (parse.hasMoreElements())?parse.nextToken().toLowerCase():"";
+        //System.out.println("File: "+fileRequested);
     }
 
     private String _getHeaderString(){
@@ -147,21 +159,12 @@ public class Response implements IResponse {
         if(getContentLength()==0 && getContentType().equals("text/html")){
            throw new RuntimeException("[RESPONSE]: Sending failed! Content of type text/html is empty!");
         }
-        PrintWriter out = new PrintWriter(network);
-        OutputStream dataOut = network;//new BufferedOutputStream(network);
         byte[] fileData = _content;// send HTTP Headers
 
-        String header = "HTTP/1.1 "+getStatus()+"\n"+
-                        "core.WebioServer: Webio!\n"+
-                        "Date: " + new Date()+"\n"+
-                        "Content-type: " + "text/html\n"+
-                        "Content-length: " + getContentLength()+"\n\n";
-        header = _getHeaderString();
+        String header = _getHeaderString();
         if(!header.contains("HTTP/1.") || !header.substring(0, 7).equals("HTTP/1.")){
             header = "HTTP/1. "+getServerHeader()+" "+_getStatus()+((header.substring(1).equals("\n"))?"":"\n")+header;
         }
-
-
 
         byte[] headerBytes = new byte[0];
         try {
@@ -170,20 +173,20 @@ public class Response implements IResponse {
             e.printStackTrace();
         }
         try{
-        dataOut.write(headerBytes, 0, headerBytes.length);
+            network.write(headerBytes, 0, headerBytes.length);
         } catch (IOException e) {
             e.printStackTrace();
         }
         if(_content!=null) {
             try {
                 //out.println(new String(_content));
-                dataOut.write(fileData, 0, getContentLength());
+                network.write(fileData, 0, getContentLength());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         try {
-            dataOut.flush();
+            network.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

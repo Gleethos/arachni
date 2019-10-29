@@ -24,9 +24,9 @@ jar {
     manifest.attributes "Main-Class" : "Main"
 }
 
-test {
-    //filter {
-    //    //specific test method
-    //    //includeTestsMatching "*TestWeb*"
-    //}
-}
+//test {
+//    //filter {
+//    //    //specific test method
+//    //    includeTestsMatching "*Test"
+//    //}
+//}

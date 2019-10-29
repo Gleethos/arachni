@@ -11,9 +11,11 @@ public class PluginManager implements IPluginManager {
 
     public PluginManager(){
         _loadClasses();
+        this.add("TestPlugin");
     }
 
     private void _loadClasses(){
+        //TODO: use classloader!
         ServiceLoader<IPlugin> loader = ServiceLoader.load(IPlugin.class);
         try {
             Iterator<IPlugin> instances = loader.iterator();

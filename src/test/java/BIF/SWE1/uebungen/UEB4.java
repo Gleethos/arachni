@@ -5,6 +5,9 @@ import java.io.InputStream;
 import comp.IPluginManager;
 import comp.IRequest;
 import comp.IResponse;
+import comp.imp.PluginManager;
+import comp.imp.Request;
+import comp.imp.Response;
 
 public class UEB4 {
 
@@ -13,14 +16,14 @@ public class UEB4 {
 	}
 
 	public IRequest getRequest(InputStream inputStream) {
-		return null;
+		return new Request(inputStream);
 	}
 
 	public IResponse getResponse() {
-		return null;
+		return new Response();
 	}
 
 	public IPluginManager getPluginManager() {
-		return null;
+		return new PluginManager();
 	}
 }

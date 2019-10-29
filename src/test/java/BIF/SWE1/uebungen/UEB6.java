@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import comp.IPlugin;
 import comp.IPluginManager;
 import comp.IRequest;
+import comp.imp.PluginManager;
+import comp.imp.Request;
+import comp.imp.plugins.Navigator;
+import comp.imp.plugins.TemperatureReader;
+import comp.imp.plugins.ToLower;
 
 public class UEB6 {
 
@@ -14,23 +19,23 @@ public class UEB6 {
 	}
 
 	public IRequest getRequest(InputStream inputStream) {
-		return null;
+		return new Request(inputStream);
 	}
 
 	public IPluginManager getPluginManager() {
-		return null;
+		return new PluginManager();
 	}
 
 	public IPlugin getTemperaturePlugin() {
-		return null;
+		return new TemperatureReader();
 	}
 
 	public IPlugin getNavigationPlugin() {
-		return null;
+		return new Navigator();
 	}
 
 	public IPlugin getToLowerPlugin() {
-		return null;
+		return new ToLower();
 	}
 
 	public String getTemperatureUrl(LocalDate localDate, LocalDate localDate1) {
