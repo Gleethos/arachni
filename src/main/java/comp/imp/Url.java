@@ -24,7 +24,14 @@ public class Url implements IUrl {
             String[] pairs = parts[1].split("&");
             for(String pair : pairs){
                 String[] split = pair.split("=");
-                _parameter.put(split[0], split[1]);
+                if(split.length>1){
+                    if(split[1].endsWith("HTTP/1.1")){
+                        split[1] = split[1].substring(0, split[1].length()-8);
+                        split[1] = split[1].trim();
+
+                    }
+                    _parameter.put(split[0], split[1]);
+                }
             }
         }
         parts = _raw_url.split("/");

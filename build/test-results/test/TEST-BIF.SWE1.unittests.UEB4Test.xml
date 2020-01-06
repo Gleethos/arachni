@@ -1,21 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2019-10-29T17:35:37" hostname="DESKTOP-6UFJ24U" time="0.065">
+<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-01-06T14:50:39" hostname="DESKTOP-6UFJ24U" time="0.331">
   <properties/>
-  <testcase name="request_should_return_post_content_as_bytes" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.011"/>
-  <testcase name="response_should_send_byte_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="request_should_handle_post" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="response_should_send_stream_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
+  <testcase name="request_should_return_post_content_as_bytes" classname="BIF.SWE1.unittests.UEB4Test" time="0.003"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.293"/>
+  <testcase name="response_should_send_byte_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
+  <testcase name="request_should_handle_post" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
+  <testcase name="response_should_send_stream_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
   <testcase name="request_should_parse_post_content_length" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.006"/>
+  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.008"/>
   <testcase name="request_should_parse_post_content_type" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.008"/>
-  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.007"/>
-  <testcase name="request_should_return_post_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.011"/>
+  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
+  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.006"/>
+  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.005"/>
+  <testcase name="request_should_return_post_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.004"/>
-  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.005"/>
+  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.005"/>
+  <system-out><![CDATA[The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:39 |
+
+| 5 || 23.43 || 2020-01-06 14:50:39 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:39 |
+
+| 5 || 23.43 || 2020-01-06 14:50:39 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:39 |
+
+| 5 || 23.43 || 2020-01-06 14:50:39 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:39 |
+
+| 5 || 23.43 || 2020-01-06 14:50:39 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:39 |
+
+| 5 || 23.43 || 2020-01-06 14:50:39 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:39 |
+
+| 2 || 23.43 || 2020-01-06 14:50:39 |
+
+| 3 || 23.43 || 2020-01-06 14:50:39 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">13</div>
+<div class="counter">5</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.011s</div>
+<div class="counter">0.059s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">23%</div>
+<div class="percent">70%</div>
 <p>successful</p>
 </div>
 </td>
@@ -66,333 +66,20 @@
 <li>
 <a href="#tab1">Tests</a>
 </li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="lower_plugin_get_url"></a>
-<h3 class="failures">lower_plugin_get_url</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getToLowerUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.lower_plugin_get_url(UEB6Test.java:312)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="lower_plugin_handle"></a>
-<h3 class="failures">lower_plugin_handle</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getToLowerUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.lower_plugin_handle(UEB6Test.java:324)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="lower_plugin_handle_empty"></a>
-<h3 class="failures">lower_plugin_handle_empty</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getToLowerUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.lower_plugin_handle_empty(UEB6Test.java:353)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
 <a name="navi_plugin_contains_summary"></a>
 <h3 class="failures">navi_plugin_contains_summary</h3>
 <span class="code">
-<pre>java.lang.AssertionError: IUEB6.getNaviUrl returned null
+<pre>java.lang.AssertionError: Not found: Orte gefunden
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.navi_plugin_contains_summary(UEB6Test.java:252)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="navi_plugin_get_url"></a>
-<h3 class="failures">navi_plugin_get_url</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getNaviUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.navi_plugin_get_url(UEB6Test.java:217)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="navi_plugin_handle"></a>
-<h3 class="failures">navi_plugin_handle</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getNaviUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.navi_plugin_handle(UEB6Test.java:229)
+	at BIF.SWE1.unittests.UEB6Test.navi_plugin_contains_summary(UEB6Test.java:266)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -451,11 +138,10 @@
 <a name="navi_plugin_handle_empty"></a>
 <h3 class="failures">navi_plugin_handle_empty</h3>
 <span class="code">
-<pre>java.lang.AssertionError: IUEB6.getNaviUrl returned null
+<pre>java.lang.AssertionError: Not found: Bitte geben Sie eine Anfrage ein
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.navi_plugin_handle_empty(UEB6Test.java:277)
+	at BIF.SWE1.unittests.UEB6Test.navi_plugin_handle_empty(UEB6Test.java:291)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -514,200 +200,13 @@
 <a name="temp_plugin_get_different_urls"></a>
 <h3 class="failures">temp_plugin_get_different_urls</h3>
 <span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
+<pre>java.lang.AssertionError: Values should be different. Actual: temp?2014-01-01&amp;2014-01-02
 	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_get_different_urls(UEB6Test.java:140)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="temp_plugin_get_rest_url"></a>
-<h3 class="failures">temp_plugin_get_rest_url</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_get_rest_url(UEB6Test.java:127)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="temp_plugin_get_url"></a>
-<h3 class="failures">temp_plugin_get_url</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_get_url(UEB6Test.java:96)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="temp_plugin_get_url_2"></a>
-<h3 class="failures">temp_plugin_get_url_2</h3>
-<span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_get_url_2(UEB6Test.java:109)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at BIF.SWE1.unittests.AbstractTestFixture.assertNotEquals(AbstractTestFixture.java:70)
+	at BIF.SWE1.unittests.UEB6Test.temp_plugin_get_different_urls(UEB6Test.java:145)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -766,11 +265,11 @@
 <a name="temp_plugin_handle"></a>
 <h3 class="failures">temp_plugin_handle</h3>
 <span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_handle(UEB6Test.java:158)
+<pre>java.lang.NullPointerException
+	at java.base/java.lang.String.&lt;init&gt;(String.java:614)
+	at comp.imp.Request.getContentString(Request.java:180)
+	at comp.imp.plugins.TemperatureReader.handle(TemperatureReader.java:81)
+	at BIF.SWE1.unittests.UEB6Test.temp_plugin_handle(UEB6Test.java:166)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -829,11 +328,11 @@
 <a name="temp_plugin_handle_rest_call"></a>
 <h3 class="failures">temp_plugin_handle_rest_call</h3>
 <span class="code">
-<pre>java.lang.AssertionError: IUEB6.getTemperatureUrl returned null
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at org.junit.Assert.assertNotNull(Assert.java:712)
-	at BIF.SWE1.unittests.UEB6Test.temp_plugin_handle_rest_call(UEB6Test.java:183)
+<pre>java.lang.NullPointerException
+	at java.base/java.lang.String.&lt;init&gt;(String.java:614)
+	at comp.imp.Request.getContentString(Request.java:180)
+	at comp.imp.plugins.TemperatureReader.handle(TemperatureReader.java:81)
+	at BIF.SWE1.unittests.UEB6Test.temp_plugin_handle_rest_call(UEB6Test.java:191)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -901,90 +400,212 @@
 </thead>
 <tr>
 <td class="success">HelloWorld</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">lower_plugin_HelloWorld</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">lower_plugin_get_url</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">lower_plugin_handle</td>
 <td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">lower_plugin_get_url</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">lower_plugin_handle</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">lower_plugin_handle_empty</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
+<td class="success">lower_plugin_handle_empty</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">navi_plugin_HelloWorld</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">navi_plugin_contains_summary</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">navi_plugin_get_url</td>
-<td class="failures">0.001s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">navi_plugin_handle</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">navi_plugin_handle_empty</td>
-<td class="failures">0s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="success">temp_plugin_HelloWorld</td>
-<td class="success">0s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">temp_plugin_get_different_urls</td>
-<td class="failures">0.001s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="failures">temp_plugin_get_rest_url</td>
 <td class="failures">0.004s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="failures">temp_plugin_get_url</td>
+<td class="success">navi_plugin_get_url</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">navi_plugin_handle</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">navi_plugin_handle_empty</td>
 <td class="failures">0.001s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="failures">temp_plugin_get_url_2</td>
-<td class="failures">0.001s</td>
+<td class="success">temp_plugin_HelloWorld</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">temp_plugin_get_different_urls</td>
+<td class="failures">0.005s</td>
 <td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">temp_plugin_get_rest_url</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">temp_plugin_get_url</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">temp_plugin_get_url_2</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">temp_plugin_handle</td>
-<td class="failures">0.001s</td>
+<td class="failures">0.008s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">temp_plugin_handle_rest_call</td>
-<td class="failures">0s</td>
+<td class="failures">0.007s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+</pre>
+</span>
 </div>
 </div>
 <div id="footer">
@@ -994,7 +615,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 29.10.2019, 18:36:17</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 06.01.2020, 15:50:40</p>
 </div>
 </div>
 </body>

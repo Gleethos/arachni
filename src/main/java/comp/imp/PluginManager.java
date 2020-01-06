@@ -3,9 +3,11 @@ package comp.imp;
 import comp.IPlugin;
 import comp.IPluginManager;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.*;
 
 public class PluginManager implements IPluginManager {
@@ -14,30 +16,12 @@ public class PluginManager implements IPluginManager {
     Map<String, IPlugin> _available = new HashMap<>();
 
     public PluginManager(){
-        _loadClasses();
         this.add("TestPlugin");
         this.add("FileReader");
         this.add("Navigator");
         this.add("TemperatureReader");
         this.add("ToLower");
-    }
-
-    private void _loadClasses(){
-        //TODO: use classloader!
-        ServiceLoader<IPlugin> loader = ServiceLoader.load(IPlugin.class);
-        try {
-            Iterator<IPlugin> instances = loader.iterator();
-            while (instances.hasNext()) {
-                IPlugin plugin = instances.next();
-                String[] split = plugin.getClass().getName().split("\\.");
-                String key = split[split.length-1];
-                if(!_available.containsKey(key)){
-                    _available.put(key, plugin);
-                }
-            }
-        } catch (ServiceConfigurationError serviceError) {
-            serviceError.printStackTrace();
-        }
+        this.add("Oracle");
     }
 
     @Override
@@ -55,49 +39,18 @@ public class PluginManager implements IPluginManager {
     @Override
     public void add(String plugin){
         if(!_plugins.containsKey(plugin)){
-            _loadClasses();
-            if(_available.containsKey(plugin)){
-                _plugins.put(plugin, _available.get(plugin));
-            } else {
-                Map<String, Class> Classes = new HashMap<>();
-                ClassLoader classLoader = null;
-                Field f;// Class context finding!
-                try {
-                    f = ClassLoader.class.getDeclaredField("classes");
-                    f.setAccessible(true);
-                    classLoader = Thread.currentThread().getContextClassLoader();
-                    try {
-                        classLoader.loadClass(plugin);
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+            try {
+                if(!loadPlugin(plugin,"build/classes/java/main/comp/imp/plugins")){
+                    if(!loadPlugin(plugin,"build/classes/java/test/BIF/SWE1/unittests/mocks")){
+                        throw new IllegalStateException("Plugn not found!");
                     }
-                    Vector<Class> classes =  (Vector<Class>) f.get(classLoader);
-                    for(Class cls : classes){
-                        //java.net.URL location = cls.getResource('/' + cls.getName().replace('.',
-                        //        '/') + ".class");
-                        //System.out.println("<p>"+location +"<p/> ... "+cls.getName());
-                        Classes.put(cls.getName(), cls);
-                        String[] expl = cls.getName().split("\\.");
-                        Classes.put(expl[expl.length-1], cls);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
-                Class c = Classes.get(plugin);
-                Constructor constructor = c.getConstructors()[0];
-                try {
-                    Object instance = constructor.newInstance();
-                    _plugins.put(plugin, (IPlugin) instance);
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("");
-
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
+
         }
     }
 
@@ -105,6 +58,64 @@ public class PluginManager implements IPluginManager {
     public void clear() {
         _plugins = new HashMap<>();
         _available =  new HashMap<>();
-        _loadClasses();
     }
+
+    public boolean loadPlugin(String pluginName, String packagePath) throws MalformedURLException, IOException, ClassNotFoundException {
+
+        File location = new File(packagePath);
+        String packagePraefix = _extractPackagePrefix(location.getPath());
+        File pluginLocations[] = location.listFiles((File file)->file.getName().endsWith(".jar")||file.getName().endsWith(".class"));
+        URL url = null;
+        try {
+            url = location.toURI().toURL();
+        } catch (MalformedURLException e) {
+
+        }
+        URL[] urls = new URL[]{ url };
+        URLClassLoader classLoader = new URLClassLoader(urls);
+        try {
+            for(int i=0; i<pluginLocations.length; i++){
+                String[] expl = pluginLocations[i].toPath().getFileName().toString().split("\\.");
+                String name = expl[0];
+                expl = pluginName.split("\\.");
+                pluginName = expl[expl.length-1];
+                if(name.equals(pluginName)){
+                    IPlugin target =
+                            (IPlugin)classLoader.loadClass(packagePraefix+name).newInstance();
+                    _plugins.put(name, target);
+                    try {
+                        classLoader.close();
+                    } catch (IOException e) {
+
+                    }
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        try {
+            classLoader.close();
+        } catch (IOException e) {
+
+        }
+        return false;
+    }
+
+    private String _extractPackagePrefix(String path){
+        String result = "";
+        String[] parts = path.replace("\\", "/").split("/");
+        boolean javaFound = false;
+        for(String part : parts){
+            result += (javaFound&&!part.equals("main")&&!part.equals("test"))
+                    ?part+"."
+                    :"";
+            javaFound = (part.equals("java"))?true:javaFound;
+        }
+        return result;
+    }
+
+
+
+
 }

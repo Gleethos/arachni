@@ -165,7 +165,6 @@ public class UEB5Test extends AbstractTestFixture<UEB5> {
 		assertNotNull("UEB5.GetPluginManager returned null", obj);
 		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/"));
 		assertNotNull("UEB5.GetRequest returned null", req);
-
 		assertNotNull(obj.getPlugins());
 		IPlugin plugin = selectPlugin(obj, req);
 		assertNotNull(plugin);

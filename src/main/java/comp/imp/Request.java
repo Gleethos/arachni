@@ -22,17 +22,26 @@ public class Request implements IRequest {
 
     BufferedReader _in;
 
-    private String _extractLine(boolean readAll){
+    private String _extractLine(boolean readAll, int max){
         String line = "";
         int i=0;
+        int index = 0;
         try{
-            while(i!=-1 && ((i!=10) || readAll)) {// && i!=13
+            while((index<max||max<0) && i!=-1 && (index<=1 || (i!=10) || readAll)){//&&i!=13) {//
                 i = _stream.read();
                 // converts integer to character and then to string
                 if(i!=-1 && ((i!=10 && i!=13) || readAll)){
                     line += (char)i;
+                }else{
+                    //System.out.println(" ... ignored: "+(char)i);
                 }
-            }
+                //System.out.println("["+index+"]:"+line);
+                index++;
+                if(i==13){
+                    //System.out.println("");
+                    //_stream.read();//TODO!
+                }
+            }//[24]:ToBewLowered=k%C3%BCuhkj
         } catch (Exception e){
             System.out.println(e);
         }
@@ -46,7 +55,7 @@ public class Request implements IRequest {
         String input = null;
         while(input==null || !input.equals("")){
             //try {
-                input = _extractLine(false);//in.readLine();
+                input = _extractLine(false, -1);//in.readLine();
             //}// catch (IOException e) {
              //   e.printStackTrace();
             //}
@@ -92,7 +101,8 @@ public class Request implements IRequest {
         if(_content==null && _method!="GET"){//&& _in!=null
             //try {
                 //in.mark(100);
-                String line = _extractLine(true);//_in.readLine();
+                int length = this.getContentLength();
+                String line = _extractLine(false, length);//_in.readLine();
 
                 _content = (line!=null)?line.getBytes():_content;
                 //in.reset();
@@ -145,13 +155,9 @@ public class Request implements IRequest {
     public int getContentLength() {
         if(_content == null){
             if(_headers.containsKey("content-length")){
-                Integer.valueOf(_headers.get("content-length"));
+                return Integer.valueOf(_headers.get("content-length"));
             }
         }
-        //if(_content==null){
-        //    return _content_length;
-        //}
-        _extractContent();
         return _content.length;
     }
 

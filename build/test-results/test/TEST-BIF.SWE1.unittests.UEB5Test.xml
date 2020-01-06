@@ -1,97 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-10-29T17:35:37" hostname="DESKTOP-6UFJ24U" time="39.458">
+<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-06T14:50:40" hostname="DESKTOP-6UFJ24U" time="0.059">
   <properties/>
   <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.008"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.008"/>
-  <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="39.358"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.005"/>
+  <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
   <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.005"/>
-  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.009"/>
-  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.006"/>
-  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.008"/>
-  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.006"/>
+  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.007"/>
+  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
+  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.006"/>
+  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.005"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
-  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.034"/>
-  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.004"/>
-  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
-  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.006"/>
-  <system-out><![CDATA[File: i_am_a_unknown_url.html
-File /i_am_a_unknown_url.html of type text/html sending...
+  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.006"/>
+  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
+  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
+  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.007"/>
+  <system-out><![CDATA[The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
+The driver name is SQLiteJDBC
+A new database has been created.
 
-File: missing-foo-8acff8ea-3c73-4d42-9f30-5cde5692941d.txt
-File tmp-static-files/missing-foo-8acff8ea-3c73-4d42-9f30-5cde5692941d.txt of type text/plain sending...
-File tmp-static-files/missing-foo-8acff8ea-3c73-4d42-9f30-5cde5692941d.txt not found
-File tmp-static-files/missing-foo-8acff8ea-3c73-4d42-9f30-5cde5692941d.txt of type text/plain returned
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+File: missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt
+File tmp-static-files/missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt not found
+File tmp-static-files/missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt of type text/plain returned
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
 File: .
-File index.html of type text/html sending...
-File index.html of type text/html returned
-File: foo-3a144ba7-b0e3-4d96-bd9f-bebd353865f3.txt
-File tmp-static-files/foo-3a144ba7-b0e3-4d96-bd9f-bebd353865f3.txt of type text/plain sending...
-File tmp-static-files/foo-3a144ba7-b0e3-4d96-bd9f-bebd353865f3.txt of type text/plain returned
-File: foo-736d4295-6193-4656-b69c-8517fa48e450.txt
-File tmp-static-files/foo-736d4295-6193-4656-b69c-8517fa48e450.txt of type text/plain sending...
-File tmp-static-files/foo-736d4295-6193-4656-b69c-8517fa48e450.txt of type text/plain returned
+File .\webroot/index.html of type text/html returned
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
+File: foo-dfe03bfa-69da-4393-870e-caebe67d8bbe.txt
+File tmp-static-files/foo-dfe03bfa-69da-4393-870e-caebe67d8bbe.txt of type text/plain returned
+File: foo-62d41a5b-ac2f-4708-86e5-8b0fd7dd738a.txt
+File tmp-static-files/foo-62d41a5b-ac2f-4708-86e5-8b0fd7dd738a.txt of type text/plain returned
+The driver name is SQLiteJDBC
+A new database has been created.
+
+warehouses
+| id || name || capacity |
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-06 14:50:40 |
+
+| 2 || 23.43 || 2020-01-06 14:50:40 |
+
+| 3 || 23.43 || 2020-01-06 14:50:40 |
+
+| 4 || 23.43 || 2020-01-06 14:50:40 |
+
+| 5 || 23.43 || 2020-01-06 14:50:40 |
 File: .
-File index.html of type text/html sending...
-File index.html of type text/html returned
+File .\webroot/index.html of type text/html returned
 ]]></system-out>
-  <system-err><![CDATA[java.lang.ClassNotFoundException: BIF.SWE1.unittests.mocks.Ueb999TestPlugin
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at comp.imp.PluginManager.add(PluginManager.java:70)
-	at BIF.SWE1.unittests.UEB5Test.pluginmanager_should_fail_adding_non_existing_plugin(UEB5Test.java:206)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

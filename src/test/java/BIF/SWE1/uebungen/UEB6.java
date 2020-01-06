@@ -39,18 +39,18 @@ public class UEB6 {
 	}
 
 	public String getTemperatureUrl(LocalDate localDate, LocalDate localDate1) {
-		return null;
+		return "Temp?"+localDate.toString()+"&"+localDate1.toString();
 	}
 
 	public String getTemperatureRestUrl(LocalDate localDate, LocalDate localDate1) {
-		return null;
+		return "Temp?"+localDate.toString()+"&"+localDate1.toString();
 	}
 
 	public String getNaviUrl() {
-		return null;
+		return "Navigation";//null
 	}
 
 	public String getToLowerUrl() {
-		return null;
+		return "ToLower";//null
 	}
 }

@@ -12,13 +12,8 @@ import java.util.Date;
 
 public class FileReader implements IPlugin {
 
-    private static final File WEB_ROOT = new File(".");
-    private static final String DEFAULT_FILE = "index.html";
-    private static final String FILE_NOT_FOUND = "404.html";
-
     // VERBOSE mode
     private static final boolean VERBOSE = true;
-
 
     @Override
     public float canHandle(IRequest req) {
@@ -34,6 +29,12 @@ public class FileReader implements IPlugin {
         if(!req.getUrl().getExtension().equals("")){
             abillity *= 1 + (0.15 * (1-abillity));
         }
+        if(req.getUrl().getExtension().equals("")&&req.getUrl().getFileName().equals("")&&req.getMethod().equals("GET")){
+            abillity *= 1 + (0.25 * (1-abillity));
+        }
+        if(req.getUrl().getRawUrl().equals("/")&&req.getMethod().equals("GET")){
+            abillity *= 1 + (0.25 * (1-abillity));
+        }
         //abillity *= ((req.getContentType().equals("")?0:1));
         return abillity;
     }
@@ -48,19 +49,25 @@ public class FileReader implements IPlugin {
 
         System.out.println("File: "+fileRequested);
         if(fileRequested.equals(".")){
-            fileRequested = "index"+fileRequested+"html";
+            fileRequested = WEB_ROOT+"/index"+fileRequested+"html";
         } else {
             fileRequested = req.getUrl().getPath();
         }
         //-------------------------------------------------------
         IResponse response = new Response();
         response.setStatusCode(200);
-        File file = new File(WEB_ROOT, fileRequested);
+        File file = new File(".", fileRequested);
         int fileLength = (int) file.length();
-        String content = getContentType(fileRequested);
-        if (VERBOSE) {
-            System.out.println("File " + fileRequested + " of type " + content + " sending...");
+
+        if(fileLength==0){
+            File maybe = new File(WEB_ROOT+"/"+fileRequested);
+            if(maybe.length()!=0){
+                file = maybe;
+                fileLength = (int)file.length();
+            }
         }
+
+        String content = util.getContentType(fileRequested);
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
@@ -68,11 +75,11 @@ public class FileReader implements IPlugin {
         if (method.equals("GET")) // GET method so we return content
         {
             try {
-                byte[] fileData = readFileData(file, fileLength);// send HTTP Headers
+                byte[] fileData = util.readFileData(file, fileLength);// send HTTP Headers
                 response.setContent(fileData);
             } catch (FileNotFoundException fnfe) {
                 try {
-                    fileNotFound(response, fileRequested);
+                    util.fileNotFound(response, fileRequested);
                 } catch (IOException ioe) {
                     System.err.println("Error with file not found exception : " + ioe.getMessage());
                 }
@@ -94,48 +101,6 @@ public class FileReader implements IPlugin {
             }
         }
         return response;
-    }
-
-
-    private byte[] readFileData(File file, int fileLength) throws IOException {
-        FileInputStream fileIn = null;
-        byte[] fileData = new byte[fileLength];
-        try {
-            fileIn = new FileInputStream(file);
-            fileIn.read(fileData);
-        } finally {
-            if (fileIn != null)
-                fileIn.close();
-        }
-        return fileData;
-    }
-
-    // return supported MIME Types
-    private String getContentType(String fileRequested) {
-        if (fileRequested.endsWith(".htm")  ||  fileRequested.endsWith(".html")) {
-            return "text/html";
-        } else {
-            return "text/plain";
-        }
-    }
-
-    private void fileNotFound(IResponse response, String fileRequested) throws IOException
-    {
-        response.setStatusCode(404);
-        File file = new File(WEB_ROOT, FILE_NOT_FOUND);
-        int fileLength = (int) file.length();
-        String content = "text/html";
-        response.getHeaders().put("content-type", content);
-        byte[] fileData = readFileData(file, fileLength);
-        response.setContent(fileData);
-        //response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
-        //response.getHeaders().put("Date", new Date().toString());
-        //response.getHeaders().put("Content-type", content);
-        //response.getHeaders().put("Content-length", String.valueOf(fileLength));
-
-        if (VERBOSE) {
-            System.out.println("File " + fileRequested + " not found");
-        }
     }
 
     @Override

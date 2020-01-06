@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> NEUREKA </title>
+    <link rel="icon" href="/src/favicon/favicon.ico">
+    <meta name="description" content="a web server">
+    <meta name="author" content="Daniel Nepp">
+    <meta name="keywords" content="Webserver, server, Java, Swag">
+    <!-----------------------------------ROBOTS---------------------------------------------->
+    <meta name="robots" content="all">
+    <meta name="revisit-after" content="30 days">
+    <!-----------------------------------JQUERY---------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-----------------------------------BOOTSTRAP------------------------------------------>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-----------------------------------CUSTOM CSS------------------------------------------>
+    <link rel="stylesheet" href="src/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/sunburst.min.css">
+
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="header" class="">
+    <div id="BirdBox" class="mainframe"
+         style="background-image: url('https://images.pexels.com/photos/1287142/pexels-photo-1287142.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');">
+        <nav class="floatsUp" id="navTile">
+            <div id="navContainer" class="">
+                <div style="" class="topEarthGradient dynamicSideMargin">
+                    <h1>WEBIO</h1>
+                </div>
+                <div class="pull-right nightBox" id="NavbarMenu">
+                    <ul class="nav navbar-right" id="NavbarList">
+                        <li>
+                            <a href="showcase.html">
+                                <img src="src/main/icons/graph-nodes.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Gleethos/neureka">
+                                <img src="src/main/icons/github-logo.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="main/index.html">
+                                <img src="src/main/icons/cogwheel.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="navi">
+                <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+                <label for="mobile-nav" class="gaadiexp white" tabindex="0"
+                       style="margin-left: 0;"><span></span></label>
+                <div role="navigation" class="header-nav">
+                    <div class="fixed-nav">
+                        <div class="menu">
+                            <ul class="side-nav">
+                                <li></li>
+                                <li><a target="_blank" href="showcase.html">Examples</a></li>
+                                <li><a target="_blank" href="main/index.html">Documentation</a></li>
+                                <li><a target="_blank" href="https://github.com/Gleethos/neureka">Github</a></li>
+                                <li><a target="_blank" href="">Introduction</a></li>
+                                <li><a target="_blank" href="">Reasons</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="">
+            <!----------------------------------LAYOUT------------------------------------------------->
+            <main class="parallax">
+                <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                    <div>
+                        <image src="src/main/parallax/woods.png"></image>
+                    </div>
+                </div>
+                <div class="parallax__layer parallax__layer--base">
+                    <div id="mainTile" class="cardBox dynamicSideMargin">
+
+                        <div class="mainContentWrapper">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <h1>I have found them!</h1>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <p>
+                                            Nice Plugins to play with!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-4">
+                                        <img src="src/main/icons/oil-offshore-rig.png">
+                                        <p>
+                                            Webio is written in Java and therefore platform independent!
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <img src="src/main/icons/open-source.png">
+                                        <p>
+                                            Webio is completely open-source and free to use!
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <img src="src/main/icons/video-card.png">
+                                        <p>
+                                            GPU's are awesome!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>NAVIGATION</h2>
+                                    </div>
+                                    <div class="col-lg-6" >
+                                        <form action="/=>Navigator">
+                                            Country:<br>
+                                            <input id="CountryInput" type="text" name="Country" value="Neuseeland"><br>
+                                            City:<br>
+                                            <input id="CityInput" type="text" name="City" value="Auckland"><br><br>
+                                        </form>
+                                        <button id="GetNav">Get Map!</button>
+                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
+                                            <iframe id="NavResult" src="-=#RESULT#=-" width="100%" height="450" ></iframe>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#GetNav').click(function(e) {
+                                                        console.log("Loading navigation....");
+                                                        $("#NavResult").html("Loading...");
+                                                        e.preventDefault();
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: '/Navigator?Country='+$('#CountryInput').val()+"&City="+$('#CityInput').val(),
+                                                            data: {
+                                                                query:
+                                                                    'Country='+$('#CountryInput').val()+"+City="+$('#CityInput').val()
+                                                            },
+                                                            success: function(data)
+                                                            {
+                                                                console.log(data);
+                                                                $("#NavResult").attr('src', data.toString())
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-12 col-md-3">
+                                        <img style="width:100%;"
+                                             src="src/main/archimedes.jpg">
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <p>
+                                                Where do you want to go?
+                                                Be creative and find a nice place to travel to!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+
+                                    </div>
+                                    <div class="col-sm 12 col-md-6">
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>TO LOWER</h2>
+                                    </div>
+
+                                    <div class="col-lg-12" >
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#SubmitToLower').click(function(e) {
+                                                    console.log("Heeeeeeeey");
+                                                    $("#LoweredContent").html("Loading...");
+                                                    e.preventDefault();
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/ToLower/hi',
+                                                        data: {text: $('#ToBeLowered').val()},
+                                                        success: function(data)
+                                                        {
+                                                            $("#LoweredContent").html(data);
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+                                        <div name="input">
+                                            <input type="text" id="ToBeLowered">
+                                            <button type="" id="SubmitToLower">send</button>
+                                        </div>
+
+                                        <div id="LoweredContent"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>TEMPERATUR</h2>
+                                    </div>
+
+
+                                    <div class="col-lg-12" >
+
+                                        <form action="">
+                                            Query:<br>
+                                            <input id="TempInput" type="text" name="TempIn" value="hi"><br>
+                                        </form>
+
+                                        <button id="GetTemp">Get Map!</button>
+                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
+
+                                            <iframe id="TempResult" src="" width="100%" height="450" ></iframe>
+
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#GetTemp').click(function(e) {
+                                                        e.preventDefault();
+                                                        SendQueryRequest('Temp', 'TempInput', 'TempResult');
+                                                    });
+                                                });
+
+                                                function SendQueryRequest(plugin, inSelector, outSelector){
+                                                    $("#"+outSelector).html("Loading...");
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/'+plugin,
+                                                        data: {
+                                                            query: $('#'+inSelector).val()
+                                                        },
+                                                        success: function(data) {
+                                                            $('#'+outSelector).html("");
+                                                            console.log(data);
+                                                            CreateTableFromJSON(outSelector, JSON.parse(data));
+                                                            $('#'+outSelector).find('table').attr('id', plugin+'ResultTable');
+                                                            //$('#'+plugin+'ResultTable').DataTable();
+                                                        }
+                                                    });
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12" >
+                                        <h3 >Oracle DB:</h3></br></br>
+                                        <form action="">
+                                            <input id="OracleInput" style = "width: 100%" type="text" name="OracleIn" value="hi"><br>
+                                        </form>
+                                        <button id="GetOracle">Get query result!</button>
+                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
+                                            <div id="OracleResult" src="" style = "overflow: scroll;" ></div>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#GetOracle').click(function(e) {
+                                                        e.preventDefault();
+                                                        SendQueryRequest('Oracle', 'OracleInput', 'OracleResult');
+                                                    });
+                                                });
+                                            </script>
+
+                                            <script>
+                                                function CreateTableFromJSON(selector, myBooks) {
+                                                    // EXTRACT VALUE FOR HTML HEADER.
+                                                    var col = [];
+                                                    for (var i = 0; i < myBooks.length; i++) {
+                                                        for (var key in myBooks[i]) {
+                                                            if (col.indexOf(key) === -1) {
+                                                                col.push(key);
+                                                            }
+                                                        }
+                                                    }
+                                                    // CREATE DYNAMIC TABLE.
+                                                    var table = document.createElement("table");
+                                                    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+                                                    var tr = table.insertRow(-1);                   // TABLE ROW.
+                                                    for (var i = 0; i < col.length; i++) {
+                                                        var th = document.createElement("th");      // TABLE HEADER.
+                                                        th.innerHTML = col[i];
+                                                        tr.appendChild(th);
+                                                    }
+                                                    // ADD JSON DATA TO THE TABLE AS ROWS.
+                                                    for (var i = 0; i < myBooks.length; i++) {
+                                                        tr = table.insertRow(-1);
+                                                        for (var j = 0; j < col.length; j++) {
+                                                            var tabCell = tr.insertCell(-1);
+                                                            tabCell.innerHTML = myBooks[i][col[j]];
+                                                        }
+                                                    }
+                                                    // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                                                    var divContainer = document.getElementById(selector);
+                                                    divContainer.innerHTML = "";
+                                                    divContainer.appendChild(table);
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>What else?</h2>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <p>
+                                                ......
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+
+                                    </div>
+                                    <div class="col-sm 12 col-md-6">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <section>
+                <ul>
+                    <h4>
+                        Contact:
+                    </h4>
+                    <li>
+                        <a>
+                            danneydan@gmx.at
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            gleethos@gmx.at
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </footer>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+<script src="https://www.vantajs.com/dist/vanta.birds.min.js"></script>
+<script>
+    //VANTA.BIRDS({
+    //    el: "#BirdBox",
+    //    color1: 0xd00ff,
+    //    colorMode: "lerp",
+    //    birdSize: 0.70,
+    //    wingSpan: 17.00,
+    //    speedLimit: 4.00,
+    //    separation: 21.00,
+    //    alignment: 16.00,
+    //    cohesion: 25.00,
+    //    backgroundAlpha: 0.00
+    //})
+    VANTA.BIRDS({
+        el: "#BirdBox",
+        backgroundColor: 0x0,
+        color1: 0x59cc65,
+        color2: 0xa6fc,
+        colorMode: "lerp",
+        birdSize: 0.70,
+        wingSpan: 17.00,
+        speedLimit: 4.00,
+        separation: 21.00,
+        alignment: 16.00,
+        cohesion: 25.00,
+        backgroundAlpha: 0.00
+    })
+</script>
+</body>
+</html>

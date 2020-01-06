@@ -1,7 +1,6 @@
 package comp.imp;
 
 import comp.IResponse;
-
 import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
@@ -159,7 +158,7 @@ public class Response implements IResponse {
         if(getContentLength()==0 && getContentType().equals("text/html")){
            throw new RuntimeException("[RESPONSE]: Sending failed! Content of type text/html is empty!");
         }
-        byte[] fileData = _content;// send HTTP Headers
+        byte[] content = _content;// send HTTP Headers
 
         String header = _getHeaderString();
         if(!header.contains("HTTP/1.") || !header.substring(0, 7).equals("HTTP/1.")){
@@ -180,7 +179,7 @@ public class Response implements IResponse {
         if(_content!=null) {
             try {
                 //out.println(new String(_content));
-                network.write(fileData, 0, getContentLength());
+                network.write(content, 0, getContentLength());
             } catch (IOException e) {
                 e.printStackTrace();
             }

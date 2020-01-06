@@ -3,8 +3,6 @@ package comp.imp.plugins;
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
-import comp.IUrl;
-import comp.imp.Response;
 
 public class TestPlugin implements IPlugin
 {
