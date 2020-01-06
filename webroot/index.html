@@ -213,12 +213,11 @@
                                         <script>
                                             $(document).ready(function() {
                                                 $('#SubmitToLower').click(function(e) {
-                                                    console.log("Heeeeeeeey");
                                                     $("#LoweredContent").html("Loading...");
                                                     e.preventDefault();
                                                     $.ajax({
                                                         type: 'POST',
-                                                        url: '/ToLower/hi',
+                                                        url: '/ToLower/',
                                                         data: {text: $('#ToBeLowered').val()},
                                                         success: function(data)
                                                         {
@@ -254,13 +253,12 @@
 
                                         <form action="">
                                             Query:<br>
-                                            <input id="TempInput" type="text" name="TempIn" value="hi"><br>
+                                            <input id="TempInput" type="text" style="width:100%" name="TempIn" value="hi"><br>
                                         </form>
 
-                                        <button id="GetTemp">Get Map!</button>
+                                        <button id="GetTemp">Get Result!</button>
                                         <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
-
-                                            <iframe id="TempResult" src="" width="100%" height="450" ></iframe>
+                                            <div id="TempResult" src="overflow: scroll;" ></div>
 
                                             <script>
                                                 $(document).ready(function() {
@@ -269,7 +267,6 @@
                                                         SendQueryRequest('Temp', 'TempInput', 'TempResult');
                                                     });
                                                 });
-
                                                 function SendQueryRequest(plugin, inSelector, outSelector){
                                                     $("#"+outSelector).html("Loading...");
                                                     $.ajax({

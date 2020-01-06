@@ -17,22 +17,14 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
 
         Connection conn = _createAndOrConnectToDatabase();
-
-        // SQL statement for creating a new table
-        //String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
-        //        + "    id integer PRIMARY KEY,\n"
-        //        + "    name text NOT NULL,\n"
-        //        + "    capacity real\n"
-        //        + ");";
-        //_createNewTable(conn, sql);
-
         //---
+        String[] commands = new String[0];
         File file = new File("db/", "setup.sql");
         int fileLength = (int) file.length();
         try {
             byte[] fileData = util.readFileData(file, fileLength);
             String query = new String(fileData);
-            String[] commands = query.split("--<#SPLIT#>--");
+            commands = query.split("--<#SPLIT#>--");
             for(String command : commands){
                 _execute(command, conn);
             }
@@ -41,7 +33,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         }
         _listOfTables(conn);
         _close(conn);
-
+        int startIndex = commands.length-1;
         Thread iot = new Thread(()->{
             long time = 100000000L;
             for(int ti=0; ti<time; ti++){
@@ -53,7 +45,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 double temp = Math.cos(1.2324453*ti)*60-15;
                 String command =
                         "INSERT INTO temperatures (id, value, created)\n" +
-                        "VALUES ("+(6+ti)+", "+temp+", datetime('now'));";
+                        "VALUES ("+(startIndex+ti)+", "+temp+", datetime('now'));";
                 Connection iotConn = _createAndOrConnectToDatabase();
                 //_listOfTables(iotConn);
                 _execute(command, iotConn);
@@ -101,7 +93,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         }
         byte[] jsonData;
         try {
-            jsonData = result.getBytes("UTF-8");
+            jsonData = result.getBytes();//result.getBytes("UTF-8");
         } catch (Exception e) {
             jsonData = result.getBytes();
         }
