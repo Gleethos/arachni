@@ -1,72 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-01-08T12:23:00" hostname="DESKTOP-6UFJ24U" time="0.325">
+<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-01-08T15:30:39" hostname="DESKTOP-6UFJ24U" time="0.386">
   <properties/>
   <testcase name="request_should_return_post_content_as_bytes" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.061"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.058"/>
   <testcase name="response_should_send_byte_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="request_should_handle_post" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
+  <testcase name="request_should_handle_post" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
   <testcase name="response_should_send_stream_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
   <testcase name="request_should_parse_post_content_length" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.058"/>
+  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.117"/>
   <testcase name="request_should_parse_post_content_type" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.059"/>
-  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.037"/>
+  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
+  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.038"/>
+  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.038"/>
   <testcase name="request_should_return_post_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.07"/>
-  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.034"/>
+  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.096"/>
+  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.031"/>
   <system-out><![CDATA[
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:00 |
-| 2 || 23.43 || 2020-01-08 12:23:00 |
-| 3 || 23.43 || 2020-01-08 12:23:00 |
-| 4 || 23.43 || 2020-01-08 12:23:00 |
-| 5 || 23.43 || 2020-01-08 12:23:00 |
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:00 |
-| 2 || 23.43 || 2020-01-08 12:23:00 |
-| 3 || 23.43 || 2020-01-08 12:23:00 |
-| 4 || 23.43 || 2020-01-08 12:23:00 |
-| 5 || 23.43 || 2020-01-08 12:23:00 |
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |
+| 8 || -61.7785327245814 || null |
+| 9 || -65.9705134104402 || null |
+| 10 || -2.05896253784239 || null |
+| 31 || 34.3571534853666 || null |
+| 132 || -28.1364334690529 || null |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:01 |
-| 2 || 23.43 || 2020-01-08 12:23:01 |
-| 3 || 23.43 || 2020-01-08 12:23:01 |
-| 4 || 23.43 || 2020-01-08 12:23:01 |
-| 5 || 23.43 || 2020-01-08 12:23:01 |
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:01 |
-| 2 || 23.43 || 2020-01-08 12:23:01 |
-| 3 || 23.43 || 2020-01-08 12:23:01 |
-| 4 || 23.43 || 2020-01-08 12:23:01 |
-| 5 || 23.43 || 2020-01-08 12:23:01 |
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:01 |
-| 2 || 23.43 || 2020-01-08 12:23:01 |
-| 3 || 23.43 || 2020-01-08 12:23:01 |
-| 4 || 23.43 || 2020-01-08 12:23:01 |
-| 5 || 23.43 || 2020-01-08 12:23:01 |
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-08 12:23:01 |
-| 2 || 23.43 || 2020-01-08 12:23:01 |
-| 3 || 23.43 || 2020-01-08 12:23:01 |
-| 4 || 23.43 || 2020-01-08 12:23:01 |
-| 5 || 23.43 || 2020-01-08 12:23:01 |]]></system-out>
+| 1 || 23.43 || 2020-01-08 15:30:39 |
+| 2 || 11.251 || 2020-01-08 15:30:39 |
+| 3 || 32.1 || 2020-01-08 15:30:39 |
+| 4 || -5.334 || 2020-01-08 15:30:39 |
+| 5 || 14.8372 || 2020-01-08 15:30:39 |]]></system-out>
   <system-err><![CDATA[java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
 	at org.sqlite.core.DB.newSQLException(DB.java:890)
 	at org.sqlite.core.DB.newSQLException(DB.java:901)
 	at org.sqlite.core.DB.execute(DB.java:810)
 	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
 	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
 	at org.sqlite.core.DB.newSQLException(DB.java:890)
@@ -74,8 +79,8 @@ java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (U
 	at org.sqlite.core.DB.execute(DB.java:810)
 	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
 	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
 	at org.sqlite.core.DB.newSQLException(DB.java:890)
@@ -83,8 +88,8 @@ java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (U
 	at org.sqlite.core.DB.execute(DB.java:810)
 	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
 	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
 	at org.sqlite.core.DB.newSQLException(DB.java:890)
@@ -92,8 +97,8 @@ java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (U
 	at org.sqlite.core.DB.execute(DB.java:810)
 	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
 	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 ]]></system-err>
 </testsuite>

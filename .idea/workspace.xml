@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
@@ -19,14 +17,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin$util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin$util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Url.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Url.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Navigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Navigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/Tests7Provider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/Tests7Provider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB6Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB6Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB2Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB2Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB3Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB3Test.html" afterDir="false" />
@@ -37,6 +39,7 @@
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.unittests.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.unittests.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.TestWeb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.TestWeb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Tests7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Tests7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB1Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB1Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB2Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB2Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB3Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB3Test.xml" afterDir="false" />
@@ -46,195 +49,29 @@
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPlugin$util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/IPlugin$util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/setup.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/PluginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/PluginManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Navigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Navigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Oracle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/services/comp.IPlugin" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/META-INF/services/comp.IPlugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/TestWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/TestWeb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/Tests7Provider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/Tests7Provider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB6Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB6Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/allclasses.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-23.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-24.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/external/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-3.3.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-migrate-3.0.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.structure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jquery-ui.structure.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip/dist/jszip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/member-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Neureka.Settings.AD.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Neureka.Settings.Debug.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Neureka.Settings.Indexing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Neureka.Settings.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Neureka.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.exec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.indexing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.io.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.fcn.stringify.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/Tsr.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/AbstractDevice._util.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/AbstractDevice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/CPU.exec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/CPU.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/Device.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/OpenCLDevice.DeviceQuery.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/OpenCLDevice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/OpenCLPlatform.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/utility/DeviceQuery.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/utility/WeakTensorReference.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/utility/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/opencl/utility/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/acceleration/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/framing/Index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/framing/Relation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/framing/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/framing/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/Function.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/Function.setup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/environment/Cache.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/environment/FunctionReference.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/environment/Types.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/environment/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/environment/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/AbstractFunction.exec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/AbstractFunction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/assembly/FunctionBuilder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/assembly/FunctionConstructor.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/assembly/FunctionParser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/assembly/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/assembly/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/GraphLock.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/GraphNode.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/JITProp.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/PendingError.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/autograd/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/FConstant.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/FInput.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/FVariable.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/IProvider.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/implementations/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/factory/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/function/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/ConsoleFrame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/MessageFrame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/AbstractSpaceMap.MapAction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/AbstractSpaceMap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/Animator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/DrawUtils.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphBoard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphSurface.SurfaceAction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphSurface.SurfacePainter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphSurface.Utility.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphSurface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GraphSurfaceBuilder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GridSpaceMap.Leave.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/GridSpaceMap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/PaletteUtils.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/Surface.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceListener.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceNode.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceNodeInput.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceObject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceRepaintSpace.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/SurfaceUtility.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/gui/swing/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/Optimizer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/implementations/ADAM.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/implementations/Template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/implementations/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/implementations/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/optimization/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/utility/DataHelper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/utility/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/neureka/utility/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/package-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/resources/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/resources/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/type-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/main/type-search-index.zip" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -296,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="121">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -306,38 +143,47 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
+            <state relative-caret-position="115">
+              <caret line="199" selection-start-line="199" selection-end-line="199" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2603#2604#0" expanded="true" />
+                <element signature="e#2637#2638#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Request.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Url.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="159" column="21" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="21" />
+            <state relative-caret-position="121">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1835#1836#0" expanded="true" />
+                <element signature="e#1982#1983#0" expanded="true" />
+                <element signature="e#2078#2079#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+                <element signature="e#2481#2482#0" expanded="true" />
+                <element signature="e#2564#2565#0" expanded="true" />
+                <element signature="e#2645#2646#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -346,53 +192,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="168" selection-start-line="168" selection-end-line="168" />
+            <state relative-caret-position="121">
+              <caret line="259" selection-start-line="259" selection-end-line="259" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#934#935#0" expanded="true" />
                 <element signature="e#958#959#0" expanded="true" />
+                <element signature="e#3324#3356#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+            <state relative-caret-position="132">
+              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2236#2237#0" expanded="true" />
-                <element signature="e#2270#2271#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#626#627#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/index.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Response.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="127" column="90" selection-start-line="127" selection-start-column="90" selection-end-line="127" selection-end-column="90" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="118" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="138">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -401,13 +233,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+            <state relative-caret-position="121">
+              <caret line="184" selection-start-line="184" selection-end-line="184" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="47" column="91" selection-start-line="47" selection-start-column="87" selection-end-line="47" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/setup.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -500,31 +353,31 @@
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB4.java" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB4Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" />
         <option value="$PROJECT_DIR$/templates/navigation.html" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB5Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TestPlugin.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java" />
-        <option value="$PROJECT_DIR$/db/setup.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" />
         <option value="$PROJECT_DIR$/webroot/index - Kopie.html" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/FileReader.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" />
         <option value="$PROJECT_DIR$/webroot/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" />
+        <option value="$PROJECT_DIR$/db/setup.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" />
       </list>
     </option>
   </component>
@@ -549,28 +402,7 @@
             <path>
               <item name="webio" type="b2602c69:ProjectViewProjectNode" />
               <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="webio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="webio" type="b2602c69:ProjectViewProjectNode" />
@@ -589,7 +421,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578486146749" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578497328719" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -648,23 +480,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestWeb.testRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="com.webio.webio.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="BIF.SWE1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="BIF.SWE1" />
-      <option name="MAIN_CLASS_NAME" value="BIF.SWE1.TestWeb" />
-      <option name="METHOD_NAME" value="testRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tests7.static_utility_method_for_content_type_returns" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tests7.temp_plugin_returns_list_of_temperatures_as_xml" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.webio.webio.test" />
       <extension name="coverage">
         <pattern>
@@ -674,13 +490,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="BIF.SWE1.unittests" />
       <option name="MAIN_CLASS_NAME" value="BIF.SWE1.unittests.Tests7" />
-      <option name="METHOD_NAME" value="static_utility_method_for_content_type_returns" />
+      <option name="METHOD_NAME" value="temp_plugin_returns_list_of_temperatures_as_xml" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UEB6Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UEB6Test.navi_plugin_contains_summary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.webio.webio.test" />
       <extension name="coverage">
         <pattern>
@@ -690,12 +506,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="BIF.SWE1.unittests" />
       <option name="MAIN_CLASS_NAME" value="BIF.SWE1.unittests.UEB6Test" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="navi_plugin_contains_summary" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UEB6Test.navi_plugin_handle_empty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UEB6Test.temp_plugin_get_different_urls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.webio.webio.test" />
       <extension name="coverage">
         <pattern>
@@ -705,7 +522,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="BIF.SWE1.unittests" />
       <option name="MAIN_CLASS_NAME" value="BIF.SWE1.unittests.UEB6Test" />
-      <option name="METHOD_NAME" value="navi_plugin_handle_empty" />
+      <option name="METHOD_NAME" value="temp_plugin_get_different_urls" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UEB6Test.temp_plugin_handle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.webio.webio.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BIF.SWE1.unittests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BIF.SWE1.unittests" />
+      <option name="MAIN_CLASS_NAME" value="BIF.SWE1.unittests.UEB6Test" />
+      <option name="METHOD_NAME" value="temp_plugin_handle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -714,10 +547,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.webio [check]" />
-        <item itemvalue="JUnit.TestWeb.testRequest" />
-        <item itemvalue="JUnit.UEB6Test" />
-        <item itemvalue="JUnit.UEB6Test.navi_plugin_handle_empty" />
-        <item itemvalue="JUnit.Tests7.static_utility_method_for_content_type_returns" />
+        <item itemvalue="JUnit.UEB6Test.navi_plugin_contains_summary" />
+        <item itemvalue="JUnit.UEB6Test.temp_plugin_handle" />
+        <item itemvalue="JUnit.Tests7.temp_plugin_returns_list_of_temperatures_as_xml" />
+        <item itemvalue="JUnit.UEB6Test.temp_plugin_get_different_urls" />
       </list>
     </recent_temporary>
   </component>
@@ -782,44 +615,44 @@
       <workItem from="1578314418274" duration="483000" />
       <workItem from="1578321911221" duration="5504000" />
       <workItem from="1578394439648" duration="34000" />
-      <workItem from="1578476068609" duration="9916000" />
+      <workItem from="1578476068609" duration="17462000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="webio_[check] - 2020.01.08 at 12h 38m 33s.xml">
+    <history-entry file="webio_[check] - 2020.01.08 at 15h 55m 17s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="webio_[check] - 2020.01.08 at 12h 39m 53s.xml">
+    <history-entry file="UEB6Test_temp_plugin_handle - 2020.01.08 at 16h 01m 02s.xml">
+      <configuration name="UEB6Test.temp_plugin_handle" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="webio_[check] - 2020.01.08 at 16h 01m 17s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="webio_[check] - 2020.01.08 at 12h 42m 07s.xml">
+    <history-entry file="UEB6Test_navi_plugin_contains_summary - 2020.01.08 at 16h 11m 10s.xml">
+      <configuration name="UEB6Test.navi_plugin_contains_summary" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UEB6Test_navi_plugin_contains_summary - 2020.01.08 at 16h 12m 21s.xml">
+      <configuration name="UEB6Test.navi_plugin_contains_summary" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UEB6Test_navi_plugin_contains_summary - 2020.01.08 at 16h 14m 37s.xml">
+      <configuration name="UEB6Test.navi_plugin_contains_summary" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="webio_[check] - 2020.01.08 at 16h 14m 53s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="webio_[check] - 2020.01.08 at 12h 44m 10s.xml">
+    <history-entry file="webio_[check] - 2020.01.08 at 16h 19m 32s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="UEB6Test_navi_plugin_handle_empty - 2020.01.08 at 12h 46m 37s.xml">
-      <configuration name="UEB6Test.navi_plugin_handle_empty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UEB6Test_navi_plugin_handle_empty - 2020.01.08 at 12h 46m 42s.xml">
-      <configuration name="UEB6Test.navi_plugin_handle_empty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UEB6Test - 2020.01.08 at 12h 47m 11s.xml">
-      <configuration name="UEB6Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="webio_[check] - 2020.01.08 at 12h 48m 10s.xml">
+    <history-entry file="webio_[check] - 2020.01.08 at 16h 25m 38s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 13h 20m 08s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="webio_[check] - 2020.01.08 at 13h 20m 18s.xml">
+    <history-entry file="webio_[check] - 2020.01.08 at 16h 27m 12s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211874000" />
+    <option name="totallyTimeSpent" value="219420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -836,8 +669,8 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4929483" weight="0.32624114" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7797179" visible="true" weight="0.4397163" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.85023504" weight="0.41560283" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7736736" weight="0.4397163" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8428475" visible="true" weight="0.41560283" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -847,9 +680,9 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Gradle" order="13" sideWeight="0.22028206" side_tool="true" visible="true" weight="0.4397163" />
+      <window_info anchor="bottom" id="Gradle" order="13" sideWeight="0.15715244" side_tool="true" visible="true" weight="0.41560283" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49832103" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49697784" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -859,7 +692,7 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="9" sideWeight="0.49889135" visible="true" weight="0.26259235" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="9" sideWeight="0.49889135" visible="true" weight="0.26259235" />
       <window_info anchor="right" id="SciView" order="10" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.50110865" side_tool="true" visible="true" weight="0.32706514" />
     </layout>
@@ -920,81 +753,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java</url>
-          <line>265</line>
+          <line>190</line>
           <properties />
-          <option name="timeStamp" value="269" />
+          <option name="timeStamp" value="305" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>92</line>
+          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java</url>
+          <line>135</line>
           <properties />
-          <option name="timeStamp" value="274" />
+          <option name="timeStamp" value="307" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>184</line>
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java</url>
+          <line>54</line>
           <properties />
-          <option name="timeStamp" value="277" />
+          <option name="timeStamp" value="315" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>225</line>
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java</url>
+          <line>53</line>
           <properties />
-          <option name="timeStamp" value="279" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>250</line>
-          <properties />
-          <option name="timeStamp" value="280" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>220</line>
-          <properties />
-          <option name="timeStamp" value="281" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>351</line>
-          <properties />
-          <option name="timeStamp" value="282" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>151</line>
-          <properties />
-          <option name="timeStamp" value="289" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java</url>
-          <line>118</line>
-          <properties />
-          <option name="timeStamp" value="290" />
+          <option name="timeStamp" value="316" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/AbstractTestFixture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="e#1250#1251#0" expanded="true" />
-            <element signature="e#2707#2708#0" expanded="true" />
-            <element signature="e#2764#2765#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/foo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -1054,47 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/IResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Url.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1695#1696#0" expanded="true" />
-            <element signature="e#1726#1727#0" expanded="true" />
-            <element signature="e#1771#1772#0" expanded="true" />
-            <element signature="e#1873#1874#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
-            <element signature="e#2021#2022#0" expanded="true" />
-            <element signature="e#2061#2062#0" expanded="true" />
-            <element signature="e#2340#2341#0" expanded="true" />
-            <element signature="e#2372#2373#0" expanded="true" />
-            <element signature="e#2422#2423#0" expanded="true" />
-            <element signature="e#2455#2456#0" expanded="true" />
-            <element signature="e#2504#2505#0" expanded="true" />
-            <element signature="e#2536#2537#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -1138,13 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -1235,31 +971,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/setup.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="9" selection-start-line="9" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/ClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="385" selection-start-line="385" selection-end-line="385" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1294,52 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#154#155#0" expanded="true" />
-            <element signature="e#192#193#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#419#420#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#1373#1374#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/404.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -1367,72 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="192" column="56" selection-start-line="192" selection-start-column="56" selection-end-line="192" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="159" column="21" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2236#2237#0" expanded="true" />
-            <element signature="e#2270#2271#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="168" selection-start-line="168" selection-end-line="168" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1444,16 +1049,6 @@
             <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1477,6 +1072,191 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/mocks/Ueb5TestPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/IUrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="246" selection-start-line="246" selection-end-line="246" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/setup.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/IResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="47" column="91" selection-start-line="47" selection-start-column="87" selection-end-line="47" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="259" selection-start-line="259" selection-end-line="259" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#3324#3356#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Url.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1982#1983#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2481#2482#0" expanded="true" />
+            <element signature="e#2564#2565#0" expanded="true" />
+            <element signature="e#2645#2646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2603#2604#0" expanded="true" />
+            <element signature="e#2637#2638#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

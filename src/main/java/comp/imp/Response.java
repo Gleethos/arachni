@@ -35,12 +35,15 @@ public class Response implements IResponse {
 
     @Override
     public String getContentType() {
-        return _content_type;
+        String type = getHeaders().get("content-type");
+        type = (type==null)?"":type;
+        return type;
     }
 
     @Override
     public void setContentType(String contentType) {
-        _content_type = contentType;
+        //_content_type = contentType;
+        getHeaders().put("content-type", contentType);
     }
 
     @Override

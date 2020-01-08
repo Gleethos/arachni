@@ -4,11 +4,19 @@ import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
+import org.w3c.dom.Document;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.sql.*;
 import java.util.Date;
+import java.util.Map;
+import java.util.Random;
 
 public class TemperatureReader extends AbstractDatabaseConnection implements IPlugin {
 
@@ -43,9 +51,18 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
                 }
                 double temp = Math.cos(1.2324453*ti)*60-15;
+                //YYYY-MM-DD HH:MM:SS
+
+                String YYYY = "201"+(Math.abs(new Random().nextInt())%10);
+                String MM = ""+(1+Math.abs(new Random().nextInt())%12);
+                String DD = ""+(1+Math.abs(new Random().nextInt())%27);
+                String hh = ""+(Math.abs(new Random().nextInt())%24);
+                String mm = ""+""+(Math.abs(new Random().nextInt())%60);
+                String ss = ""+(Math.abs(new Random().nextInt())%60);
+                String date = YYYY+"-"+MM+"-"+DD+" "+hh+":"+mm+":"+ss;
                 String command =
                         "INSERT INTO temperatures (id, value, created)\n" +
-                        "VALUES ("+(startIndex+ti)+", "+temp+", datetime('now'));";
+                        "VALUES ("+(startIndex+ti)+", "+temp+", datetime('"+date+"'));";
                 Connection iotConn = _createAndOrConnectToDatabase();
                 //_listOfTables(iotConn);
                 try {
@@ -79,20 +96,53 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
-        String content = "plain/text";
+
+        String content = (req.getUrl().getParameterCount()>0)?"text/xml":"plain/text";
+        if(req.getUrl().getParameter().containsKey("asHtml")&&req.getUrl().getParameter().get("asHtml").equals("true")){
+            content = "text/html";
+        }
+
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
         response.getHeaders().put("content-length", String.valueOf(contentLength));
-        if(req.getContentLength()>0){
-            String sql = util.decodeValue(req.getContentString());
+
+        if(req.getContentLength()>0 || req.getUrl().getParameterCount()>0){
+            String sql = (req.getContentLength()>0)?util.decodeValue(req.getContentString()):"SELECT * FROM temperatures";
             sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
+            //sql = (sql.equals(""))?"SELECT * FROM temperatures":sql;
             String result = "";
             try {
                 Statement stmt= conn.createStatement();
                 System.out.println("sql: "+sql);
                 ResultSet rs = stmt.executeQuery(sql);
-                result = convert(rs).toString();
+
+                if(req.getUrl().getParameterCount()==0){
+                    result = convert(rs).toString();
+                } else {
+                    Document doc = null;
+                    try {
+                        doc = toDocument(rs);
+                        TransformerFactory tf = TransformerFactory.newInstance();
+                        Transformer transformer = null;
+                        try {
+                            transformer = tf.newTransformer();
+                        } catch (TransformerConfigurationException e) {
+                            e.printStackTrace();
+                        }
+                        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+                        StringWriter writer = new StringWriter();
+                        try {
+                            transformer.transform(new DOMSource(doc), new StreamResult(writer));
+                        } catch (TransformerException e) {
+                            e.printStackTrace();
+                        }
+                        result = writer.getBuffer().toString().replaceAll("\n|\r", "");
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
                 result+=e.toString();

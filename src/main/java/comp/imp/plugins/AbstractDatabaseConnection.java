@@ -3,7 +3,12 @@ package comp.imp.plugins;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.sql.*;
 
 public abstract class AbstractDatabaseConnection {
@@ -187,6 +192,88 @@ public abstract class AbstractDatabaseConnection {
         return json;
     }
 
+    public static Document toDocument(ResultSet rs)
+            throws ParserConfigurationException, SQLException
+    {
+
+        //Define a new Document object
+        Document dataDoc = null;
+        try {
+            //Create the DocumentBuilderFactory
+            DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+            //Create the DocumentBuilder
+            DocumentBuilder docbuilder = dbfactory.newDocumentBuilder();
+            //Instantiate a new Document object
+            dataDoc = docbuilder.newDocument();
+        } catch (Exception e) {
+            System.out.println("Problem creating document: "+e.getMessage());
+        }
+        ResultSetMetaData resultmetadata = rs.getMetaData();
+        //Create a new element called "data"
+        Element dataRoot = dataDoc.createElement("data");
+        int numCols = resultmetadata.getColumnCount();
+        while (rs.next()) {
+            //For each row of data
+            //Create a new element called "row"
+            Element rowEl = dataDoc.createElement("row");
+            for (int i=1; i <= numCols; i++) {
+                //For each column, retrieve the name and data
+                String colName = resultmetadata.getColumnName(i);
+                String colVal = rs.getString(i);
+                //If there was no data, add "and up"
+                if (rs.wasNull()) {
+                    colVal = "and up";
+                }
+                //Create a new element with the same name as the column
+                Element dataEl = dataDoc.createElement(colName);
+                //Add the data to the new element
+                dataEl.appendChild(dataDoc.createTextNode(colVal));
+                //Add the new element to the row
+                rowEl.appendChild(dataEl);
+            }
+            //Add the row to the root element
+            dataRoot.appendChild(rowEl);
+        }
+
+
+        //Add the root element to the document
+        dataDoc.appendChild(dataRoot);
+
+
+
+
+
+        if(true){
+            return dataDoc;
+        }
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder        = factory.newDocumentBuilder();
+        Document doc                   = builder.newDocument();
+
+        Element results = doc.createElement("Results");
+        doc.appendChild(results);
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int colCount           = rsmd.getColumnCount();
+
+        while (rs.next())
+        {
+            Element row = doc.createElement("Row");
+            results.appendChild(row);
+
+            for (int i = 1; i <= colCount; i++)
+            {
+                String columnName = rsmd.getColumnName(i);
+                Object value      = rs.getObject(i);
+
+                Element node      = doc.createElement(columnName);
+                node.appendChild(doc.createTextNode(value.toString()));
+                row.appendChild(node);
+            }
+        }
+        return doc;
+    }
 
 
 }

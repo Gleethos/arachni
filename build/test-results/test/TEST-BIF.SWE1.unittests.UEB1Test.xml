@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB1Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-08T12:23:00" hostname="DESKTOP-6UFJ24U" time="0.006">
+<testsuite name="BIF.SWE1.unittests.UEB1Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-08T15:30:39" hostname="DESKTOP-6UFJ24U" time="0.008">
   <properties/>
-  <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_parse_return_path_without_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.002"/>
-  <testcase name="url_should_create_with_path" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
+  <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
+  <testcase name="url_should_parse_return_path_without_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.004"/>
+  <testcase name="url_should_create_with_path" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
   <testcase name="url_should_return_raw_url_0" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_return_raw_url_1" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_return_raw_url_2" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_parse_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
+  <testcase name="url_should_parse_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
   <testcase name="url_should_count_parameter_0" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_count_parameter_2" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_count_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
+  <testcase name="url_should_count_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_count_parameter_empty" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_parse_more_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
+  <testcase name="url_should_parse_more_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
   <testcase name="url_should_create_empty" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+]]></system-err>
 </testsuite>

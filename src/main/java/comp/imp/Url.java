@@ -14,6 +14,20 @@ public class Url implements IUrl {
     private String _extension = "";
     private String _fragment = "";
 
+    private void _paraParse(String exp){
+        String[] pairs = exp.split("&");
+        for(String pair : pairs){
+            String[] split = pair.split("=");
+            if(split.length>1){
+                if(split[1].endsWith("HTTP/1.1")){
+                    split[1] = split[1].substring(0, split[1].length()-8);
+                    split[1] = split[1].trim();
+                }
+                _parameter.put(split[0], split[1]);
+            }
+        }
+    }
+
     public Url(String url){
         if(url==null){
             return;
@@ -21,18 +35,9 @@ public class Url implements IUrl {
         _raw_url = url.split(" ")[0];
         String[] parts = url.split("\\?");
         if(parts.length>1){
-            String[] pairs = parts[1].split("&");
-            for(String pair : pairs){
-                String[] split = pair.split("=");
-                if(split.length>1){
-                    if(split[1].endsWith("HTTP/1.1")){
-                        split[1] = split[1].substring(0, split[1].length()-8);
-                        split[1] = split[1].trim();
-
-                    }
-                    _parameter.put(split[0], split[1]);
-                }
-            }
+            _paraParse(parts[1]);
+        } else if(parts[0].contains("=")){
+            _paraParse(parts[0]);
         }
         parts = _raw_url.split("/");
         String path = "";

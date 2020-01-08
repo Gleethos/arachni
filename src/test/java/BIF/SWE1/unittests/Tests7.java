@@ -197,7 +197,7 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
         IPlugin obj = ueb.getTemperaturePlugin();
         assertNotNull("Tests7.getNavigationPlugin returned null", obj);
 
-        String url = ueb.getTemperatureUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
+        String url = "Temp";//ueb.getTemperatureUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
         assertNotNull("Tests7.getNaviUrl returned null", url);
 
         IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream(url, "POST", "SELECT * FROM temperatures"));
@@ -218,6 +218,38 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
         assertTrue("Data in response body missing!", body.toString().contains("value"));
         assertTrue("Data in response body missing!", body.toString().contains(":23.43"));
         assertTrue("Data in response body missing!", body.toString().contains("},{"));
+        //assertTrue("Data in response body missing!", body.toString().contains(":45"));
+    }
+
+    @Test
+    public void temp_plugin_returns_list_of_temperatures_as_xml() throws Exception
+    {
+        Tests7Provider ueb = createInstance();
+
+        IPlugin obj = ueb.getTemperaturePlugin();
+        assertNotNull("Tests7.getNavigationPlugin returned null", obj);
+
+        String url = ueb.getTemperatureUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
+        assertNotNull("Tests7.getNaviUrl returned null", url);
+
+        IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream(url, "POST", "SELECT * FROM temperatures"));
+        assertNotNull("Tests7.GetRequest returned null", req);
+
+        float canHandle = obj.canHandle(req);
+        assertTrue(canHandle > 0 && canHandle <= 1);
+
+        IResponse resp = obj.handle(req);
+        assertNotNull(resp);
+        assertEquals(200, resp.getStatusCode());
+        assertTrue(resp.getContentLength() > 0);
+
+        StringBuilder body = getBody(resp);
+        //assertTrue("Not found: Bitte geben Sie eine Anfrage ein", body.toString().contains("Bitte geben Sie eine Anfrage ein"));
+        assertTrue("Data in response body missing!", body.toString().contains("created"));
+        assertTrue("Data in response body missing!", body.toString().contains("id"));
+        assertTrue("Data in response body missing!", body.toString().contains("value"));
+        assertTrue("Data in response body missing!", body.toString().contains("<value>23.43</"));
+        assertTrue("Data in response body missing!", body.toString().contains("<created>"));
         //assertTrue("Data in response body missing!", body.toString().contains(":45"));
     }
 

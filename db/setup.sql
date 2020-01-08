@@ -15,22 +15,22 @@ VALUES
 INSERT INTO temperatures
 (id, value, created)
 VALUES
-(2, 23.43, datetime('now'));
+(2, 11.251, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
 (id, value, created)
 VALUES
-(3, 23.43, datetime('now'));
+(3, 32.1, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
 (id, value, created)
 VALUES
-(4, 23.43, datetime('now'));
+(4, -5.334, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
 (id, value, created)
 VALUES
-(5, 23.43, datetime('now'));
+(5, 14.8372, datetime('now'));
 
 
 

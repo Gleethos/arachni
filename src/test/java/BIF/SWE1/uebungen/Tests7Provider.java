@@ -45,11 +45,11 @@ public class Tests7Provider {
     }
 
     public String getTemperatureUrl(LocalDate localDate, LocalDate localDate1) {
-        return "Temp?"+localDate.toString()+"&"+localDate1.toString();
+        return "Temp?from="+localDate.toString()+"&to="+localDate1.toString()+"&asHtml=true";
     }
 
     public String getTemperatureRestUrl(LocalDate localDate, LocalDate localDate1) {
-        return "Temp?"+localDate.toString()+"&"+localDate1.toString();
+        return "Temp?from="+localDate.toString()+"&to="+localDate1.toString();
     }
 
     public String getNaviUrl() {

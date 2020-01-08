@@ -8,7 +8,9 @@ import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
+import org.w3c.dom.Document;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.sql.*;
 import java.util.Date;
 
@@ -45,6 +47,11 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
         String sql = util.decodeValue(req.getContentString());
         sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
         String result = "";
+
+
+
+
+
         try {
             Statement stmt= conn.createStatement();
             System.out.println("sql: "+sql);

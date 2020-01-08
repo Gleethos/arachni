@@ -5,6 +5,7 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.IUrl;
 import comp.imp.Response;
+import comp.imp.Url;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -46,9 +47,23 @@ public class Navigator implements IPlugin {
         response.getHeaders().put("content-type", "plain/text");
         IUrl url = req.getUrl();//new Url(req.getContentString());//req.getUrl();
         String address = String.join("+", url.getParameter().values());
+
         String embedded;
         if(address.equals("")){
-            embedded = "Bitte geben Sie eine Anfrage ein";
+            address = (address.equals(""))?req.getContentString():address;
+            IUrl bodyUrl = new Url(address);
+            if(address.equals("") || bodyUrl.getParameter().size()==0){
+                embedded = "Bitte geben Sie eine Anfrage ein";
+            } else {
+                String street = bodyUrl.getParameter().get("street");
+                street = (street==null)?"":street;
+                if(street.equals("")){
+                    embedded = "Bitte geben Sie eine Anfrage ein";
+                } else {
+                    //TODO: FIND....
+                    embedded = "Orte gefunden";
+                }
+            }
         } else {
             embedded = "https://www.google.com/maps?q=" + address+ "&output=embed";
         }

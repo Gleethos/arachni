@@ -137,10 +137,10 @@ public class UEB6Test extends AbstractTestFixture<UEB6> {
 		assertNotNull("UEB6.getTemperaturePlugin returned null", obj);
 
 		String url_html = ueb.getTemperatureUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
-		assertNotNull("IUEB6.getTemperatureUrl returned null", url_html);
+		assertNotNull("UEB6.getTemperatureUrl returned null", url_html);
 		
 		String url_rest = ueb.getTemperatureRestUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
-		assertNotNull("IUEB6.getTemperatureUrl returned null", url_rest);
+		assertNotNull("UEB6.getTemperatureUrl returned null", url_rest);
 		
 		assertNotEquals(url_html, url_rest);
 	}
@@ -155,10 +155,10 @@ public class UEB6Test extends AbstractTestFixture<UEB6> {
 		assertNotNull("UEB6.getTemperaturePlugin returned null", obj);
 
 		String url = ueb.getTemperatureUrl(LocalDate.of(2014, 1, 1), LocalDate.of(2014, 1, 2));
-		assertNotNull("IUEB6.getTemperatureUrl returned null", url);
+		assertNotNull("UEB6.getTemperatureUrl returned null", url);
 		
 		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream(url));
-		assertNotNull("IUEB6.GetRequest returned null", req);
+		assertNotNull("UEB6.GetRequest returned null", req);
 
 		float canHandle = obj.canHandle(req);
 		assertTrue(canHandle > 0 && canHandle <= 1);
