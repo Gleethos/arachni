@@ -10,7 +10,7 @@ public class TestWeb {
     @Test
     public void testRequest(){
 
-        new WebioServer().start();
+        //new WebioServer().start();
     }
 
 

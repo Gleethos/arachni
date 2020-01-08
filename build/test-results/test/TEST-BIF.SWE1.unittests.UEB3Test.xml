@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB3Test" tests="26" skipped="0" failures="0" errors="0" timestamp="2020-01-06T14:50:39" hostname="DESKTOP-6UFJ24U" time="0.139">
+<testsuite name="BIF.SWE1.unittests.UEB3Test" tests="26" skipped="0" failures="0" errors="0" timestamp="2020-01-08T12:23:00" hostname="DESKTOP-6UFJ24U" time="0.033">
   <properties/>
-  <testcase name="milestone1_return_main_page" classname="BIF.SWE1.unittests.UEB3Test" time="0.09"/>
-  <testcase name="response_should_send_content_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.003"/>
+  <testcase name="milestone1_return_main_page" classname="BIF.SWE1.unittests.UEB3Test" time="0.011"/>
+  <testcase name="response_should_send_content_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.004"/>
   <testcase name="testIPlugin_can_handle_test_url" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="IRequest_should_return_random_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
-  <testcase name="response_should_send_200" classname="BIF.SWE1.unittests.UEB3Test" time="0.007"/>
-  <testcase name="response_should_send_404" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="IRequest_should_return_random_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_send_200" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_send_404" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="response_should_send_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="testIPlugin_cannot_handle_url" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_return_default_serverheader" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="response_should_save_contenttype" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_response_send_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_set_content_length" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB3Test" time="0.003"/>
-  <testcase name="IRequest_should_parse_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="IRequest_should_parse_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_can_handle_IRequest" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="IRequest_should_return_useragent" classname="BIF.SWE1.unittests.UEB3Test" time="0.003"/>
+  <testcase name="IRequest_should_return_useragent" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
   <testcase name="testIPlugin_can_handle_test_url_with_parameter" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_save_serverheader" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="response_should_save_serverheader" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_set_content_length_with_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="testIPlugin_return_valid_response" classname="BIF.SWE1.unittests.UEB3Test" time="0.003"/>
-  <testcase name="IRequest_should_return_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="testIPlugin_return_valid_response" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="IRequest_should_return_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="response_should_save_string_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="response_should_send_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
+  <testcase name="response_should_send_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_send_server_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="testIPlugin_hello_world" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_fail_sending_no_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
+  <testcase name="response_should_fail_sending_no_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <system-out><![CDATA[File: .
 File .\webroot/index.html of type text/html returned
 File: foo.html
@@ -36,5 +36,14 @@ File /test/foo.html of type text/html returned
 File: foo.html
 File /test/foo.html of type text/html returned
 ]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+]]></system-err>
 </testsuite>

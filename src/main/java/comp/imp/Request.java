@@ -157,6 +157,7 @@ public class Request implements IRequest {
             if(_headers.containsKey("content-length")){
                 return Integer.valueOf(_headers.get("content-length"));
             }
+            return 0;
         }
         return _content.length;
     }

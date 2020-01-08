@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.329s</div>
+<div class="counter">0.324s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,6 +66,9 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -84,47 +87,47 @@
 </tr>
 <tr>
 <td class="success">pluginmanager_hello_world</td>
-<td class="success">0.005s</td>
+<td class="success">0.070s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_plugins_are_not_null</td>
-<td class="success">0.005s</td>
+<td class="success">0.034s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_returns_1_plugin</td>
-<td class="success">0.006s</td>
+<td class="success">0.059s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_returns_plugins</td>
-<td class="success">0.008s</td>
+<td class="success">0.058s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_should_add_plugin</td>
-<td class="success">0.293s</td>
+<td class="success">0.061s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_should_clear_plugins</td>
-<td class="success">0.005s</td>
+<td class="success">0.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">request_should_handle_post</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">request_should_parse_post_content_length</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">request_should_parse_post_content_type</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -134,22 +137,22 @@
 </tr>
 <tr>
 <td class="success">request_should_return_post_content_as_bytes</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">request_should_return_post_content_as_string</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">response_should_send_byte_content</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">response_should_send_stream_content</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -157,102 +160,90 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+<pre>
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:39 |
-
-| 5 || 23.43 || 2020-01-06 14:50:39 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:00 |
+| 2 || 23.43 || 2020-01-08 12:23:00 |
+| 3 || 23.43 || 2020-01-08 12:23:00 |
+| 4 || 23.43 || 2020-01-08 12:23:00 |
+| 5 || 23.43 || 2020-01-08 12:23:00 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:39 |
-
-| 5 || 23.43 || 2020-01-06 14:50:39 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:00 |
+| 2 || 23.43 || 2020-01-08 12:23:00 |
+| 3 || 23.43 || 2020-01-08 12:23:00 |
+| 4 || 23.43 || 2020-01-08 12:23:00 |
+| 5 || 23.43 || 2020-01-08 12:23:00 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:39 |
-
-| 5 || 23.43 || 2020-01-06 14:50:39 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:39 |
-
-| 5 || 23.43 || 2020-01-06 14:50:39 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:39 |
-
-| 5 || 23.43 || 2020-01-06 14:50:39 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:39 |
-
-| 2 || 23.43 || 2020-01-06 14:50:39 |
-
-| 3 || 23.43 || 2020-01-06 14:50:39 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
 </pre>
 </span>
 </div>
@@ -264,7 +255,7 @@ temperatures
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 06.01.2020, 15:50:40</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 08.01.2020, 13:23:02</p>
 </div>
 </div>
 </body>

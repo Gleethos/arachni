@@ -42,7 +42,7 @@ public class PluginManager implements IPluginManager {
             try {
                 if(!loadPlugin(plugin,"build/classes/java/main/comp/imp/plugins")){
                     if(!loadPlugin(plugin,"build/classes/java/test/BIF/SWE1/unittests/mocks")){
-                        throw new IllegalStateException("Plugn not found!");
+                        throw new IllegalStateException("Plugin not found!");
                     }
                 }
             } catch (IOException e) {

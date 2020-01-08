@@ -48,7 +48,12 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                         "VALUES ("+(startIndex+ti)+", "+temp+", datetime('now'));";
                 Connection iotConn = _createAndOrConnectToDatabase();
                 //_listOfTables(iotConn);
-                _execute(command, iotConn);
+                try {
+                    _execute(command, iotConn);
+                } catch (Exception e){
+                    System.out.println("[ERROR]: Could not store new temperature because: "+e.getMessage());
+                }
+
                 _close(iotConn);
             }
         });
@@ -79,44 +84,31 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
         response.getHeaders().put("content-length", String.valueOf(contentLength));
-        String sql = util.decodeValue(req.getContentString());
-        sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
-        String result = "";
-        try {
-            Statement stmt= conn.createStatement();
-            System.out.println("sql: "+sql);
-            ResultSet rs = stmt.executeQuery(sql);
-            result = convert(rs).toString();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            result+=e.toString();
+        if(req.getContentLength()>0){
+            String sql = util.decodeValue(req.getContentString());
+            sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
+            String result = "";
+            try {
+                Statement stmt= conn.createStatement();
+                System.out.println("sql: "+sql);
+                ResultSet rs = stmt.executeQuery(sql);
+                result = convert(rs).toString();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                result+=e.toString();
+            }
+            byte[] jsonData;
+            try {
+                jsonData = result.getBytes();//result.getBytes("UTF-8");
+            } catch (Exception e) {
+                jsonData = result.getBytes();
+            }
+            response.setContent(jsonData);
         }
-        byte[] jsonData;
-        try {
-            jsonData = result.getBytes();//result.getBytes("UTF-8");
-        } catch (Exception e) {
-            jsonData = result.getBytes();
-        }
-        response.setContent(jsonData);
         _close(conn);
         return response;
     }
 
-    /**
-     * Create a new table in the test database
-     */
-    private void _createNewTable(Connection conn, String sql) {
-        try {
-             Statement stmt = conn.createStatement();// create a new table
-                try {
-                    stmt.execute(sql);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 
 }

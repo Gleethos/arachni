@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class BIF.SWE1.unittests.Tests7</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class BIF.SWE1.unittests.Tests7</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/BIF.SWE1.unittests.html">BIF.SWE1.unittests</a> &gt; Tests7</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">12</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">9.118s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">HelloWorld</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">html_404_file_must_contain</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">index_file_must_contain</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">index_file_must_contain2</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">oracle_returns_list_of_stars</td>
+<td class="success">0.394s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">oracle_returns_list_of_tables</td>
+<td class="success">4.827s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">self_test</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">static_utility_method_file_not_found_returns</td>
+<td class="success">0.032s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">static_utility_method_for_content_type_returns</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">temp_plugin_returns_list_of_temperatures</td>
+<td class="success">0.043s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">temp_plugin_temp_database_gets_bigger_over_time</td>
+<td class="success">3.812s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_plugin_utility_and_sql_setup</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-08 12:22:51 |
+| 2 || 23.43 || 2020-01-08 12:22:51 |
+| 3 || 23.43 || 2020-01-08 12:22:51 |
+| 4 || 23.43 || 2020-01-08 12:22:51 |
+| 5 || 23.43 || 2020-01-08 12:22:51 |sql: SELECT * FROM temperatures
+sql: SELECT * FROM temperatures
+sql: SELECT owner, table_name FROM all_tables
+
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-08 12:23:00 |
+| 2 || 23.43 || 2020-01-08 12:23:00 |
+| 3 || 23.43 || 2020-01-08 12:23:00 |
+| 4 || 23.43 || 2020-01-08 12:23:00 |
+| 5 || 23.43 || 2020-01-08 12:23:00 |sql: SELECT * FROM temperatures
+File someFile.xyz not found
+
+temperatures
+| id || value || created |
+| 1 || 23.43 || 2020-01-08 12:23:00 |
+| 2 || 23.43 || 2020-01-08 12:23:00 |
+| 3 || 23.43 || 2020-01-08 12:23:00 |
+| 4 || 23.43 || 2020-01-08 12:23:00 |
+| 5 || 23.43 || 2020-01-08 12:23:00 |sql: SELECT * FROM temperatures
+sql: SELECT * FROM stars
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 08.01.2020, 13:23:02</p>
+</div>
+</div>
+</body>
+</html>

@@ -46,8 +46,12 @@ public class Navigator implements IPlugin {
         response.getHeaders().put("content-type", "plain/text");
         IUrl url = req.getUrl();//new Url(req.getContentString());//req.getUrl();
         String address = String.join("+", url.getParameter().values());
-        String embedded = "https://www.google.com/maps?q=" + address+ "&output=embed";
-
+        String embedded;
+        if(address.equals("")){
+            embedded = "Bitte geben Sie eine Anfrage ein";
+        } else {
+            embedded = "https://www.google.com/maps?q=" + address+ "&output=embed";
+        }
         String result = embedded;
         byte[] jsonData;
         try {

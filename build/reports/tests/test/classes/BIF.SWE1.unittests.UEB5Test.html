@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.056s</div>
+<div class="counter">0.428s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,6 +66,9 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -84,62 +87,62 @@
 </tr>
 <tr>
 <td class="success">milestone2_return_error_on_invalid_url</td>
-<td class="success">0.008s</td>
+<td class="success">0.040s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">milestone2_return_main_page</td>
-<td class="success">0.007s</td>
+<td class="success">0.066s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_all_plugins_have_unique_type</td>
-<td class="success">0.005s</td>
+<td class="success">0.056s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_contains_plugin_for_start_page</td>
-<td class="success">0.006s</td>
+<td class="success">0.086s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_return_all_plugins</td>
-<td class="success">0.005s</td>
+<td class="success">0.053s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_should_add_plugin</td>
-<td class="success">0.005s</td>
+<td class="success">0.044s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_should_fail_adding_non_existing_plugin</td>
-<td class="success">0.006s</td>
+<td class="success">0.043s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">pluginmanager_should_fail_adding_plugin_not_implementing_plugin</td>
-<td class="success">0.007s</td>
+<td class="success">0.036s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">staticfileplugin_fail_on_missing_file</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">staticfileplugin_hello_world</td>
-<td class="success">0s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">staticfileplugin_return_file</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">staticfileplugin_return_file_content</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -147,148 +150,173 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+<pre>
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-File: i_am_a_unknown_url.html
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
-The driver name is SQLiteJDBC
-A new database has been created.
 
-warehouses
-| id || name || capacity |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |File: missing-foo-ed3f6ad0-2307-4b99-9178-fe30fce3ef54.txt
+File tmp-static-files/missing-foo-ed3f6ad0-2307-4b99-9178-fe30fce3ef54.txt not found
+File tmp-static-files/missing-foo-ed3f6ad0-2307-4b99-9178-fe30fce3ef54.txt of type text/plain returned
 
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-File: missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt
-File tmp-static-files/missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt not found
-File tmp-static-files/missing-foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt of type text/plain returned
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-File: .
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |File: .
 File .\webroot/index.html of type text/html returned
-The driver name is SQLiteJDBC
-A new database has been created.
 
-warehouses
-| id || name || capacity |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |File: foo-8c6829cd-7d97-42dc-a076-22c4cf1fe091.txt
+File tmp-static-files/foo-8c6829cd-7d97-42dc-a076-22c4cf1fe091.txt of type text/plain returned
+File: foo-8956fe1b-7f09-43c8-a4fb-82aca2d05920.txt
+File tmp-static-files/foo-8956fe1b-7f09-43c8-a4fb-82aca2d05920.txt of type text/plain returned
 
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-File: foo-dfe03bfa-69da-4393-870e-caebe67d8bbe.txt
-File tmp-static-files/foo-dfe03bfa-69da-4393-870e-caebe67d8bbe.txt of type text/plain returned
-File: foo-62d41a5b-ac2f-4708-86e5-8b0fd7dd738a.txt
-File tmp-static-files/foo-62d41a5b-ac2f-4708-86e5-8b0fd7dd738a.txt of type text/plain returned
-The driver name is SQLiteJDBC
-A new database has been created.
-
-warehouses
-| id || name || capacity |
 temperatures
 | id || value || created |
-| 1 || 23.43 || 2020-01-06 14:50:40 |
-
-| 2 || 23.43 || 2020-01-06 14:50:40 |
-
-| 3 || 23.43 || 2020-01-06 14:50:40 |
-
-| 4 || 23.43 || 2020-01-06 14:50:40 |
-
-| 5 || 23.43 || 2020-01-06 14:50:40 |
-File: .
+| 1 || 23.43 || 2020-01-08 12:23:01 |
+| 2 || 23.43 || 2020-01-08 12:23:01 |
+| 3 || 23.43 || 2020-01-08 12:23:01 |
+| 4 || 23.43 || 2020-01-08 12:23:01 |
+| 5 || 23.43 || 2020-01-08 12:23:01 |File: .
 File .\webroot/index.html of type text/html returned
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.execute(DB.java:810)
+	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.sql.SQLException: [SQLITE_ERROR] SQL error or missing database (no such table: temperatures)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.throwex(DB.java:868)
+	at org.sqlite.core.NativeDB.prepare(Native Method)
+	at org.sqlite.core.DB.prepare(DB.java:211)
+	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:60)
+	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:119)
+	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
 </pre>
 </span>
 </div>
@@ -300,7 +328,7 @@ File .\webroot/index.html of type text/html returned
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 06.01.2020, 15:50:40</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 08.01.2020, 13:23:02</p>
 </div>
 </div>
 </body>

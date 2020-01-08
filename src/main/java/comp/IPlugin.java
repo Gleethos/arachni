@@ -75,8 +75,10 @@ public interface IPlugin {
 				return "text/javascript";
 			} else if(fileRequested.endsWith(".css")){
 				return "text/css";
-			} else {
+			} else if(fileRequested.endsWith(".txt")){
 				return "text/plain";
+			} else {
+				return "text/html";
 			}
 		}
 
@@ -86,7 +88,7 @@ public interface IPlugin {
 			response.setStatusCode(404);
 			File file = new File(WEB_ROOT, FILE_NOT_FOUND);
 			int fileLength = (int) file.length();
-			String content = "text/html";
+			String content = getContentType(fileRequested);//"text/html";
 			response.getHeaders().put("content-type", content);
 			byte[] fileData = util.readFileData(file, fileLength);
 			response.setContent(fileData);

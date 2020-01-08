@@ -274,10 +274,10 @@ public class UEB6Test extends AbstractTestFixture<UEB6> {
 		assertNotNull("UEB6.getNavigationPlugin returned null", obj);
 
 		String url = ueb.getNaviUrl();
-		assertNotNull("IUEB6.getNaviUrl returned null", url);
+		assertNotNull("UEB6.getNaviUrl returned null", url);
 		
 		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream(url, "POST", "street="));
-		assertNotNull("IUEB6.GetRequest returned null", req);
+		assertNotNull("UEB6.GetRequest returned null", req);
 
 		float canHandle = obj.canHandle(req);
 		assertTrue(canHandle > 0 && canHandle <= 1);
