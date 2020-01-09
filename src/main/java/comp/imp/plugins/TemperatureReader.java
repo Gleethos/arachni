@@ -19,6 +19,8 @@ import java.util.Random;
 
 public class TemperatureReader extends AbstractDatabaseConnection implements IPlugin {
 
+    int _temp_count = 0;
+
     private static void _executeFile(String name, Connection conn){
         String[] commands;
         File file = new File("db/", name);
@@ -38,6 +40,10 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int tempCount(){
+        return _temp_count;
     }
 
     public TemperatureReader() {
@@ -62,6 +68,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         } catch (Exception e){
 
         }
+        _temp_count = entryCount;
         _executeFile("setup.sql", conn);
         _listOfTables(conn);
         _close(conn);

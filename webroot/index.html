@@ -27,6 +27,21 @@
 
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        button {
+            background-color: #00edfb;
+            border: none;
+            color: black;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 2px 1px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="header" class="">
@@ -131,6 +146,205 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>TO LOWER</h2>
+                                    </div>
+
+                                    <div class="col-lg-12" >
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('#SubmitToLower').click(function(e) {
+                                                    $("#LoweredContent").html("Loading...");
+                                                    e.preventDefault();
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/ToLower/',
+                                                        data: {text: $('#ToBeLowered').val()},
+                                                        success: function(data)
+                                                        {
+                                                            $("#LoweredContent").html(data);
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+                                        <div name="input">
+                                            <input type="text" id="ToBeLowered">
+                                            <button type="" id="SubmitToLower">send</button>
+                                        </div>
+
+                                        <div id="LoweredContent"></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>TEMPERATUR</h2>
+                                    </div>
+                                    <div class="col-lg-12" >
+                                        <div action="">
+                                            <button id="GetTemp">SEARCH</button>
+                                            <br>
+                                            <input id="TempInput" type="text" style="width:100%" name="TempIn" value="SELECT count(*) FROM temperatures"><br>
+                                        </div>
+                                        <div id="PagingBox">
+                                            <button onclick="modPage(-1)" id="BTN_prev">Prev</button>
+                                                <span id="PageCounter" >1</span>
+                                            <button onclick="modPage(1)" id="BTN_next">Next</button>
+                                        </div>
+                                        <div>
+                                            <input id="CustomDate" type="text" style="width:6.25em" value="2012-02-13">
+                                            <button onclick="setDate()" id="BTN_date_set">~=> enter this!</button>
+                                            <br>
+                                        </div>
+                                        <script>
+                                            function modPage(change){
+                                                var current = parseInt($('#PageCounter').html());
+                                                current += change;
+                                                $('#PageCounter').html(current);
+                                                var query = "SELECT * FROM temperatures";
+                                                var from = (2020+current)+"-01-01 00:00:00";
+                                                var to = (2020+current)+"-12-31 23:59:59";
+                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
+                                                $('#TempInput').val(query)
+                                            }
+                                            function setDate(){
+                                                var date = $('#CustomDate').val();
+                                                console.log("new date: "+date);
+                                                var query = "SELECT * FROM temperatures";
+                                                var from = date+" 00:00:00";
+                                                var to = incrementDate(date)+" 00:00:00";//" 23:59:59";
+                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
+                                                $('#TempInput').val(query)
+                                            }
+                                        </script>
+                                        <div style="background-color: white; min-height: 4em; border: solid black 0.1em; border-radius: 0.4em;">
+                                            <div id="TempResult" style="display: inline-block;  overflow: scroll;" ></div>
+
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#GetTemp').click(function(e) {
+                                                        e.preventDefault();
+                                                        SendQueryRequest('Temp', 'TempInput', 'TempResult');
+                                                    });
+                                                });
+                                                function SendQueryRequest(plugin, inSelector, outSelector){
+                                                    $("#"+outSelector).html("Loading...");
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/'+plugin,
+                                                        data: {
+                                                            query: $('#'+inSelector).val()
+                                                        },
+                                                        success: function(data) {
+                                                            $('#'+outSelector).html("");
+                                                            console.log(data);
+                                                            CreateTableFromJSON(outSelector, JSON.parse(data));
+                                                            $('#'+outSelector).find('table').attr('id', plugin+'ResultTable');
+                                                            //$('#'+plugin+'ResultTable').DataTable();
+                                                        }
+                                                    });
+                                                }
+                                                function incrementDate(date_str){
+                                                    var parts = date_str.split("-");
+                                                    var dt = new Date(
+                                                        parseInt(parts[0], 10),      // year
+                                                        parseInt(parts[1], 10) - 1,  // month (starts with 0)
+                                                        parseInt(parts[2], 10)       // date
+                                                    );
+                                                    dt.setDate(dt.getDate() + 1);
+                                                    parts[0] = "" + dt.getFullYear();
+                                                    parts[1] = "" + (dt.getMonth() + 1);
+                                                    if (parts[1].length < 2) {
+                                                        parts[1] = "0" + parts[1];
+                                                    }
+                                                    parts[2] = "" + dt.getDate();
+                                                    if (parts[2].length < 2) {
+                                                        parts[2] = "0" + parts[2];
+                                                    }
+                                                    return parts.join("-");
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-lg-12" >
+                                        <h3 >Oracle DB:</h3></br></br>
+                                        <form action="">
+                                            <input id="OracleInput" style = "width: 100%" type="text" name="OracleIn" value="SELECT * FROM stars"><br>
+                                        </form>
+                                        <button id="GetOracle">Get query result!</button>
+                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
+                                            <div id="OracleResult" src="" style = "display: inline-block; overflow: scroll;" ></div>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#GetOracle').click(function(e) {
+                                                        e.preventDefault();
+                                                        SendQueryRequest('Oracle', 'OracleInput', 'OracleResult');
+                                                    });
+                                                });
+                                            </script>
+
+                                            <script>
+                                                function CreateTableFromJSON(selector, myBooks) {
+                                                    // EXTRACT VALUE FOR HTML HEADER.
+                                                    var col = [];
+                                                    for (var i = 0; i < myBooks.length; i++) {
+                                                        for (var key in myBooks[i]) {
+                                                            if (col.indexOf(key) === -1) {
+                                                                col.push(key);
+                                                            }
+                                                        }
+                                                    }
+                                                    // CREATE DYNAMIC TABLE.
+                                                    var table = document.createElement("table");
+                                                    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+                                                    var tr = table.insertRow(-1);                   // TABLE ROW.
+                                                    for (var i = 0; i < col.length; i++) {
+                                                        var th = document.createElement("th");      // TABLE HEADER.
+                                                        th.innerHTML = col[i];
+                                                        tr.appendChild(th);
+                                                    }
+                                                    // ADD JSON DATA TO THE TABLE AS ROWS.
+                                                    for (var i = 0; i < myBooks.length; i++) {
+                                                        tr = table.insertRow(-1);
+                                                        for (var j = 0; j < col.length; j++) {
+                                                            var tabCell = tr.insertCell(-1);
+                                                            tabCell.innerHTML = myBooks[i][col[j]];
+                                                        }
+                                                    }
+                                                    // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                                                    var divContainer = document.getElementById(selector);
+                                                    divContainer.innerHTML = "";
+                                                    divContainer.appendChild(table);
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mainContentWrapper">
 
                             <div class="container-fluid">
@@ -207,191 +421,10 @@
 
                                     </div>
 
-
-
                                 </div>
                             </div>
                         </div>
-                        <div class="mainContentWrapper">
-                            <div class="container-fluid">
-                                <div class="row">
 
-                                    <div class="col-sm-12 col-md-12">
-                                        <h2>TO LOWER</h2>
-                                    </div>
-
-                                    <div class="col-lg-12" >
-                                        <script>
-                                            $(document).ready(function() {
-                                                $('#SubmitToLower').click(function(e) {
-                                                    $("#LoweredContent").html("Loading...");
-                                                    e.preventDefault();
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '/ToLower/',
-                                                        data: {text: $('#ToBeLowered').val()},
-                                                        success: function(data)
-                                                        {
-                                                            $("#LoweredContent").html(data);
-                                                        }
-                                                    });
-                                                });
-                                            });
-                                        </script>
-
-                                        <div name="input">
-                                            <input type="text" id="ToBeLowered">
-                                            <button type="" id="SubmitToLower">send</button>
-                                        </div>
-
-                                        <div id="LoweredContent"></div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mainContentWrapper">
-                            <div class="container-fluid">
-                                <div class="row">
-
-                                    <div class="col-sm-12 col-md-12">
-                                        <h2>TEMPERATUR</h2>
-                                    </div>
-                                    <div class="col-lg-12" >
-
-                                        <div action="">
-                                            Query:<br>
-                                            <input id="TempInput" type="text" style="width:100%" name="TempIn" value="SELECT count(*) FROM temperatures"><br>
-                                        </div>
-                                        <div id="PagingBox">
-                                            <button onclick="modPage(-1)" id="BTN_prev">Prev</button>
-                                                <span id="PageCounter" >1</span>
-                                            <button onclick="modPage(1)" id="BTN_next">Next</button>
-                                        </div>
-                                        <div>
-                                            <input id="CustomDate" type="text" style="width:6.25em" value="2012-02-13">
-                                            <button onclick="setDate()" id="BTN_date_set">-> enter this!</button>
-                                            <br>
-                                        </div>
-
-                                        <script>
-                                            function modPage(change){
-                                                var current = parseInt($('#PageCounter').html());
-                                                current += change;
-                                                $('#PageCounter').html(current);
-                                                var query = "SELECT * FROM temperatures";
-                                                var from = (2020+current)+"-01-01 00:00:00";
-                                                var to = (2020+current)+"-12-31 23:59:59";
-                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
-                                                $('#TempInput').val(query)
-                                            }
-                                            function setDate(){
-                                                var date = $('#CustomDate').val();
-                                                console.log("new date: "+date);
-                                                var query = "SELECT * FROM temperatures";
-                                                var from = date+" 00:00:00";
-                                                var to = date+" 23:59:59";
-                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
-                                                $('#TempInput').val(query)
-                                            }
-                                        </script>
-                                        <button id="GetTemp">SEARCH</button>
-                                        <div style="background-color: white; min-height: 4em; border: solid black 0.1em; border-radius: 0.4em;">
-                                            <div id="TempResult" style="display: inline-block;  overflow: scroll;" ></div>
-
-                                            <script>
-                                                $(document).ready(function() {
-                                                    $('#GetTemp').click(function(e) {
-                                                        e.preventDefault();
-                                                        SendQueryRequest('Temp', 'TempInput', 'TempResult');
-                                                    });
-                                                });
-                                                function SendQueryRequest(plugin, inSelector, outSelector){
-                                                    $("#"+outSelector).html("Loading...");
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '/'+plugin,
-                                                        data: {
-                                                            query: $('#'+inSelector).val()
-                                                        },
-                                                        success: function(data) {
-                                                            $('#'+outSelector).html("");
-                                                            console.log(data);
-                                                            CreateTableFromJSON(outSelector, JSON.parse(data));
-                                                            $('#'+outSelector).find('table').attr('id', plugin+'ResultTable');
-                                                            //$('#'+plugin+'ResultTable').DataTable();
-                                                        }
-                                                    });
-                                                }
-                                            </script>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mainContentWrapper">
-                            <div class="container-fluid">
-                                <div class="row">
-
-                                    <div class="col-lg-12" >
-                                        <h3 >Oracle DB:</h3></br></br>
-                                        <form action="">
-                                            <input id="OracleInput" style = "width: 100%" type="text" name="OracleIn" value="hi"><br>
-                                        </form>
-                                        <button id="GetOracle">Get query result!</button>
-                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
-                                            <div id="OracleResult" src="" style = "display: inline-block; overflow: scroll;" ></div>
-                                            <script>
-                                                $(document).ready(function() {
-                                                    $('#GetOracle').click(function(e) {
-                                                        e.preventDefault();
-                                                        SendQueryRequest('Oracle', 'OracleInput', 'OracleResult');
-                                                    });
-                                                });
-                                            </script>
-
-                                            <script>
-                                                function CreateTableFromJSON(selector, myBooks) {
-                                                    // EXTRACT VALUE FOR HTML HEADER.
-                                                    var col = [];
-                                                    for (var i = 0; i < myBooks.length; i++) {
-                                                        for (var key in myBooks[i]) {
-                                                            if (col.indexOf(key) === -1) {
-                                                                col.push(key);
-                                                            }
-                                                        }
-                                                    }
-                                                    // CREATE DYNAMIC TABLE.
-                                                    var table = document.createElement("table");
-                                                    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-                                                    var tr = table.insertRow(-1);                   // TABLE ROW.
-                                                    for (var i = 0; i < col.length; i++) {
-                                                        var th = document.createElement("th");      // TABLE HEADER.
-                                                        th.innerHTML = col[i];
-                                                        tr.appendChild(th);
-                                                    }
-                                                    // ADD JSON DATA TO THE TABLE AS ROWS.
-                                                    for (var i = 0; i < myBooks.length; i++) {
-                                                        tr = table.insertRow(-1);
-                                                        for (var j = 0; j < col.length; j++) {
-                                                            var tabCell = tr.insertCell(-1);
-                                                            tabCell.innerHTML = myBooks[i][col[j]];
-                                                        }
-                                                    }
-                                                    // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-                                                    var divContainer = document.getElementById(selector);
-                                                    divContainer.innerHTML = "";
-                                                    divContainer.appendChild(table);
-                                                }
-                                            </script>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                         <div class="mainContentWrapper">
                             <div class="container-fluid">
                                 <div class="row">

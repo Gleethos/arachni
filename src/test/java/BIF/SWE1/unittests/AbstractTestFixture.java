@@ -2,17 +2,6 @@ package BIF.SWE1.unittests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -81,7 +70,7 @@ public abstract class AbstractTestFixture<T> {
 		org.junit.Assert.assertNotEquals(msg, expected, actual);
 	}
 
-	protected void assertThrows(Runnable delegate) {
+	protected void assertThrows(Class<Exception> exceptionClass, Runnable delegate) {
 		assertThrows("No exceptions was thrown", delegate);
 	}
 

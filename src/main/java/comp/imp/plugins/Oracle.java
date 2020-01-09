@@ -11,7 +11,11 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
 {
     public Oracle()
     {
-        super("jdbc:oracle:thin:@infdb.technikum-wien.at:1521:o10", "w19bif3_if17b032", "dbsw19");
+        super(
+                "jdbc:oracle:thin:@infdb.technikum-wien.at:1521:o10",
+                "w19bif3_if17b032",
+                "dbsw19"
+        );
     }
 
     @Override

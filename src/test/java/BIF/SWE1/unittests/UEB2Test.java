@@ -150,7 +150,7 @@ public class UEB2Test extends AbstractTestFixture<UEB2> {
 		IResponse obj = createInstance().getResponse();
 
 		assertNotNull("UEB2.GetResponse returned null", obj);
-		assertThrows(() -> { int tmp = obj.getStatusCode(); });
+		assertThrows(Exception.class, () -> { int tmp = obj.getStatusCode(); });
 	}
 
 	@Test

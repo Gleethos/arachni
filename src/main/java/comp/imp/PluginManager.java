@@ -24,6 +24,10 @@ public class PluginManager implements IPluginManager {
         this.add("Oracle");
     }
 
+    public IPlugin get(String name){
+        return _plugins.get(name);
+    }
+
     @Override
     public Iterable<IPlugin> getPlugins() {
         return _plugins.values();

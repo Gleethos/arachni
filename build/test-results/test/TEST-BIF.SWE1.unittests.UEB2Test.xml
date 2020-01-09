@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB2Test" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-01-09T07:38:01" hostname="DESKTOP-6UFJ24U" time="0.007">
+<testsuite name="BIF.SWE1.unittests.UEB2Test" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-01-09T09:02:25" hostname="DESKTOP-6UFJ24U" time="0.008">
   <properties/>
   <testcase name="response_should_return_status_200" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_return_status_404" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
@@ -12,7 +12,7 @@
   <testcase name="url_should_parse_fragment" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_isInValid_on_empty_request" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="request_should_be_invalid_on_method_foo" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
+  <testcase name="request_should_be_invalid_on_method_foo" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_should_parse_url" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_save_statuscode" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_isValid_on_valid_request" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>

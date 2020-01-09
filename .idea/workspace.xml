@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" line="42" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" line="46" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/db/bootstrap.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -17,19 +15,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/FileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/FileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Navigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Navigator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/core/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/core/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/core/WebioServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/core/WebioServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/ToLower.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/ToLower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/AbstractTestFixture.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/AbstractTestFixture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB2Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB2Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB3Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB3Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" afterDir="false" />
@@ -50,413 +47,24 @@
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/setup.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPlugin$util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPluginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IUrl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/PluginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Response.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Url.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/FileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Navigator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Oracle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TemperatureReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TestPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/ToLower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/ClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/IOFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/IOFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/WebioServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/TestWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/TestWeb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/AbstractTestFixture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/AbstractTestFixture.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB2Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB2Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB3Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB3Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/FileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/WebioServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/WebioServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/AbstractTestFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/AbstractTestFixture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-00684f64-703c-4887-84a3-05f766bdd185.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-01ede570-8948-4a1a-8ac0-6c25bdf8155e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-022af517-79ff-4cd7-9a5f-89c92431b9dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0236ff0d-bc01-409b-b2d5-c779deb5b42e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-02d56eab-01d4-4eee-92f5-d136e5d67abc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-02e26f30-9725-40cb-940a-250f2a64f8a2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-039e49c5-5ca6-457e-aa11-19b18fc9ef7d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-03b0e66b-4762-42e4-99b4-e98b301a4615.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-03da2f39-3621-4a7b-9ab0-50e9e42109f2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-056b663f-6da1-4fdd-b9e8-d19127da114b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0599660b-2c42-4e0a-984e-af0b34416212.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-05ac8467-7eef-444b-991c-4e90b8479a37.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-06ecae95-52fd-4d90-aa21-13d803c7a344.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0721e7b8-3bc8-4c9c-a3dc-5266d84d2283.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-07701d7c-b8b5-49a9-abfb-bca99bab93b7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-077ca82d-f306-4735-9de0-0605d6020530.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0a610a7d-e0db-4b5c-9e26-7d5fc472568f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0a73634e-9df2-4bf4-9119-c4f4a3be35f8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0a7c2a5e-32ed-4d9b-818c-8bd9d086cf75.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0a8b9069-ebfd-474a-8842-6ad5a70ea224.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0aa46442-a55e-4168-8c32-3e6d6a0bcd3c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0ae30f9c-3b32-4f0a-8f18-9257970325bc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0b905d22-caec-4241-9b80-05c83b732985.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0bffcab6-a9b4-42e5-a7cd-31528127fa94.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0ce452a0-d6fb-4934-bda7-6f7531bdbdee.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0cfbec68-8348-4cc8-ac62-2f7f5f6e658b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0dad57bf-58ec-468b-9af4-67ce16311e68.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0dde3349-f146-4975-b51f-1d36afb3a11a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0dec3127-a353-43e0-ac6d-f9d1f9952f33.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0e86b7d0-5250-47ab-bb6f-bc8d1ca5f4dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0ed0ab0b-d14c-4877-9d2e-373bf1c4c677.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0f20daf9-1cff-4933-9a33-6a85e0b74bf7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0fbb6093-8413-4981-8c7b-98a67c74ddb8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-0ff20a0e-04ee-45c3-8c25-790b1671401b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-10293141-ad21-4cc1-83e7-46a293dc6f2f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1071125d-e58d-4a54-941b-14537845c893.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-13ec6cb1-e00a-48a6-b1c5-693505a02ee2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-14229b99-949c-4d06-ba66-f9356fd0b80a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-14958bb5-cd34-4336-ada4-c56b671462d1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-14bfb9d1-4801-4094-b815-59a7c497e1b2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-156e29b8-af03-4e91-a2f5-32f714e0771c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-16c673a4-e89c-4c24-ba46-055476ded4f6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-17208f71-c6bc-434b-bbed-3f6740d76e04.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-177cc6a4-aaac-49f4-804f-807d90c6eadc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1823b4e7-9014-4538-a8d1-ac22f5fd8cf1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1848ee59-ba1e-4c0f-b73d-60f43c955dea.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-18da41af-eb8a-45c1-9a13-4290ce4a16db.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-196069e2-8329-469b-913c-919de23d3f68.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-19f842db-6631-4b91-96dd-3fa7600d18c6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1a17a66e-c504-4612-9045-02c6455a1226.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1c2d0ea8-dfbd-44af-a962-aea8a19c0ed6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1c601b3a-2423-4df7-8571-a1ec5020f25c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1c71ac2a-8701-4259-83b3-6ced8871c30b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1c788fb7-1f19-4559-8f3a-5da022c0ec6f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1dae5a69-ae08-4990-9267-28fc9966540a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1ebbf216-fc01-44af-bff7-cd69f00e0eca.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-1f1b1508-05f3-407c-8924-20dd2a029431.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2080d207-0c7a-494a-8201-4329e4fcfe8d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-20b08cd9-48d8-461e-b39b-f5711cd6b67a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2113c43d-ef42-4199-bf8c-a0a9961adcb9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-21187095-a7fa-47c3-b55c-d82781a001d8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-23c108a1-54b9-4f01-9bab-797d9e01a7d2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-26b54bb2-94f8-4c70-adce-985d4a9c717f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2a6cd8dc-519e-4d0d-8436-ff8a317c2cb6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2b2e400e-6da8-4ca3-8363-61b037c33c89.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2d08a444-df59-4894-9022-ab4cb067d9ba.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2dccf9e3-2ee1-4513-9dfb-d758b2ad16c3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2dcfd615-4258-41a7-811d-aed8d99913bb.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2e5d1cce-4f00-45b6-8517-c55e398d8a50.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2ec49268-5793-42e3-bcbc-24d18ad087fa.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-2f8adc1f-d10b-4014-aac0-ed197844fdd4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-302f9d06-d875-4f97-a68c-acd63fcd7102.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-30d9b403-1a5d-4d79-bcdb-5802900e9dbf.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3217dd8f-dfe9-43c0-9c8e-c3ad65c5963c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-323bf70c-2e51-44a0-983a-6226f14e3776.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-35cbda83-6924-4a3c-b62a-346565c3b30a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-36b42937-a202-4952-bdea-5e6df9f27025.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3878d0e9-ad20-410d-9543-1f39de135230.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3939c77a-5d79-4d8b-9584-b4f21f13b9fd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-39452e62-4a36-4a76-a922-354687be3ce5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-39be89bf-06a8-4056-b596-a689459e3dd7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3a144ba7-b0e3-4d96-bd9f-bebd353865f3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3a32d2e9-3708-4b00-8416-705b6c5a3871.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3a580c07-00dd-4d06-a238-74c913ec73a8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3ad4e403-3d80-4ca5-b8aa-5acd77793905.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3afa6bc6-0f7f-474e-83ee-7aefab5ec418.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3cb9d0c2-9894-46ff-b2cc-c88c632331b1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3d7a6a19-3248-4d0d-abc6-513c8dd91fe5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3dceaf0e-8f2a-43ab-87cd-dc9bbdde8e6c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3f862111-10d6-40eb-a6a2-be2462bd8cfe.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-3fb7cd4f-203d-45ae-ac90-68e212a54542.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4251f000-0f28-4c79-a4bf-6aaea0ec69d7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4319159d-b098-4a4b-bd90-1019b2afb185.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-43f46b60-5db2-4239-ac4f-61035efd650c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4484b2d9-5bd7-4433-92b2-5673ba757710.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-45ab15cb-c478-42ac-b0e2-d59aa7375219.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-46f93429-52ad-44ff-8b4c-f23fdc327ec6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4745bdf1-ab01-4f08-a4f9-18b6e875931a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4a4585ab-aac4-4bfd-b6a0-29608011eca8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4ba08f01-c2c2-43da-9285-45bfd0784060.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4c47465b-e0f4-462d-b6ea-b7513398ff7e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4d5679fb-dc1a-4f34-aec9-9dfcfe7d613a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4d5c9942-9d0c-4032-b3c6-b63581f77191.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4e4e0f0a-952d-42cf-bae2-6bf229a58c74.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-4ed84013-688d-407c-8156-022318f0fd12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-516beef7-4be4-4a3d-9654-17d97067f826.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-51e0372f-b845-4074-8792-240f2e7c63c9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-531d8593-ac4f-4085-9a59-a5d72642def2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5481e331-a08f-4931-929a-85c1e22ec313.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-54918e1d-44a1-4fd5-a975-76251f8fe434.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-549a74ff-03f0-48e4-8fcd-3430471f3ae2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-54f96c97-0dc0-418b-ac57-163aaa5b7169.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5584babe-b4a9-4c3b-ab3b-98f196561a66.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-559572ab-2289-4b89-9c14-f7b96d65b704.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-56880551-f12e-4667-bc88-d58e247e830a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-57556929-3d5b-471f-a1e2-ead15f292eab.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5814c887-41ec-442e-9b29-dffcfa43ea6e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-58224f2e-f031-4f66-bc53-88839688be67.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-582d466a-694a-458b-896a-6c088589e3c9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-583dab05-1125-4330-b97d-21a6293d7179.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-58431d38-b6d2-463f-8016-b2950c6ad38e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5854b732-211b-42f5-a368-38ab855185dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-587ba48c-bd6b-4473-91c9-5f9071a47e2e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5930836e-c5ec-496d-9665-de79eeeab0fb.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5b097ab7-a703-40e6-a68a-ea90704d3343.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5d47f0f7-6670-4760-a769-249c1257158f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-5e0c26ab-24c8-4f2d-a516-ef69e7316f2f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6096f335-9fa0-404c-8ec8-a1c0de916590.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6124d079-2286-485c-be64-472c2576f04a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-61636498-aa2f-428a-aff2-611da53ee109.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-61c02e78-231a-42bb-9641-4461d6bda856.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-61f2a47c-c711-47b8-a703-e92f0483e145.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-62d41a5b-ac2f-4708-86e5-8b0fd7dd738a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-62f62c45-1ee9-4ec7-ab72-9b99539e9429.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-63b3eea0-04ec-49dc-a08c-ff4f125101b2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-63eb3147-bcef-4260-b011-34aa569c48e1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-64884aa8-563a-4c1b-8fad-8589d4507963.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-65588be4-01c3-43b5-8d88-b1d81f3c759d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-65d1ed71-94df-41eb-ac2a-6ec6a83babd7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-65eba35f-d071-43b8-ac46-c28fda36f6e6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-661ed5c2-cbb2-4de4-91d1-2701dde630ed.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6754a856-6664-432d-9159-b98c9cd52e74.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-688dac51-1d98-4cda-b90a-2f6fee0d4bb6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-68c25991-2917-4da3-b3d3-cc2382601e32.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-69103b65-b4eb-4a65-9f27-5531c460502e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6a1639f5-8c84-4f3e-b11b-d8354039eaa6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6ab955a4-23ad-4ebf-92c4-2e6abf4ce8c2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6c16dc97-5432-49b6-bb40-b4a9302dac61.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6c707be8-4bdb-4147-9c3d-78baf8d4752e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6dd27427-4623-45fa-8369-455b8a97c585.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6e30d081-cf67-4341-95de-4c2628161ef6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-6ec981ad-b284-46a3-877b-2233a7eb8773.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-714e8407-075c-4305-a3d3-054ae2ca9823.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-722ae934-d1ef-48e5-8d05-bf37795ba92c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-726de400-e2ef-4edf-b212-ca2b119374dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-73258786-c7b4-47be-890e-8f2e2e0316b2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-736d4295-6193-4656-b69c-8517fa48e450.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-739c11b2-6bf9-4a85-aca4-2bfffb37817a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-74182de2-8060-4551-8e45-ef335d139135.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-74726986-645c-4a4d-a91b-8ab9c4043648.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-76044216-526f-4bc6-88e0-5e807645d409.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-76bf7381-c20b-4dd2-8f17-2729569bba8e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-77468227-d6b3-4f19-af98-ed37bdfe2d1c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-77492a85-5e2d-4183-a037-93411752cdf3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-77d9ffe3-9ffc-4f7b-84e8-ce79837a6088.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-78404661-50d2-40b4-9bc5-61a27e64cd44.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-784bb65e-2c0b-4236-b78f-7ce2cdfac979.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7b36e736-4f7d-44ee-acd2-c1dbeb55b16e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7b4517aa-1d09-48a0-905a-45168b19db37.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7bed1a03-5ab0-4a6e-be6a-1bfb6b09330e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7c26dcfe-734a-4a5b-a212-463a6839cae7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7d6233e0-2d09-47da-9bb6-5962f08f336d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7da4f758-21a5-4e2e-bfbf-5ae0b619c221.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7e4890bb-eafc-4edc-a0b9-391fa7a9a918.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7ec622a8-639e-4270-89f0-49eaf2aa2f8a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7f21d848-03df-496b-b016-b094572d6d8d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-7f5dbba4-5768-48c7-925b-ee2c3f690af7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8042223d-3d1d-4fab-af59-751839616ba8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-807ec7cc-700d-41ea-b8f6-fa049ca1d2b6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-81039906-9703-47e9-bd9b-6c2eb61e5915.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-813a8628-6c9b-4925-83d5-d77f4bcba0ce.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-817defc5-a47f-4f43-937d-5aef4069b247.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-81f8a9b0-c2e1-4c99-b128-9abcb369156d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-82dfdf5a-fafc-4546-8b38-e8f86d77bcf2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-83788fc7-94b4-44bf-b6fd-2514016d4f4a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-85063970-0ffd-490b-ba59-f46daef76dec.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-85315a22-6b00-4c0e-b254-9b2022e4ef04.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-86fa15e0-f9fe-4503-9ad1-75d3b881a4e9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-87d0a033-92e7-418f-86a1-d42361acb055.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8882a5c5-3a1e-4a25-9c68-40c55b3a65c2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8956fe1b-7f09-43c8-a4fb-82aca2d05920.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8a2f5d08-0cc0-4ca8-9f5a-78eaa4738543.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8acff8ea-3c73-4d42-9f30-5cde5692941d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8b23598a-b4e3-4e13-bd0e-632f0bc7f3be.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8c6829cd-7d97-42dc-a076-22c4cf1fe091.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8cc6930a-1c5f-49de-913e-8b208770704c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8cda15bb-8d38-41f6-b588-7d7739230ad9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8cf25fce-4a50-4eb3-9b71-f97c43530dcb.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8d3681c4-9be8-4f90-932c-cbd40897c908.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8d7ac69b-3274-4e4f-86f8-24db276581ae.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8da8b5e5-8cbe-4286-a011-3652d375e078.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8dbfe2f6-6c9b-4937-8bff-a38829fa92e7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8de9799f-9c57-4719-a38a-3f5ba8b903d4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8dfd5846-f3fb-4e4f-b495-d0c9d5a9fcab.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8e6feeec-02eb-4d14-8d93-9da815883888.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8e854dcc-b35a-4144-81a0-a0e038cbaccf.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8efc2195-9fd2-4718-a2af-3d63fa6ba6f2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8fa5ec64-1dfb-4df6-bf4b-4bad1e5b11ce.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-8fc23531-3538-470f-b75a-91fb6e146586.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-90291f0b-d1ba-4196-9e9b-16004b60ec48.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-904dc080-3d36-4142-a379-591fa179115b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-92a4dcb9-0f08-4c0d-ab31-564c5c8e73dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-92c80435-dc81-4a52-a87f-fcd2c5bff139.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-92dcf980-7af3-4131-8289-b5bb9cfcc0ac.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-933d5727-aa80-4162-95fa-42d691b4eb43.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-938c87ec-ed96-4165-9b80-2fca6d054d36.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-93c58a91-e709-4457-b410-3b636184653c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-94929c34-3107-402b-84d6-8c337a00ff38.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-94e864a7-3c45-4fe3-8e1b-130c9ec251ab.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-957064c9-4f59-4cb9-9fbc-fa4300c11440.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9671d153-0b01-44dd-8511-555eaceb58ce.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-970cd23d-8527-4862-9a38-ddca9ef448d1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-972b822f-86c3-4d52-8d9f-a81250a312d9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9837f036-a2d1-4e4b-99ae-5f71ebd2bcfd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9877427f-2a83-49ac-8382-5d24c5075a99.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9a008158-9213-4854-aa1d-e3494691f0b6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9a0d7fb4-d6b4-4ce0-9f84-6e28c4a80c48.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9bcadbbe-b38c-4a5a-b3e3-23a1a6a2bc2f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9c6cd951-bb1f-4eae-846e-23ce6ea43159.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9caa579e-1b6c-4801-a864-416483d4f6a5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9dccbbef-2a1f-4f56-b90b-23a5e2a436dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9dd55ead-b548-40d2-9c68-de2717032d16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9df95d5b-9334-4779-9286-1fe5048fe10c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-9f2c4cf8-a990-4817-8663-5f6c08938980.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a0b7c34e-e135-44cd-8555-7e4f08b08722.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a0d8380b-db4c-486d-8515-e7d14e28f274.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a1ccbe13-27ad-4385-9709-807aab56dc6d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a1fc670e-0022-4b8a-938f-dd9babfffef5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a2202b80-ff04-45b3-b0e4-c67e63771691.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a2354247-8d09-42e2-a005-6072d3a95577.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a26d78f3-3ce3-43ec-ad66-7e0086e95140.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a2c25873-01d4-4f2c-b06d-9291d9f89996.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a2d46001-f157-4ed2-b807-8c78b31e0808.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a3595d26-5029-4f63-90ac-27a07a4e3687.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a44ba632-88f2-481e-887f-66519c45ccce.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a5420de2-a19e-4d37-b3d4-6f0b39b18ed9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a5c788bc-8bc0-4d57-bed4-b0a195aef124.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a723ea6e-972f-43bf-85d6-5e63bbb7fde7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-a7e6dd31-3b57-44be-8276-08d8bdd6c115.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-aa3a9021-5841-4ef1-94a1-48782b2083ec.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-aa82b5cf-ad4c-400f-9bcd-669e6920bb76.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ab0e1db3-4213-4126-90c3-d3fcbf3c4d94.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ac901568-c47a-4ed9-bc92-f2d89bbb1074.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-aedd5030-7095-47f1-af86-14b73fdf456e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b01e168c-8778-4e3b-bbbc-0676ea37f1ab.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b1d2a6c7-ae90-4db7-81d2-2753743b4914.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b2621bf5-85f3-4d01-9528-dc73a1cf7ace.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b2f1b6b6-5588-4825-aed8-8f07623a69ee.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b3117412-8d32-4a2e-84c3-7c7a33858fe1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b3ded3ca-2450-4984-89ca-1da182570be0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b558ca2f-216b-48ec-afc1-7ddb67cd5f38.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b6dabb23-7055-40f8-81af-2beafaafef3c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b96d48e8-eef2-46b0-b316-f391bf9fd747.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-b9ad7364-30d6-4d92-80dd-0ff4dc50c717.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ba6477d8-386f-4587-ae07-52288d1fadad.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ba8d55e8-4bfe-43ef-a8b0-9da00676a6b3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-bb09251c-febd-42e6-8d1b-b8a5c5ebac71.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-bbf9a09e-f522-4de2-a48a-574831af1483.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-bcf756dc-7c9e-44f1-9774-f3d8b99c70a3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-bdfdf1fd-8c7d-433b-bd07-9593c959ee33.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-be773a13-a84f-4b72-99b7-c3ff34b0707a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c05f311d-16d0-4c36-9ffb-7e39bdcb4122.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c11a3b5a-df6d-4dba-94ab-35cd0010937f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c152b8e2-921c-421c-bbd9-add9071d4ede.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c1e4c157-3b31-43e7-bb15-f64455747cde.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c215b285-8871-4292-b4ec-c6aae41a6de4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c2871439-0ca8-4640-ae5a-df66dceae26d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c2c517a1-18bb-4329-9fd3-1240c22daeb6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c4066df2-0fe8-49a7-b41b-fde7a1151b6c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c49b0943-87f0-44c8-87bf-134bf8986d61.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c56f74c1-645c-49b3-9c8f-eb22a7582fa1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c6147b02-6bc2-4220-a2a6-9500e9ae3d9b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c6c9abf4-b628-4877-a3ee-e3d2053f0c98.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c93cc538-4573-4f98-b3fc-2f35a6422b2b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c9a996cd-edd2-42fa-b399-5f4c012e05f1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c9dd5210-3a77-4fcd-8e03-50b23bcbfc1e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-c9e5f055-f1dc-4a50-9822-64e129507af9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ca744984-b105-4a16-bb6b-6cdc4b85872e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-cb8b7936-9195-4b8b-bd93-73ae441eea32.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-cbaaeb9e-2a02-49dd-9236-f1d79ea9d478.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d00f22bb-98fb-4031-8c58-a8bfb935312f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d02bd6ec-384d-4293-a0d2-cc6b28ecada7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d08b52a0-5bc1-49d7-a48a-4d3629e73d60.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d2655c03-d6ff-4d4f-86cb-80d35b16f027.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d2d6b885-252f-4c33-bb50-8f4fe16b5c52.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d416a67b-224a-43a6-b274-c66e5e9ec8ad.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d4b26cbd-30a7-41ab-9ae8-3cc25e293283.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d4b28333-9910-40b0-8c0f-a4ba209bcf06.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d507e5dc-d0f9-4773-881f-6e3c704d7005.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d5085537-b811-4749-be19-80ed6d784970.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d65c630f-8209-4f9c-8943-67dbc05e618a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d6f76362-cf3a-4a50-a3a8-f9dd48daaf90.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d77801cb-7037-4ec7-9591-d34741b44f89.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d8855b26-4d1f-4fa5-9b76-49025968f47b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d921f936-e538-4c69-ac9c-6deaab10d3dd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-d96a6c36-0f21-43cb-9c3f-e2ead1887cdf.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-da86a13b-6ac6-4168-a574-861c98dfee2a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-dac3e843-65a6-4a2c-97db-0ee08d20f966.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-db44b978-44a5-4b98-b552-29a691ffcad2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-db47012d-d3d0-4e92-b214-9fea6c0591ca.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-dc82128e-052e-446e-8689-93ff0bb1c88e.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-de44b8ad-6fa7-4738-bc0c-0c822859e9ba.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-de455505-369c-4295-9e4f-3665f3ed8eb2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-dfe03bfa-69da-4393-870e-caebe67d8bbe.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e026e035-62f7-4040-b99e-d19cdbd39ae4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e0fc9aa2-f74d-4796-aabe-627b0ce99450.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e1e8ee78-f5f9-4cde-8238-8da7006ba34c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e2bd98d4-29a2-4bbc-8137-0bee8e57af8f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e502c8a1-ca1a-4996-aff4-8e5f7daab570.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e5a6655b-e7d4-4042-80ab-44bf6af9f9bc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e5aa6ed6-ff03-4c94-a9ec-9acab41b2cc9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e5c59060-d01f-44b9-9f81-746e6cb3b57b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e6356383-8bd8-4cc9-810c-c2983b8c013a.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e680421b-a380-41eb-8496-c31567b1861d.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e7a66280-5a61-4b59-8188-7ff434497aa9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e80bd4f9-cbd2-44d9-af8a-14aeef8d60f5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e85c0876-436c-4505-8943-700b28ae06ea.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e89f51ec-7c38-4810-b61b-1aee71ae92e9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-e9d4fb49-27f5-4419-81ae-78df7eb14306.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ea64bc03-3b96-489d-a796-c0ad72273a32.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-eadc199b-0528-4f91-9e16-94a262af84b2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-eb98bbf9-6f71-4628-868c-18b1d6a87b36.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ed24d566-3378-4684-955d-2d433acd4678.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ed3f6ad0-2307-4b99-9178-fe30fce3ef54.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-eeb7beab-fbf7-438a-aa62-17449dc4f153.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ef3aaad5-ff0b-4ca4-9101-92be67af5812.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f10b294c-65df-40f0-b485-16f2061ff5ac.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f1865bb9-0fd2-4150-b8c2-7c548f1212b2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f189cd00-bd79-4edc-850d-57fcbe5280ee.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f3601074-47fb-4198-9418-d3b1b3a8f2e8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f3941aab-0c32-4e03-be07-6cd6bf839569.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f3bd2fee-0ac5-4013-8ce2-d5c84b7af633.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f499122a-e43a-474e-84e6-dcc49cca7fdd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f541a078-d18b-4e8d-b8ac-6b4b478345f1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f550ff74-1155-4750-b533-49bb8145de66.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f59a0a5c-bde7-4319-85d3-154c69d28199.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f634a623-ed5a-4ed0-ade2-2c9e26b72b5c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f64ca7ab-ef82-4acd-8376-c2c9b92a8deb.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f64d9a5d-f7c5-406e-8d8b-2f2b16268e7b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f657dc65-c4c9-43ed-8dbd-2c563e31835b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f73cb654-790a-481f-8f74-16b0fe3121b1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f75b2750-dc0d-46d0-a839-36016d81bb84.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f7617789-ef64-4243-98ea-3009c405ebd3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f7f6e756-bce7-434d-8d6d-96685142bfe0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f8369bdd-cd66-458a-b4e3-6e91c108b47c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f8992d88-3c0b-4d43-9adf-dce0e909bba7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-f9e62aa8-3292-4646-8e55-a55d9ea2270c.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-faf6b0aa-79db-4aca-8893-0d90184dc678.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-fb14d0c1-f026-48f6-8a04-790a3a45de1f.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-fb614fb6-f652-4729-a604-10ceee36ddd9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-fc25ab2b-ad70-449b-ab81-14188b88b9f8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-fd5219e2-77d8-4ed7-9851-0ad68c334af3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-fe099cf0-2332-4131-a868-8480ebab9c9b.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ff1f7bde-e78c-4b36-a864-c109b3c95d36.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp-static-files/foo-ff53e4c6-04fe-404b-b947-a0e874125cf3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB2Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB2Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/index_old.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -524,10 +132,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1598">
-              <caret line="94" column="69" selection-start-line="94" selection-start-column="69" selection-end-line="94" selection-end-column="69" />
+            <state relative-caret-position="87">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1308#1309#0" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -536,8 +146,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+            <state relative-caret-position="387">
+              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -546,24 +156,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/setup.sql">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+            <state relative-caret-position="127">
+              <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -572,23 +168,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/bootstrap.sql">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/Response.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+            <state relative-caret-position="-255">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1027#1028#0" expanded="true" />
-                <element signature="e#1088#1089#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -598,7 +183,35 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#133#134#0" expanded="true" />
+                <element signature="e#174#175#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webroot/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="292" column="144" selection-start-line="292" selection-start-column="144" selection-end-line="292" selection-end-column="144" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="299" column="45" selection-start-line="299" selection-start-column="45" selection-end-line="299" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -609,22 +222,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="68">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/index.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5066">
-              <caret line="298" column="67" selection-start-line="298" selection-start-column="67" selection-end-line="298" selection-end-column="67" />
+            <state relative-caret-position="357">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#686#687#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -641,8 +263,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setCon</find>
-      <find>user</find>
       <find>getStat</find>
       <find>getStatus(</find>
       <find>_indexes</find>
@@ -671,6 +291,8 @@
       <find>moonBox</find>
       <find>Neure</find>
       <find>Oracle</find>
+      <find>enter this</find>
+      <find>&quot;hi</find>
     </findStrings>
     <replaceStrings>
       <replace>getInet</replace>
@@ -691,7 +313,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/uebungen/UEB3.java" />
         <option value="$PROJECT_DIR$/src/test/java/uebungen/UEB1.java" />
         <option value="$PROJECT_DIR$/src/test/java/uebungen/UEB2.java" />
         <option value="$PROJECT_DIR$/src/test/java/uebungen/UEB4.java" />
@@ -719,35 +340,36 @@
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TestPlugin.java" />
         <option value="$PROJECT_DIR$/webroot/index - Kopie.html" />
         <option value="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java" />
         <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Tests7Provider.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" />
         <option value="$PROJECT_DIR$/db/setup.sql" />
         <option value="$PROJECT_DIR$/db/bootstrap.sql" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/webroot/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/WebioServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/FileReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" />
+        <option value="$PROJECT_DIR$/webroot/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="365" />
-    <option name="y" value="195" />
+    <option name="x" value="525" />
+    <option name="y" value="-38" />
     <option name="width" value="2610" />
     <option name="height" value="1520" />
   </component>
@@ -821,16 +443,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="comp" type="462c0819:PsiDirectoryNode" />
-              <item name="imp" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -857,6 +469,15 @@
             <path>
               <item name="webio" type="b2602c69:ProjectViewProjectNode" />
               <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SWE1" type="462c0819:PsiDirectoryNode" />
+              <item name="unittests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webio" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="webroot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -871,7 +492,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578525926476" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578561374102" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -910,7 +531,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.webio [check]">
+  <component name="RunManager" selected="JUnit.TestWeb.testRequest">
     <configuration name="webio [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -965,7 +586,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tests7.temp_plugin_returns_list_of_temperatures_as_xml" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Tests7.test_plugin_utility_and_sql_setup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.webio.webio.test" />
       <extension name="coverage">
         <pattern>
@@ -975,7 +596,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="BIF.SWE1.unittests" />
       <option name="MAIN_CLASS_NAME" value="BIF.SWE1.unittests.Tests7" />
-      <option name="METHOD_NAME" value="temp_plugin_returns_list_of_temperatures_as_xml" />
+      <option name="METHOD_NAME" value="test_plugin_utility_and_sql_setup" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -987,11 +608,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.webio [check]" />
+        <item itemvalue="JUnit.TestWeb.testRequest" />
         <item itemvalue="JAR Application.webio-1.0-SNAPSHOT.jar" />
         <item itemvalue="Gradle.webio [jar]" />
-        <item itemvalue="JUnit.TestWeb.testRequest" />
-        <item itemvalue="JUnit.Tests7.temp_plugin_returns_list_of_temperatures_as_xml" />
+        <item itemvalue="Gradle.webio [check]" />
+        <item itemvalue="JUnit.Tests7.test_plugin_utility_and_sql_setup" />
       </list>
     </recent_temporary>
   </component>
@@ -1057,44 +678,44 @@
       <workItem from="1578321911221" duration="5504000" />
       <workItem from="1578394439648" duration="34000" />
       <workItem from="1578476068609" duration="30225000" />
-      <workItem from="1578553710737" duration="2010000" />
+      <workItem from="1578553710737" duration="5247000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 20h 59m 16s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
+    <history-entry file="Tests7_temp_plugin_has_data - 2020.01.09 at 09h 52m 07s.xml">
+      <configuration name="Tests7.temp_plugin_has_data" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 20h 59m 47s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
+    <history-entry file="Tests7_temp_plugin_has_data - 2020.01.09 at 09h 54m 03s.xml">
+      <configuration name="Tests7.temp_plugin_has_data" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 03m 02s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 04m 10s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 06m 49s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 07m 09s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 07m 29s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 07m 56s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestWeb_testRequest - 2020.01.08 at 21h 16m 56s.xml">
-      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="webio_[check] - 2020.01.09 at 08h 38m 29s.xml">
+    <history-entry file="webio_[check] - 2020.01.09 at 09h 55m 57s.xml">
       <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Tests7_html_main_index_file_must_contain - 2020.01.09 at 09h 58m 47s.xml">
+      <configuration name="Tests7.html_main_index_file_must_contain" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests7_html_main_index_file_must_contain - 2020.01.09 at 09h 59m 18s.xml">
+      <configuration name="Tests7.html_main_index_file_must_contain" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests7_readme_must_exist_and_contain - 2020.01.09 at 10h 00m 46s.xml">
+      <configuration name="Tests7.readme_must_exist_and_contain" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests7_test_plugin_utility_and_sql_setup - 2020.01.09 at 10h 02m 09s.xml">
+      <configuration name="Tests7.test_plugin_utility_and_sql_setup" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="webio_[check] - 2020.01.09 at 10h 02m 11s.xml">
+      <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="webio_[check] - 2020.01.09 at 10h 02m 58s.xml">
+      <configuration name="webio [check]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestWeb_testRequest - 2020.01.09 at 10h 16m 13s.xml">
+      <configuration name="TestWeb.testRequest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234193000" />
+    <option name="totallyTimeSpent" value="237430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -1111,8 +732,8 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4929483" weight="0.32624114" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7662861" visible="true" weight="0.30780143" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8381464" weight="0.41560283" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.76321137" weight="0.45588234" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8368032" visible="true" weight="0.24255319" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1122,9 +743,9 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Gradle" order="13" sideWeight="0.2337139" side_tool="true" visible="true" weight="0.30780143" />
+      <window_info anchor="bottom" id="Gradle" order="13" sideWeight="0.16319677" side_tool="true" visible="true" weight="0.24255319" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49697784" weight="0.32907802" />
+      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49563465" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1134,7 +755,7 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="9" sideWeight="0.49889135" visible="true" weight="0.3713902" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="9" sideWeight="0.49889135" visible="true" weight="0.36534587" />
       <window_info anchor="right" id="SciView" order="10" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.50110865" side_tool="true" visible="true" weight="0.32706514" />
     </layout>
@@ -1207,33 +828,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>203</line>
+          <line>210</line>
           <properties />
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>160</line>
+          <line>167</line>
           <properties />
           <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>158</line>
+          <line>165</line>
           <properties />
           <option name="timeStamp" value="324" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>139</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>137</line>
+          <line>144</line>
           <properties />
           <option name="timeStamp" value="332" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="335" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="339" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="340" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="341" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1424,16 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/comp.IPlugin">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1448,13 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -1517,16 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="250" column="90" selection-start-line="250" selection-start-column="90" selection-end-line="250" selection-end-column="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/UEB6.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1543,35 +1161,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/setup.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5066">
-          <caret line="298" column="67" selection-start-line="298" selection-start-column="67" selection-end-line="298" selection-end-column="67" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/ClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1604,16 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1663,16 +1242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="763">
@@ -1683,20 +1252,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="69" selection-start-line="94" selection-start-column="69" selection-end-line="94" selection-end-column="69" />
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="299" column="45" selection-start-line="299" selection-start-column="45" selection-end-line="299" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webroot/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="292" column="144" selection-start-line="292" selection-start-column="144" selection-end-line="292" selection-end-column="144" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#3;n#div#0;n#div#0;n#div#5;n#div#0;n#div#1;n#main#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#133#134#0" expanded="true" />
+            <element signature="e#174#175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/ToLower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        <state relative-caret-position="387">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -298,7 +298,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		obj.setStatusCode(200);
         // Setting a content type but no content is not allowed
 		obj.setContentType("text/html");
-		assertThrows(() -> {
+		assertThrows(Exception.class, () -> {
 			ByteArrayOutputStream ms = new ByteArrayOutputStream();
 			obj.send(ms);
 		});

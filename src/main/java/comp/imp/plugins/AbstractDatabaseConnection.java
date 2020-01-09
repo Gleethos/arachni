@@ -45,7 +45,6 @@ public abstract class AbstractDatabaseConnection {
         }
         if (conn != null) {
             try {
-                DatabaseMetaData meta = conn.getMetaData();
                 conn.setAutoCommit(false);
             } catch (SQLException e) {
                 e.printStackTrace();
