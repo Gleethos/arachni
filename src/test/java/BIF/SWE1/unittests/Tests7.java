@@ -248,7 +248,7 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
         assertTrue("Data in response body missing!", body.toString().contains("created"));
         assertTrue("Data in response body missing!", body.toString().contains("id"));
         assertTrue("Data in response body missing!", body.toString().contains("value"));
-        assertTrue("Data in response body missing!", body.toString().contains("<value>23.43</"));
+        assertTrue("Data in response body missing!", body.toString().contains("<value>16.0509</"));
         assertTrue("Data in response body missing!", body.toString().contains("<created>"));
         //assertTrue("Data in response body missing!", body.toString().contains(":45"));
     }

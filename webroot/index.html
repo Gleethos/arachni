@@ -260,14 +260,45 @@
                                     </div>
                                     <div class="col-lg-12" >
 
-                                        <form action="">
+                                        <div action="">
                                             Query:<br>
-                                            <input id="TempInput" type="text" style="width:100%" name="TempIn" value="hi"><br>
-                                        </form>
+                                            <input id="TempInput" type="text" style="width:100%" name="TempIn" value="SELECT count(*) FROM temperatures"><br>
+                                        </div>
+                                        <div id="PagingBox">
+                                            <button onclick="modPage(-1)" id="BTN_prev">Prev</button>
+                                                <span id="PageCounter" >1</span>
+                                            <button onclick="modPage(1)" id="BTN_next">Next</button>
+                                        </div>
+                                        <div>
+                                            <input id="CustomDate" type="text" style="width:6.25em" value="2012-02-13">
+                                            <button onclick="setDate()" id="BTN_date_set">-> enter this!</button>
+                                            <br>
+                                        </div>
 
-                                        <button id="GetTemp">Get Result!</button>
+                                        <script>
+                                            function modPage(change){
+                                                var current = parseInt($('#PageCounter').html());
+                                                current += change;
+                                                $('#PageCounter').html(current);
+                                                var query = "SELECT * FROM temperatures";
+                                                var from = (2020+current)+"-01-01 00:00:00";
+                                                var to = (2020+current)+"-12-31 23:59:59";
+                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
+                                                $('#TempInput').val(query)
+                                            }
+                                            function setDate(){
+                                                var date = $('#CustomDate').val();
+                                                console.log("new date: "+date);
+                                                var query = "SELECT * FROM temperatures";
+                                                var from = date+" 00:00:00";
+                                                var to = date+" 23:59:59";
+                                                query += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
+                                                $('#TempInput').val(query)
+                                            }
+                                        </script>
+                                        <button id="GetTemp">SEARCH</button>
                                         <div style="background-color: white; min-height: 4em; border: solid black 0.1em; border-radius: 0.4em;">
-                                            <div id="TempResult" src="overflow: scroll;" ></div>
+                                            <div id="TempResult" style="display: inline-block;  overflow: scroll;" ></div>
 
                                             <script>
                                                 $(document).ready(function() {
@@ -311,7 +342,7 @@
                                         </form>
                                         <button id="GetOracle">Get query result!</button>
                                         <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
-                                            <div id="OracleResult" src="" style = "overflow: scroll;" ></div>
+                                            <div id="OracleResult" src="" style = "display: inline-block; overflow: scroll;" ></div>
                                             <script>
                                                 $(document).ready(function() {
                                                     $('#GetOracle').click(function(e) {

@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 public class Response implements IResponse {
 
     Map<String, String> _headers = new HashMap<>();
-    String _content_type = "";
     int _status_code = -1;
     byte[] _content;
 
@@ -42,7 +41,6 @@ public class Response implements IResponse {
 
     @Override
     public void setContentType(String contentType) {
-        //_content_type = contentType;
         getHeaders().put("content-type", contentType);
     }
 
@@ -196,7 +194,7 @@ public class Response implements IResponse {
 
     @Override
     public String toString(){
-        return  "[Response]:(S-"+this.getStatus()+", "+"C-"+this._content_type+", L-"+this.getContentLength()+"); ";
+        return  "[Response]:(S-"+this.getStatus()+", "+"C-"+this.getContentType()+", L-"+this.getContentLength()+"); ";
     }
 
 }

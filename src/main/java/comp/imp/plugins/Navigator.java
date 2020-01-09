@@ -45,7 +45,7 @@ public class Navigator implements IPlugin {
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", "plain/text");
-        IUrl url = req.getUrl();//new Url(req.getContentString());//req.getUrl();
+        IUrl url = req.getUrl();
         String address = String.join("+", url.getParameter().values());
 
         String embedded;
@@ -91,7 +91,6 @@ public class Navigator implements IPlugin {
 
     public static final String getXmlElementString(Element parent, String name)
     {
-        //Element e = getXmlElement(parent, name);
         return null;//getXmlElementString(e);
     }
 
@@ -102,9 +101,6 @@ public class Navigator implements IPlugin {
         if (nl.getLength() > 0) { return nl.item(0).getNodeValue(); }
         return null;
     }
-
-
-
 
     public static final int getXmlElementInt(Element parent, String name, int defaultValue) {
         String value = getXmlElementString(parent, name);

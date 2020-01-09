@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB2Test" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-01-08T15:30:39" hostname="DESKTOP-6UFJ24U" time="0.011">
+<testsuite name="BIF.SWE1.unittests.UEB2Test" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-01-09T07:38:01" hostname="DESKTOP-6UFJ24U" time="0.007">
   <properties/>
   <testcase name="response_should_return_status_200" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_return_status_404" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_return_status_500" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="request_hello_world" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
+  <testcase name="request_hello_world" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="url_should_create_with_path_fragment" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="response_should_throw_error_when_no_statuscode_was_set" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
+  <testcase name="response_should_throw_error_when_no_statuscode_was_set" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
   <testcase name="response_hello_world" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_save_header" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="url_should_parse_fragment" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_isInValid_on_empty_request" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="request_should_be_invalid_on_method_foo" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
+  <testcase name="request_should_be_invalid_on_method_foo" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
   <testcase name="request_should_parse_url" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="response_should_save_statuscode" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_isValid_on_valid_request" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_isInValid_on_invalid_request" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="request_should_parse_method_post_lowercase" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
-  <testcase name="request_should_parse_method_get" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
+  <testcase name="request_should_parse_method_post_lowercase" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
+  <testcase name="request_should_parse_method_get" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_should_parse_method_post" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
-  <testcase name="url_should_split_segments" classname="BIF.SWE1.unittests.UEB2Test" time="0.002"/>
+  <testcase name="url_should_split_segments" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
   <testcase name="response_should_replace_header" classname="BIF.SWE1.unittests.UEB2Test" time="0.0"/>
   <testcase name="request_should_parse_url_2" classname="BIF.SWE1.unittests.UEB2Test" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[java.sql.SQLException: [SQLITE_CONSTRAINT]  Abort due to constraint violation (UNIQUE constraint failed: temperatures.id)
-	at org.sqlite.core.DB.newSQLException(DB.java:890)
-	at org.sqlite.core.DB.newSQLException(DB.java:901)
-	at org.sqlite.core.DB.execute(DB.java:810)
-	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:74)
-	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:61)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:124)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:69)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

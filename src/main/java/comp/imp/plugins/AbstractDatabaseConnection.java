@@ -13,6 +13,9 @@ import java.sql.*;
 
 public abstract class AbstractDatabaseConnection {
 
+    /**
+     * Connection settings: URL, User, Password!
+     */
     private String _url, _user, _pwd;
 
     AbstractDatabaseConnection(String url, String name, String password){
@@ -43,7 +46,7 @@ public abstract class AbstractDatabaseConnection {
         if (conn != null) {
             try {
                 DatabaseMetaData meta = conn.getMetaData();
-                conn.setAutoCommit(true);
+                conn.setAutoCommit(false);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -64,6 +67,10 @@ public abstract class AbstractDatabaseConnection {
         }
     }
 
+    /**
+     * Prints all tables of a connection!
+     * @param conn
+     */
     protected void _listOfTables(Connection conn){
         String sql =
                 "SELECT\n"+
@@ -89,6 +96,11 @@ public abstract class AbstractDatabaseConnection {
         }
     }
 
+    /**
+     * Defines and executes a SELECT * FROM on a connection.
+     * @param tableName
+     * @param conn
+     */
     private static void _selectAllFrom(String tableName, Connection conn){
         String sql = "SELECT * FROM "+tableName+";\n";
         try {//(Connection conn = DriverManager.getConnection(url)){
@@ -116,12 +128,16 @@ public abstract class AbstractDatabaseConnection {
         }
     }
 
-
-    protected static void _execute(String command, Connection conn){
+    /**
+     * SQL execution on connection!
+     * @param sql
+     * @param conn
+     */
+    protected static void _execute(String sql, Connection conn){
         try {
             Statement stmt = conn.createStatement();
             try {
-                stmt.execute(command);
+                stmt.execute(sql);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -130,9 +146,16 @@ public abstract class AbstractDatabaseConnection {
         }
     }
 
-
-
-    protected static JSONArray convert(ResultSet rs ) throws SQLException, JSONException
+    /**
+     * Converts a ResultSet into a JSON Object.
+     * It can be converted to a String and is sent
+     * to the client when requested (Ajax).
+     * @param rs
+     * @return
+     * @throws SQLException
+     * @throws JSONException
+     */
+    protected static JSONArray _toJSON(ResultSet rs ) throws SQLException, JSONException
     {
         JSONArray json = new JSONArray();
         ResultSetMetaData rsmd = rs.getMetaData();
@@ -192,10 +215,17 @@ public abstract class AbstractDatabaseConnection {
         return json;
     }
 
-    public static Document toDocument(ResultSet rs)
+    /**
+     * Converts a ResultSet into a Document data structure.
+     * This later on used to generate XML!
+     * @param rs This is a ResultSet fetched from a Database.
+     * @return
+     * @throws ParserConfigurationException
+     * @throws SQLException
+     */
+    protected static Document toDocument(ResultSet rs)
             throws ParserConfigurationException, SQLException
     {
-
         //Define a new Document object
         Document dataDoc = null;
         try {
@@ -234,45 +264,9 @@ public abstract class AbstractDatabaseConnection {
             //Add the row to the root element
             dataRoot.appendChild(rowEl);
         }
-
-
         //Add the root element to the document
         dataDoc.appendChild(dataRoot);
-
-
-
-
-
-        if(true){
-            return dataDoc;
-        }
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder        = factory.newDocumentBuilder();
-        Document doc                   = builder.newDocument();
-
-        Element results = doc.createElement("Results");
-        doc.appendChild(results);
-
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int colCount           = rsmd.getColumnCount();
-
-        while (rs.next())
-        {
-            Element row = doc.createElement("Row");
-            results.appendChild(row);
-
-            for (int i = 1; i <= colCount; i++)
-            {
-                String columnName = rsmd.getColumnName(i);
-                Object value      = rs.getObject(i);
-
-                Element node      = doc.createElement(columnName);
-                node.appendChild(doc.createTextNode(value.toString()));
-                row.appendChild(node);
-            }
-        }
-        return doc;
+        return dataDoc;
     }
 
 

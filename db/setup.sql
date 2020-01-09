@@ -1,38 +1,33 @@
 
-DROP TABLE IF EXISTS temperatures;
---<#SPLIT#>--
-CREATE TABLE temperatures(
-  id INTEGER NOT NULL PRIMARY KEY,
-  value DOUBLE NOT NULL,
-  created TEXT
-);
+INSERT INTO temperatures
+(value, created)
+VALUES
+(23.43, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
-(id, value, created)
+(value, created)
 VALUES
-(1, 23.43, datetime('now'));
+(11.251, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
-(id, value, created)
+(value, created)
 VALUES
-(2, 11.251, datetime('now'));
+(32.1, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
-(id, value, created)
+(value, created)
 VALUES
-(3, 32.1, datetime('now'));
+(-5.334, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
-(id, value, created)
+(value, created)
 VALUES
-(4, -5.334, datetime('now'));
+(14.8372, datetime('now'));
 --<#SPLIT#>--
 INSERT INTO temperatures
-(id, value, created)
+(value, created)
 VALUES
-(5, 14.8372, datetime('now'));
-
-
+(16.0509, datetime('2014-01-01 03:10:54'));
 
 
 

@@ -7,10 +7,8 @@ public class Main {
     }
 
     public static void initialize(){
-
         WebioServer server = new WebioServer();
         server.start();
-
     }
 
 

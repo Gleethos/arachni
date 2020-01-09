@@ -1,16 +1,9 @@
 package comp.imp.plugins;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONException;
-
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
-import org.w3c.dom.Document;
-
-import javax.xml.parsers.ParserConfigurationException;
 import java.sql.*;
 import java.util.Date;
 
@@ -48,15 +41,11 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
         sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
         String result = "";
 
-
-
-
-
         try {
             Statement stmt= conn.createStatement();
             System.out.println("sql: "+sql);
             ResultSet rs = stmt.executeQuery(sql);
-            result = convert(rs).toString();
+            result = _toJSON(rs).toString();
         } catch (SQLException e) {
             e.printStackTrace();
             result+=e.toString();
@@ -68,6 +57,11 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
             jsonData = result.getBytes();
         }
         response.setContent(jsonData);//<iframe src="https://www.google.com/maps?q=[ADDRESS]&output=embed"></iframe>
+        try {
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         _close(conn);
         return response;
     }

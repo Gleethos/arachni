@@ -9,12 +9,13 @@ import java.util.Date;
 
 public class WebioServer
 {
+    /**  Main port used to connect to WEBIO! */
     private static final int PORT = 8080;// port to listen connection
 
     /** Settings - Index Meaning:  **/
     private static final int IS_ALIVE = 0;
 
-    /**  Plugins:  **/
+    /**  Plugins are loaded and stored here:  **/
     private PluginManager _manager;
 
     /**==============================================================================================================**/
@@ -23,6 +24,7 @@ public class WebioServer
         _manager.add("FileReader");
         _manager.add("TestPlugin");
     }
+
 
     public void start()
     {
@@ -36,7 +38,8 @@ public class WebioServer
 
         /** User Interface: **/
         IOFrame user = new IOFrame("Webio - core.WebioServer - commandline", 1000, true);
-        while(true)//TODO: add quit command!
+        boolean alive = true;
+        while(alive)
         {
             String command = user.read();
             user.println(command);
@@ -46,7 +49,7 @@ public class WebioServer
                     user.println("[INFO]: starting server...");
                     if(!settings[IS_ALIVE]) {
                         serverRunner = new Thread(() -> {
-                            _run(settings);
+                            _run(settings);// <= The Server Thread listening for clients!
                         });
                         serverRunner.start();
                         settings[IS_ALIVE] = true;
@@ -64,17 +67,34 @@ public class WebioServer
                         user.println("[Warning]: core.WebioServer not running!");
                     }
                     break;
-
                 case "plugins":
+                    user.println("[INFO](plugins): ");
                     for (IPlugin plugin : _manager.getPlugins()) {
-                        user.println("[INFO]: "+plugin.toString());
+                        user.println(plugin.toString());
                     }
+                    user.println("");
+                    break;
+                case "quit":
+                    alive = false;
+                    break;
+                case "help":
+                    user.println("[INFO](help): Commands:");
+                    user.println("'start' => Starts your server. It can now handle requests from clients!");
+                    user.println("'stop' => Stops your server. It not handle requests from clients!");
+                    user.println("'plugins' => List of plugins installed!");
+                    user.println("'quit' => Shutdown Webio.\n");
                     break;
             }
         }
     }
 
-    private void _run(boolean[]  settings){
+    /**
+     * This method is run by the server thread.
+     * It listens for clients and creates ClientHandler for them.
+     * @param settings
+     */
+    private void _run(boolean[]  settings)
+    {
         IOFrame log = new IOFrame("Webio - core.WebioServer", 1000, false);
         try {
             ServerSocket serverConnect = new ServerSocket(PORT);

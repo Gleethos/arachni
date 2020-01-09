@@ -6,8 +6,6 @@ import comp.IResponse;
 import comp.imp.Response;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.Date;
 
 public class FileReader implements IPlugin {
@@ -35,30 +33,24 @@ public class FileReader implements IPlugin {
         if(req.getUrl().getRawUrl().equals("/")&&req.getMethod().equals("GET")){
             abillity *= 1 + (0.25 * (1-abillity));
         }
-        //abillity *= ((req.getContentType().equals("")?0:1));
         return abillity;
     }
 
     @Override
     public IResponse handle(IRequest req)
     {
-        //Path path = FileSystems.getDefault().getPath(".").toAbsolutePath();
-        //System.out.println(path);
         String method = req.getMethod();
         String fileRequested = req.getUrl().getFileName()+"."+req.getUrl().getExtension();
-
         System.out.println("File: "+fileRequested);
         if(fileRequested.equals(".")){
             fileRequested = WEB_ROOT+"/index"+fileRequested+"html";
         } else {
             fileRequested = req.getUrl().getPath();
         }
-        //-------------------------------------------------------
         IResponse response = new Response();
         response.setStatusCode(200);
         File file = new File(".", fileRequested);
         int fileLength = (int) file.length();
-
         if(fileLength==0){
             File maybe = new File(WEB_ROOT+"/"+fileRequested);
             if(maybe.length()!=0){
@@ -66,7 +58,6 @@ public class FileReader implements IPlugin {
                 fileLength = (int)file.length();
             }
         }
-
         String content = util.getContentType(fileRequested);
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
@@ -87,11 +78,9 @@ public class FileReader implements IPlugin {
                 e.printStackTrace();
             }
         }
-
         if (fileRequested.equals("")) {
             fileRequested += DEFAULT_FILE;
         }
-
         if (!method.equals("GET")  &&  !method.equals("HEAD"))
         {
             //NOT SUPPORTED ERROR!!

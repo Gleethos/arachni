@@ -15,50 +15,14 @@ public class Request implements IRequest {
     private IUrl _url;
     byte[] _content;
     InputStream _stream;
-
     Map<String, String> _headers = new HashMap<>();
-    String _content_type = "";
-    int _status_code = 0;
 
-    BufferedReader _in;
-
-    private String _extractLine(boolean readAll, int max){
-        String line = "";
-        int i=0;
-        int index = 0;
-        try{
-            while((index<max||max<0) && i!=-1 && (index<=1 || (i!=10) || readAll)){//&&i!=13) {//
-                i = _stream.read();
-                // converts integer to character and then to string
-                if(i!=-1 && ((i!=10 && i!=13) || readAll)){
-                    line += (char)i;
-                }else{
-                    //System.out.println(" ... ignored: "+(char)i);
-                }
-                //System.out.println("["+index+"]:"+line);
-                index++;
-                if(i==13){
-                    //System.out.println("");
-                    //_stream.read();//TODO!
-                }
-            }//[24]:ToBewLowered=k%C3%BCuhkj
-        } catch (Exception e){
-            System.out.println(e);
-        }
-        //line = (readAll)?line.trim():line;
-        return line;
-    }
 
     public Request(InputStream stream){
         _stream = stream;
-        //BufferedReader in = new BufferedReader(new InputStreamReader(stream));
         String input = null;
         while(input==null || !input.equals("")){
-            //try {
-                input = _extractLine(false, -1);//in.readLine();
-            //}// catch (IOException e) {
-             //   e.printStackTrace();
-            //}
+            input = _extractLine(false, -1);
             if(input!=null && !input.equals("")){
                 StringTokenizer parse = new StringTokenizer(input);
                 String key = parse.nextToken();
@@ -70,47 +34,47 @@ public class Request implements IRequest {
                 _headers.put(key.toLowerCase(), value);
             }
         }
-
         for(String method : METHODS){
             if(_headers.containsKey(method.toLowerCase())){
                 _method = method; break;
             }
         }
         _url = new Url(_headers.get(_method.toLowerCase()));
-        //_in = in;
-        //if(_method!="GET"){
-        //    try {
-        //        //in.mark(100);
-        //        String line = in.readLine();
-        //        _content = (line!=null)?line.getBytes():_content;
-        //        //in.reset();
-        //    } catch (IOException e) {
-        //        e.printStackTrace();
-        //    }
-        //}
-        //_extractContent();
-
-        //try {
-        //    _stream.reset();
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
     }
 
-    private void _extractContent(){
-        if(_content==null && _method!="GET"){//&& _in!=null
-            //try {
-                //in.mark(100);
-                int length = this.getContentLength();
-                String line = _extractLine(false, length);//_in.readLine();
-
-                _content = (line!=null)?line.getBytes():_content;
-                //in.reset();
-            //} catch (IOException e) {
-            //    e.printStackTrace();
-            //}
+    /**
+     * Reads lines from the _stream variable up to a limit! (max)
+     * @param readAll
+     * @param max
+     * @return
+     */
+    private String _extractLine(boolean readAll, int max){
+        String line = "";
+        int i=0;
+        int index = 0;
+        try{
+            while((index<max||max<0) && i!=-1 && (index<=1 || (i!=10) || readAll)){//&&i!=13) {//
+                i = _stream.read();
+                if(i!=-1 && ((i!=10 && i!=13) || readAll)){
+                    line += (char)i;
+                }
+                index++;
+            }
+        } catch (Exception e){
+            System.out.println(e);
         }
-        //_in = null;
+        return line;
+    }
+
+    /**
+     * Reads all content from stream!
+     */
+    private void _extractContent(){
+        if(_content==null && _method!="GET"){
+            int length = this.getContentLength();
+            String line = _extractLine(false, length);//_in.readLine();
+            _content = (line!=null)?line.getBytes():_content;
+        }
     }
 
     @Override

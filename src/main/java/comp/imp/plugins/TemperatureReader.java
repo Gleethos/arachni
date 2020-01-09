@@ -15,19 +15,13 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.sql.*;
 import java.util.Date;
-import java.util.Map;
 import java.util.Random;
 
 public class TemperatureReader extends AbstractDatabaseConnection implements IPlugin {
 
-    public TemperatureReader() {
-
-        super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
-
-        Connection conn = _createAndOrConnectToDatabase();
-        //---
-        String[] commands = new String[0];
-        File file = new File("db/", "setup.sql");
+    private static void _executeFile(String name, Connection conn){
+        String[] commands;
+        File file = new File("db/", name);
         int fileLength = (int) file.length();
         try {
             byte[] fileData = util.readFileData(file, fileLength);
@@ -36,41 +30,79 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             for(String command : commands){
                 _execute(command, conn);
             }
+            try {
+                conn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public TemperatureReader() {
+        super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
+        Connection conn = _createAndOrConnectToDatabase();
+        String check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='temperatures'";
+        int entryCount = 0;
+        try{
+            Statement stmt= conn.createStatement();
+            ResultSet rs = stmt.executeQuery(check);
+            String result = _toJSON(rs).toString();
+            System.out.println("Temp table exists? : "+result);
+            if(result.contains(":0")){
+                _executeFile("bootstrap.sql", conn);
+            } else {
+                check = "SELECT count(*) FROM temperatures";
+                rs = stmt.executeQuery(check);
+                result = _toJSON(rs).toString();
+                result = result.substring(13, result.length()-2);
+                entryCount = Integer.parseInt(result);
+            }
+        } catch (Exception e){
+
+        }
+        _executeFile("setup.sql", conn);
         _listOfTables(conn);
         _close(conn);
-        int startIndex = commands.length-1;
+        int startSupply = entryCount;
         Thread iot = new Thread(()->{
             long time = 100000000L;
-            for(int ti=0; ti<time; ti++){
+            for(int ti=startSupply; ti<time; ti++){
+                int tired = ti;
+                tired = (tired<10_000)?1:ti-10_000;
                 try {
-                    Thread.sleep(ti);
+                    Thread.sleep(tired);
                 } catch (Exception e){
 
                 }
-                double temp = Math.cos(1.2324453*ti)*60-15;
-                //YYYY-MM-DD HH:MM:SS
-
+                double temp = ((1+Math.cos(1.2324453*ti))/2)*(0.5+(Math.cos(new Random().nextInt()*ti)))*60;
                 String YYYY = "201"+(Math.abs(new Random().nextInt())%10);
                 String MM = ""+(1+Math.abs(new Random().nextInt())%12);
+                MM = (MM.length()==1)?"0"+MM:MM;
                 String DD = ""+(1+Math.abs(new Random().nextInt())%27);
+                DD = (DD.length()==1)?"0"+DD:DD;
                 String hh = ""+(Math.abs(new Random().nextInt())%24);
+                hh = (hh.length()==1)?"0"+hh:hh;
                 String mm = ""+""+(Math.abs(new Random().nextInt())%60);
+                mm = (mm.length()==1)?"0"+mm:mm;
                 String ss = ""+(Math.abs(new Random().nextInt())%60);
+                ss = (ss.length()==1)?"0"+ss:ss;
                 String date = YYYY+"-"+MM+"-"+DD+" "+hh+":"+mm+":"+ss;
                 String command =
-                        "INSERT INTO temperatures (id, value, created)\n" +
-                        "VALUES ("+(startIndex+ti)+", "+temp+", datetime('"+date+"'));";
+                        "INSERT INTO temperatures (value, created)\n" +
+                        "VALUES ("+temp+", datetime('"+date+"'));";
                 Connection iotConn = _createAndOrConnectToDatabase();
-                //_listOfTables(iotConn);
                 try {
                     _execute(command, iotConn);
+                    try {
+                        iotConn.commit();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e){
                     System.out.println("[ERROR]: Could not store new temperature because: "+e.getMessage());
                 }
-
                 _close(iotConn);
             }
         });
@@ -96,12 +128,10 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
-
         String content = (req.getUrl().getParameterCount()>0)?"text/xml":"plain/text";
         if(req.getUrl().getParameter().containsKey("asHtml")&&req.getUrl().getParameter().get("asHtml").equals("true")){
             content = "text/html";
         }
-
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
@@ -115,11 +145,22 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             try {
                 Statement stmt= conn.createStatement();
                 System.out.println("sql: "+sql);
-                ResultSet rs = stmt.executeQuery(sql);
 
                 if(req.getUrl().getParameterCount()==0){
-                    result = convert(rs).toString();
+                    ResultSet rs = stmt.executeQuery(sql);
+                    result = _toJSON(rs).toString();
                 } else {
+                    if(req.getUrl().getParameter().containsKey("from")||req.getUrl().getParameter().containsKey("date")){
+                        String date = req.getUrl().getParameter().get("date");
+                        String from = req.getUrl().getParameter().get("from");
+                        String to = req.getUrl().getParameter().get("to");
+                        from = (from==null)?date:from;
+                        to = (to==null)?date:to;
+                        from += (from.length()>10)?"":" 00:00:00";
+                        to += (to.length()>10)?"":" 23:59:59";
+                        sql += " WHERE created > date('"+from+"') AND created < date('"+to+"')";
+                    }
+                    ResultSet rs = stmt.executeQuery(sql);
                     Document doc = null;
                     try {
                         doc = toDocument(rs);
@@ -149,11 +190,16 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             }
             byte[] jsonData;
             try {
-                jsonData = result.getBytes();//result.getBytes("UTF-8");
+                jsonData = result.getBytes("UTF-8");
             } catch (Exception e) {
                 jsonData = result.getBytes();
             }
             response.setContent(jsonData);
+        }
+        try {
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         _close(conn);
         return response;

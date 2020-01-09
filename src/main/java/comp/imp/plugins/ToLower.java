@@ -9,7 +9,8 @@ import comp.imp.Response;
 import java.util.Date;
 
 
-public class ToLower implements IPlugin {
+public class ToLower implements IPlugin
+{
     @Override
     public float canHandle(IRequest req) {
         IUrl url = req.getUrl();
@@ -46,7 +47,7 @@ public class ToLower implements IPlugin {
         } catch (Exception e) {
             jsonData = toBeLowered.getBytes();
         }
-        response.setContent(jsonData);//<iframe src="https://www.google.com/maps?q=[ADDRESS]&output=embed"></iframe>
+        response.setContent(jsonData);
         return response;
     }
 
