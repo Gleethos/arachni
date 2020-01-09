@@ -5,6 +5,7 @@ import comp.IPluginManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -13,7 +14,6 @@ import java.util.*;
 public class PluginManager implements IPluginManager {
 
     Map<String, IPlugin> _plugins = new HashMap<>();
-    Map<String, IPlugin> _available = new HashMap<>();
 
     public PluginManager(){
         this.add("TestPlugin");
@@ -46,7 +46,9 @@ public class PluginManager implements IPluginManager {
             try {
                 if(!loadPlugin(plugin,"build/classes/java/main/comp/imp/plugins")){
                     if(!loadPlugin(plugin,"build/classes/java/test/BIF/SWE1/unittests/mocks")){
-                        throw new IllegalStateException("Plugin not found!");
+                        if(!loadPlugin(plugin,"plugins")) {
+                            throw new IllegalStateException("Plugin not found!");
+                        }
                     }
                 }
             } catch (IOException e) {
@@ -61,11 +63,10 @@ public class PluginManager implements IPluginManager {
     @Override
     public void clear() {
         _plugins = new HashMap<>();
-        _available =  new HashMap<>();
     }
 
-    public boolean loadPlugin(String pluginName, String packagePath) throws MalformedURLException, IOException, ClassNotFoundException {
-
+    public boolean loadPlugin(String pluginName, String packagePath) throws MalformedURLException, IOException, ClassNotFoundException
+    {
         File location = new File(packagePath);
         String packagePraefix = _extractPackagePrefix(location.getPath());
         File pluginLocations[] = location.listFiles((File file)->file.getName().endsWith(".jar")||file.getName().endsWith(".class"));
@@ -79,13 +80,15 @@ public class PluginManager implements IPluginManager {
         URLClassLoader classLoader = new URLClassLoader(urls);
         try {
             for(int i=0; i<pluginLocations.length; i++){
-                String[] expl = pluginLocations[i].toPath().getFileName().toString().split("\\.");
-                String name = expl[0];
-                expl = pluginName.split("\\.");
-                pluginName = expl[expl.length-1];
+                String[] fragments = pluginLocations[i].toPath().getFileName().toString().split("\\.");
+                String name = fragments[0];
+                fragments = pluginName.split("\\.");
+                pluginName = fragments[fragments.length-1];
                 if(name.equals(pluginName)){
-                    IPlugin target =
-                            (IPlugin)classLoader.loadClass(packagePraefix+name).newInstance();
+                    // Instantiate plugin:
+                    //=====================================================================================\\
+                    IPlugin target = (IPlugin)classLoader.loadClass(packagePraefix+name).newInstance();
+                    //=====================================================================================\\
                     _plugins.put(name, target);
                     try {
                         classLoader.close();
