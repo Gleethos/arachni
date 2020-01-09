@@ -5,7 +5,6 @@ import comp.IPluginManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -68,7 +67,7 @@ public class PluginManager implements IPluginManager {
     public boolean loadPlugin(String pluginName, String packagePath) throws MalformedURLException, IOException, ClassNotFoundException
     {
         File location = new File(packagePath);
-        String packagePraefix = _extractPackagePrefix(location.getPath());
+        String packagePraefix = _resolvePackagePrefix(location.getPath());
         File pluginLocations[] = location.listFiles((File file)->file.getName().endsWith(".jar")||file.getName().endsWith(".class"));
         URL url = null;
         try {
@@ -81,15 +80,15 @@ public class PluginManager implements IPluginManager {
         try {
             for(int i=0; i<pluginLocations.length; i++){
                 String[] fragments = pluginLocations[i].toPath().getFileName().toString().split("\\.");
-                String name = fragments[0];
+                String foundFileName = fragments[0];
                 fragments = pluginName.split("\\.");
                 pluginName = fragments[fragments.length-1];
-                if(name.equals(pluginName)){
+                if(foundFileName.equals(pluginName)){
                     // Instantiate plugin:
-                    //=====================================================================================\\
-                    IPlugin target = (IPlugin)classLoader.loadClass(packagePraefix+name).newInstance();
-                    //=====================================================================================\\
-                    _plugins.put(name, target);
+                    //==============================================================================================\\
+                    IPlugin target = (IPlugin)classLoader.loadClass(packagePraefix+foundFileName).newInstance();
+                    //==============================================================================================\\
+                    _plugins.put(foundFileName, target);
                     try {
                         classLoader.close();
                     } catch (IOException e) {
@@ -109,14 +108,12 @@ public class PluginManager implements IPluginManager {
         return false;
     }
 
-    private String _extractPackagePrefix(String path){
+    private String _resolvePackagePrefix(String path){
         String result = "";
         String[] parts = path.replace("\\", "/").split("/");
         boolean javaFound = false;
         for(String part : parts){
-            result += (javaFound&&!part.equals("main")&&!part.equals("test"))
-                    ?part+"."
-                    :"";
+            result += (javaFound&&!part.equals("main")&&!part.equals("test")) ?part+"." :"";
             javaFound = (part.equals("java"))?true:javaFound;
         }
         return result;

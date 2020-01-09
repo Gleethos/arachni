@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"BIF.SWE1"},{"l":"BIF.SWE1.uebungen"},{"l":"BIF.SWE1.unittests"},{"l":"BIF.SWE1.unittests.mocks"},{"l":"comp"},{"l":"comp.imp"},{"l":"comp.imp.plugins"},{"l":"core"}]

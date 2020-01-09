@@ -1,7 +1,6 @@
 package BIF.SWE1.unittests;
 
 import BIF.SWE1.uebungen.Tests7Provider;
-import BIF.SWE1.uebungen.UEB6;
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
@@ -308,6 +307,11 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
 
     }
 
+    @Test
+    public void setup_test() throws Exception {
+        Tests7Provider ueb = createInstance();
+        ueb.helloWorld();
+    }
 
     @Test
     public void index_file_must_contain(){
@@ -367,6 +371,25 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
         } catch (IOException e) {
             e.printStackTrace();
             assertTrue("Exception occurred! Could not read 'setup.sql'!", false);
+        }
+
+    }
+
+    @Test
+    public void index_file_must_contain3(){
+        File file = new File("webroot/", "index.html");
+        int fileLength = (int) file.length();
+        try {
+            byte[] fileData = IPlugin.util.readFileData(file, fileLength);
+            assertTrue(fileData!=null);
+            assertTrue(fileData.length>0);
+            String index = new String(fileData);
+            assertTrue(index!=null);
+            assertTrue(index.contains("Temp"));
+            assertTrue(index.contains("SELECT * FROM"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            assertTrue("Exception occurred! Could not read 'index.html'!", false);
         }
 
     }
