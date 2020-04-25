@@ -61,7 +61,7 @@ public class IOFrame extends JFrame{
 		this.add(scroll, BorderLayout.CENTER);
 		if(hasInput) {
 			_input_field = new JTextField();
-			_input_field.setToolTipText("Insert _input here!");
+			_input_field.setToolTipText("Insert input here!");
 			_input_field.setPreferredSize(new Dimension(0, 40));
 			_input_field.setBackground(Color.BLACK);
 			_input_field.setForeground(Color.CYAN);

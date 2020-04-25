@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> TAILWORLD </title>
+        <link rel="icon" href="/src/favicon/favicon.ico" >
+        <meta name="description" content="a world of tails">
+        <meta name="author" content="Daniel Nepp">
+        <meta name="keywords" content="Story, Tail">
+        <!-----------------------------------ROBOTS---------------------------------------------->
+        <meta name="robots" content="all">
+        <meta name="revisit-after" content="30 days">
+        <!-----------------------------------JQUERY---------------------------------------------->
+        <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <!-----------------------------------BOOTSTRAP------------------------------------------>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-----------------------------------CUSTOM CSS------------------------------------------>
+        <link rel="stylesheet" href="src/style.css">
+
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/sunburst.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+
+    </head>
+    <body>
+        <div id="header">
+            <div id="BirdBox" class="mainframe" style="background-image: url('src/main/distant_bgr.jpg');">
+
+                <nav class="" id="navTile">
+                    <div id="navContainer" class="">
+                        <div style = "" class = "topEarthGradient dynamicSideMargin">
+                            <h1>TAILWORLD</h1>
+                        </div>
+                        <div class="pull-right nightBox" id="NavbarMenu" >
+                            <ul class="nav navbar-right" id="NavbarList">
+                                <li>
+                                    <a href="index.html">
+                                        <img src="src/main/icons/house.png">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Gleethos/TAILWORLD">
+                                        <img src="src/main/icons/github-logo.png">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="main/index.html">
+                                        <img src="src/main/icons/cogwheel.png">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="navi">
+                        <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+                        <label for="mobile-nav" class="gaadiexp white" tabindex="0" style="margin-left: 0;"><span></span></label>
+                        <div role="navigation" class="header-nav">
+                            <div class="fixed-nav">
+                                <div class="menu">
+                                    <ul class="side-nav">
+                                        <li></li>
+                                        <li></li>
+                                        <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadContent('../TOC')">Table Of Content</a></li>
+                                        <li><a target="_blank" href="index.html">Home</a></li>
+                                        <li><a target="_blank" href="main/index.html">Documentation</a></li>
+                                        <li><a target="_blank" href="https://github.com/Gleethos/TAILWORLD">Github</a></li>
+                                        <li><a target="_blank" href="">Introduction</a></li>
+                                        <li><a target="_blank" href="">Reasons</a></li>
+                                        <li><a target="" href="coverage/test/html/index.html">Code Coverage</a>
+                                        <li><a target="" href="coverage/test/html/jacoco-sessions.html">Last Test Session</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="">
+                    <!----------------------------------LAYOUT------------------------------------------------->
+                    <main class="parallax">
+                        <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                            <div>
+                                <image src="src/main/parallax/woods.png"></image>
+                            </div>
+                        </div>
+                        <div class="parallax__layer parallax__layer--base">
+                            <div id="mainTile" class="cardBox dynamicSideMargin">
+                                <div class = "mainContentWrapper">
+                                    <div class = container-fluid>
+
+                                        <h1 id = "ContentTitle"></h1>
+
+                                        <script>
+                                            function loadContent(target){
+                                                $('#DynamicContent').hide("fast", function() {
+                                                    $('#ContentTitle').hide("fast", function(){
+                                                        var split = target.split("/");
+                                                        split = split[split.length-1];console.log(split);
+                                                        split = split.replace("TOC", "Table of Content");
+                                                        $('#ContentTitle').html(
+                                                            split.charAt(0).toUpperCase() + split.substring(1)
+                                                        ).show("fast");
+                                                    });
+                                                    $('#DynamicContent').html("").load('src/pages/'+target+'.html');
+                                                });
+                                                setTimeout(function() {
+                                                        hljs.initHighlighting.called = false;
+                                                        hljs.initHighlighting();
+                                                        $('#DynamicContent').show("fast");
+                                                    },
+                                                    500
+                                                );
+                                            }
+                                            $(document).ready(function(){loadContent('../TOC');});
+                                        </script>
+                                        <div id="DynamicContent" class = "row">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <footer>
+                    <section>
+                        <ul>
+                            <h4>
+                                Contact:
+                            </h4>
+                            <li>
+                                <a>
+                                    danneydan@gmx.at
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    gleethos@gmx.at
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+        <script src="https://www.vantajs.com/dist/vanta.birds.min.js"></script>
+        <script>
+            VANTA.BIRDS({
+                el: "#BirdBox",
+                backgroundColor: 0x0,
+                color1: 0x59cc65,
+                color2: 0xa6fc,
+                colorMode: "lerp",
+                birdSize: 0.70,
+                wingSpan: 17.00,
+                speedLimit: 4.00,
+                separation: 21.00,
+                alignment: 16.00,
+                cohesion: 25.00,
+                backgroundAlpha: 0.00
+            })
+        </script>
+    </body>
+</html>

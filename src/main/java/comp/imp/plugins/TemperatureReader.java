@@ -21,27 +21,6 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
     int _temp_count = 0;
 
-    private static void _executeFile(String name, Connection conn){
-        String[] commands;
-        File file = new File("db/", name);
-        int fileLength = (int) file.length();
-        try {
-            byte[] fileData = util.readFileData(file, fileLength);
-            String query = new String(fileData);
-            commands = query.split("--<#SPLIT#>--");
-            for(String command : commands){
-                _execute(command, conn);
-            }
-            try {
-                conn.commit();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public int tempCount(){
         return _temp_count;
     }
@@ -55,7 +34,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             Statement stmt= conn.createStatement();
             ResultSet rs = stmt.executeQuery(check);
             String result = _toJSON(rs).toString();
-            System.out.println("Temp table exists? : "+result);
+            //System.out.println("Temp table exists? : "+result);
             if(result.contains(":0")){
                 _executeFile("bootstrap.sql", conn);
             } else {
@@ -70,7 +49,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         }
         _temp_count = entryCount;
         _executeFile("setup.sql", conn);
-        _listOfTables(conn);
+        //_listOfTables(conn);
         _close(conn);
         int startSupply = entryCount;
         Thread iot = new Thread(()->{
@@ -123,6 +102,9 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         if(req.getUrl().getRawUrl().contains("Temp")){
             abillity *= 1 + (0.7 * (1-abillity));
         }
+        if(req.getUrl().getRawUrl().contains("Temperature")){
+            abillity *= 1 + (0.7 * (1-abillity));
+        }
         if(req.getUrl().getExtension().equals("")){
             abillity *= 1 + (0.15 * (1-abillity));
         }
@@ -151,7 +133,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             String result = "";
             try {
                 Statement stmt= conn.createStatement();
-                System.out.println("sql: "+sql);
+                //System.out.println("sql: "+sql);
 
                 if(req.getUrl().getParameterCount()==0){
                     ResultSet rs = stmt.executeQuery(sql);

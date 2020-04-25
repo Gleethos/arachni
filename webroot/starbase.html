@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> STARBASE </title>
+    <link rel="icon" href="/src/favicon/favicon.ico">
+    <meta name="description" content="a web server">
+    <meta name="author" content="Daniel Nepp">
+    <meta name="keywords" content="Database, server, Java, Swag">
+    <!-----------------------------------ROBOTS---------------------------------------------->
+    <meta name="robots" content="all">
+    <meta name="revisit-after" content="30 days">
+    <!-----------------------------------JQUERY---------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-----------------------------------BOOTSTRAP------------------------------------------>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-----------------------------------CUSTOM CSS------------------------------------------>
+    <link rel="stylesheet" href="src/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/sunburst.min.css">
+
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        button {
+            background-color: #00edfb;
+            border: none;
+            color: black;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 2px 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="header" class="">
+    <div id="BirdBox" class="mainframe"
+         style="background-image: url('src/main/space.jpg');">
+        <nav class="floatsUp" id="navTile">
+            <div id="navContainer" class="">
+                <div style="" class="topEarthGradient dynamicSideMargin">
+                    <h1>STARBASE</h1>
+                </div>
+                <div class="pull-right nightBox" id="NavbarMenu">
+                    <ul class="nav navbar-right" id="NavbarList">
+                        <li>
+                            <a href="showcase.html">
+                                <img src="src/main/icons/graph-nodes.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Gleethos/neureka">
+                                <img src="src/main/icons/github-logo.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="main/index.html">
+                                <img src="src/main/icons/cogwheel.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="navi">
+                <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+                <label for="mobile-nav" class="gaadiexp white" tabindex="0"
+                       style="margin-left: 0;"><span></span></label>
+                <div role="navigation" class="header-nav">
+                    <div class="fixed-nav">
+                        <div class="menu">
+                            <ul class="side-nav">
+                                <li></li>
+                                <li><a target="_blank" href="showcase.html">Examples</a></li>
+                                <li><a target="_blank" href="main/index.html">Documentation</a></li>
+                                <li><a target="_blank" href="https://github.com/Gleethos/neureka">Github</a></li>
+                                <li><a target="_blank" href="">Introduction</a></li>
+                                <li><a target="_blank" href="">Reasons</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="">
+            <!----------------------------------LAYOUT------------------------------------------------->
+            <main class="parallax">
+                <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                    <div>
+                        <image src="src/main/parallax/woods.png"></image>
+                    </div>
+                </div>
+                <div class="parallax__layer parallax__layer--base">
+                    <div id="mainTile" class="cardBox dynamicSideMargin">
+
+                        <div class="mainContentWrapper">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <h1>The Starbase Database!</h1>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <p>
+                                            Beyond SQL!<br>
+                                            By Daniel Nepp and Laurence Alscher.
+                                        </p>
+                                    </div>
+                                    <div class="contentBox">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                Essential tables and relations needed to conquer space and anything that might be encountered by a federation starship!
+                                                This database was inspired by the star trek franchise. It tries to model a database as one would expect it to exist within the star trek universe.
+                                                It contains a total of 17 tables and 9 views.
+                                                The database table structure is outlines below: (Views, Triggers and Procedures not included)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+
+                                        <img style= "width:100%;" src="src/main/Starbase_Table_Relations.PNG">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+
+                                    <div class="col-lg-12" >
+                                        <h3 >Take a Look:</h3>
+                                        <button id="GetOracle">Get query result!</button>
+                                        <button onclick="$('#OracleResult').html('')" >Clear</button>
+                                        <br><br>
+                                        <button onclick="query('entities')">Entities</button>
+                                        <button onclick="query('kinds')">Kinds</button>
+                                        <button onclick="query('beliefs')">Beliefs</button>
+                                        <button onclick="query('belief_relations')">Belief Relations</button>
+                                        <br>
+                                        <button onclick="query('entities_detailed')" style="background-color: #009c63">Entities Detailed</button>
+                                        <button onclick="query('religions')" style="background-color: #009c63">Religions</button>
+                                        <br>
+                                        <button onclick="query('affiliations')">Affiliations</button>
+                                        <button onclick="query('relations')">Relations</button>
+                                        <br>
+                                        <button onclick="query('orbital_objects')">Orbital Objects</button>
+                                        <button onclick="query('black_holes')">Black Holes</button>
+                                        <button onclick="query('stars')">Stars</button>
+                                        <button onclick="query('planets')">Planets</button>
+                                        <button onclick="query('moons')">Moons</button>
+                                        <button onclick="query('dwarf_planets')">Dwarf Planets</button>
+                                        <br>
+                                        <button onclick="query('orbital_objects_detailed')" style="background-color: #009c63">Orbital Objects Detailed</button>
+                                        <button onclick="query('black_holes_detailed')" style="background-color: #009c63">Black Holes Detailed</button>
+                                        <button onclick="query('stars_detailed')" style="background-color: #009c63">Stars Detailed</button>
+                                        <button onclick="query('moons_detailed')" style="background-color: #009c63">Moons Detailed</button>
+                                        <button onclick="query('planets_detailed')" style="background-color: #009c63">Planets Detailed</button>
+                                        <button onclick="query('dwarf_planets_detailed')" style="background-color: #009c63">Dwarf Planets Detailed</button>
+                                        <br>
+                                        <button onclick="query('vessels')">Vessels</button>
+                                        <button onclick="query('vessel_models')">Vessel Models</button>
+                                        <button onclick="query('vessel_components')">Vessel Components</button>
+                                        <button onclick="query('vessel_component_relations')">Vessel Component Relations</button>
+                                        <button onclick="query('crew')">Crew</button>
+                                        <br>
+
+                                        <input id="OracleInput" style = "width: 100%" type="text" name="" value="SELECT * FROM stars">
+                                        <br>
+                                        <div style="background-color: white; border: solid black 0.1em; border-radius: 0.4em;">
+                                            <style>
+                                                #OracleResult td{
+                                                    padding: 0.45em;
+                                                    border: 1px solid black;
+                                                }
+                                            </style>
+                                            <div id="OracleResult" src="" style = "display: inline-block; overflow: scroll;" ></div>
+                                            <script>
+                                                function query(tablename){
+                                                    $('#OracleInput').val("SELECT * FROM "+tablename);
+                                                    SendQueryRequest('Oracle', 'OracleInput', 'OracleResult');
+                                                }
+                                                $(document).ready(function() {
+                                                    $('#GetOracle').click(function(e) {
+                                                        e.preventDefault();
+                                                        SendQueryRequest('Oracle', 'OracleInput', 'OracleResult');
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mainContentWrapper">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-sm-12 col-md-12">
+                                        <h2>Documentation</h2>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>Space</h3>
+                                            <p>
+                                                Table: orbital_objects <br>
+                                                Description: Newtonian objects within space. Are referenced by other tables (inheritance)
+                                                <br><br>
+                                                Table: stars <br>
+                                                Description: Specify an orbital object by referencing one (inheritance)!
+                                                <br><br>
+                                                Table: planets <br>
+                                                Description: Specify an orbital object by referencing one (inheritance)!
+                                                <br><br>
+                                                Table: dwarf_planets <br>
+                                                Description: Specify an orbital object by referencing one (inheritance)!
+                                                <br><br>
+                                                Table: black_holes <br>
+                                                Description: Specify an orbital object by referencing one (inheritance)!
+                                                <br><br>
+                                                Table: moons<br>
+                                                Description: Specify an orbital object by referencing one (inheritance)!
+                                                <br><br>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>Creatures</h3>
+                                            <p>
+
+                                                Table: kinds <br>
+                                                Description: Are referenced by entities! Specifies/represents race/species.
+                                                <br><br>
+                                                Table: entities <br>
+                                                Description: Reference by kinds! Are instances of kinds with names. (a person for example)
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>Politics</h3>
+                                            <p>
+
+                                                Table: affiliations <br>
+                                                Description: Represents a political affiliation within the star-trek universe.
+                                                <br><br>
+                                                Table: relations <br>
+                                                Description: Specifies the sentiment between affiliations. (friendly/hostile)
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>Space Craft:</h3>
+                                            <p>
+
+                                                Table: vessel_models <br>
+                                                Description: Represents ship/vessel model like a Car would have a model...
+                                                <br><br>
+                                                Table: vessel_components <br>
+                                                Description: Specifies components of a vessel. (engine, teleporter, rooms, medbay...)
+                                                <br><br>
+                                                Table: vessel_component_relations <br>
+                                                Description: Vessel components are combined via this table to form the architecture of a ship model. The model a certain relation configuration represents is being referenced by the components themselves.
+                                                <br><br>
+                                                Table: vessels <br>
+                                                Description: Specifies an instance of a vessel model!
+                                                <br><br>
+                                                Table: crew <br>
+                                                Description: Represents the crew on a vessel! (vessel instance is referenced)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>Culture</h3>
+                                            <p>
+
+                                                Table: beliefs <br>
+                                                Description: Can be anything that is 'beliefed'. A story, or even an entire religion.
+                                                <br><br>
+                                                Table: belief_relations <br>
+                                                Description: Outlines how beliefs are related with oneanother. A religion for example would refernce a set of child beliefs
+                                                <br><br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="contentBox">
+                                            <h3>INDEXES:</h3>
+                                            <p>
+                                                (Chosen based on use: Names are queried more often!)
+                                                <br><br>
+                                                entities_forename_index ON entities.forename <br>
+                                                entities_surname_index ON entities.surname <br>
+                                                beliefs_name_index ON beliefs.name <br>
+                                                vessel_models_name_index ON vessel_models.name <br>
+                                                vessel_components_name_index ON vessel_components.name <br>
+                                                affiliations_name_index ON affiliations.name <br>
+                                                kinds_name_index ON kinds.name <br>
+                                                stars_name_index ON stars.name <br>
+                                                planets_name_index ON planets.name <br>
+                                                moons_name_index ON moons.name <br>
+                                                black_holes_name_index ON black_holes.name
+
+
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+
+                                    </div>
+                                    <div class="col-sm 12 col-md-6">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            function SendQueryRequest(plugin, inSelector, outSelector){
+                $("#"+outSelector).html("Loading...");
+                $.ajax({
+                    type: 'POST',
+                    url: '/'+plugin,
+                    data: {
+                        query: $('#'+inSelector).val()
+                    },
+                    success: function(data) {
+                        $('#'+outSelector).html("");
+                        console.log(data);
+                        CreateTableFromJSON(outSelector, JSON.parse(data));
+                        $('#'+outSelector).find('table').attr('id', plugin+'ResultTable');
+                        //$('#'+plugin+'ResultTable').DataTable();
+                    }
+                });
+            }
+            function CreateTableFromJSON(selector, jsonData) {
+                // EXTRACT VALUE FOR HTML HEADER.
+                var col = [];
+                for (var i = 0; i < jsonData.length; i++) {
+                    for (var key in jsonData[i]) {
+                        if (col.indexOf(key) === -1) {
+                            col.push(key);
+                        }
+                    }
+                }
+                // CREATE DYNAMIC TABLE.
+                var table = document.createElement("table");
+                // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+                var tr = table.insertRow(-1);                   // TABLE ROW.
+                for (var i = 0; i < col.length; i++) {
+                    var th = document.createElement("th");      // TABLE HEADER.
+                    th.innerHTML = col[i];
+                    tr.appendChild(th);
+                }
+                // ADD JSON DATA TO THE TABLE AS ROWS.
+                for (var i = 0; i < jsonData.length; i++) {
+                    tr = table.insertRow(-1);
+                    for (var j = 0; j < col.length; j++) {
+                        var tabCell = tr.insertCell(-1);
+                        tabCell.innerHTML = jsonData[i][col[j]];
+                    }
+                }
+                // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                var divContainer = document.getElementById(selector);
+                divContainer.innerHTML = "";
+                divContainer.appendChild(table);
+            }
+        </script>
+        <footer>
+            <section>
+                <ul>
+                    <h4>
+                        Contact:
+                    </h4>
+                    <li>
+                        <a>
+                            danneydan@gmx.at
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            gleethos@gmx.at
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </footer>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+<script src="https://www.vantajs.com/dist/vanta.birds.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.r95.min.js"></script>
+<script src="https://www.vantajs.com/dist/vanta.globe.min.js"></script>
+<script>
+    //VANTA.BIRDS({
+    //    el: "#BirdBox",
+    //    color1: 0xd00ff,
+    //    colorMode: "lerp",
+    //    birdSize: 0.70,
+    //    wingSpan: 17.00,
+    //    speedLimit: 4.00,
+    //    separation: 21.00,
+    //    alignment: 16.00,
+    //    cohesion: 25.00,
+    //    backgroundAlpha: 0.00
+    //})
+    //VANTA.BIRDS({
+    //    el: "#BirdBox",
+    //    backgroundColor: 0x0,
+    //    color1: 0x59cc65,
+    //    color2: 0xa6fc,
+    //    colorMode: "lerp",
+    //    birdSize: 0.70,
+    //    wingSpan: 17.00,
+    //    speedLimit: 4.00,
+    //    separation: 21.00,
+    //    alignment: 16.00,
+    //    cohesion: 25.00,
+    //    backgroundAlpha: 0.00
+    //});
+    VANTA.GLOBE({
+        el: "#BirdBox",
+        mouseControls: true,
+        touchControls: true,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundAlpha: 0.00,
+        color: 0x97ff96,
+        size: 0.70
+    });
+</script>
+</body>
+</html>

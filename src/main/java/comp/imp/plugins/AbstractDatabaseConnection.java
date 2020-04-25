@@ -1,5 +1,6 @@
 package comp.imp.plugins;
 
+import comp.IPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,6 +10,8 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 
 public abstract class AbstractDatabaseConnection {
@@ -161,9 +164,71 @@ public abstract class AbstractDatabaseConnection {
 
         while(rs.next()) {
             int numColumns = rsmd.getColumnCount();
+            JSONObject jo = new JSONObject();
+
+            for (int i=1; i<numColumns+1; i++)
+            {
+                String column_name = rsmd.getColumnName(i);
+
+                if(rsmd.getColumnType(i)==java.sql.Types.ARRAY){
+                    jo.put(column_name, rs.getArray(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.BIGINT){
+                    jo.put(column_name, rs.getInt(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.BOOLEAN){
+                    jo.put(column_name, rs.getBoolean(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.BLOB){
+                    jo.put(column_name, rs.getBlob(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.DOUBLE){
+                    jo.put(column_name, rs.getDouble(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.FLOAT){
+                    jo.put(column_name, rs.getFloat(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.INTEGER){
+                    jo.put(column_name, rs.getInt(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.NVARCHAR){
+                    jo.put(column_name, rs.getNString(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.VARCHAR){
+                    jo.put(column_name, rs.getString(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.TINYINT){
+                    jo.put(column_name, rs.getInt(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.SMALLINT){
+                    jo.put(column_name, rs.getInt(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.DATE){
+                    jo.put(column_name, rs.getDate(column_name));
+                }
+                else if(rsmd.getColumnType(i)==java.sql.Types.TIMESTAMP){
+                    jo.put(column_name, rs.getTimestamp(column_name));
+                }
+                else{
+                    jo.put(column_name, rs.getObject(column_name));
+                }
+            }
+            json.put(jo);
+        }
+        return json;
+    }
+
+    protected static JSONArray _toCRUD(ResultSet rs, String mode) throws SQLException, JSONException
+    {
+        JSONArray json = new JSONArray();//TODO:!!!!!
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        while(rs.next()) {
+            int numColumns = rsmd.getColumnCount();
             JSONObject obj = new JSONObject();
 
-            for (int i=1; i<numColumns+1; i++) {
+            for (int i=1; i<numColumns+1; i++)
+            {
                 String column_name = rsmd.getColumnName(i);
 
                 if(rsmd.getColumnType(i)==java.sql.Types.ARRAY){
@@ -267,6 +332,30 @@ public abstract class AbstractDatabaseConnection {
         dataDoc.appendChild(dataRoot);
         return dataDoc;
     }
+
+
+
+    protected static void _executeFile(String name, Connection conn){
+        String[] commands;
+        File file = new File("db/", name);
+        int fileLength = (int) file.length();
+        try {
+            byte[] fileData = IPlugin.util.readFileData(file, fileLength);
+            String query = new String(fileData);
+            commands = query.split("--<#SPLIT#>--");
+            for(String command : commands){
+                _execute(command, conn);
+            }
+            try {
+                conn.commit();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

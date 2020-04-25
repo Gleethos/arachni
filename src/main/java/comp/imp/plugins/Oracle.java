@@ -47,7 +47,7 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
 
         try {
             Statement stmt= conn.createStatement();
-            System.out.println("sql: "+sql);
+            //System.out.println("sql: "+sql);
             ResultSet rs = stmt.executeQuery(sql);
             result = _toJSON(rs).toString();
         } catch (SQLException e) {
