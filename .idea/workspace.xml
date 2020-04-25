@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webio.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/tailworld_setup.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webroot/src/main/distant_bgr.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webroot/starbase.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webroot/tailworld.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -25,15 +14,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/core/IOFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/core/IOFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" afterDir="false" />
@@ -54,56 +41,17 @@
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPlugin$util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IPluginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/IUrl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/PluginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Response.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/Url.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/FileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Navigator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/Oracle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TemperatureReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/TestPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/comp/imp/plugins/ToLower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/ClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/IOFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/IOFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/core/WebioServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/services/comp.IPlugin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/TestWeb.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/Tests7Provider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/uebungen/UEB6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/AbstractTestFixture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/RequestHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/Tests7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB1Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB2Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB3Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB4Test$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB4Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB5Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/UEB6Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/mocks/Ueb5NoTestPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/BIF/SWE1/unittests/mocks/Ueb5TestPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/IOFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/IOFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/src/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webroot/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webroot/tailworld.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/tailworld.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,16 +82,22 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="webio" type="f1a62948:ProjectNode" />
+                <item name="arachni" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="webio" type="f1a62948:ProjectNode" />
+                <item name="arachni" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="webio" type="f1a62948:ProjectNode" />
+                <item name="arachni" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="arachni" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="verification" type="c8890929:TasksNode$1" />
               </path>
@@ -216,6 +170,63 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.webio [check]">
+    <configuration name="Tests7" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Tests7&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests7.temp_plugin_temp_database_gets_bigger_over_time" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Tests7.temp_plugin_temp_database_gets_bigger_over_time&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="arachni [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="webio [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -228,44 +239,6 @@
         <option name="taskNames">
           <list>
             <option value="check" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="webio [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="classes" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="webio [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -290,17 +263,13 @@
         <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="webio-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/webio-1.0-SNAPSHOT.jar" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.webio [check]" />
+        <item itemvalue="Gradle.Tests7" />
+        <item itemvalue="Gradle.Tests7.temp_plugin_temp_database_gets_bigger_over_time" />
+        <item itemvalue="Gradle.arachni [clean]" />
         <item itemvalue="JUnit.TestWeb.testServerStart" />
-        <item itemvalue="JAR Application.webio-1.0-SNAPSHOT.jar" />
-        <item itemvalue="Gradle.webio [jar]" />
-        <item itemvalue="Gradle.webio [classes]" />
       </list>
     </recent_temporary>
   </component>
@@ -383,6 +352,8 @@
       <workItem from="1584869991087" duration="354000" />
       <workItem from="1585247354218" duration="1404000" />
       <workItem from="1585264146233" duration="679000" />
+      <workItem from="1587812528768" duration="461000" />
+      <workItem from="1587816769531" duration="15346000" />
     </task>
     <servers />
   </component>
@@ -406,30 +377,122 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585247543337" />
-    <state width="707" height="224" key="GridCell.Tab.0.bottom" timestamp="1585251342098">
+    <state width="1136" height="327" key="GridCell.Tab.0.bottom" timestamp="1587835932113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="707" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585251342098" />
-    <state width="707" height="224" key="GridCell.Tab.0.center" timestamp="1585251342098">
+    <state width="1136" height="327" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.0.center" timestamp="1587835932112">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="707" height="224" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585251342098" />
-    <state width="707" height="224" key="GridCell.Tab.0.left" timestamp="1585251342098">
+    <state width="1136" height="327" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932112" />
+    <state width="1136" height="327" key="GridCell.Tab.0.left" timestamp="1587835932112">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="707" height="224" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585251342098" />
-    <state width="707" height="224" key="GridCell.Tab.0.right" timestamp="1585251342098">
+    <state width="1136" height="327" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932112" />
+    <state width="1136" height="327" key="GridCell.Tab.0.right" timestamp="1587835932113">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="707" height="224" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585251342098" />
+    <state width="1136" height="327" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.1.bottom" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.1.center" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.1.left" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.1.right" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.2.bottom" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
+    <state width="1136" height="327" key="GridCell.Tab.2.center" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
+    <state width="1136" height="327" key="GridCell.Tab.2.left" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
+    <state width="1136" height="327" key="GridCell.Tab.2.right" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
+    <state width="1136" height="327" key="GridCell.Tab.3.bottom" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.3.center" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.3.left" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.3.right" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.4.bottom" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.4.center" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.4.left" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.4.right" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.5.bottom" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
+    <state width="1136" height="327" key="GridCell.Tab.5.center" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.5.left" timestamp="1587835932113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1587835932113" />
+    <state width="1136" height="327" key="GridCell.Tab.5.right" timestamp="1587835932114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1136" height="327" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1587835932114" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1585247373505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1585247373505" />
+    <state width="386" height="416" key="XDebugger.FullValuePopup" timestamp="1587835826847">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="386" height="416" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1587835826847" />
+    <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587827936245">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1587827936245" />
     <state x="477" y="146" width="582" height="532" key="find.popup" timestamp="1585250943069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="146" width="582" height="532" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585250943069" />
+    <state x="426" y="188" key="run.anything.popup" timestamp="1587822496916">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="426" y="188" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587822496916" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -456,27 +519,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>192</line>
+          <line>194</line>
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>149</line>
+          <line>151</line>
           <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>147</line>
+          <line>149</line>
           <option name="timeStamp" value="324" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>128</line>
+          <line>130</line>
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>126</line>
+          <line>128</line>
           <option name="timeStamp" value="332" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -495,14 +558,14 @@
           <option name="timeStamp" value="341" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="343" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="345" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
-          <line>161</line>
-          <option name="timeStamp" value="344" />
+          <line>118</line>
+          <option name="timeStamp" value="348" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -102,12 +102,11 @@
                                                     $('#ContentTitle').hide("fast", function(){
                                                         var split = target.split("/");
                                                         split = split[split.length-1];console.log(split);
-                                                        split = split.replace("TOC", "Table of Content");
                                                         $('#ContentTitle').html(
                                                             split.charAt(0).toUpperCase() + split.substring(1)
                                                         ).show("fast");
                                                     });
-                                                    $('#DynamicContent').html("").load('src/pages/'+target+'.html');
+                                                    $('#DynamicContent').html("").load('CRUD/search');
                                                 });
                                                 setTimeout(function() {
                                                         hljs.initHighlighting.called = false;
@@ -117,7 +116,7 @@
                                                     500
                                                 );
                                             }
-                                            $(document).ready(function(){loadContent('../TOC');});
+                                            $(document).ready(function(){loadContent('search');});
                                         </script>
                                         <div id="DynamicContent" class = "row">
 

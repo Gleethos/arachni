@@ -27,7 +27,8 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
     public TemperatureReader() {
         super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
-        Connection conn = _createAndOrConnectToDatabase();
+        _createAndOrConnectToDatabase();
+        Connection conn = _connection;
         String check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='temperatures'";
         int entryCount = 0;
         try{
@@ -36,7 +37,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             String result = _toJSON(rs).toString();
             //System.out.println("Temp table exists? : "+result);
             if(result.contains(":0")){
-                _executeFile("bootstrap.sql", conn);
+                _executeFile("bootstrap.sql");
             } else {
                 check = "SELECT count(*) FROM temperatures";
                 rs = stmt.executeQuery(check);
@@ -48,9 +49,8 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
         }
         _temp_count = entryCount;
-        _executeFile("setup.sql", conn);
-        //_listOfTables(conn);
-        _close(conn);
+        _executeFile("setup.sql");
+        _close();
         int startSupply = entryCount;
         Thread iot = new Thread(()->{
             long time = 100000000L;
@@ -78,9 +78,10 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 String command =
                         "INSERT INTO temperatures (value, created)\n" +
                         "VALUES ("+temp+", datetime('"+date+"'));";
-                Connection iotConn = _createAndOrConnectToDatabase();
+                _createAndOrConnectToDatabase();
+                Connection iotConn = _connection;
                 try {
-                    _execute(command, iotConn);
+                    _execute(command);
                     try {
                         iotConn.commit();
                     } catch (SQLException e) {
@@ -89,7 +90,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 } catch (Exception e){
                     System.out.println("[ERROR]: Could not store new temperature because: "+e.getMessage());
                 }
-                _close(iotConn);
+                _close();
             }
         });
         iot.start();
@@ -113,7 +114,8 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
     @Override
     public IResponse handle(IRequest req) {
-        Connection conn = _createAndOrConnectToDatabase();
+        _createAndOrConnectToDatabase();
+        Connection conn = _connection;
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
@@ -190,7 +192,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        _close(conn);
+        _close();
         return response;
     }
 

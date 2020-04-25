@@ -32,7 +32,8 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
 
     @Override
     public IResponse handle(IRequest req) {
-        Connection conn = _createAndOrConnectToDatabase();
+        _createAndOrConnectToDatabase();
+        Connection conn = _connection;
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
@@ -42,12 +43,11 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
         response.getHeaders().put("content-type", content);
         response.getHeaders().put("content-length", String.valueOf(contentLength));
         String sql = util.decodeValue(req.getContentString());
-        sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;
+        sql = (sql.startsWith("query=")) ? sql.substring(6, sql.length()) : sql;
         String result = "";
 
         try {
             Statement stmt= conn.createStatement();
-            //System.out.println("sql: "+sql);
             ResultSet rs = stmt.executeQuery(sql);
             result = _toJSON(rs).toString();
         } catch (SQLException e) {
@@ -60,13 +60,13 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
         } catch (Exception e) {
             jsonData = result.getBytes();
         }
-        response.setContent(jsonData);//<iframe src="https://www.google.com/maps?q=[ADDRESS]&output=embed"></iframe>
+        response.setContent(jsonData);
         try {
             conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        _close(conn);
+        _close();
         return response;
     }
 

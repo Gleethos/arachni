@@ -13,6 +13,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 public abstract class AbstractDatabaseConnection {
 
@@ -20,6 +25,8 @@ public abstract class AbstractDatabaseConnection {
      * Connection settings: URL, User, Password!
      */
     private String _url, _user, _pwd;
+
+    protected Connection _connection;
 
     AbstractDatabaseConnection(String url, String name, String password){
         _url = url;
@@ -30,38 +37,37 @@ public abstract class AbstractDatabaseConnection {
     /**
      * Connect to a sample database
      */
-    protected Connection _createAndOrConnectToDatabase()
+    protected void _createAndOrConnectToDatabase()
     {
-        Connection conn = null;
+        this._connection = null;
         if(_user.equals("")||_pwd.equals("")){
             try {
-                conn = DriverManager.getConnection(_url);
+                _connection = DriverManager.getConnection(_url);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         } else {
             try {
-                conn = DriverManager.getConnection(_url, _user, _pwd);
+                _connection = DriverManager.getConnection(_url, _user, _pwd);
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         }
-        if (conn != null) {
+        if (_connection != null) {
             try {
-                conn.setAutoCommit(false);
+                _connection.setAutoCommit(false);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            return conn;
         }
-        return null;
     }
 
 
     /**
      * Closing Connection!
      */
-    protected void _close(Connection conn){
+    protected void _close(){
+        Connection conn = _connection;
         try {
             conn.close();
         } catch (SQLException e) {
@@ -71,25 +77,61 @@ public abstract class AbstractDatabaseConnection {
 
     /**
      * Prints all tables of a connection!
-     * @param conn
      */
-    protected void _listOfTables(Connection conn){
-        String sql =
-                "SELECT\n"+
-                        "name\n"+
-                        "FROM\n"+
-                        "sqlite_master\n"+
-                        "WHERE\n"+
-                        "type ='table' AND\n"+
-                        "name NOT LIKE 'sqlite_%';";
-        try {//(Connection conn = DriverManager.getConnection(url)){
-            Statement stmt = conn.createStatement();
+    protected void _listOfTables(){
+        String sql = "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
+        _for(sql, null, (rs)->{
+            try {
+                System.out.println("\n"+rs.getString("name") + "");
+                _selectAllFrom(rs.getString("name"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * Prints all tables of a connection!
+     */
+    protected String[] _listOfAllTables(){
+        String sql = "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
+        List<String> names = new ArrayList<>();
+        _for(sql, null, rs -> {
+            try {
+                names.add(rs.getString("name"));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+        return names.toArray(new String[0]);
+    }
+
+    protected Map<String, String[]> _tablesSpace(){
+        String sql = "SELECT * FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
+        Map<String, String[]> space = new HashMap<>();
+        _for(sql, null, rs -> {
+            try {
+                String def = rs.getString("sql");
+                def = def.split("\\(")[1];
+                def = def.split("\\)")[0];
+                String[] payload = def.split(",");
+                for(int i=0; i<payload.length; i++) payload[i] = payload[i].trim();
+                space.put(rs.getString("name"), payload);
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+        return space;
+    }
+
+    protected void _for(String sql, Consumer<ResultSet> start, Consumer<ResultSet> each){
+        try {
+            Statement stmt = _connection.createStatement();
             try {
                 ResultSet rs = stmt.executeQuery(sql);// loop through the result set
-                while (rs.next()) {
-                    System.out.println("\n"+rs.getString("name") + "");
-                    _selectAllFrom(rs.getString("name"), conn);
-                }
+                if(start!=null) start.accept(rs);
+                if(each!=null) do each.accept(rs); while(rs.next());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -98,26 +140,29 @@ public abstract class AbstractDatabaseConnection {
         }
     }
 
+
     /**
      * Defines and executes a SELECT * FROM on a connection.
      * @param tableName
-     * @param conn
      */
-    private static void _selectAllFrom(String tableName, Connection conn){
+    private void _selectAllFrom(String tableName){
         String sql = "SELECT * FROM "+tableName+";\n";
-        try {//(Connection conn = DriverManager.getConnection(url)){
-            Statement stmt = conn.createStatement();
-            try {
-                ResultSet rs = stmt.executeQuery(sql);
-                ResultSetMetaData rsmd = rs.getMetaData();
-                int columnsNumber = rsmd.getColumnCount();
-                for (int i = 1; i <= columnsNumber; i++) {
-                    System.out.print("| " + rsmd.getColumnName(i) + " |");
-                }
-                // loop through the result set
+        _for(
+                sql,
+                rs -> {
+                    try {
+                        ResultSetMetaData rsmd = rs.getMetaData();
+                        int columnsNumber = rsmd.getColumnCount();
+                        for (int i = 1; i <= columnsNumber; i++) {
+                            System.out.print("| " + rsmd.getColumnName(i) + " |");
+                        }
+                    } catch (Exception e){}
+                },
+                rs -> {
+            try {// loop through the result set
                 while (rs.next()) {
                     System.out.print("\n");
-                    for (int i = 1; i <= columnsNumber; i++) {
+                    for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                         String columnValue = rs.getString(i);
                         System.out.print("| " + columnValue + " |");
                     }
@@ -125,17 +170,15 @@ public abstract class AbstractDatabaseConnection {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        });
     }
 
     /**
      * SQL execution on connection!
      * @param sql
-     * @param conn
      */
-    protected static void _execute(String sql, Connection conn){
+    protected void _execute(String sql){
+        Connection conn = _connection;
         try {
             Statement stmt = conn.createStatement();
             try {
@@ -208,8 +251,7 @@ public abstract class AbstractDatabaseConnection {
                 }
                 else if(rsmd.getColumnType(i)==java.sql.Types.TIMESTAMP){
                     jo.put(column_name, rs.getTimestamp(column_name));
-                }
-                else{
+                } else {
                     jo.put(column_name, rs.getObject(column_name));
                 }
             }
@@ -218,10 +260,26 @@ public abstract class AbstractDatabaseConnection {
         return json;
     }
 
-    protected static JSONArray _toCRUD(ResultSet rs, String mode) throws SQLException, JSONException
+    protected JSONArray _toCRUD(ResultSet rs, String mode) throws SQLException, JSONException
     {
-        JSONArray json = new JSONArray();//TODO:!!!!!
+        String[] tableNames = _listOfAllTables();
+
+        JSONArray json = new JSONArray();
         ResultSetMetaData rsmd = rs.getMetaData();
+
+        String tn = rsmd.getTableName(0);
+        String relationTable = null;
+
+        for(String t : tableNames){
+            String[] words = t.split("_");
+            boolean isRelationalTable = false;
+            boolean isRelevant = false;
+            for(String w : words) if(w.toLowerCase().contains("relation")) isRelationalTable = true;
+            for(String w : words) if(w.toLowerCase().contains(tn)) isRelevant = true;
+            if (isRelationalTable && isRelevant && words.length==2) {
+                relationTable = t;
+            }
+        }
 
         while(rs.next()) {
             int numColumns = rsmd.getColumnCount();
@@ -272,6 +330,18 @@ public abstract class AbstractDatabaseConnection {
                 }
                 else{
                     obj.put(column_name, rs.getObject(column_name));
+                }
+                if(relationTable!=null && obj.get("id")!=null){
+                    Object id = obj.get("id");
+                    String sql = "SELECT * FROM "+relationTable+" rt "+" WHERE rt.child_tails_id = "+id.toString();
+                    _for(sql, cs->{
+                        try {
+                            obj.put("children", _toCRUD(cs, mode));
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+                    }, null);
+
                 }
             }
             json.put(obj);
@@ -335,7 +405,8 @@ public abstract class AbstractDatabaseConnection {
 
 
 
-    protected static void _executeFile(String name, Connection conn){
+    protected void _executeFile(String name){
+        Connection conn = _connection;
         String[] commands;
         File file = new File("db/", name);
         int fileLength = (int) file.length();
@@ -344,7 +415,7 @@ public abstract class AbstractDatabaseConnection {
             String query = new String(fileData);
             commands = query.split("--<#SPLIT#>--");
             for(String command : commands){
-                _execute(command, conn);
+                _execute(command);
             }
             try {
                 conn.commit();

@@ -324,7 +324,7 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
             String index = new String(fileData);
             assertTrue(index!=null);
             assertTrue(index.contains("Java"));
-            assertTrue(index.contains("Webio"));
+            assertTrue(index.toLowerCase().contains("arachni"));
             assertTrue(index.contains("Oracle"));
             assertTrue(index.contains("query"));
             assertTrue(index.contains("data"));
@@ -425,7 +425,7 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
             String html = new String(fileData);
             assertTrue(html!=null);
             assertTrue(html.contains("<p>File not found! ... Sorry!</p>"));
-            assertTrue(html.contains("Webio"));
+            assertTrue(html.toLowerCase().contains("arachni"));
             assertTrue(html.contains("<div id = \"NotFoundBox\" class = \"warm\">"));
             assertTrue(html.contains("<div id = \"Information\">"));
             assertTrue(html.contains("body"));
