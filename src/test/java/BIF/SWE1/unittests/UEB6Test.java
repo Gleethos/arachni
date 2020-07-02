@@ -49,24 +49,6 @@ public class UEB6Test extends AbstractTestFixture<UEB6> {
 	public void tearDown() throws Exception {
 	}
 
-	private StringBuilder getBody(IResponse resp) throws UnsupportedEncodingException, IOException {
-		StringBuilder body = new StringBuilder();
-
-		ByteArrayOutputStream ms = new ByteArrayOutputStream();
-		try {
-			resp.send(ms);
-			BufferedReader sr = new BufferedReader(new InputStreamReader(
-					new ByteArrayInputStream(ms.toByteArray()), "UTF-8"));
-			String line;
-			while ((line = sr.readLine()) != null) {
-				body.append(line + "\n");
-			}
-		} finally {
-			ms.close();
-		}
-		return body;
-	}
-
 	@Test
 	public void HelloWorld() throws Exception {
 		UEB6 ueb = createInstance();

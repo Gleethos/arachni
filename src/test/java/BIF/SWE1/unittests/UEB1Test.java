@@ -46,39 +46,39 @@ public class UEB1Test extends AbstractTestFixture<UEB1> {
 
 	@Test
 	public void url_should_return_raw_url_0() {
-		IUrl obj = createInstance().getUrl("/test.jpg");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg", obj.getRawUrl());
+		assertEquals("/test_CRUD.jpg", obj.getRawUrl());
 	}
 
 	@Test
 	public void url_should_return_raw_url_1() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=y");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=y");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg?x=y", obj.getRawUrl());
+		assertEquals("/test_CRUD.jpg?x=y", obj.getRawUrl());
 	}
 
 	@Test
 	public void url_should_return_raw_url_2() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=1&y=2");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=1&y=2");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg?x=1&y=2", obj.getRawUrl());
+		assertEquals("/test_CRUD.jpg?x=1&y=2", obj.getRawUrl());
 	}
 
 	@Test
 	public void url_should_create_with_path() {
-		IUrl obj = createInstance().getUrl("/test.jpg");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg", obj.getPath());
+		assertEquals("/test_CRUD.jpg", obj.getPath());
 	}
 
 	@Test
 	public void url_should_parse_parameter() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=1");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=1");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
 		assertNotNull(obj.getParameter().get("x"));
@@ -87,7 +87,7 @@ public class UEB1Test extends AbstractTestFixture<UEB1> {
 
 	@Test
 	public void url_should_parse_more_parameter() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=1&y=2");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=1&y=2");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
 		assertNotNull(obj.getParameter().get("x"));
@@ -99,15 +99,15 @@ public class UEB1Test extends AbstractTestFixture<UEB1> {
 
 	@Test
 	public void url_should_parse_return_path_without_parameter() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=1");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=1");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg", obj.getPath());
+		assertEquals("/test_CRUD.jpg", obj.getPath());
 	}
 	
 	@Test
 	public void url_should_count_parameter() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=7");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=7");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
 		assertEquals(1, obj.getParameterCount());
@@ -115,7 +115,7 @@ public class UEB1Test extends AbstractTestFixture<UEB1> {
 	
 	@Test
 	public void url_should_count_parameter_2() {
-		IUrl obj = createInstance().getUrl("/test.jpg?x=7&y=foo");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg?x=7&y=foo");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
 		assertEquals(2, obj.getParameterCount());
@@ -123,7 +123,7 @@ public class UEB1Test extends AbstractTestFixture<UEB1> {
 	
 	@Test
 	public void url_should_count_parameter_0() {
-		IUrl obj = createInstance().getUrl("/test.jpg");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg");
 		assertNotNull("UEB1.GetUrl returned null", obj);
 
 		assertEquals(0, obj.getParameterCount());

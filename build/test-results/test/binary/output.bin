@@ -1,23 +1,1 @@
-File someFile.xyz not found
->=	File: .
->=6File .\webroot/index.html of type text/html returned
->HFile: foo.html
->H0File /test/foo.html of type text/html returned
->LFile: foo.html
->L0File /test/foo.html of type text/html returned
->QFile: foo.html
->Q0File /test/foo.html of type text/html returned
-ihFile: i_am_a_unknown_url.html
-ih)File /i_am_a_unknown_url.html not found
-ih:File /i_am_a_unknown_url.html of type text/html returned
-in<File: missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt
-inVFile tmp-static-files/missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt not found
-inhFile tmp-static-files/missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt of type text/plain returned
-io	File: .
-io6File .\webroot/index.html of type text/html returned
-is4File: foo-62a286da-d5f5-4fdd-925a-ded0430e4b64.txt
-is`File tmp-static-files/foo-62a286da-d5f5-4fdd-925a-ded0430e4b64.txt of type text/plain returned
-it4File: foo-2423b064-8835-4a75-97f2-05573c6db9c8.txt
-it`File tmp-static-files/foo-2423b064-8835-4a75-97f2-05573c6db9c8.txt of type text/plain returned
-iu	File: .
-iu6File .\webroot/index.html of type text/html returned
+'Tail table exists? : [{"count(*)":1}]

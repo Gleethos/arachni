@@ -2,10 +2,8 @@ package comp.imp;
 
 import comp.IResponse;
 import java.io.*;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 public class Response implements IResponse {
 
@@ -116,7 +114,6 @@ public class Response implements IResponse {
     @Override
     public void setContent(InputStream stream) {//_socket.getStream()...
         BufferedReader in = new BufferedReader(new InputStreamReader(stream));
-        //stream.readAllBytes();
         // get first line of the request from the client
         String input = null;
         try {
@@ -124,23 +121,12 @@ public class Response implements IResponse {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // we parse the request with a string tokenizer
-        //StringTokenizer parse = new StringTokenizer(input);
-        //String method = parse.nextToken().toUpperCase(); // we get the HTTP method of the client
-        //_headers.put("GET", method);
-        //while(parse.hasMoreTokens()){
-        //    _headers.put(parse.toString(), parse.nextToken());
-        //}
-
         try {
             _content = input.getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             _content = input.getBytes();
         }
-        // we get file requested
-        //String fileRequested = (parse.hasMoreElements())?parse.nextToken().toLowerCase():"";
-        //System.out.println("File: "+fileRequested);
     }
 
     private String _getHeaderString(){
@@ -157,7 +143,7 @@ public class Response implements IResponse {
     public void send(OutputStream network)
     {
         if(getContentLength()==0 && getContentType().equals("text/html")){
-           throw new RuntimeException("[RESPONSE]: Sending failed! Content of type text/html is empty!");
+           throw new RuntimeException("Sending failed! Content of type text/html is empty!");
         }
         byte[] content = _content;// send HTTP Headers
 
@@ -179,7 +165,6 @@ public class Response implements IResponse {
         }
         if(_content!=null) {
             try {
-                //out.println(new String(_content));
                 network.write(content, 0, getContentLength());
             } catch (IOException e) {
                 e.printStackTrace();

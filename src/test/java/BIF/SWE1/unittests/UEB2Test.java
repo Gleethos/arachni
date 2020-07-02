@@ -23,25 +23,25 @@ public class UEB2Test extends AbstractTestFixture<UEB2> {
 	/********************* More URL tests *********************/
 	@Test
 	public void url_should_create_with_path_fragment() throws Exception {
-		IUrl obj = createInstance().getUrl("/test.jpg#foo");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg#foo");
 		assertNotNull("UEB2.GetUrl returned null", obj);
 
-		assertEquals("/test.jpg", obj.getPath());
+		assertEquals("/test_CRUD.jpg", obj.getPath());
 	}
 	@Test
 	public void url_should_parse_fragment() throws Exception {
-		IUrl obj = createInstance().getUrl("/test.jpg#foo");
+		IUrl obj = createInstance().getUrl("/test_CRUD.jpg#foo");
 		assertNotNull("UEB2.GetUrl returned null", obj);
 
 		assertEquals("foo", obj.getFragment());
 	}
 	@Test
 	public void url_should_split_segments() throws Exception {
-		IUrl obj = createInstance().getUrl("/foo/bar/test.jpg");
+		IUrl obj = createInstance().getUrl("/foo/bar/test_CRUD.jpg");
 		assertNotNull("UEB2.GetUrl returned null", obj);
 
 		assertNotNull(obj.getSegments());
-		assertArrayEquals(new String[] { "foo", "bar", "test.jpg" } , obj.getSegments());
+		assertArrayEquals(new String[] { "foo", "bar", "test_CRUD.jpg" } , obj.getSegments());
 	}
 
 	/********************* Basic request tests *********************/

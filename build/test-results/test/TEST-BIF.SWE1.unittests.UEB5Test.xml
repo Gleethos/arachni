@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-04-25T18:42:58" hostname="DESKTOP-6UFJ24U" time="0.16">
+<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-02T09:34:28" hostname="DESKTOP-6UFJ24U" time="0.607">
   <properties/>
-  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.027"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.021"/>
+  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.346"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.04"/>
   <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
-  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.014"/>
-  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.016"/>
-  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
-  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.021"/>
-  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.016"/>
+  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.029"/>
+  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.034"/>
+  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
+  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.037"/>
+  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.035"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
-  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.018"/>
+  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.038"/>
   <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
-  <system-out><![CDATA[File: i_am_a_unknown_url.html
+  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.005"/>
+  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.034"/>
+  <system-out><![CDATA[Tail table exists? : [{"count(*)":1}]
+File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
-File: missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt
-File tmp-static-files/missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt not found
-File tmp-static-files/missing-foo-01421b90-2092-4ad5-a63f-08d485b9a9fb.txt of type text/plain returned
+Tail table exists? : [{"count(*)":1}]
+Tail table exists? : [{"count(*)":1}]
+Tail table exists? : [{"count(*)":1}]
+File: missing-foo-a705e3b5-6ebb-45d8-bbdc-108e00f18896.txt
+File tmp-static-files/missing-foo-a705e3b5-6ebb-45d8-bbdc-108e00f18896.txt not found
+File tmp-static-files/missing-foo-a705e3b5-6ebb-45d8-bbdc-108e00f18896.txt of type text/plain returned
+Tail table exists? : [{"count(*)":1}]
 File: .
 File .\webroot/index.html of type text/html returned
-File: foo-62a286da-d5f5-4fdd-925a-ded0430e4b64.txt
-File tmp-static-files/foo-62a286da-d5f5-4fdd-925a-ded0430e4b64.txt of type text/plain returned
-File: foo-2423b064-8835-4a75-97f2-05573c6db9c8.txt
-File tmp-static-files/foo-2423b064-8835-4a75-97f2-05573c6db9c8.txt of type text/plain returned
+Tail table exists? : [{"count(*)":1}]
+Tail table exists? : [{"count(*)":1}]
+File: foo-57881430-14d0-46a0-9f47-0dfa41f867f2.txt
+File tmp-static-files/foo-57881430-14d0-46a0-9f47-0dfa41f867f2.txt of type text/plain returned
+File: foo-e5e2e049-1d76-4741-b372-5d4ef13ab838.txt
+File tmp-static-files/foo-e5e2e049-1d76-4741-b372-5d4ef13ab838.txt of type text/plain returned
+Tail table exists? : [{"count(*)":1}]
 File: .
 File .\webroot/index.html of type text/html returned
 ]]></system-out>

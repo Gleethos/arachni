@@ -1,9 +1,6 @@
 package comp;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
@@ -95,6 +92,36 @@ public interface IPlugin {
 			System.out.println("File " + fileRequested + " not found");
 
 		}
+
+		/**
+		 * Helper method which reads the file with the given name and returns
+		 * the contents of this file as a String. Will exit the application
+		 * if the file can not be read.
+		 *
+		 * @param path
+		 * @return The contents of the file
+		 */
+		public String readResource(String path){
+			InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
+			try {
+				BufferedReader br = new BufferedReader(new InputStreamReader(stream));//new FileInputStream(fileName)));
+				StringBuffer sb = new StringBuffer();
+				String line = "";
+				while (line!=null) {
+					line = br.readLine();
+					if (line != null) sb.append(line).append("\n");
+				}
+				return sb.toString();
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.exit(1);
+				return null;
+			}
+		}
+
+
+
+
 
 	}
 

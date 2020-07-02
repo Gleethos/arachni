@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class Tests7  extends AbstractTestFixture<Tests7Provider> {
+public class Tests7 extends AbstractTestFixture<Tests7Provider> {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -36,24 +36,6 @@ public class Tests7  extends AbstractTestFixture<Tests7Provider> {
 
     @After
     public void tearDown() throws Exception {
-    }
-
-    private StringBuilder getBody(IResponse resp) throws UnsupportedEncodingException, IOException {
-        StringBuilder body = new StringBuilder();
-
-        ByteArrayOutputStream ms = new ByteArrayOutputStream();
-        try {
-            resp.send(ms);
-            BufferedReader sr = new BufferedReader(new InputStreamReader(
-                    new ByteArrayInputStream(ms.toByteArray()), "UTF-8"));
-            String line;
-            while ((line = sr.readLine()) != null) {
-                body.append(line + "\n");
-            }
-        } finally {
-            ms.close();
-        }
-        return body;
     }
 
     @Test

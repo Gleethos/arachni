@@ -115,8 +115,11 @@ public abstract class AbstractDatabaseConnection {
                 def = def.split("\\(")[1];
                 def = def.split("\\)")[0];
                 String[] payload = def.split(",");
-                for(int i=0; i<payload.length; i++) payload[i] = payload[i].trim();
-                space.put(rs.getString("name"), payload);
+                int inset = 0;
+                if(payload[payload.length-1].toLowerCase().contains("foreign")) inset = 1;
+                String[] attributes = new String[payload.length-inset];
+                for(int i=0; i<attributes.length; i++) attributes[i] = payload[i].trim();
+                space.put(rs.getString("name"), attributes);
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -260,14 +263,11 @@ public abstract class AbstractDatabaseConnection {
         return json;
     }
 
-    protected JSONArray _toCRUD(ResultSet rs, String mode) throws SQLException, JSONException
+    protected JSONArray _toCRUD(ResultSet rs, String tableName, String[] tableNames) throws SQLException, JSONException
     {
-        String[] tableNames = _listOfAllTables();
-
         JSONArray json = new JSONArray();
         ResultSetMetaData rsmd = rs.getMetaData();
 
-        String tn = rsmd.getTableName(0);
         String relationTable = null;
 
         for(String t : tableNames){
@@ -275,7 +275,7 @@ public abstract class AbstractDatabaseConnection {
             boolean isRelationalTable = false;
             boolean isRelevant = false;
             for(String w : words) if(w.toLowerCase().contains("relation")) isRelationalTable = true;
-            for(String w : words) if(w.toLowerCase().contains(tn)) isRelevant = true;
+            for(String w : words) if(w.toLowerCase().contains(tableName)) isRelevant = true;
             if (isRelationalTable && isRelevant && words.length==2) {
                 relationTable = t;
             }
@@ -334,9 +334,10 @@ public abstract class AbstractDatabaseConnection {
                 if(relationTable!=null && obj.get("id")!=null){
                     Object id = obj.get("id");
                     String sql = "SELECT * FROM "+relationTable+" rt "+" WHERE rt.child_tails_id = "+id.toString();
+                    final String targTable = relationTable;
                     _for(sql, cs->{
                         try {
-                            obj.put("children", _toCRUD(cs, mode));
+                            obj.put("children", _toCRUD(cs, targTable, tableNames));
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }

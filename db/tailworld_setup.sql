@@ -20,7 +20,7 @@ VALUES
 
 --<#SPLIT#>--
 
-INSERT INTO tail_tags
+INSERT INTO tags
 (name, description, created)
 VALUES
 ('FirstTag', 'First tail...', datetime('now'));

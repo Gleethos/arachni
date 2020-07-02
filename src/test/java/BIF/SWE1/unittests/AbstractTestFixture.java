@@ -2,10 +2,31 @@ package BIF.SWE1.unittests;
 
 import static org.junit.Assert.assertTrue;
 
+import comp.IResponse;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
+import java.io.*;
+
 public abstract class AbstractTestFixture<T> {
+
+	protected StringBuilder getBody(IResponse resp) throws UnsupportedEncodingException, IOException {
+		StringBuilder body = new StringBuilder();
+
+		ByteArrayOutputStream ms = new ByteArrayOutputStream();
+		try {
+			resp.send(ms);
+			BufferedReader sr = new BufferedReader(new InputStreamReader(
+					new ByteArrayInputStream(ms.toByteArray()), "UTF-8"));
+			String line;
+			while ((line = sr.readLine()) != null) {
+				body.append(line + "\n");
+			}
+		} finally {
+			ms.close();
+		}
+		return body;
+	}
 
 
 	@SuppressWarnings("unchecked")

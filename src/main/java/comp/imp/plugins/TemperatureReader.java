@@ -52,7 +52,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         _executeFile("setup.sql");
         _close();
         int startSupply = entryCount;
-        Thread iot = new Thread(()->{
+        Thread iot = new Thread( () -> {
             long time = 100000000L;
             for(int ti=startSupply; ti<time; ti++){
                 int tired = ti;

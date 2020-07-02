@@ -414,6 +414,20 @@ header p {
     margin-bottom: 0.33em;
 }
 
+.mainContentWrapper input {
+    border-radius: 0.2em;
+    margin: 0.075em;
+    padding: 0.125em;
+
+}
+
+.mainContentWrapper button {
+    border-radius: 0.4em;
+    margin: 0.075em;
+    padding: 0.25em;
+
+}
+
 code {
     padding: 0.5em;
     margin: 0.175em;

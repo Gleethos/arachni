@@ -355,7 +355,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		UEB3 ueb = createInstance();
 		IPlugin obj = ueb.getTestPlugin();
 		assertNotNull("UEB3.GetTestIPlugin returned null", obj);
-		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test/foo.html"));
+		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test_CRUD/foo.html"));
 		assertNotNull("UEB3.GetTestIPlugin returned null", req);
 		assertTrue(obj.canHandle(req) > 0);
 	}
@@ -375,7 +375,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		UEB3 ueb = createInstance();
 		IPlugin obj = ueb.getTestPlugin();
 		assertNotNull("UEB3.GetTestIPlugin returned null", obj);
-		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test/foo.html"));
+		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test_CRUD/foo.html"));
 		assertNotNull("UEB3.GetTestIPlugin returned null", req);
 		IResponse resp = obj.handle(req);
 		assertNotNull(resp);
@@ -399,7 +399,7 @@ public class UEB3Test extends AbstractTestFixture<UEB3> {
 		UEB3 ueb = createInstance();
 		IPlugin obj = ueb.getTestPlugin();
 		assertNotNull("UEB3.GetTestIPlugin returned null", obj);
-		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test/foo.html"));
+		IRequest req = ueb.getRequest(RequestHelper.getValidRequestStream("/test_CRUD/foo.html"));
 		assertNotNull("UEB3.GetTestIPlugin returned null", req);
 		IResponse resp = obj.handle(req);
 		assertNotNull(resp);

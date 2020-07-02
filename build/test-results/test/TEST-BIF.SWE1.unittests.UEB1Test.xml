@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB1Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-04-25T18:42:58" hostname="DESKTOP-6UFJ24U" time="0.006">
+<testsuite name="BIF.SWE1.unittests.UEB1Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-02T09:34:40" hostname="DESKTOP-6UFJ24U" time="0.004">
   <properties/>
-  <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_parse_return_path_without_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.003"/>
+  <testcase name="helloWorld" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
+  <testcase name="url_should_parse_return_path_without_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_create_with_path" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_return_raw_url_0" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_return_raw_url_1" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_return_raw_url_2" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_parse_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_count_parameter_0" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
+  <testcase name="url_should_count_parameter_0" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_count_parameter_2" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_count_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <testcase name="url_should_count_parameter_empty" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
-  <testcase name="url_should_parse_more_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
+  <testcase name="url_should_parse_more_parameter" classname="BIF.SWE1.unittests.UEB1Test" time="0.001"/>
   <testcase name="url_should_create_empty" classname="BIF.SWE1.unittests.UEB1Test" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

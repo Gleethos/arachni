@@ -21,6 +21,7 @@ public class PluginManager implements IPluginManager {
         this.add("TemperatureReader");
         this.add("ToLower");
         this.add("Oracle");
+        this.add("CRUD");
     }
 
     public IPlugin get(String name){

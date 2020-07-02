@@ -29,24 +29,20 @@ public class Url implements IUrl {
     }
 
     public Url(String url){
-        if(url==null){
-            return;
-        }
+        if(url==null) return;
         _raw_url = url.split(" ")[0];
         String[] parts = url.split("\\?");
-        if(parts.length>1){
-            _paraParse(parts[1]);
-        } else if(parts[0].contains("=")){
-            _paraParse(parts[0]);
-        }
+        if(parts.length>1) _paraParse(parts[1]);
+        else if(parts[0].contains("=")) _paraParse(parts[0]);
+
         parts = _raw_url.split("/");
-        String path = "";
+        StringBuilder path = new StringBuilder();
         for(int i=0; i<parts.length-1; i++){
-            path += parts[i]+"/";
+            path.append(parts[i]).append("/");
         }
-        _path = path;
+        _path = path.toString();
         if(parts.length>0){
-            _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1];
+            _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1].split("\\?")[0];
             _extension = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[1]:"";
             _extension = _extension.split("\\?")[0];
             _extension = _extension.split("#")[0];

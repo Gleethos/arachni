@@ -87,7 +87,7 @@ public class UEB4Test extends AbstractTestFixture<UEB4> {
         assertEquals("POST", obj.getMethod());
         assertNotNull(obj.getContentStream());
         byte[] bodyBytes = new byte[10];
-        //int test = obj.getContentStream().read(bodyBytes, 0, 10);
+        //int test_CRUD = obj.getContentStream().read(bodyBytes, 0, 10);
         assertEquals(7, obj.getContentStream().read(bodyBytes, 0, 10));
         String body = new String(bodyBytes, 0, 7, "UTF-8");
         assertEquals("x=a&y=b", body);
