@@ -34,32 +34,26 @@ public abstract class AbstractDatabaseConnection {
         _pwd = password;
     }
 
+    public String getURL(){
+        return _url;
+    }
+
+    protected void _setUrl(String url) {
+        _url = url;
+    }
+
     /**
      * Connect to a sample database
      */
-    protected void _createAndOrConnectToDatabase()
+    protected void _createAndOrConnectToDatabase() throws SQLException
     {
         this._connection = null;
         if(_user.equals("")||_pwd.equals("")){
-            try {
-                _connection = DriverManager.getConnection(_url);
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
+             _connection = DriverManager.getConnection(_url);
         } else {
-            try {
-                _connection = DriverManager.getConnection(_url, _user, _pwd);
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
+            _connection = DriverManager.getConnection(_url, _user, _pwd);
         }
-        if (_connection != null) {
-            try {
-                _connection.setAutoCommit(false);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        _connection.setAutoCommit(false);
     }
 
 
@@ -73,27 +67,13 @@ public abstract class AbstractDatabaseConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        _connection=null;
     }
 
     /**
      * Prints all tables of a connection!
      */
-    protected void _listOfTables(){
-        String sql = "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
-        _for(sql, null, (rs)->{
-            try {
-                System.out.println("\n"+rs.getString("name") + "");
-                _selectAllFrom(rs.getString("name"));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
-    /**
-     * Prints all tables of a connection!
-     */
-    protected String[] _listOfAllTables(){
+    protected List<String> _listOfAllTables(){
         String sql = "SELECT name FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
         List<String> names = new ArrayList<>();
         _for(sql, null, rs -> {
@@ -103,12 +83,12 @@ public abstract class AbstractDatabaseConnection {
                 throwables.printStackTrace();
             }
         });
-        return names.toArray(new String[0]);
+        return names;
     }
 
-    protected Map<String, String[]> _tablesSpace(){
+    protected Map<String, List<String>> _tablesSpace(){
         String sql = "SELECT * FROM sqlite_master WHERE type ='table' AND name NOT LIKE 'sqlite_%';";
-        Map<String, String[]> space = new HashMap<>();
+        Map<String, List<String>> space = new HashMap<>();
         _for(sql, null, rs -> {
             try {
                 String def = rs.getString("sql");
@@ -119,61 +99,140 @@ public abstract class AbstractDatabaseConnection {
                 if(payload[payload.length-1].toLowerCase().contains("foreign")) inset = 1;
                 String[] attributes = new String[payload.length-inset];
                 for(int i=0; i<attributes.length; i++) attributes[i] = payload[i].trim();
-                space.put(rs.getString("name"), attributes);
+                space.put(rs.getString("name"), List.of(attributes));
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         });
         return space;
+
+    }
+
+    private PreparedStatement _newPreparedStatement(String sql, List<Object> values) throws SQLException {
+        PreparedStatement pstmt = _connection.prepareStatement(sql);
+        if(values!=null) {
+            for(int i=0; i<values.size(); i++){
+                pstmt.setObject(i+1, values.get(i));
+            }
+        }
+        return pstmt;
     }
 
     protected void _for(String sql, Consumer<ResultSet> start, Consumer<ResultSet> each){
-        try {
-            Statement stmt = _connection.createStatement();
+        _for(sql, null, start, each);
+    }
+
+    protected void _for(String sql, List<Object> values, Consumer<ResultSet> start, Consumer<ResultSet> each){
+        if (values!=null && !values.isEmpty()){
             try {
-                ResultSet rs = stmt.executeQuery(sql);// loop through the result set
-                if(start!=null) start.accept(rs);
-                if(each!=null) do each.accept(rs); while(rs.next());
+                PreparedStatement pstmt = _newPreparedStatement(sql, values);
+                try {
+                    ResultSet rs = pstmt.executeQuery();// loop through the result set
+                    if(start!=null) start.accept(rs);
+                    if(each!=null) do each.accept(rs); while(rs.next());
+                    rs.close();
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } else {
+            try {
+                Statement stmt = _connection.createStatement();
+                try {
+                    ResultSet rs = stmt.executeQuery(sql);// loop through the result set
+                    if(start!=null) start.accept(rs);
+                    if(each!=null) do each.accept(rs); while(rs.next());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 
+    protected Map<String, List<Object>> _query(String sql) {
+        return _query(sql, null);
+    }
 
-    /**
-     * Defines and executes a SELECT * FROM on a connection.
-     * @param tableName
-     */
-    private void _selectAllFrom(String tableName){
-        String sql = "SELECT * FROM "+tableName+";\n";
+    protected Map<String, List<Object>> _query(String sql, List<Object> values){
+
+        Map<String, List<Object>> result = new HashMap<>();
         _for(
-                sql,
+                sql, values, // <=- Are used to build prepared statement when 'values' is not null!
                 rs -> {
                     try {
                         ResultSetMetaData rsmd = rs.getMetaData();
                         int columnsNumber = rsmd.getColumnCount();
                         for (int i = 1; i <= columnsNumber; i++) {
-                            System.out.print("| " + rsmd.getColumnName(i) + " |");
+                            result.put(rsmd.getColumnName(i), new ArrayList<>());
                         }
-                    } catch (Exception e){}
+                    } catch (Exception e){e.printStackTrace();}
                 },
                 rs -> {
-            try {// loop through the result set
-                while (rs.next()) {
-                    System.out.print("\n");
-                    for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                        String columnValue = rs.getString(i);
-                        System.out.print("| " + columnValue + " |");
+                    try {// loop through the result set
+                        while (rs.next()) {
+                            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                                String columnValue = rs.getString(i);
+                                ResultSetMetaData rsmd = rs.getMetaData();
+                                String column_name = rsmd.getColumnName(i);
+                                if(rsmd.getColumnType(i)==java.sql.Types.ARRAY) {
+                                    result.get(column_name).add(rs.getArray(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.BIGINT) {
+                                    result.get(column_name).add(rs.getInt(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.BOOLEAN) {
+                                    result.get(column_name).add(rs.getBoolean(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.BLOB) {
+                                    result.get(column_name).add(rs.getBlob(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.DOUBLE) {
+                                    result.get(column_name).add(rs.getDouble(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.FLOAT) {
+                                    result.get(column_name).add(rs.getFloat(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.INTEGER) {
+                                    result.get(column_name).add(rs.getInt(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.NVARCHAR) {
+                                    result.get(column_name).add(rs.getNString(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.VARCHAR) {
+                                    result.get(column_name).add(rs.getString(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.TINYINT) {
+                                    result.get(column_name).add(rs.getInt(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.SMALLINT) {
+                                    result.get(column_name).add(rs.getInt(column_name));
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.DATE) {
+                                    String date = rs.getString(column_name);
+                                    result.get(column_name).add((date==null)?null:Date.valueOf(date));
+                                    //result.get(column_name).add(rs.getDate(column_name));
+                                    //rs.getTimestamp(column_name);
+                                }
+                                else if(rsmd.getColumnType(i)==java.sql.Types.TIMESTAMP){
+                                    result.get(column_name).add(rs.getTimestamp(column_name));
+                                } else {
+                                    result.get(column_name).add(rs.getObject(column_name));
+                                }
+                            }
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
+                });
+        return result;
     }
 
     /**
@@ -186,6 +245,7 @@ public abstract class AbstractDatabaseConnection {
             Statement stmt = conn.createStatement();
             try {
                 stmt.execute(sql);
+                stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -203,12 +263,12 @@ public abstract class AbstractDatabaseConnection {
      * @throws SQLException
      * @throws JSONException
      */
-    protected static JSONArray _toJSON(ResultSet rs ) throws SQLException, JSONException
+    protected static JSONArray _toJSON( ResultSet rs ) throws SQLException, JSONException
     {
         JSONArray json = new JSONArray();
         ResultSetMetaData rsmd = rs.getMetaData();
 
-        while(rs.next()) {
+        while( rs.next() ) {
             int numColumns = rsmd.getColumnCount();
             JSONObject jo = new JSONObject();
 
@@ -260,6 +320,7 @@ public abstract class AbstractDatabaseConnection {
             }
             json.put(jo);
         }
+        rs.close();
         return json;
     }
 

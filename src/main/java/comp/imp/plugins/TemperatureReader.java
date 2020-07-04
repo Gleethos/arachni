@@ -27,8 +27,13 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
     public TemperatureReader() {
         super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
-        _createAndOrConnectToDatabase();
-        Connection conn = _connection;
+        Connection conn = null;
+        try {
+            _createAndOrConnectToDatabase();
+            conn = _connection;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='temperatures'";
         int entryCount = 0;
         try{
@@ -78,7 +83,11 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 String command =
                         "INSERT INTO temperatures (value, created)\n" +
                         "VALUES ("+temp+", datetime('"+date+"'));";
-                _createAndOrConnectToDatabase();
+                try {
+                    _createAndOrConnectToDatabase();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Connection iotConn = _connection;
                 try {
                     _execute(command);
@@ -114,8 +123,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
     @Override
     public IResponse handle(IRequest req) {
-        _createAndOrConnectToDatabase();
-        Connection conn = _connection;
+
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
@@ -127,7 +135,14 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
         response.getHeaders().put("content-length", String.valueOf(contentLength));
-
+        Connection conn = null;
+        try {
+            _createAndOrConnectToDatabase();
+            conn = _connection;
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setContent(e.getMessage());
+        }
         if(req.getContentLength()>0 || req.getUrl().getParameterCount()>0){
             String sql = (req.getContentLength()>0)?util.decodeValue(req.getContentString()):"SELECT * FROM temperatures";
             sql = (sql.substring(0, 6).equals("query=")) ? sql.substring(6, sql.length()) : sql;

@@ -31,9 +31,8 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
     }
 
     @Override
-    public IResponse handle(IRequest req) {
-        _createAndOrConnectToDatabase();
-        Connection conn = _connection;
+    public IResponse handle(IRequest req)
+    {
         IResponse response = new Response();
         response.setStatusCode(200);
         int contentLength = 0;
@@ -46,6 +45,14 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
         sql = (sql.startsWith("query=")) ? sql.substring(6, sql.length()) : sql;
         String result = "";
 
+        try {
+            _createAndOrConnectToDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setContent(e.getMessage());
+            return response;
+        }
+        Connection conn = _connection;
         try {
             Statement stmt= conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

@@ -37,7 +37,7 @@ public class Test8Provider {
     }
 
     public IPlugin getCRUDPlugin(){
-        return new CRUD();
+        return new CRUD("jdbc:sqlite:C:/sqlite/db/TestDB", "", "");
     }
 
     public String getCRUDUrl(LocalDate localDate, LocalDate localDate1) {

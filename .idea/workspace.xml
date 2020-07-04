@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Test8Provider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CRUD/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -18,20 +15,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin$util.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin$util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/IPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Url.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/Url.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/AbstractTestFixture.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/AbstractTestFixture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB1Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB1Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB2Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB2Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB3Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB3Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB6Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB6Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" afterDir="false" />
@@ -52,27 +40,16 @@
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/tailworld_setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/tailworld_setup.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/IPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/Url.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/AbstractTestFixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/AbstractTestFixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB1Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB1Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB2Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB2Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB3Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB4Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB4Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/UEB6Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/src/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/tailworld.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/tailworld.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Test8Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Test8Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +168,7 @@
       <recent name="D:\development\java\remoteTest\webio" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.webio [check]">
+  <component name="RunManager" selected="Gradle.arachni [test]">
     <configuration name="TestWeb.testServerStart" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -211,12 +188,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_8_CRUD" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_8_CRUD.test_CRUD_setJDBC" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Test_8_CRUD&quot;" />
+        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_setJDBC&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -230,42 +207,42 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_8_CRUD.test_CRUD" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="arachni [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Test_8_CRUD.test_CRUD&quot;" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UEB3Test.response_should_send_header" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="arachni [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.UEB3Test.response_should_send_header&quot;" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
+            <option value="test" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="webio [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -289,11 +266,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.webio [check]" />
+        <item itemvalue="Gradle.arachni [test]" />
+        <item itemvalue="Gradle.Test_8_CRUD.test_CRUD_setJDBC" />
         <item itemvalue="Gradle.TestWeb.testServerStart" />
-        <item itemvalue="Gradle.UEB3Test.response_should_send_header" />
-        <item itemvalue="Gradle.Test_8_CRUD.test_CRUD" />
-        <item itemvalue="Gradle.Test_8_CRUD" />
+        <item itemvalue="Gradle.webio [check]" />
+        <item itemvalue="Gradle.arachni [clean]" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +371,10 @@
       <workItem from="1590068629494" duration="89000" />
       <workItem from="1590083756847" duration="857000" />
       <workItem from="1590085747150" duration="620000" />
-      <workItem from="1593680039510" duration="6483000" />
+      <workItem from="1593680039510" duration="6881000" />
+      <workItem from="1593719354469" duration="10066000" />
+      <workItem from="1593767499584" duration="24798000" />
+      <workItem from="1593854505235" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1587840208108</created>
@@ -403,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587840208108</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1593686836664</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593686836664</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,106 +425,106 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1588069418518" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1587840206103">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1593854539982">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587840206103" />
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom" timestamp="1593686512963">
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593854539982" />
+    <state width="1112" height="221" key="GridCell.Tab.0.bottom" timestamp="1593800280986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.0.center" timestamp="1593686512963">
+    <state width="1112" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593800280986" />
+    <state width="1112" height="221" key="GridCell.Tab.0.center" timestamp="1593800280986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.0.left" timestamp="1593686512962">
+    <state width="1112" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593800280986" />
+    <state width="1112" height="221" key="GridCell.Tab.0.left" timestamp="1593800280986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593686512962" />
-    <state width="1491" height="206" key="GridCell.Tab.0.right" timestamp="1593686512963">
+    <state width="1112" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593800280986" />
+    <state width="1112" height="221" key="GridCell.Tab.0.right" timestamp="1593800280986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.1.bottom" timestamp="1593686513080">
+    <state width="1112" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593800280986" />
+    <state width="1115" height="279" key="GridCell.Tab.1.bottom" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686513080" />
-    <state width="1491" height="206" key="GridCell.Tab.1.center" timestamp="1593686513079">
+    <state width="1115" height="279" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.1.center" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593686513079" />
-    <state width="1491" height="206" key="GridCell.Tab.1.left" timestamp="1593686513079">
+    <state width="1115" height="279" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.1.left" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593686513079" />
-    <state width="1491" height="206" key="GridCell.Tab.1.right" timestamp="1593686513079">
+    <state width="1115" height="279" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.1.right" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593686513079" />
-    <state width="1491" height="206" key="GridCell.Tab.2.bottom" timestamp="1593686512964">
+    <state width="1115" height="279" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.2.bottom" timestamp="1593798954915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686512964" />
-    <state width="1491" height="206" key="GridCell.Tab.2.center" timestamp="1593686512964">
+    <state width="1115" height="279" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593798954915" />
+    <state width="1115" height="279" key="GridCell.Tab.2.center" timestamp="1593798954915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1593686512964" />
-    <state width="1491" height="206" key="GridCell.Tab.2.left" timestamp="1593686512964">
+    <state width="1115" height="279" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1593798954915" />
+    <state width="1115" height="279" key="GridCell.Tab.2.left" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1593686512964" />
-    <state width="1491" height="206" key="GridCell.Tab.2.right" timestamp="1593686512964">
+    <state width="1115" height="279" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.2.right" timestamp="1593798954915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1593686512964" />
-    <state width="1491" height="206" key="GridCell.Tab.3.bottom" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1593798954915" />
+    <state width="1115" height="279" key="GridCell.Tab.3.bottom" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.3.center" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.3.center" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.3.left" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.3.left" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.3.right" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.3.right" timestamp="1593798954913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.4.bottom" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1593798954913" />
+    <state width="1115" height="279" key="GridCell.Tab.4.bottom" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.4.center" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.4.center" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.4.left" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.4.left" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.4.right" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.4.right" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.5.bottom" timestamp="1593686512964">
+    <state width="1115" height="279" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.5.bottom" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593686512964" />
-    <state width="1491" height="206" key="GridCell.Tab.5.center" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.5.center" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.5.left" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.5.left" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
-    <state width="1491" height="206" key="GridCell.Tab.5.right" timestamp="1593686512963">
+    <state width="1115" height="279" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
+    <state width="1115" height="279" key="GridCell.Tab.5.right" timestamp="1593798954914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="206" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1593686512963" />
+    <state width="1115" height="279" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1593798954914" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1585247373505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -546,10 +533,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587840215001" />
-    <state width="386" height="416" key="XDebugger.FullValuePopup" timestamp="1587835826847">
+    <state width="386" height="416" key="XDebugger.FullValuePopup" timestamp="1593780730081">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="386" height="416" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1587835826847" />
+    <state width="386" height="416" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1593780730081" />
     <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587827936245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -577,19 +564,24 @@
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="375" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
+          <line>226</line>
+          <option name="timeStamp" value="386" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="376" />
+          <line>39</line>
+          <option name="timeStamp" value="405" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="417" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="399" />
+          <line>120</line>
+          <option name="timeStamp" value="421" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

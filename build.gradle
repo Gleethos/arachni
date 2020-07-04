@@ -31,9 +31,9 @@ jar {
     manifest.attributes "Main-Class" : "Main"
 }
 
-//test {
-//    //filter {
-//    //    //specific test method
-//    //    includeTestsMatching "*Test"
-//    //}
-//}
+test {
+    filter {
+        //specific test method
+        //includeTestsMatching "*ServerStart*"
+    }
+}

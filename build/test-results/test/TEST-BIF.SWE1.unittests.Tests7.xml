@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.Tests7" tests="20" skipped="0" failures="0" errors="0" timestamp="2020-07-02T09:34:29" hostname="DESKTOP-6UFJ24U" time="10.585">
+<testsuite name="BIF.SWE1.unittests.Tests7" tests="20" skipped="0" failures="0" errors="0" timestamp="2020-07-03T18:18:02" hostname="DESKTOP-6UFJ24U" time="10.87">
   <properties/>
-  <testcase name="temp_plugin_has_data" classname="BIF.SWE1.unittests.Tests7" time="0.032"/>
+  <testcase name="temp_plugin_has_data" classname="BIF.SWE1.unittests.Tests7" time="0.238"/>
   <testcase name="static_utility_method_for_content_type_returns" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
-  <testcase name="self_test" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
-  <testcase name="test_exception_in_ClientHandler" classname="BIF.SWE1.unittests.Tests7" time="0.004"/>
-  <testcase name="temp_plugin_temp_database_gets_bigger_over_time" classname="BIF.SWE1.unittests.Tests7" time="3.697"/>
+  <testcase name="self_test" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
+  <testcase name="test_exception_in_ClientHandler" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
+  <testcase name="temp_plugin_temp_database_gets_bigger_over_time" classname="BIF.SWE1.unittests.Tests7" time="3.962"/>
   <testcase name="html_main_index_file_must_contain" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
-  <testcase name="oracle_returns_list_of_tables" classname="BIF.SWE1.unittests.Tests7" time="5.873"/>
-  <testcase name="static_utility_method_file_not_found_returns" classname="BIF.SWE1.unittests.Tests7" time="0.038"/>
-  <testcase name="temp_plugin_returns_list_of_temperatures" classname="BIF.SWE1.unittests.Tests7" time="0.487"/>
-  <testcase name="test_plugin_utility_and_sql_setup" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
-  <testcase name="index_file_must_contain2" classname="BIF.SWE1.unittests.Tests7" time="0.004"/>
-  <testcase name="index_file_must_contain3" classname="BIF.SWE1.unittests.Tests7" time="0.003"/>
+  <testcase name="oracle_returns_list_of_tables" classname="BIF.SWE1.unittests.Tests7" time="5.742"/>
+  <testcase name="static_utility_method_file_not_found_returns" classname="BIF.SWE1.unittests.Tests7" time="0.032"/>
+  <testcase name="temp_plugin_returns_list_of_temperatures" classname="BIF.SWE1.unittests.Tests7" time="0.453"/>
+  <testcase name="test_plugin_utility_and_sql_setup" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
+  <testcase name="index_file_must_contain2" classname="BIF.SWE1.unittests.Tests7" time="0.005"/>
+  <testcase name="index_file_must_contain3" classname="BIF.SWE1.unittests.Tests7" time="0.002"/>
   <testcase name="html_404_file_must_contain" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
-  <testcase name="index_file_must_contain" classname="BIF.SWE1.unittests.Tests7" time="0.009"/>
-  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
+  <testcase name="index_file_must_contain" classname="BIF.SWE1.unittests.Tests7" time="0.005"/>
+  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
   <testcase name="readme_must_exist_and_contain" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
-  <testcase name="test_plugin_count" classname="BIF.SWE1.unittests.Tests7" time="0.044"/>
-  <testcase name="setup_test" classname="BIF.SWE1.unittests.Tests7" time="0.0"/>
-  <testcase name="temp_plugin_returns_list_of_temperatures_as_xml" classname="BIF.SWE1.unittests.Tests7" time="0.044"/>
-  <testcase name="oracle_returns_list_of_stars" classname="BIF.SWE1.unittests.Tests7" time="0.343"/>
-  <system-out><![CDATA[Tail table exists? : [{"count(*)":1}]
-File someFile.xyz not found
-Tail table exists? : [{"count(*)":1}]
+  <testcase name="test_plugin_count" classname="BIF.SWE1.unittests.Tests7" time="0.016"/>
+  <testcase name="setup_test" classname="BIF.SWE1.unittests.Tests7" time="0.001"/>
+  <testcase name="temp_plugin_returns_list_of_temperatures_as_xml" classname="BIF.SWE1.unittests.Tests7" time="0.036"/>
+  <testcase name="oracle_returns_list_of_stars" classname="BIF.SWE1.unittests.Tests7" time="0.369"/>
+  <system-out><![CDATA[File someFile.xyz not found
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
