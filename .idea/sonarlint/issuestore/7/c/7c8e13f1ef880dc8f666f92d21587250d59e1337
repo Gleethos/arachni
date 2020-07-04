@@ -1,0 +1,17 @@
+
+O
+java:S4973"9Use the "equals" method if value comparison was intended.(’ì¡Ü
+O
+java:S4973""9Use the "equals" method if value comparison was intended.(ÊèéÜ
+R
+java:S2589k"7Remove this expression which always evaluates to "true"(Î•©Äúÿÿÿÿ
+h
+java:S3776)"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÛÓîë
+H
+java:S1135?"2Complete the task associated to this TODO comment.(¢»ä±
+O
+java:S4719I"9Replace charset name argument with StandardCharsets.UTF_8(ù—à»
+<
+java:S1172\"&Remove these unused method parameters.(ÂéÅ¥
+Q	java:S125^"<This block of commented-out lines of code should be removed.(”ÊÑï
+Q	java:S125n"<This block of commented-out lines of code should be removed.(÷ßÃØ

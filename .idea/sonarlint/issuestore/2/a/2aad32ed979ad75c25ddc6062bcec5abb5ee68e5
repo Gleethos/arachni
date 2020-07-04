@@ -1,0 +1,10 @@
+
+S	java:S106,"9Replace this use of System.out or System.err by a logger.(‡áÔ¼úÿÿÿÿ
+S	java:S106K"9Replace this use of System.out or System.err by a logger.(´¸Ÿ³üÿÿÿÿ
+h
+java:S3776("RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÛÓîë
+N	java:S106Y"9Replace this use of System.out or System.err by a logger.(óí¶
+>
+java:S1148N"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+<
+java:S10757"&Remove this hard-coded path-delimiter.(ƒýÃÂ

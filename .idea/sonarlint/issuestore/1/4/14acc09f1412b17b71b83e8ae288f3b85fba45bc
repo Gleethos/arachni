@@ -1,0 +1,71 @@
+
+E
+java:S1148z"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8åˆÌ÷°.
+^	java:S125¤"<This block of commented-out lines of code should be removed.(§—Û²şÿÿÿÿ8º­ï±.
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+^	java:S125º"<This block of commented-out lines of code should be removed.(µèÔ¦øÿÿÿÿ8¾ñ‹±.
+E
+java:S1148y"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
+a
+java:S1854²">Remove this useless assignment to local variable "foreignKey".(¦”ªıúÿÿÿÿ8Ü»¼±.
+O
+java:S1144Å",Remove this unused private "_search" method.(Ÿµäøÿÿÿÿ8¾ñ‹±.
+>	java:S1082")Either remove or fill this block of code.(”ı¾
+\
+java:S1854§">Remove this useless assignment to local variable "tableNames".(Õêñß8Ü»¼±.
+R
+java:S1481®"/Remove this unused "foreignKey" local variable.(Îï˜Ëıÿÿÿÿ8Ü»¼±.
+U
+java:S1135·"2Complete the task associated to this TODO comment.(ó®êùÿÿÿÿ8Äâ¾±.
+U
+java:S1135¶"2Complete the task associated to this TODO comment.(Ùè÷şÿÿÿÿ8¼½±.
+M
+java:S1172Å"*Remove this unused method parameter "req".(Ÿµäøÿÿÿÿ8¾ñ‹±.
+M
+java:S1481§"/Remove this unused "tableNames" local variable.(Õêñß8Ü»¼±.
+E
+java:S1148u"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¡ø±.
+S
+java:S1128"1Remove this unused import 'java.io.StringWriter'.(ô“Õıùÿÿÿÿ8äá‘äœ.
+N
+java:S1128"1Remove this unused import 'org.w3c.dom.Document'.(Á§²“8äá‘äœ.
+L
+java:S1144~"*Remove this unused private "_find" method.(¸“¯úÿÿÿÿ8¢ªËö°.
+m
+java:S1128
+"KRemove this unused import 'javax.xml.parsers.ParserConfigurationException'.(ûıƒøÿÿÿÿ8äá‘äœ.
+`
+java:S1128">Remove this unused import 'javax.xml.transform.dom.DOMSource'.(¾Ñ¶âùÿÿÿÿ8äá‘äœ.
+
+java:S1130~"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(¸“¯úÿÿÿÿ8½ï±.
+Q
+java:S1128"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ8ãÎ–äœ.
+J	java:S108l")Either remove or fill this block of code.(¨ê§şÿÿÿÿ8öæµ.
+W
+java:S1141r"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¡ø±.
+@
+java:S1148x"#Use a logger to log this exception.(™òò£8÷×Ë÷°.
+b
+java:S2095%"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
+t
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(¸“¯úÿÿÿÿ8Ü»¼±.
+‘
+java:S1130Å"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(Ÿµäøÿÿÿÿ8¾ñ‹±.
+g
+java:S2147z"ECombine this catch with the one at line 120, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
+W	java:S1256"<This block of commented-out lines of code should be removed.(’ß¥{8° ÷›.
+a
+java:S1128"DRemove this unused import 'javax.xml.transform.stream.StreamResult'.(Æ‹ëÿ8äá‘äœ.
+g
+java:S2147y"ECombine this catch with the one at line 120, which has the same body.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
+E
+java:S1481#"/Remove this unused "entryCount" local variable.(³Şğş
+J	java:S108l")Either remove or fill this block of code.(¨ê§şÿÿÿÿ8öæµ.
+U
+java:S3655¨"7Call "Optional#isPresent()" before accessing the value.(¥«Öı8Ü»¼±.
+S	java:S106("9Replace this use of System.out or System.err by a logger.(œ–ÜÎÿÿÿÿÿ
+g
+java:S2147l"ECombine this catch with the one at line 108, which has the same body.(¨ê§şÿÿÿÿ8öæµ.
+U
+java:S1135¸"2Complete the task associated to this TODO comment.(É»Üşÿÿÿÿ8ÂºÀ±.

@@ -1,0 +1,62 @@
+
+Q	java:S125&"<This block of commented-out lines of code should be removed.(¶ ö
+Y	java:S125Š"<This block of commented-out lines of code should be removed.(ÿî¼ 8³éãŒ›.
+A
+java:S2676E"Use the original value instead.(’¿Õşüÿÿÿÿ8İæÕŠ›.
+F
+java:S1148£"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+X
+java:S1141§"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
+F
+java:S1148³"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+r	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¿Õşüÿÿÿÿ8İæÕŠ›.
+F
+java:S1148Á"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+t
+java:S3776t"RRefactor this method to reduce its Cognitive Complexity from 46 to the 15 allowed.(¾üÔüÿÿÿÿ8¼×Š›.
+W
+java:S4719¸"9Replace charset name argument with StandardCharsets.UTF_8(ù—à»8³éãŒ›.
+^	java:S125†"<This block of commented-out lines of code should be removed.(İò´ÿÿÿÿÿ8³éãŒ›.
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(ÿğÍØ
+X
+java:S1141œ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
+m	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÑìœ8İæÕŠ›.
+F
+java:S1148®"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+:
+java:S2676C"Use the original value instead.(™¬›Ùûÿÿÿÿ
+j
+java:S2095‰"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8³éãŒ›.
+e
+java:S2184A"HCast one of the operands of this multiplication operation to a "double".(É½ü€8İæÕŠ›.
+>	java:S1080")Either remove or fill this block of code.(”ı¾
+k	java:S117C"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¬›Ùûÿÿÿÿ
+F
+java:S1148ª"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+?
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å
+E	java:S108>")Either remove or fill this block of code.(”ı¾8İæÕŠ›.
+A
+java:S2676G"Use the original value instead.(¤›·âşÿÿÿÿ8İæÕŠ›.
+<
+java:S2676I"Use the original value instead.(íÎ”8İæÕŠ›.
+l
+java:S2259¥"IA "NullPointerException" could be thrown; "transformer" is nullable here.(Éç‡ıÿÿÿÿ8³éãŒ›.
+V
+java:S2755"3Disable access to external entities in XML parsing.(ƒ¶ŠÊûÿÿÿÿ8ÈÈ‚œ.
+b
+java:S2095#"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+A
+java:S2676K"Use the original value instead.(©áÀ¾øÿÿÿÿ8İæÕŠ›.
+X
+java:S1141 "5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
+T	java:S106["9Replace this use of System.out or System.err by a logger.(·¬•8¼×Š›.
+<
+java:S2676B"Use the original value instead.(íÑìœ8İæÕŠ›.
+W
+java:S1141U"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ë ª±.
+E
+java:S1148X"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ë ª±.

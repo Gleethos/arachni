@@ -1,0 +1,25 @@
+
+>	java:S108e")Either remove or fill this block of code.(”ý¾
+>	java:S108j")Either remove or fill this block of code.(ï­£Ä
+7
+java:S1643u"Use a StringBuilder instead.(œê„Äüÿÿÿÿ
+>
+java:S11487"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+
+java:S1130D"yRemove the declaration of thrown exception 'java.net.MalformedURLException' which is a subclass of 'java.io.IOException'.(š¼Â
+>	java:S108L")Either remove or fill this block of code.(à®¿­
+Z
+java:S21478"DCombine this catch with the one at line 54, which has the same body.(ýàÑÎ
+>	java:S108_")Either remove or fill this block of code.(ï­£Ä
+>
+java:S1125v"(Remove the literal "true" boolean value.(¼ž¾
+E
+java:S10660"/Merge this if statement with the enclosing one.(“‰ÂÂ
+P
+java:S1141]"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+N
+java:S1874Z"3Remove this use of "newInstance"; it is deprecated.(å˜š­ýÿÿÿÿ
+E
+java:S10661"/Merge this if statement with the enclosing one.(Óé¿Û
+>
+java:S11489"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
