@@ -22,6 +22,9 @@
         <script src="src/js/popper.min.js"></script>
         <!-----------------------------------CUSTOM CSS------------------------------------------>
         <link rel="stylesheet" href="src/css/style.css">
+        <!-----------------------------------VANTA---------------------------------------------->
+        <script src="src/js/three.min.js"></script>
+        <script src="src/js/vanta.birds.min.js"></script>
 
     </head>
     <body>
@@ -41,12 +44,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://github.com/Gleethos/TAILWORLD">
+                                    <a href="https://github.com/Gleethos/arachni">
                                         <img src="src/img/icons/github-logo.png">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="main/index.html">
+                                    <a href="webroot/src/index.html">
                                         <img src="src/img/icons/cogwheel.png">
                                     </a>
                                 </li>
@@ -77,54 +80,45 @@
                     </div>
                 </nav>
 
-                <div class="">
-                    <!----------------------------------LAYOUT------------------------------------------------->
-                    <main class="parallax">
-                        <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
-                            <div>
-                                <image src="src/img/parallax/woods.png"></image>
-                            </div>
+                <!----------------------------------LAYOUT------------------------------------------------->
+                <main class="parallax">
+                    <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                        <div>
+                            <image src="src/img/parallax/woods.png"></image>
                         </div>
-                        <div class="parallax__layer parallax__layer--base">
-                            <div id="mainTile" class="cardBox dynamicSideMargin">
-                                <div class = "mainContentWrapper">
-                                    <div class = container-fluid>
-
-                                        <h1 id = "content_title"></h1>
-
-                                        <script>
-                                            function loadCRUDView(target){
-                                                $('#dynamic_content').hide("fast", function() {
-                                                    $('#content_title').hide("fast", function(){
-                                                        var split = target.split("/");
-                                                        split = split[split.length-1];console.log(split);
-                                                        $('#content_title').html(
-                                                            split.charAt(0).toUpperCase() + split.substring(1)
-                                                        ).show("fast");
-                                                    });
-                                                    $('#dynamic_content').html("").load('CRUD/'+target);
+                    </div>
+                    <div class="parallax__layer">
+                        <div id="mainTile" class="cardBox dynamicSideMargin">
+                            <div class = "mainContentWrapper">
+                                <div class = container-fluid>
+                                    <h1 id = "content_title"></h1>
+                                    <script>
+                                        function loadCRUDView(target){
+                                            $('#dynamic_content').hide("fast", function() {
+                                                $('#content_title').hide("fast", function(){
+                                                    var split = target.split("/");
+                                                    split = split[split.length-1];console.log(split);
+                                                    $('#content_title').html(
+                                                        split.charAt(0).toUpperCase() + split.substring(1)
+                                                    ).show("fast");
                                                 });
-                                                setTimeout(function() {
-                                                        hljs.initHighlighting.called = false;
-                                                        hljs.initHighlighting();
-                                                        $('#dynamic_content').show("fast");
-                                                    },
-                                                    500
-                                                );
-                                            }
-                                            $(document).ready(function(){loadCRUDView('view');});
-                                        </script>
-                                        <div id="dynamic_content">
-
-                                        </div>
-
+                                                $('#dynamic_content').html("").load('CRUD/'+target);
+                                            });
+                                            setTimeout(function() {
+                                                    $('#dynamic_content').show("fast");
+                                                },
+                                                500
+                                            );
+                                        }
+                                        $(document).ready(function(){loadCRUDView('view');});
+                                    </script>
+                                    <div id="dynamic_content">
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                    </main>
-                </div>
+                    </div>
+                </main>
                 <footer>
                     <section>
                         <ul>
@@ -146,8 +140,7 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
-        <script src="https://www.vantajs.com/dist/vanta.birds.min.js"></script>
+
         <script>
             VANTA.BIRDS({
                 el: "#BirdBox",

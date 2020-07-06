@@ -142,7 +142,7 @@ public class Request implements IRequest {
     @Override
     public String getContentString() {
         _extractContent();
-        return new String(_content);
+        return (_content==null)?"":new String(_content);
     }
 
     @Override

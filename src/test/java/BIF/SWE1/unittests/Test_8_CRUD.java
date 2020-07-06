@@ -30,11 +30,16 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("id=\"tags_search\"");
         assert body.contains("id=\"tail_relations_search\"");
         assert body.contains("<button onclick=");
-        assert body.contains(").children('input').each(function () {");
+        assert body.contains("each(function () {");
         assert body.contains("text/html");
         assert body.contains("load");
         assert body.contains("tails");
+        assert body.contains("input");
+        assert body.contains("textarea");
         assert res.getContentType().contains("text/html");
+        String compact = body.replace(" ", "");
+        assert compact.contains(".each(function(){params[this.name]=this.value;});");
+        assert compact.contains("children('input,textarea')");
     }
 
     @Test
@@ -73,6 +78,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert compact.contains("col-md-");
         assert compact.contains("col-lg-4");
         assert compact.contains("col-sm-12");
+        assert !compact.contains("textarea");
 
         assert res.getContentType().contains("text/html");
     }
@@ -148,6 +154,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("oninput=\"noteOnInputFor('parent_tail_id','tail_relations'");
         assert body.contains("value=\"ThisIsASavingTest\"");
         assert body.contains("name=\"child_tail_id\"");
+        assert !body.contains("textarea");
 
         req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -165,6 +172,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("id=\"id_3\"");
         assert body.contains("oninput=\"noteOnInputFor('name','tails','3')");
         assert body.contains("id=\"tails_3\"");
+        assert body.contains("textarea");
     }
 
     @Test

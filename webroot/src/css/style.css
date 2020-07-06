@@ -414,7 +414,7 @@ header p {
     margin-bottom: 0.33em;
 }
 
-.mainContentWrapper input {
+.mainContentWrapper input, textarea {
     border-radius: 0.2em;
     margin: 0.075em;
     padding: 0.125em;

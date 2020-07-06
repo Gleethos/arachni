@@ -1,5 +1,6 @@
 package comp.imp;
 
+import comp.IPlugin;
 import comp.IUrl;
 
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class Url implements IUrl {
                     split[1] = split[1].substring(0, split[1].length()-8);
                     split[1] = split[1].trim();
                 }
-                _parameter.put(split[0], split[1]);
+                _parameter.put(IPlugin.util.decodeValue(split[0]), IPlugin.util.decodeValue(split[1]));
             }
         }
     }

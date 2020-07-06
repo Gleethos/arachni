@@ -4,6 +4,7 @@ import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
+import comp.imp.Url;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -110,8 +111,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
-        Map<String, String> decodedParams = new HashMap<>();
-        paramTable.forEach( (k,v) -> decodedParams.put(util.decodeValue(k), v) );
+        String babaaba = req.getContentString();
+        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(babaaba).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
@@ -119,19 +120,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
 
         for(String column : columns) {
-            if(decodedParams.containsKey(column) && !decodedParams.get(column).equals("")) cols.add(column);
+            if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
         }
-        if(!_execute(__generateSaveSQLFor(decodedParams, tableName), response)) return;
+        if(!_execute(__generateSaveSQLFor(paramTable, tableName), response)) return;
         int lastID = _lastInsertID();
         _commit(response);
         _close();
         _createAndOrConnectToDatabase(response);
+        String foundParamID = paramTable.get("id");
         req.getUrl().getParameter().clear();
-        if(!decodedParams.containsKey("id")) req.getUrl().getParameter().put("id", String.valueOf(lastID));
-        else req.getUrl().getParameter().put("id", decodedParams.get("id"));
+        if(foundParamID==null) req.getUrl().getParameter().put("id", String.valueOf(lastID));
+        else req.getUrl().getParameter().put("id", foundParamID);
         _find(req, response);
-
-
 
     }
 
@@ -168,9 +168,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         response.setContent("text/html");
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
+
         Map<String, String> paramTable = req.getUrl().getParameter();
-        Map<String, String> decodedParams = new HashMap<>();
-        paramTable.forEach( (k,v) -> decodedParams.put(util.decodeValue(k), v) );
+        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
@@ -178,7 +178,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
 
         for(String column : columns) {
-            if(decodedParams.containsKey(column) && !decodedParams.get(column).equals("")) cols.add(column);
+            if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
         }
         List<Object> values = new ArrayList<>();
         StringBuilder sql = new StringBuilder("SELECT * FROM " + tableName);
@@ -187,10 +187,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String type = attributes.get(cols.get(i)).get(0);
             if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
                 sql.append(cols.get(i)).append(" LIKE ? ");
-                values.add(decodedParams.get("%"+cols.get(i)+"%"));
+                values.add(paramTable.get("%"+cols.get(i)+"%"));
             } else {
                 sql.append(cols.get(i)).append(" = ? ");
-                values.add(decodedParams.get(cols.get(i)));
+                values.add(paramTable.get(cols.get(i)));
             }
             if ( i < cols.size()-1 ) sql.append("OR ");
         }
@@ -226,13 +226,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             int inner = i;
             String entityID = map.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
-            f.$("<div id=\""+rowID+"\" class=\"row\">");
+            f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
             map.forEach( (k,v) ->
             {
                 String lowerKey = k.toLowerCase();
                 String bootstrapClasses =
                         (lowerKey.contains("id"))
-                                ?"col-sm-12 col-md-4 col-lg-2"
+                                ?"col-sm-2 col-md-1 col-lg-1"
                                 : (lowerKey.contains("value")||lowerKey.contains("content"))
                                         ?"col-sm-12 col-md-12 col-lg-10"
                                         :(lowerKey.contains("deleted")||lowerKey.contains("created"))
@@ -240,7 +240,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             :"col-sm-12 col-md-6 col-lg-4";
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = attribute+"_"+entityID;
-                f.$("<div class=\"EntityWrapper "+bootstrapClasses+"\">");
+                f.$("<div class=\"AttributeWrapper "+bootstrapClasses+"\">");
                 f.$(
                         "<span              " +
                         "   value=\"0\"     " + // Counts onInput events to trigger persisting
@@ -250,12 +250,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         k
                 ).$(
                         "</span>" +
-                        "<input                                 " +
+                        "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
                         "      style=\"width:100%;\"     " +
                         "      name=\""+attribute+"\"                       " +
                         "      value=\""+v.get(inner)+"\"       " +
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
-                        ">"
+                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?"</textarea>":"")
                 );
                 f.$("</div>");
             });
@@ -305,7 +305,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         {
             f.$("<div id=\"" + table + "_search\" style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.5em;\">");
             f.$("<div style=\"border: 0.01em solid black; border-radius: 0.1em;\"><label>").$(table).$(" - search :</label>");
-            f.$("<button onclick=\"loadFoundFor('").$(table).$("')\">find!</button></div></br>");
+            f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button></div></br>");
             for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
             f.$("<div id=\"").$(table).$("_result\"></div>");
             f.$("</div>");
