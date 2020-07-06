@@ -7,6 +7,7 @@ import comp.imp.PluginManager;
 import comp.imp.Request;
 import comp.imp.plugins.*;
 
+import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDate;
 
@@ -36,8 +37,10 @@ public class Test8Provider {
         return new ToLower();
     }
 
-    public IPlugin getCRUDPlugin(){
-        return new CRUD("jdbc:sqlite:C:/sqlite/db/TestDB", "", "");
+    public IPlugin getCRUDPlugin(String name){
+        File f = new File("test/db");
+        String path = f.getAbsolutePath().replace("\\", "/");
+        return new CRUD("jdbc:sqlite:"+path+"/"+name);
     }
 
     public String getCRUDUrl(LocalDate localDate, LocalDate localDate1) {

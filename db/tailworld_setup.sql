@@ -2,7 +2,7 @@
 INSERT INTO tails
 (name, value, created)
 VALUES
-('First Tail', 'blabla', datetime('now'));
+('First Tail', 'bla bla', datetime('now'));
 
 --<#SPLIT#>--
 
@@ -16,7 +16,7 @@ VALUES
 INSERT INTO tail_relations
 (parent_tail_id, child_tail_id, description, created)
 VALUES
-(1, 2, '', datetime('now'));
+(1, 2, 'Title Relation', datetime('now'));
 
 --<#SPLIT#>--
 

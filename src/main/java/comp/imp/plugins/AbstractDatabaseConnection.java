@@ -1,6 +1,7 @@
 package comp.imp.plugins;
 
 import comp.IPlugin;
+import comp.IResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,10 +14,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.util.*;
 import java.util.function.Consumer;
 
 public abstract class AbstractDatabaseConnection {
@@ -43,7 +42,7 @@ public abstract class AbstractDatabaseConnection {
     }
 
     /**
-     * Connect to a sample database
+     * Connect to a simple database
      */
     protected void _createAndOrConnectToDatabase() throws SQLException
     {
@@ -56,14 +55,38 @@ public abstract class AbstractDatabaseConnection {
         _connection.setAutoCommit(false);
     }
 
+    /**
+     * Connect to a simple database and store error in response content...
+     */
+    protected void _createAndOrConnectToDatabase(IResponse response){
+        try {
+            _createAndOrConnectToDatabase();
+        } catch (SQLException e) {
+            response.setContent(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method commits on the current connection and
+     * also stores error information in the response if said
+     * attempt fails...
+     */
+    protected void _commit(IResponse response) {
+        try {
+            if(_connection!=null) _connection.commit();
+        } catch (SQLException e) {
+            response.setContent(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Closing Connection!
      */
     protected void _close(){
-        Connection conn = _connection;
         try {
-            conn.close();
+            if(_connection!=null) _connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -106,20 +129,36 @@ public abstract class AbstractDatabaseConnection {
             }
         });
         return space;
+    }
 
+    protected Map<String, List<String>> _attributesTableOf(List<String> attributeList)
+    {
+        Map<String, List<String>> attributes = new HashMap<>();
+        for( String a : attributeList ){
+            String[] split = a.split(" ");
+            String key = split[0];
+            String[] value = new String[split.length-1];
+            System.arraycopy(split, 1, value, 0, value.length);
+            attributes.put(key, Arrays.asList(value));
+        }
+        return attributes;
+    }
+
+
+    protected int _lastInsertID() {
+        return (Integer)_query("SELECT last_insert_rowid()").get("last_insert_rowid()").get(0);
     }
 
     private PreparedStatement _newPreparedStatement(String sql, List<Object> values) throws SQLException {
         PreparedStatement pstmt = _connection.prepareStatement(sql);
         if(values!=null) {
-            for(int i=0; i<values.size(); i++){
-                pstmt.setObject(i+1, values.get(i));
-            }
+            for(int i=0; i<values.size(); i++) pstmt.setObject(i+1, values.get(i));
         }
         return pstmt;
     }
 
-    protected void _for(String sql, Consumer<ResultSet> start, Consumer<ResultSet> each){
+    protected void _for(String sql, Consumer<ResultSet> start, Consumer<ResultSet> each)
+    {
         _for(sql, null, start, each);
     }
 
@@ -247,10 +286,34 @@ public abstract class AbstractDatabaseConnection {
                 stmt.execute(sql);
                 stmt.close();
             } catch (SQLException e) {
+                stmt.close();
                 e.printStackTrace();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * SQL execution on connection!
+     * @param sql
+     */
+    protected boolean _execute(String sql, IResponse response){
+        Connection conn = _connection;
+        try {
+            Statement stmt = conn.createStatement();
+            try {
+                stmt.execute(sql);
+                stmt.close();
+                return true;
+            } catch (SQLException e) {
+                response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                stmt.close();
+                return false;
+            }
+        } catch (SQLException e) {
+            response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+            return false;
         }
     }
 

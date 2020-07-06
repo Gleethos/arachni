@@ -102,7 +102,7 @@ public interface IPlugin {
 		 * @return The contents of the file
 		 */
 		public String readResource(String path){
-			InputStream stream = getClass().getClassLoader().getResourceAsStream(path);
+			InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
 			try {
 				BufferedReader br = new BufferedReader(new InputStreamReader(stream));//new FileInputStream(fileName)));
 				StringBuffer sb = new StringBuffer();

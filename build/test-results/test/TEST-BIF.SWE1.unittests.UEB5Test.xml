@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-03T18:18:13" hostname="DESKTOP-6UFJ24U" time="0.149">
+<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-06T10:18:50" hostname="DESKTOP-6UFJ24U" time="0.146">
   <properties/>
-  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.016"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
+  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.019"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.016"/>
   <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
-  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.015"/>
+  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
   <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
-  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.018"/>
+  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
+  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.016"/>
   <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
-  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
+  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
   <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
   <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.022"/>
+  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.019"/>
   <system-out><![CDATA[File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
-File: missing-foo-b6a6a083-1141-43b3-ba19-d9bc04759b08.txt
-File tmp-static-files/missing-foo-b6a6a083-1141-43b3-ba19-d9bc04759b08.txt not found
-File tmp-static-files/missing-foo-b6a6a083-1141-43b3-ba19-d9bc04759b08.txt of type text/plain returned
+File: missing-foo-6e873346-7233-4c91-aad5-c8d0e94c7116.txt
+File tmp-static-files/missing-foo-6e873346-7233-4c91-aad5-c8d0e94c7116.txt not found
+File tmp-static-files/missing-foo-6e873346-7233-4c91-aad5-c8d0e94c7116.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
-File: foo-10da43ab-de11-485f-a737-3bec8d9f26cc.txt
-File tmp-static-files/foo-10da43ab-de11-485f-a737-3bec8d9f26cc.txt of type text/plain returned
-File: foo-008e7d7b-fb1a-41db-bad5-dd944fe23769.txt
-File tmp-static-files/foo-008e7d7b-fb1a-41db-bad5-dd944fe23769.txt of type text/plain returned
+File: foo-e2d00145-9c03-4d81-8604-1fc41e4e003f.txt
+File tmp-static-files/foo-e2d00145-9c03-4d81-8604-1fc41e4e003f.txt of type text/plain returned
+File: foo-e3295363-a468-4fa0-b118-eecc94a078e8.txt
+File tmp-static-files/foo-e3295363-a468-4fa0-b118-eecc94a078e8.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
 ]]></system-out>

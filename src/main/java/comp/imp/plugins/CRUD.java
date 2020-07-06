@@ -5,30 +5,34 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
-    private interface FrontendConsumer {
-        FrontendConsumer $(Object s);
-    }
-
+    private interface FrontendConsumer { FrontendConsumer $(Object s); }
 
     public CRUD() {
         super("jdbc:sqlite:C:/sqlite/db/TailDB", "", "");
     }
 
-    public CRUD(String url, String name, String password) {
+    public CRUD(String url, String name, String password)
+    {
         super(url, name, password);
+        try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    /**
+     * Test constructor!
+     * @param url
+     */
+    public CRUD(String url)
+    {
+        super(url, "", "");
         try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
         _executeFile("tailworld_bootstrap.sql");
         _executeFile("tailworld_setup.sql");
@@ -36,7 +40,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     }
 
     @Override
-    public float canHandle(IRequest req) {
+    public float canHandle(IRequest req)
+    {
         float abillity = BASELINE;
         if(req.getUrl().getRawUrl().contains("Tail"))  abillity *= 1 + (0.7 * (1-abillity));
         if(req.getUrl().getRawUrl().toLowerCase().contains("crud")) abillity *= 1 + (3.0 * (1-abillity));
@@ -62,30 +67,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         for(int i=0; i<frag.length; i++){
             if(frag[i].toLowerCase().contains("crud") && i<frag.length-1) methodName = "_"+frag[i+1].split("\\?")[0];
         }
-        if(methodName==null){
-            try {
-                File file = new File(
-                        getClass().getClassLoader().getResource("CRUD/default.html").getFile()
-                );
-                int fileLength = (int) file.length();
-                byte[] fileData = util.readFileData(file, fileLength);// send HTTP Headers
-                response.setContent(fileData);
-            } catch (FileNotFoundException fnfe) {
-                try {
-                    util.fileNotFound(response, "CRUD/default.html");
-                } catch (IOException ioe) {
-                    System.err.println("Error with file not found exception : " + ioe.getMessage());
-                    response.setContent("Error with file not found exception : " + ioe.getMessage());
-                }
-            } catch (IOException e) {
-                response.setContent("IO-Error : " + e.getMessage());
-                e.printStackTrace();
-            }
-            return response;
-        }
         Method method = null;
         try {
-            method = this.getClass().getDeclaredMethod(methodName, IRequest.class, IResponse.class);
+            if(methodName==null) method = this.getClass().getDeclaredMethod("_view", IRequest.class, IResponse.class);
+            else method = this.getClass().getDeclaredMethod(methodName, IRequest.class, IResponse.class);
         } catch (SecurityException e) {
             response.setContent("Security-Error : " + e.getMessage());
         } catch (NoSuchMethodException e) {
@@ -94,21 +79,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         if(method==null) return response;
         method.setAccessible(true);
         try {
-            try {
-                _createAndOrConnectToDatabase();
-            } catch (SQLException e) {
-                response.setContent(e.getMessage());
-                e.printStackTrace();
-            }
+            _createAndOrConnectToDatabase(response);
             method.invoke(this, req, response);
-            try {
-                if(_connection!=null) _connection.commit();
-                else return response;
-            } catch (SQLException e) {
-                response.setContent(e.getMessage());
-                e.printStackTrace();
-                return response;
-            }
+            _commit(response);
             _close();
         } catch (IllegalArgumentException e) { e.printStackTrace(); }
         catch (IllegalAccessException e) { e.printStackTrace(); }
@@ -131,9 +104,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     }
 
-    private void _find(IRequest req,  IResponse response)
-    {
-        response.setContent("text/html");//"application/json"
+    private void _save(IRequest req,  IResponse response) {
+
+        response.setContent("text/html");
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
@@ -141,20 +114,82 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         paramTable.forEach( (k,v) -> decodedParams.put(util.decodeValue(k), v) );
 
         Map<String, List<String>> tables = _tablesSpace();
-        List<String> columns = tables.get(tableName).stream().map(Object::toString).collect(Collectors.toList());
+        Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
+
+        List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
+
+        for(String column : columns) {
+            if(decodedParams.containsKey(column) && !decodedParams.get(column).equals("")) cols.add(column);
+        }
+        if(!_execute(__generateSaveSQLFor(decodedParams, tableName), response)) return;
+        int lastID = _lastInsertID();
+        _commit(response);
+        _close();
+        _createAndOrConnectToDatabase(response);
+        req.getUrl().getParameter().clear();
+        if(!decodedParams.containsKey("id")) req.getUrl().getParameter().put("id", String.valueOf(lastID));
+        else req.getUrl().getParameter().put("id", decodedParams.get("id"));
+        _find(req, response);
+
+
+
+    }
+
+    private String __generateSaveSQLFor(Map<String, String> m, String tableName) {
+        //if(m.getCreated()==null){
+        // m.setCreated(java.sql.Date.valueOf(new java.sql.Date(Calendar.getInstance().getTime().getTime()).toString()));
+        //}
+
+        Map<String, String> inserts = m;
+        List<String> attributes = new ArrayList<>(inserts.keySet());
+        List<String> values = new ArrayList<>(inserts.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList());
+
+        String id = (m.get("id")==null || m.get("id").equals(""))?"":m.get("id");
+        if(id.equals("")) {
+            return "INSERT INTO "+tableName+"\n"+
+                    "("+String.join(", ",attributes)+")\n"+
+                    "VALUES\n"+
+                    "("+String.join(",", values)+")";
+        } else {
+            List<String> pairs = new ArrayList<>();
+            for (int i=0; i<attributes.size(); i++){
+                pairs.add(attributes.get(i)+" = "+values.get(i));
+            }
+            return "UPDATE "+tableName+"\n"+
+                    "SET\n" +
+                    String.join(", ",pairs) +"\n" +
+                    "WHERE id = "+id;
+        }
+
+    }
+
+    private void _find(IRequest req,  IResponse response)
+    {
+        response.setContent("text/html");
+        ArrayList<String> cols = new ArrayList<>();
+        String tableName = req.getUrl().getFileName();
+        Map<String, String> paramTable = req.getUrl().getParameter();
+        Map<String, String> decodedParams = new HashMap<>();
+        paramTable.forEach( (k,v) -> decodedParams.put(util.decodeValue(k), v) );
+
+        Map<String, List<String>> tables = _tablesSpace();
+        Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
+
+        List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
+
         for(String column : columns) {
             if(decodedParams.containsKey(column) && !decodedParams.get(column).equals("")) cols.add(column);
         }
         List<Object> values = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM " + req.getUrl().getFileName());
+        StringBuilder sql = new StringBuilder("SELECT * FROM " + tableName);
         if ( !cols.isEmpty() ) sql.append(" WHERE ");
         for ( int i=0; i<cols.size(); i++ ) {
-            String[] split = cols.get(i).split(" ");
-            if(split[1].toLowerCase().contains("text") || split[1].toLowerCase().contains("char")){
-                sql.append(split[0]).append(" LIKE ? ");
+            String type = attributes.get(cols.get(i)).get(0);
+            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
+                sql.append(cols.get(i)).append(" LIKE ? ");
                 values.add(decodedParams.get("%"+cols.get(i)+"%"));
             } else {
-                sql.append(split[0]).append(" = ? ");
+                sql.append(cols.get(i)).append(" = ? ");
                 values.add(decodedParams.get(cols.get(i)));
             }
             if ( i < cols.size()-1 ) sql.append("OR ");
@@ -169,6 +204,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
     }
 
+
     private String __entitiesToForm(
             String tableName,
             Map<String, List<Object>> map,
@@ -179,7 +215,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         StringBuilder result = new StringBuilder();
         FrontendConsumer f = new FrontendConsumer() {
             public FrontendConsumer $(Object o) {
-                result.append(o.toString());
+                result.append((o==null)?"":o.toString());
                 return this;
             }
         };
@@ -191,32 +227,34 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String entityID = map.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\">");
-            map.forEach( (k,v) -> {
-                f.$("<div class=\"EntityWrapper\">");
-                String htmlID = k.toLowerCase().replace(" ","_")+"_"+entityID;
-
+            map.forEach( (k,v) ->
+            {
+                String lowerKey = k.toLowerCase();
+                String bootstrapClasses =
+                        (lowerKey.contains("id"))
+                                ?"col-sm-12 col-md-4 col-lg-2"
+                                : (lowerKey.contains("value")||lowerKey.contains("content"))
+                                        ?"col-sm-12 col-md-12 col-lg-10"
+                                        :(lowerKey.contains("deleted")||lowerKey.contains("created"))
+                                            ?"col-sm-12 col-md-4 col-lg-4"
+                                            :"col-sm-12 col-md-6 col-lg-4";
+                String attribute = k.toLowerCase().replace(" ","_");
+                String attributeID = attribute+"_"+entityID;
+                f.$("<div class=\"EntityWrapper "+bootstrapClasses+"\">");
                 f.$(
                         "<span              " +
-                        "   value=\"0\"     " +
-                        "   id=\""+htmlID+"\"      " +
+                        "   value=\"0\"     " + // Counts onInput events to trigger persisting
+                        "   id=\""+attributeID+"\"      " +
                         ">                  "
                 ).$(
                         k
                 ).$(
                         "</span>" +
                         "<input                                 " +
+                        "      name=\""+attribute+"\"                       " +
                         "      value=\""+v.get(inner)+"\"       " +
-                        "      onchange=\"                                             " +
-                        "                 $('#"+htmlID+"').val($('#"+htmlID+"').val()+1);     " +
-                        "                 if( $('#"+htmlID+"').val()>10 ) {" +//TODO: Persist
-                        "                          $('#"+htmlID+"').val(0);                     " +
-                        "                 }                                         " +
-                        "      \"                                           " +
+                        "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
                         ">"
-                ).$(
-                        v.get(inner)
-                ).$(
-                        "</input>"
                 );
                 f.$("</div>");
             });
@@ -249,38 +287,29 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     }
 
 
-    private void _search(IRequest req, IResponse response) throws SQLException {
+    private void _view(IRequest req, IResponse response)
+    {
         response.setContentType("text/html");
-        Map<String, List<String>> space = _tablesSpace();
-        String[] searchform = {""};
-        space.forEach((table, columns)->{
-            StringBuilder form = new StringBuilder("<div id=\"" + table + "_search\" style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.5em;\">");
-            form.append("<div style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.25em;\"><label>").append(table).append(" - search :</label>");
-            form.append("<button onclick=\"loadSearch('").append(table).append("')\">find!</button></div></br>");
-            for(String column : columns){
-                form.append("<input name=\"").append(column).append("\" placeholder=\"").append(column).append("\"></input>");
+        String fileData = new util().readResource("CRUD/default.html");// send HTTP Headers
+
+        StringBuilder form = new StringBuilder(fileData);
+        FrontendConsumer f = new FrontendConsumer() {
+            public FrontendConsumer $(Object o) {
+                form.append(o.toString());
+                return this;
             }
-            form.append("<div id=\"").append(table).append("_result\"></div>");
-            form.append("</div>");
-            searchform[0] += form;
+        };
+        Map<String, List<String>> tables = _tablesSpace();
+        tables.forEach( (table, columns) ->
+        {
+            f.$("<div id=\"" + table + "_search\" style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.5em;\">");
+            f.$("<div style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.25em;\"><label>").$(table).$(" - search :</label>");
+            f.$("<button onclick=\"loadFoundFor('").$(table).$("')\">find!</button></div></br>");
+            for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+            f.$("<div id=\"").$(table).$("_result\"></div>");
+            f.$("</div>");
         });
-        String result = searchform[0] +
-                "<script>" +
-                "function loadSearch(selector){\n" +
-                "    var param = []\n" +
-                "    $('#'+selector+'_search').children('input').each(function () {\n" +
-                "       param.push(encodeURIComponent(this.name) + '=' + encodeURIComponent(this.value))\n" +
-                "    });\n" +
-                "    $('#'+selector+'_result').html(\"\").load('CRUD/find/in/'+selector+'?'+param.join('&'));\n" +
-                "}" +
-                "   function persistRow( selector ) {     " +
-                "                                       " +
-                "                                       " +
-                "                                       " +
-                "                                       " +
-                "   }                                   "+
-                "</script>";
-        response.setContent(result);
+        response.setContent(form.toString());
     }
 
 

@@ -7,7 +7,10 @@
 
 
 <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
+
+
 <div
+        class="col-sm-12 col-md-12"
         style="margin:0.5em;padding:0.5em;border: 0.1em solid black;"
 >
        <input
@@ -23,13 +26,44 @@
        >...response...</div>
 </div>
 <script>
-   $(document).ready(function() {
+   $(document).ready(function()
+   {
        $('#tail_world_redirect_button').click(function() {
-          console.log('WTF!!');
           window.location = window.location.origin+'/tailworld.html';
        });
        $('#set_db_url_button').click(function() {
           $('#set_db_url_response_box').load('CRUD/setJDBC?url='+$('#jdbc_url').val());
        });
    });
+   function loadFoundFor( tableName )
+   {
+          var params = [];
+          $('#' + tableName + '_search').children('input').each(function () {
+                 params.push(encodeURIComponent(this.name) + '=' + encodeURIComponent(this.value))
+          });
+          $('#' + tableName + '_result').html("").load('CRUD/find/' + tableName + '?' + params.join('&'));
+   }
+
+   function saveEntity( tableName, id )
+   {
+          let entity = $('#' + tableName+'_'+id);
+          console.log("Entity to be saved : "+entity);
+          var params = [];
+          entity.children('input').each(function () {
+                 params.push(encodeURIComponent(this.name) + '=' + encodeURIComponent(this.value));
+          });
+          console.log("Parameters : "+params)
+          entity.html("").load('CRUD/save/' + tableName + '?' + params.join('&'));
+   }
+
+   function noteOnInputFor( attribute, tableName, id )
+   {
+          let element = $('#'+attribute+'_'+id);
+          element.attr('value',parseInt(element.attr('value'))+1);
+          if( parseInt(element.attr('value'))>10 ) {
+                 element.attr('value',0);
+                 saveEntity(tableName, id);
+          }
+   }
 </script>
+

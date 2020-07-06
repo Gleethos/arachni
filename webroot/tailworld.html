@@ -66,7 +66,7 @@
                                     <ul class="side-nav">
                                         <li></li>
                                         <li></li>
-                                        <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadContent('../TOC')">Table Of Content</a></li>
+                                        <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadCRUDView('../TOC')">Table Of Content</a></li>
                                         <li><a target="_blank" href="index.html">Home</a></li>
                                         <li><a target="_blank" href="main/index.html">Documentation</a></li>
                                         <li><a target="_blank" href="https://github.com/Gleethos/TAILWORLD">Github</a></li>
@@ -94,40 +94,31 @@
                                 <div class = "mainContentWrapper">
                                     <div class = container-fluid>
 
-                                        <h1 id = "ContentTitle"></h1>
+                                        <h1 id = "content_title"></h1>
 
                                         <script>
-                                            function loadContent(target){
-                                                $('#DynamicContent').hide("fast", function() {
-                                                    $('#ContentTitle').hide("fast", function(){
+                                            function loadCRUDView(target){
+                                                $('#dynamic_content').hide("fast", function() {
+                                                    $('#content_title').hide("fast", function(){
                                                         var split = target.split("/");
                                                         split = split[split.length-1];console.log(split);
-                                                        $('#ContentTitle').html(
+                                                        $('#content_title').html(
                                                             split.charAt(0).toUpperCase() + split.substring(1)
                                                         ).show("fast");
                                                     });
-                                                    $('#DynamicContent').html("").load('CRUD/search');
+                                                    $('#dynamic_content').html("").load('CRUD/'+target);
                                                 });
                                                 setTimeout(function() {
                                                         hljs.initHighlighting.called = false;
                                                         hljs.initHighlighting();
-                                                        $('#DynamicContent').show("fast");
+                                                        $('#dynamic_content').show("fast");
                                                     },
                                                     500
                                                 );
                                             }
-                                            $(document).ready(function(){loadContent('search');});
-                                            function getTable(data){
-                                                //$.each(i, function (k, v) {
-                                                //    setTimeout(function () {
-                                                //        $('#variant').fadeOut("slow", function () {
-                                                //            $(this).text(innerKey + "-" + innerValue).fadeIn("slow");
-                                                //        });
-                                                //    }, i * 6000);
-                                                //});
-                                            }
+                                            $(document).ready(function(){loadCRUDView('view');});
                                         </script>
-                                        <div id="DynamicContent" class = "row">
+                                        <div id="dynamic_content" class="row">
 
                                         </div>
 

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB3Test" tests="26" skipped="0" failures="0" errors="0" timestamp="2020-07-03T18:18:13" hostname="DESKTOP-6UFJ24U" time="0.029">
+<testsuite name="BIF.SWE1.unittests.UEB3Test" tests="26" skipped="0" failures="0" errors="0" timestamp="2020-07-06T10:18:50" hostname="DESKTOP-6UFJ24U" time="0.02">
   <properties/>
-  <testcase name="milestone1_return_main_page" classname="BIF.SWE1.unittests.UEB3Test" time="0.007"/>
+  <testcase name="milestone1_return_main_page" classname="BIF.SWE1.unittests.UEB3Test" time="0.004"/>
   <testcase name="response_should_send_content_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="testIPlugin_can_handle_test_url" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="testIPlugin_can_handle_test_url" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="IRequest_should_return_random_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_send_200" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_send_404" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_send_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_send_404" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_send_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_cannot_handle_url" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_return_default_serverheader" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="response_should_save_contenttype" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_response_send_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
   <testcase name="response_should_set_content_length" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="IRequest_should_parse_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="IRequest_should_parse_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="testIPlugin_can_handle_IRequest" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="IRequest_should_return_useragent" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="IRequest_should_return_useragent" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_can_handle_test_url_with_parameter" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="response_should_save_serverheader" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_set_content_length_with_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_set_content_length_with_utf8" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
   <testcase name="testIPlugin_return_valid_response" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="IRequest_should_return_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="response_should_save_string_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
-  <testcase name="response_should_send_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.002"/>
+  <testcase name="IRequest_should_return_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
+  <testcase name="response_should_save_string_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="response_should_send_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_send_server_header" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
-  <testcase name="testIPlugin_hello_world" classname="BIF.SWE1.unittests.UEB3Test" time="0.0"/>
+  <testcase name="testIPlugin_hello_world" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <testcase name="response_should_fail_sending_no_content" classname="BIF.SWE1.unittests.UEB3Test" time="0.001"/>
   <system-out><![CDATA[File: .
 File .\webroot/index.html of type text/html returned

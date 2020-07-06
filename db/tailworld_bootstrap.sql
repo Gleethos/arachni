@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS tail_tag_reltions;
+DROP TABLE IF EXISTS tail_tag_relations;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS tags;
 --<#SPLIT#>--
