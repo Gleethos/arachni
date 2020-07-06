@@ -15,22 +15,18 @@
         <meta name="robots" content="all">
         <meta name="revisit-after" content="30 days">
         <!-----------------------------------JQUERY---------------------------------------------->
-        <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <script src="src/js/jquery.min.js"></script>
         <!-----------------------------------BOOTSTRAP------------------------------------------>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="src/css/bootstrap.min.css">
+        <script src="src/js/bootstrap.min.js"></script>
+        <script src="src/js/popper.min.js"></script>
         <!-----------------------------------CUSTOM CSS------------------------------------------>
-        <link rel="stylesheet" href="src/style.css">
-
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/sunburst.min.css">
-        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+        <link rel="stylesheet" href="src/css/style.css">
 
     </head>
     <body>
         <div id="header">
-            <div id="BirdBox" class="mainframe" style="background-image: url('src/main/distant_bgr.jpg');">
+            <div id="BirdBox" class="mainframe" style="background-image: url('src/img/distant_bgr.jpg');">
 
                 <nav class="" id="navTile">
                     <div id="navContainer" class="">
@@ -41,17 +37,17 @@
                             <ul class="nav navbar-right" id="NavbarList">
                                 <li>
                                     <a href="index.html">
-                                        <img src="src/main/icons/house.png">
+                                        <img src="src/img/icons/house.png">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://github.com/Gleethos/TAILWORLD">
-                                        <img src="src/main/icons/github-logo.png">
+                                        <img src="src/img/icons/github-logo.png">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="main/index.html">
-                                        <img src="src/main/icons/cogwheel.png">
+                                        <img src="src/img/icons/cogwheel.png">
                                     </a>
                                 </li>
                             </ul>
@@ -86,7 +82,7 @@
                     <main class="parallax">
                         <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
                             <div>
-                                <image src="src/main/parallax/woods.png"></image>
+                                <image src="src/img/parallax/woods.png"></image>
                             </div>
                         </div>
                         <div class="parallax__layer parallax__layer--base">
@@ -118,7 +114,7 @@
                                             }
                                             $(document).ready(function(){loadCRUDView('view');});
                                         </script>
-                                        <div id="dynamic_content" class="row">
+                                        <div id="dynamic_content">
 
                                         </div>
 

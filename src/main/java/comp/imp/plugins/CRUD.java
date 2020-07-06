@@ -226,7 +226,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             int inner = i;
             String entityID = map.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
-            f.$("<div id=\""+rowID+"\">");
+            f.$("<div id=\""+rowID+"\" class=\"row\">");
             map.forEach( (k,v) ->
             {
                 String lowerKey = k.toLowerCase();
@@ -251,6 +251,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 ).$(
                         "</span>" +
                         "<input                                 " +
+                        "      style=\"width:100%;\"     " +
                         "      name=\""+attribute+"\"                       " +
                         "      value=\""+v.get(inner)+"\"       " +
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
@@ -303,7 +304,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         tables.forEach( (table, columns) ->
         {
             f.$("<div id=\"" + table + "_search\" style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.5em;\">");
-            f.$("<div style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.25em;\"><label>").$(table).$(" - search :</label>");
+            f.$("<div style=\"border: 0.01em solid black; border-radius: 0.1em;\"><label>").$(table).$(" - search :</label>");
             f.$("<button onclick=\"loadFoundFor('").$(table).$("')\">find!</button></div></br>");
             for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
             f.$("<div id=\"").$(table).$("_result\"></div>");

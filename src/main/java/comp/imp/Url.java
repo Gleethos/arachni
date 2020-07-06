@@ -43,7 +43,12 @@ public class Url implements IUrl {
         _path = path.toString();
         if(parts.length>0){
             _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1].split("\\?")[0];
-            _extension = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[1]:"";
+            _extension = "";
+            if(parts[parts.length-1].contains(".")) { // Only split after first ".", append the rest back on... :
+                String[] extensionParts = parts[parts.length-1].split("\\.");
+                for(int i=1; i<extensionParts.length; i++) _extension += (extensionParts[i]+".");
+                _extension = _extension.substring(0, _extension.length()-1);
+            }
             _extension = _extension.split("\\?")[0];
             _extension = _extension.split("#")[0];
         }
