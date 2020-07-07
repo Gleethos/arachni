@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.Test_8_CRUD" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-07-07T20:16:58" hostname="DESKTOP-6UFJ24U" time="0.302">
+<testsuite name="BIF.SWE1.unittests.Test_8_CRUD" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-07-07T20:21:09" hostname="DESKTOP-6UFJ24U" time="23.304">
   <properties/>
-  <testcase name="test_CRUD_search_fields" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.052"/>
-  <testcase name="test_CRUD_saving_GET_requests" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.097"/>
-  <testcase name="test_CRUD_setJDBC" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.037"/>
-  <testcase name="test_CRUD_saving_tail_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.041"/>
-  <testcase name="test_CRUD_saving_tail_fails_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.02"/>
-  <testcase name="test_CRUD_saving_new_tail_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.031"/>
-  <testcase name="test_CRUD_finding" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.019"/>
+  <testcase name="test_CRUD_search_fields" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.068"/>
+  <testcase name="test_CRUD_saving_GET_requests" classname="BIF.SWE1.unittests.Test_8_CRUD" time="19.566"/>
+  <testcase name="test_CRUD_setJDBC" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.045"/>
+  <testcase name="test_CRUD_saving_tail_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.057"/>
+  <testcase name="test_CRUD_saving_tail_fails_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="3.502"/>
+  <testcase name="test_CRUD_saving_new_tail_with_POST" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.039"/>
+  <testcase name="test_CRUD_finding" classname="BIF.SWE1.unittests.Test_8_CRUD" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[java.sql.SQLException: No suitable driver found for THIS_IS_A_TEST_VALUE
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
@@ -15,7 +15,7 @@
 	at comp.imp.plugins.AbstractDatabaseConnection._createAndOrConnectToDatabase(AbstractDatabaseConnection.java:51)
 	at comp.imp.plugins.AbstractDatabaseConnection._createAndOrConnectToDatabase(AbstractDatabaseConnection.java:63)
 	at comp.imp.plugins.CRUD.handle(CRUD.java:83)
-	at BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_setJDBC(Test_8_CRUD.java:298)
+	at BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_setJDBC(Test_8_CRUD.java:295)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

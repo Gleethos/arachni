@@ -309,11 +309,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 return this;
             }
         };
+        String today = new java.sql.Date(System.currentTimeMillis()).toString();
         Map<String, List<String>> tables = _tablesSpace();
         tables.forEach( (table, columns) ->
         {
             Map<String, List<Object>> templateEntity = new HashMap<>();
-            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of(""));
+            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
 
             f.$("<div class = \"mainContentWrapper\">");
                 f.$("<div class = container-fluid>");

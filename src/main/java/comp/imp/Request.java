@@ -27,11 +27,11 @@ public class Request implements IRequest {
                 StringTokenizer parse = new StringTokenizer(input);
                 String key = parse.nextToken();
                 key = (key.lastIndexOf(":")==key.length()-1)?key.substring(0, key.length()-1):key;
-                String value = "";
+                StringBuilder value = new StringBuilder();
                 while(parse.hasMoreElements()){
-                    value += (((value!="")?" ":"")+parse.nextToken());
+                    value.append((!value.toString().equals("")) ? " " : "").append(parse.nextToken());
                 }
-                _headers.put(key.toLowerCase(), value);
+                _headers.put(key.toLowerCase(), value.toString());
             }
         }
         for(String method : METHODS){
@@ -70,9 +70,9 @@ public class Request implements IRequest {
      * Reads all content from stream!
      */
     private void _extractContent(){
-        if(_content==null && _method!="GET"){
+        if(_content==null && !_method.equals("GET")){
             int length = this.getContentLength();
-            String line = _extractLine(false, length);//_in.readLine();
+            String line = _extractLine(false, length);
             _content = (line!=null)?line.getBytes():_content;
         }
     }

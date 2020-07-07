@@ -10,13 +10,14 @@
               padding-bottom: 0.25em;
               padding-top: 0.25em;
               border-radius: 1em;
-              background-color: #c3ffda;
+              background-color: lightblue;
        }
        .SearchHead {
               border: solid black 1px;
-              border-radius: 1em;
+              border-radius: 0.5em;
               margin: 0.25em;
               background-color: #ffffff;
+              max-width: 90%;
        }
        .EntityWrapper {
               border-radius: 1em;
@@ -62,8 +63,7 @@
 
 
 <script>
-       $(document).ready(function()
-       {
+       $(document).ready(function(){
               $('#tail_world_redirect_button').click(function() {
                      window.location = window.location.origin+'/tailworld.html';
               });
@@ -79,8 +79,10 @@
        function loadSavedForEntity( tableName, id ) {
               let entity = $('#' + tableName+'_'+id);
               $( document ).ajaxComplete(function() {
+                     console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
                      $('#' + tableName+'_'+id).children('.AttributeWrapper').children('textarea').first().focus();
               });
+              console.log('Starting ajax for -> id: #' + tableName+'_'+id+'; url: '+'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *')
               sendAndSet(
                       entity.children('.AttributeWrapper').children('input, textarea'),
                       entity,
