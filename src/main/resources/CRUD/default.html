@@ -5,7 +5,10 @@
 
 <style>
        .SearchWrapper {
-              border-bottom: solid black 2px;
+              -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              border-bottom: solid black 1px;
               margin-bottom: 0.25em;
               padding-bottom: 0.25em;
               padding-top: 0.25em;
@@ -13,11 +16,14 @@
               background-color: lightblue;
        }
        .SearchHead {
-              border: solid black 1px;
+              -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              border-bottom: solid black 1px;
               border-radius: 0.5em;
               margin: 0.25em;
               background-color: #ffffff;
-              max-width: 90%;
+              width: auto;
        }
        .EntityWrapper {
               border-radius: 1em;
@@ -30,10 +36,15 @@
        .AttributeWrapper {
               background-color: lightblue;
               border-radius: 0.5em;
-              -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
-              -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
-              box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+              -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+              padding: 0.25em;
+              padding-bottom:1em;
        }
+
+
+
 </style>
 
 <div class = "mainContentWrapper">
@@ -80,11 +91,11 @@
               let entity = $('#' + tableName+'_'+id);
               $( document ).ajaxComplete(function() {
                      console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
-                     $('#' + tableName+'_'+id).children('.AttributeWrapper').children('textarea').first().focus();
+                     $('#' + tableName+'_'+id).children('div').children('.AttributeWrapper').children('textarea').first().focus();
               });
               console.log('Starting ajax for -> id: #' + tableName+'_'+id+'; url: '+'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *')
               sendAndSet(
-                      entity.children('.AttributeWrapper').children('input, textarea'),
+                      entity.children('div').children('.AttributeWrapper').children('input, textarea'),
                       entity,
                       'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *'
               );

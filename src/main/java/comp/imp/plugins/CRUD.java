@@ -250,7 +250,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = attribute+"_"+entityID;
-                f.$("<div class=\"AttributeWrapper "+bootstrapClasses+"\">");
+                f.$("<div class=\""+bootstrapClasses+"\">");
+                f.$("<div class=\"AttributeWrapper\">");
                 f.$(
                         "<span              " +
                         "   value=\"0\"     " + // Counts onInput events to trigger persisting
@@ -267,6 +268,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
                         ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?v.get(inner)+"</textarea>":"")
                 );
+                f.$("</div>");
                 f.$("</div>");
             });
             f.$("</div>");

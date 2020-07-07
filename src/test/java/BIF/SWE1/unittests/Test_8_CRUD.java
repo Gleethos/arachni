@@ -222,7 +222,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
                 "'INSERT INTO tails\n" +
                 "(created, deleted)\n" +
                 "VALUES\n" +
-                "('2020-07-07','InTheFuture')'\n" +
+                "('"+date+"','InTheFuture')'\n" +
                 "\n" +
                 "Reason:\n" +
                 "[SQLITE_CONSTRAINT]  Abort due to constraint violation (NOT NULL constraint failed: tails.name)"
