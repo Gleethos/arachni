@@ -308,6 +308,7 @@ public abstract class AbstractDatabaseConnection {
                 return true;
             } catch (SQLException e) {
                 response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                response.setStatusCode(500);
                 stmt.close();
                 return false;
             }

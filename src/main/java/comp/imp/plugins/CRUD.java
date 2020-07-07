@@ -120,6 +120,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
 
         for(String column : columns) {
+            if (!paramTable.containsKey(column) && column.equals("created")) {
+                paramTable.put("created", new java.sql.Date(System.currentTimeMillis()).toString());
+            }
             if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
         }
         if(!_execute(__generateSaveSQLFor(paramTable, tableName), response)) return;
@@ -170,7 +173,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         String tableName = req.getUrl().getFileName();
 
         Map<String, String> paramTable = req.getUrl().getParameter();
-        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(req.getContentString()).getParameter());
+        if(req.getMethod().equals("POST") && !paramTable.containsKey("id")) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
@@ -219,25 +222,32 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 return this;
             }
         };
-        f.$("<div>");
         int rowCount = map.values().stream().findFirst().get().size();
         String indexAttribute = map.keySet().stream().filter(k->k.contains("id")).findFirst().get();
         for(int i=0; i<rowCount; i++) {
             int inner = i;
-            String entityID = map.get(indexAttribute).get(i).toString();
+            String entityID = map.get(indexAttribute).get(i).toString().equals("")?"new":map.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
+            f.$(
+                    "<div class=\"col-sm-2 col-md-2 col-lg-2\">" +
+                    "<button style=\"width:100%;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                    "SAVE" +
+                    "</button>" +
+                    "</div>"
+            );
             map.forEach( (k,v) ->
             {
                 String lowerKey = k.toLowerCase();
                 String bootstrapClasses =
                         (lowerKey.contains("id"))
-                                ?"col-sm-2 col-md-1 col-lg-1"
+                                ?(lowerKey.equals("id"))?"col-sm-2 col-md-1 col-lg-1":"col-sm-2 col-md-2 col-lg-2"
                                 : (lowerKey.contains("value")||lowerKey.contains("content"))
-                                        ?"col-sm-12 col-md-12 col-lg-10"
+                                        ?"col-sm-12 col-md-12 col-lg-12"
                                         :(lowerKey.contains("deleted")||lowerKey.contains("created"))
                                             ?"col-sm-12 col-md-4 col-lg-4"
                                             :"col-sm-12 col-md-6 col-lg-4";
+
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = attribute+"_"+entityID;
                 f.$("<div class=\"AttributeWrapper "+bootstrapClasses+"\">");
@@ -253,31 +263,30 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
                         "      style=\"width:100%;\"     " +
                         "      name=\""+attribute+"\"                       " +
-                        "      value=\""+v.get(inner)+"\"       " +
+                                ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+v.get(inner)+"\"") +
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
-                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?"</textarea>":"")
+                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?v.get(inner)+"</textarea>":"")
                 );
                 f.$("</div>");
             });
             f.$("</div>");
         }
-        f.$("</div>");
 
-        List<String> tableNames = _listOfAllTables();
-        String relationTable = tables
-                .keySet()
-                .stream()
-                .filter(k->!k.equals(tableName)&&k.contains("relation"))
-                .findFirst().get();
-        if(relationTable!=null && !relationTable.isEmpty()) {
-            String foreignKey = null;
-            List<String> foreignAttributes = tables.get(relationTable);
-            for(String attribute : foreignAttributes) {
-                if(attribute.contains(tableName)&&attribute.contains("parent")&&attribute.contains("id")) {
-                    foreignKey = attribute;
-                }
-            }
-        }
+        //List<String> tableNames = _listOfAllTables();
+        //String relationTable = tables
+        //        .keySet()
+        //        .stream()
+        //        .filter(k->!k.equals(tableName)&&k.contains("relation"))
+        //        .findFirst().get();
+        //if(relationTable!=null && !relationTable.isEmpty()) {
+        //    String foreignKey = null;
+        //    List<String> foreignAttributes = tables.get(relationTable);
+        //    for(String attribute : foreignAttributes) {
+        //        if(attribute.contains(tableName)&&attribute.contains("parent")&&attribute.contains("id")) {
+        //            foreignKey = attribute;
+        //        }
+        //    }
+        //}
         //TODO: also load children...
         //TODO: parse search result into forms!
         //TODO: add JS logic for sending save and update calls!
@@ -303,11 +312,30 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, List<String>> tables = _tablesSpace();
         tables.forEach( (table, columns) ->
         {
-            f.$("<div id=\"" + table + "_search\" style=\"border: 0.01em solid black; border-radius: 0.1em; padding:0.5em;\">");
-            f.$("<div style=\"border: 0.01em solid black; border-radius: 0.1em;\"><label>").$(table).$(" - search :</label>");
-            f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button></div></br>");
-            for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
-            f.$("<div id=\"").$(table).$("_result\"></div>");
+            Map<String, List<Object>> templateEntity = new HashMap<>();
+            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of(""));
+
+            f.$("<div class = \"mainContentWrapper\">");
+                f.$("<div class = container-fluid>");
+                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");
+                        f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\"><label>").$(table).$(" - search :</label>");
+                        f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button></div>");
+                        for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+                    f.$("</div>");
+                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                        f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
+                    f.$("</div>");
+                    f.$("<script>");
+                    f.$(" function new_"+table+"() {");
+                        f.$("$('#").$(table).$("_result').append(`");
+                        f.$(__entitiesToForm(table, templateEntity, tables));
+                        f.$("`);");
+                    f.$(" }");
+                    f.$("</script>\n");
+                    f.$("<button onclick=\"new_"+table+"()\">");
+                        f.$("NEW\n");
+                    f.$("</button>\n");
+                f.$("</div>");
             f.$("</div>");
         });
         response.setContent(form.toString());

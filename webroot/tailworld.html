@@ -89,32 +89,35 @@
                     </div>
                     <div class="parallax__layer">
                         <div id="mainTile" class="cardBox dynamicSideMargin">
+
+                            <script>
+                                function loadCRUDView(target){
+                                    $('#dynamic_content').hide("fast", function() {
+                                        $('#content_title').hide("fast", function(){
+                                            var split = target.split("/");
+                                            split = split[split.length-1];console.log(split);
+                                            $('#content_title').html(
+                                                split.charAt(0).toUpperCase() + split.substring(1)
+                                            ).show("fast");
+                                        });
+                                        $('#dynamic_content').html("").load('CRUD/'+target);
+                                    });
+                                    setTimeout(function() {
+                                            $('#dynamic_content').show("fast");
+                                        },
+                                        500
+                                    );
+                                }
+                                $(document).ready(function(){setTimeout(function() {loadCRUDView('view');}, 200);});
+                            </script>
+
+
                             <div class = "mainContentWrapper">
                                 <div class = container-fluid>
                                     <h1 id = "content_title"></h1>
-                                    <script>
-                                        function loadCRUDView(target){
-                                            $('#dynamic_content').hide("fast", function() {
-                                                $('#content_title').hide("fast", function(){
-                                                    var split = target.split("/");
-                                                    split = split[split.length-1];console.log(split);
-                                                    $('#content_title').html(
-                                                        split.charAt(0).toUpperCase() + split.substring(1)
-                                                    ).show("fast");
-                                                });
-                                                $('#dynamic_content').html("").load('CRUD/'+target);
-                                            });
-                                            setTimeout(function() {
-                                                    $('#dynamic_content').show("fast");
-                                                },
-                                                500
-                                            );
-                                        }
-                                        $(document).ready(function(){loadCRUDView('view');});
-                                    </script>
-                                    <div id="dynamic_content">
-                                    </div>
                                 </div>
+                            </div>
+                            <div id="dynamic_content">
                             </div>
                         </div>
                     </div>
