@@ -36,6 +36,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("tails");
         assert body.contains("input");
         assert body.contains("textarea");
+        assert !body.contains("content-length: 0");
         assert res.getContentType().contains("text/html");
         String compact = body.replace(" ", "").replace("\n","");
         assert compact.contains(".each(function(){params[this.name]=this.value;});");
@@ -71,6 +72,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("id=\"\"");
         assert !body.contains("id=\"description_2\"");
         assert !body.contains("id=\"id_2\"");
+        assert !body.contains("content-length: 0");
         String compact = body.replace(" ", "");
         assert compact.replace(" ","").contains("<spanvalue=\"0\"");
         assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tail_relations'");
@@ -173,6 +175,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("oninput=\"noteOnInputFor('name','tails','3')");
         assert body.contains("id=\"tails_3\"");
         assert body.contains("textarea");
+        assert !body.contains("content-length: 0");
         compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','3')\">TailContentJadida</textarea>");
         assert compact.contains("<spanvalue=\"0\"id=\"tails_3_value\">");
@@ -200,6 +203,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("value=\"TailContent...\"");
         String compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','3')\">TailContent...</textarea>");
+        assert !body.contains("content-length: 0");
     }
 
     @Test
@@ -233,6 +237,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("value=\"InTheFuture\"");
         assert !body.contains("value=\"SuperTail\"");
         assert !body.contains("value=\"TailContent...\"");
+        assert !body.contains("content-length: 0");
     }
 
     @Test
@@ -266,8 +271,10 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("value=\""+date+"\""); // Autofill for created!
         assert body.contains("value=\"TestName\"");
         assert !body.contains("value=\"hiA\"");
+        assert !body.contains("content-length: 0");
         String compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','3')\">hiA</textarea>");
+
     }
 
     @Test
@@ -290,7 +297,70 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("value=\"Second Tail\"");
         assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
         assert body.contains("id=\"tails_1_created\"");
+        assert !body.contains("content-length: 0");
         assert res.getContentType().contains("text/html");
+    }
+
+    @Test
+    public void test_CRUD_finding_and_deleting_with_POST_request() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        // 1. Finding:
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?", "POST",
+                        "name=First"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains("EntityWrapper");
+        assert body.contains("value=\"First Tail\"");
+        assert !body.contains("value=\"Second Tail\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
+        assert body.contains("id=\"tails_1_created\"");
+        assert res.getContentType().contains("text/html");
+
+        // 2. Deleting (failing):
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/delete/tails?", "POST",
+                        "name=ThisShouldFail"
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+        assert body.contains("Deletion failed! Request does not contain 'id' value!");
+        assert body.contains("500 Internal Server Error");
+        assert body.contains("text/html");
+
+        // 3. Deleting (successful):
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/delete/tails?", "POST",
+                        "id=1"
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert !body.contains("Deletion failed! Request does not contain 'id' value!");
+
+        // 4. Finding:
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?", "POST",
+                        "name=First"
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains("Nothing found!");
+        assert body.contains("content-type: text/html");
+        assert body.contains("content-length: 14");
     }
 
 

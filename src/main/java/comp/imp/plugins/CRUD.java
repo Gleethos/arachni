@@ -56,12 +56,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     {
         IResponse response = new Response();
         response.setStatusCode(200);
-        int contentLength = 0;
 
         response.setServerHeader("Arachni Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", "text/html");
-        response.getHeaders().put("content-length", String.valueOf(contentLength));
 
         String[] frag = req.getUrl().getSegments();
         String methodName = null;
@@ -200,11 +198,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, List<Object>> map = _query(sql.toString(), values);
 
         String result = __entitiesToForm( tableName, map, tables );
-        try {
-            response.setContent(result.getBytes(StandardCharsets.UTF_8));
-        } catch (Exception e) {
-            response.setContent(result.getBytes());
-        }
+        if(result.isBlank())  response.setContent("Nothing found!");
+        else response.setContent(result);
     }
 
 

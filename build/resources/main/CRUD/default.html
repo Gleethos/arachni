@@ -160,11 +160,9 @@
                              'CRUD/delete/' + tableName+' #' + tableName+'_'+id+' > *',
                              function( response, status, xhr ) {
                                     if(status === "error") {
-                                           entity.replaceWith("");
-                                           alert('Deletion failed!\nStatus: '+status);
-                                    } else if(entity.html()==="") {
                                            entity.replaceWith(response);
-                                    }
+                                           alert('Deletion failed!\nStatus: '+status);
+                                    }// else if( entity.html()==="" ) {entity.replaceWith(response);}
                              }
                      );
               }

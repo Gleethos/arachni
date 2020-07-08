@@ -62,7 +62,6 @@ public class FileReader implements IPlugin {
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
-        response.getHeaders().put("content-length", String.valueOf(fileLength));
         if (method.equals("GET")) // GET method so we return content
         {
             try {

@@ -74,9 +74,6 @@ public class Navigator implements IPlugin {
         } catch (Exception e) {
             jsonData = result.getBytes();
         }
-
-        int contentLength = jsonData.length;
-        response.getHeaders().put("content-length", String.valueOf(contentLength));
         response.setContent(jsonData);//<iframe src="https://www.google.com/maps?q=[ADDRESS]&output=embed"></iframe>
         return response;
     }

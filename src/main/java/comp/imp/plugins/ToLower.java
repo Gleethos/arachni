@@ -32,12 +32,10 @@ public class ToLower implements IPlugin
     public IResponse handle(IRequest req) {
         IResponse response = new Response();
         response.setStatusCode(200);
-        int contentLength = 0;
         String content = "plain/text";
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
-        response.getHeaders().put("content-length", String.valueOf(contentLength));
         String toBeLowered = util.decodeValue(req.getContentString()).toLowerCase();
         toBeLowered = (toBeLowered.substring(0, 5).equals("text=")) ? toBeLowered.substring(5, toBeLowered.length()) : toBeLowered;
         if (toBeLowered.equals("")) toBeLowered = "Bitte geben Sie einen Text ein";

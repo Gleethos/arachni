@@ -13,6 +13,7 @@ public class Response implements IResponse {
 
     public Response(){
         setServerHeader("Webio-Server");
+        _headers.put("content-length", "0");
     }
 
     @Override
@@ -101,6 +102,7 @@ public class Response implements IResponse {
     public void setContent(String content) {
         try {
             _content = content.getBytes("UTF-8");
+            if(_content!=null) _headers.put("content-length",String.valueOf(_content.length));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -109,6 +111,7 @@ public class Response implements IResponse {
     @Override
     public void setContent(byte[] content) {
         _content = content;
+        if(_content!=null) _headers.put("content-length",String.valueOf(_content.length));
     }
 
     @Override
@@ -127,6 +130,7 @@ public class Response implements IResponse {
             e.printStackTrace();
             _content = input.getBytes();
         }
+        if(_content!=null) _headers.put("content-length",String.valueOf(_content.length));
     }
 
     private String _getHeaderString(){

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-08T17:35:25" hostname="DESKTOP-6UFJ24U" time="0.207">
+<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-08T19:04:39" hostname="DESKTOP-6UFJ24U" time="0.174">
   <properties/>
-  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.022"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.027"/>
+  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.024"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.025"/>
   <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
-  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
-  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.028"/>
+  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.021"/>
+  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
   <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.024"/>
-  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.025"/>
+  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.018"/>
+  <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.017"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
-  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.024"/>
-  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.004"/>
-  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
-  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.022"/>
+  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.018"/>
+  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
+  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
+  <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.025"/>
   <system-out><![CDATA[File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
-File: missing-foo-6465fd34-b7a1-4b16-a3cc-554b262e6310.txt
-File tmp-static-files/missing-foo-6465fd34-b7a1-4b16-a3cc-554b262e6310.txt not found
-File tmp-static-files/missing-foo-6465fd34-b7a1-4b16-a3cc-554b262e6310.txt of type text/plain returned
+File: missing-foo-b25a6a18-faaa-4427-9129-91059d7d1c4e.txt
+File tmp-static-files/missing-foo-b25a6a18-faaa-4427-9129-91059d7d1c4e.txt not found
+File tmp-static-files/missing-foo-b25a6a18-faaa-4427-9129-91059d7d1c4e.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
-File: foo-569d9bc1-1fe7-49c3-8ee1-a2e12f42da8b.txt
-File tmp-static-files/foo-569d9bc1-1fe7-49c3-8ee1-a2e12f42da8b.txt of type text/plain returned
-File: foo-40b01e48-edaf-40b4-90c8-06058d628957.txt
-File tmp-static-files/foo-40b01e48-edaf-40b4-90c8-06058d628957.txt of type text/plain returned
+File: foo-18c93d33-336e-4ab6-bb9e-865d5fd824ee.txt
+File tmp-static-files/foo-18c93d33-336e-4ab6-bb9e-865d5fd824ee.txt of type text/plain returned
+File: foo-b45366ce-36b9-4c3d-86bf-0aaa3732214f.txt
+File tmp-static-files/foo-b45366ce-36b9-4c3d-86bf-0aaa3732214f.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
 ]]></system-out>

@@ -126,7 +126,6 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
         IResponse response = new Response();
         response.setStatusCode(200);
-        int contentLength = 0;
         String content = (req.getUrl().getParameterCount()>0)?"text/xml":"plain/text";
         if(req.getUrl().getParameter().containsKey("asHtml")&&req.getUrl().getParameter().get("asHtml").equals("true")){
             content = "text/html";
@@ -134,7 +133,6 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
-        response.getHeaders().put("content-length", String.valueOf(contentLength));
         Connection conn = null;
         try {
             _createAndOrConnectToDatabase();

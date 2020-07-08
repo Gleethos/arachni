@@ -35,12 +35,10 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
     {
         IResponse response = new Response();
         response.setStatusCode(200);
-        int contentLength = 0;
         String content = "plain/text";
         response.setServerHeader("Webio Java HTTP core.WebioServer : 1.0");
         response.getHeaders().put("date", new Date().toString());
         response.getHeaders().put("content-type", content);
-        response.getHeaders().put("content-length", String.valueOf(contentLength));
         String sql = util.decodeValue(req.getContentString());
         sql = (sql.startsWith("query=")) ? sql.substring(6, sql.length()) : sql;
         String result = "";
