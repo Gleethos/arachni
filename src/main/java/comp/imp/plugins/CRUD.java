@@ -190,7 +190,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String type = attributes.get(cols.get(i)).get(0);
             if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
                 sql.append(cols.get(i)).append(" LIKE ? ");
-                values.add(paramTable.get("%"+cols.get(i)+"%"));
+                values.add("%"+paramTable.get(cols.get(i))+"%");
             } else {
                 sql.append(cols.get(i)).append(" = ? ");
                 values.add(paramTable.get(cols.get(i)));
@@ -236,8 +236,29 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "</button>" +
                     "</div>"
             );
+
+            StringBuilder contentBuilder = new StringBuilder();
+            FrontendConsumer contentConsumer = new FrontendConsumer() {
+                public FrontendConsumer $(Object o) {
+                    contentBuilder.append((o==null)?"":o.toString());
+                    return this;
+                }
+            };
+            StringBuilder metaBuilder = new StringBuilder();
+            FrontendConsumer metaConsumer = new FrontendConsumer() {
+                public FrontendConsumer $(Object o) {
+                    metaBuilder.append((o==null)?"":o.toString());
+                    return this;
+                }
+            };
+
             map.forEach( (k,v) ->
             {
+                FrontendConsumer ic = contentConsumer;
+                if(k.contains("id")||k.equals("created")||k.equals("deleted")){
+                    ic = metaConsumer;
+                }
+                //--- Form variables:
                 String lowerKey = k.toLowerCase();
                 String bootstrapClasses =
                         (lowerKey.contains("id"))
@@ -249,10 +270,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             :"col-sm-12 col-md-6 col-lg-4";
 
                 String attribute = k.toLowerCase().replace(" ","_");
-                String attributeID = attribute+"_"+entityID;
-                f.$("<div class=\""+bootstrapClasses+"\">");
-                f.$("<div class=\"AttributeWrapper\">");
-                f.$(
+                String attributeID = tableName+"_"+entityID+"_"+attribute;
+                //---
+
+                ic.$("<div class=\""+bootstrapClasses+"\">");
+                ic.$("<div class=\"AttributeWrapper\">");
+                ic.$(
                         "<span              " +
                         "   value=\"0\"     " + // Counts onInput events to trigger persisting
                         "   id=\""+attributeID+"\"      " +
@@ -262,17 +285,36 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 ).$(
                         "</span>" +
                         "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
-                        "      style=\"width:100%;\"     " +
                         "      name=\""+attribute+"\"                       " +
                                 ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+v.get(inner)+"\"") +
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
                         ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?v.get(inner)+"</textarea>":"")
                 );
-                f.$("</div>");
-                f.$("</div>");
+                ic.$("</div>");
+                ic.$("</div>");
             });
+
+            f.$(
+                    "<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n" +
+                    "   <div class=\"tabHead\">\n" +
+                    "       <button onclick=\"switchTab(event, '.ContentTab')\" class=\"selected\">Content</button>\n" +
+                    "       <button onclick=\"switchTab(event, '.MachinaTab')\">Machina</button>\n" +
+                    "   </div>\n" +
+                    "   <div class=\"tabBody\">\n" +
+                    "       <div class=\"ContentTab row\">\n" +
+                    contentBuilder.toString()+
+                    "       </div>\n" +
+                    "       <div class=\"MachinaTab row\" style=\"display:none\">\n" +
+                    metaBuilder.toString()+
+                    "       </div>\n" +
+                    "   </div>\n" +
+                    "</div>"
+            );
+
             f.$("</div>");
         }
+
+
 
         //List<String> tableNames = _listOfAllTables();
         //String relationTable = tables
@@ -320,14 +362,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
             f.$("<div class = \"mainContentWrapper\">");
                 f.$("<div class = container-fluid>");
-                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");
+                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");//row?
                         f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\"><label>").$(table).$(" - search :</label>");
-                        f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button></div>");
+                        f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
+                        f.$("</div>");
                         for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
                     f.$("</div>");
-                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                        f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
-                    f.$("</div>");
+                    //f.$("<div class=\"row\">"); //This is not working? why?
+                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                            f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
+                        f.$("</div>");
+                    //f.$("</div>");
                     f.$("<script>");
                     f.$(" function new_"+table+"() {");
                         f.$("$('#").$(table).$("_result').append(`");

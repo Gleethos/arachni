@@ -1,18 +1,18 @@
 
-X	java:S125k"<This block of commented-out lines of code should be removed.(ö“ó8ıØ½Í.
-E
-java:S1148t"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ıØ½Í.
-|
-java:S1149l"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8ıØ½Í.
-N	java:S106\"9Replace this use of System.out or System.err by a logger.(¢õ¬
-E
-java:S20935"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-g	java:S101'"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(éÍû­ùÿÿÿÿ
+e
+java:S26747"JCheck the return value of the "read" call to see how many bytes were read.(¸‹ûÄùÿÿÿÿ
 `	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(¹Íİ ûÿÿÿÿ
 =
 java:S1214""Move constants to a class or enum.(”Â’©şÿÿÿÿ
+g	java:S101'"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(éÍû­ùÿÿÿÿ
+E
+java:S20935"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
 |
 java:S1149l"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8ıØ½Í.
+N	java:S106\"9Replace this use of System.out or System.err by a logger.(¢õ¬
 V	java:S125X"<This block of commented-out lines of code should be removed.(Ş€·ùÿÿÿÿ
-e
-java:S26747"JCheck the return value of the "read" call to see how many bytes were read.(¸‹ûÄùÿÿÿÿ
+|
+java:S1149l"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8ıØ½Í.
+X	java:S125k"<This block of commented-out lines of code should be removed.(ö“ó8ıØ½Í.
+E
+java:S1148t"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ıØ½Í.

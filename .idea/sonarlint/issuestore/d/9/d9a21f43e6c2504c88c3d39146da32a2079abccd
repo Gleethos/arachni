@@ -1,18 +1,11 @@
 
-T
-java:S4973 "9Use the "equals" method if value comparison was intended.(Ç„ª¥şÿÿÿÿ
-7
-java:S1643;"Use a StringBuilder instead.(‘ÛÓ®ÿÿÿÿÿ
-h
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ûí”
-Q	java:S1258"<This block of commented-out lines of code should be removed.(àÑ í
-O
-java:S4973I"9Use the "equals" method if value comparison was intended.(„ÛÅØ
-7
-java:S1643 "Use a StringBuilder instead.(Ç„ª¥şÿÿÿÿ
 `
 java:S3027"JPut single-quotes around ':' to use the faster "lastIndexOf(char)" method.(ÒŞåÑ
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ûí”
+S	java:S106@"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
+Q	java:S1258"<This block of commented-out lines of code should be removed.(àÑ í
 b
 java:S1871T"LThis branch's code block is the same as the block for the branch on line 82.(õş…É
-V	java:S125K"<This block of commented-out lines of code should be removed.(Ù€ªüÿÿÿÿ
-S	java:S106@"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
+7
+java:S1643;"Use a StringBuilder instead.(‘ÛÓ®ÿÿÿÿÿ

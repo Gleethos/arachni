@@ -42,32 +42,48 @@
               padding: 0.25em;
               padding-bottom:1em;
        }
-
+       .AttributeWrapper input{width: 99%}
+       .AttributeWrapper textarea{width: 99%}
+       .AttributeWrapper span{font-weight: bold;}
 
 
 </style>
 
 <div class = "mainContentWrapper">
        <div class = container-fluid>
-              <h2> Hello! This is the CRUD plugin! </h2>
-              <div></div></br>
-              <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
-              <div
-                      class="col-sm-12 col-md-12"
-                      style="padding:0.5em;border: 0.1em solid black;"
-              >
-                     <input
-                             id="jdbc_url"
-                             style="width:100%"
-                     ><br>
-                     jdbc:sqlite:C:/sqlite/db/TailDB<br>
-                     jdbc:sqlite:C:/sqlite/db/TestDB<br>
-                     <button id="set_db_url_button">Set DB</button>
-                     <div
-                             id="set_db_url_response_box"
-                             style="padding:0.5em;border: 0.1em solid black;"
-                     >...response...</div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                     <div class="tabWrapper">
+                            <div class="tabHead">
+                                   <button onclick="switchTab(event, '.ContentTab')" class="selected">Hello</button>
+                                   <button onclick="switchTab(event, '.MachinaTab')">Settings</button>
+                            </div>
+                            <div class="tabBody">
+                                   <div class="ContentTab">
+                                          <h2> Hello! This is the CRUD plugin! </h2>
+                                   </div>
+                                   <div class="MachinaTab" style="display:none">
+                                          <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
+                                          <div
+                                                  class="col-sm-12 col-md-12"
+                                                  style="padding:0.5em;border: 0.1em solid black;"
+                                          >
+                                                 <input
+                                                         id="jdbc_url"
+                                                         style="width:100%"
+                                                 ><br>
+                                                 jdbc:sqlite:C:/sqlite/db/TailDB<br>
+                                                 jdbc:sqlite:C:/sqlite/db/TestDB<br>
+                                                 <button id="set_db_url_button">Set DB</button>
+                                                 <div
+                                                         id="set_db_url_response_box"
+                                                         style="padding:0.5em;border: 0.1em solid black;"
+                                                 >...response...</div>
+                                          </div>
+                                   </div>
+                            </div>
+                     </div>
               </div>
+
        </div>
 </div>
 
@@ -84,6 +100,7 @@
        });
 
        function loadFoundForEntity( tableName ) {
+              $( document ).ajaxComplete(function() {});
               sendAndSet($('#' + tableName + '_search').children('input, textarea'), $('#' + tableName + '_result'), 'CRUD/find/' + tableName);
        }
 
@@ -91,11 +108,29 @@
               let entity = $('#' + tableName+'_'+id);
               $( document ).ajaxComplete(function() {
                      console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
-                     $('#' + tableName+'_'+id).children('div').children('.AttributeWrapper').children('textarea').first().focus();
+                     if(entity.html()==="") {
+                            entity.replaceWith("");
+                            alert('Saving failed! ');
+                     } else {
+                            entity
+                                    .children('.tabWrapper')
+                                    .children('.tabBody')
+                                    .children('div')
+                                    .children('div')
+                                    .children('.AttributeWrapper')
+                                    .children('textarea')
+                                    .first().focus();
+                     }
               });
               console.log('Starting ajax for -> id: #' + tableName+'_'+id+'; url: '+'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *')
               sendAndSet(
-                      entity.children('div').children('.AttributeWrapper').children('input, textarea'),
+                      entity
+                              .children('.tabWrapper')
+                              .children('.tabBody')
+                              .children('div')
+                              .children('div')
+                              .children('.AttributeWrapper')
+                              .children('input, textarea'),
                       entity,
                       'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *'
               );
@@ -106,17 +141,26 @@
               fromSelector.each(function () {
                      params[this.name] = this.value;
               });
-              intoSelector.html("").load(url, params);
+              var response = intoSelector.html("").load(url, params);
        }
 
        function noteOnInputFor( attribute, tableName, id )
        {
-              let element = $('#'+attribute+'_'+id);
+              let element = $('#'+tableName+'_'+id+'_'+attribute);
               element.attr('value',parseInt(element.attr('value'))+1);
               if( parseInt(element.attr('value'))>10 ) {
                      element.attr('value',0);
                      loadSavedForEntity(tableName, id);
               }
+       }
+
+       function switchTab(src, target) {
+              var tabBody = $(src.target).parent().parent().find('.tabBody');
+              tabBody.children().css("display", "none");
+              $(src.target).siblings().removeClass("selected");
+              $(src.target).parent().parent().find(target).css("display", "flex");
+              $(src.target).addClass("selected");
+              console.log($(src.target).html());
        }
 </script>
 

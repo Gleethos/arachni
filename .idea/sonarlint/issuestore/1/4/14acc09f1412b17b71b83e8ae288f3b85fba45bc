@@ -1,71 +1,62 @@
 
-E
-java:S1148z"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8åˆÌ÷°.
-^	java:S125¤"<This block of commented-out lines of code should be removed.(§—Û²şÿÿÿÿ8º­ï±.
-K
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
-^	java:S125º"<This block of commented-out lines of code should be removed.(µèÔ¦øÿÿÿÿ8¾ñ‹±.
-E
-java:S1148y"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
-a
-java:S1854²">Remove this useless assignment to local variable "foreignKey".(¦”ªıúÿÿÿÿ8Ü»¼±.
-O
-java:S1144Å",Remove this unused private "_search" method.(Ÿµäøÿÿÿÿ8¾ñ‹±.
->	java:S1082")Either remove or fill this block of code.(”ı¾
-\
-java:S1854§">Remove this useless assignment to local variable "tableNames".(Õêñß8Ü»¼±.
-R
-java:S1481®"/Remove this unused "foreignKey" local variable.(Îï˜Ëıÿÿÿÿ8Ü»¼±.
-U
-java:S1135·"2Complete the task associated to this TODO comment.(ó®êùÿÿÿÿ8Äâ¾±.
-U
-java:S1135¶"2Complete the task associated to this TODO comment.(Ùè÷şÿÿÿÿ8¼½±.
+k
+java:S1192õ"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
+h
+java:S1192ç"KDefine a constant instead of duplicating this literal "<div id=\"" 3 times.(Ë×Ş8ïÅ¶Ó².
+j
+java:S1192í"GDefine a constant instead of duplicating this literal "</div>" 8 times.(²úæÃıÿÿÿÿ8ïÅ¶Ó².
 M
-java:S1172Å"*Remove this unused method parameter "req".(Ÿµäøÿÿÿÿ8¾ñ‹±.
-M
-java:S1481§"/Remove this unused "tableNames" local variable.(Õêñß8Ü»¼±.
+java:S1172­"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8Ğ “Ü².
+Y	java:S125”"<This block of commented-out lines of code should be removed.(ÄÊ‘ó8Ğ “Ü².
+o
+java:S3776Ó"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(¡×Ï
+8ïÅ¶Ó².
+f
+java:S2147X"DCombine this catch with the one at line 87, which has the same body.(¿íÕàşÿÿÿÿ8–¨ó±.
 E
-java:S1148u"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¡ø±.
-S
-java:S1128"1Remove this unused import 'java.io.StringWriter'.(ô“Õıùÿÿÿÿ8äá‘äœ.
-N
-java:S1128"1Remove this unused import 'org.w3c.dom.Document'.(Á§²“8äá‘äœ.
-L
-java:S1144~"*Remove this unused private "_find" method.(¸“¯úÿÿÿÿ8¢ªËö°.
-m
-java:S1128
-"KRemove this unused import 'javax.xml.parsers.ParserConfigurationException'.(ûıƒøÿÿÿÿ8äá‘äœ.
-`
-java:S1128">Remove this unused import 'javax.xml.transform.dom.DOMSource'.(¾Ñ¶âùÿÿÿÿ8äá‘äœ.
-
-java:S1130~"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(¸“¯úÿÿÿÿ8½ï±.
-Q
-java:S1128"/Remove this unused import 'org.json.JSONArray'.(¬¸Ê’üÿÿÿÿ8ãÎ–äœ.
-J	java:S108l")Either remove or fill this block of code.(¨ê§şÿÿÿÿ8öæµ.
-W
-java:S1141r"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¡ø±.
+java:S1148X"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
+Y	java:S125"<This block of commented-out lines of code should be removed.(Å‡ôÊ8ïÅ¶Ó².
 @
-java:S1148x"#Use a logger to log this exception.(™òò£8÷×Ë÷°.
-b
-java:S2095%"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
-t
-java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(¸“¯úÿÿÿÿ8Ü»¼±.
-‘
-java:S1130Å"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(Ÿµäøÿÿÿÿ8¾ñ‹±.
+java:S1148W"#Use a logger to log this exception.(™òò£8–¨ó±.
 g
-java:S2147z"ECombine this catch with the one at line 120, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
-W	java:S1256"<This block of commented-out lines of code should be removed.(’ß¥{8° ÷›.
-a
-java:S1128"DRemove this unused import 'javax.xml.transform.stream.StreamResult'.(Æ‹ëÿ8äá‘äœ.
-g
-java:S2147y"ECombine this catch with the one at line 120, which has the same body.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
+java:S3358ô"DExtract this nested ternary operation into an independent statement.(¸°Õúÿÿÿÿ8ïÅ¶Ó².
+@
+java:S1148"#Use a logger to log this exception.(ä¦ºö8–¨ó±.
 E
-java:S1481#"/Remove this unused "entryCount" local variable.(³Şğş
-J	java:S108l")Either remove or fill this block of code.(¨ê§şÿÿÿÿ8öæµ.
+java:S1148Y"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8åˆÌ÷°.
+P
+java:S1172Ö"-Remove this unused method parameter "tables".(»“ëªüÿÿÿÿ8ïÅ¶Ó².
+l
+java:S1192?"JDefine a constant instead of duplicating this literal "text/html" 5 times.(ÕÍ×äøÿÿÿÿ8–¨ó±.
+Z
+java:S3655á"7Call "Optional#isPresent()" before accessing the value.(¹‹ËÊüÿÿÿÿ8ïÅ¶Ó².
+b
+java:S3358÷"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8ïÅ¶Ó².
 U
-java:S3655¨"7Call "Optional#isPresent()" before accessing the value.(¥«Öı8Ü»¼±.
-S	java:S106("9Replace this use of System.out or System.err by a logger.(œ–ÜÎÿÿÿÿÿ
+java:S1135¥"2Complete the task associated to this TODO comment.(É»Üşÿÿÿÿ8Ğ “Ü².
+@
+java:S1148%"#Use a logger to log this exception.(ä¦ºö8ú±Š…².
+G
+java:S1144l"*Remove this unused private "_save" method.(‡ßÑé8¶óïô±.
+M
+java:S1144­"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8Ğ “Ü².
+^	java:S125™"<This block of commented-out lines of code should be removed.(ËÁ€ıÿÿÿÿ8Ğ “Ü².
+U
+java:S1135£"2Complete the task associated to this TODO comment.(Ùè÷şÿÿÿÿ8ïÅ¶Ó².
+O
+java:S1144]"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8–¨ó±.
+i
+java:S1192õ"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
+f
+java:S2147Y"DCombine this catch with the one at line 87, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
+j
+java:S1192{"HDefine a constant instead of duplicating this literal "created" 4 times.(À®¼«ùÿÿÿÿ8‡£ÉÑ².
+U
+java:S3655â"7Call "Optional#isPresent()" before accessing the value.(áŸ’8—àõõ±.
+O
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8Ò–ßı±.
+U
+java:S1135¤"2Complete the task associated to this TODO comment.(ó®êùÿÿÿÿ8Äâ¾±.
+^	java:S125§"<This block of commented-out lines of code should be removed.(µèÔ¦øÿÿÿÿ8Ğ “Ü².
 g
-java:S2147l"ECombine this catch with the one at line 108, which has the same body.(¨ê§şÿÿÿÿ8öæµ.
-U
-java:S1135¸"2Complete the task associated to this TODO comment.(É»Üşÿÿÿÿ8ÂºÀ±.
+java:S3358õ"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8Š·ş¨².

@@ -1,86 +1,75 @@
 
-[	java:S106"9Replace this use of System.out or System.err by a logger.(à¾¿ùÿÿÿÿÿ8ˆ°‰“›.
-V	java:S106õ"9Replace this use of System.out or System.err by a logger.(¬¿ÒÑ8´â„œ.
-s	java:S117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8ˆ°‰“›.
-F
-java:S1148§"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8âúª±.
-U	java:S106U"9Replace this use of System.out or System.err by a logger.(íú´“8Ã’›.
-E
-java:S1148X"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ã’›.
-p
-java:S3776 "RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Ÿ¾¢8»Óİˆ±.
-[	java:S106¿"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ˆ°‰“›.
-Z	java:S106/"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8Ã’›.
-D
-java:S1659""Declare "_pwd" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
-F
-java:S1148«"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»Óİˆ±.
-e
-java:S2095²"GUse try-with-resources or close this "Statement" in a "finally" clause.(Á¨úÀ8»Óİˆ±.
-F
-java:S1148¼"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ˆ°‰“›.
-h
-java:S2259ù"EA "NullPointerException" could be thrown; "dataDoc" is nullable here.(‘‰ø£ıÿÿÿÿ8´â„œ.
 X
-java:S1141¤"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8âúª±.
-E
-java:S1659"#Declare "_user" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
+java:S1141±"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ìè­‡².
+u
+java:S3776Ë"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(ã»Ô½ùÿÿÿÿ8‚“Éı±.
 N
-java:S1481Ø"0Remove this unused "columnValue" local variable.(êø¬ò8»Óİˆ±.
-X
-java:S1141¤"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8»Óİˆ±.
-s	java:S117¡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8´â„œ.
-F
-java:S1148Õ"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8â“çˆ±.
-Y	java:S125ÿ"<This block of commented-out lines of code should be removed.(êÛ¯¿8»Óİˆ±.
-X
-java:S1141³"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8»Óİˆ±.
-u
-java:S3776‰"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(×âæùşÿÿÿÿ8ˆ°‰“›.
-Y	java:S125ƒ"<This block of commented-out lines of code should be removed.(ùîÉ8Ô÷æˆ±.
+java:S1481İ"0Remove this unused "columnValue" local variable.(êø¬ò8‚“Éı±.
 E
-java:S1148<"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8âúª±.
-F
-java:S1148Ò"#Use a logger to log this exception.(¢ò¨½şÿÿÿÿ8â ¾‰±.
-j
-java:S2095·"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8ˆ°‰“›.
-F
-java:S1148»"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ƒéŞˆ±.
-F
-java:S1148Š"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»Óİˆ±.
-X
-java:S1141¸"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ˆ°‰“›.
-„
-java:S1130‰"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(×âæùşÿÿÿÿ8… Ûø°.
-j
-java:S2095´"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(äÕ—³ûÿÿÿÿ8»Óİˆ±.
-u
-java:S3776Ì"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(°èù­ûÿÿÿÿ8ˆ°‰“›.
-K	java:S108Ÿ")Either remove or fill this block of code.(¬Àáªøÿÿÿÿ8ˆ°‰“›.
-Z	java:S1065"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8Ã’›.
-F
-java:S1148®"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8„ßˆ±.
+java:S1148B"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
 E
-java:S1148}"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8ˆ°‰“›.
+java:S1148["#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
 F
-java:S1148ª"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8´â„œ.
+java:S1148€"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‚“Éı±.
+F
+java:S1148Ó"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8ê˜‰ˆ².
+[	java:S106¥"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8‚“Éı±.
 „
-java:S1130Ì"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(°èù­ûÿÿÿÿ8… Ûø°.
-^	java:S125ˆ"<This block of commented-out lines of code should be removed.(Æ”øüÿÿÿÿ8Ô÷æˆ±.
-F
-java:S1148«"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ˆ°‰“›.
+java:S1130‡"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(×âæùşÿÿÿÿ8ê˜‰ˆ².
 r
-java:S2095“"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÒÊ’¶úÿÿÿÿ8¿šâˆ±.
-s	java:S117Ú"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8»Óİˆ±.
-E
-java:S1148g"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8Ã’›.
+java:S2095™"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÒÊ’¶úÿÿÿÿ8‚“Éı±.
+X
+java:S1141¸"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚“Éı±.
 F
-java:S1148¸"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»Óİˆ±.
-u
-java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(ã»Ô½ùÿÿÿÿ8»Óİˆ±.
-V
-java:S2755ï"3Disable access to external entities in XML parsing.(¼¤Şìûÿÿÿÿ8´â„œ.
-[	java:S106§"9Replace this use of System.out or System.err by a logger.(•Ô¾ãıÿÿÿÿ8ˆ°‰“›.
-U	java:S106¤"9Replace this use of System.out or System.err by a logger.(°•Ş8ˆ°‰“›.
+java:S1148½"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
 E
-java:S1148J"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ã’›.
+java:S1148j"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‚“Éı±.
+D
+java:S1659""Declare "_pwd" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
+u
+java:S3776Ê"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(°èù­ûÿÿÿÿ8ê˜‰ˆ².
+Y	java:S125„"<This block of commented-out lines of code should be removed.(êÛ¯¿8‚“Éı±.
+F
+java:S1148¢"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+s	java:S117Õ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8ê˜‰ˆ².
+h
+java:S2259÷"EA "NullPointerException" could be thrown; "dataDoc" is nullable here.(‘‰ø£ıÿÿÿÿ8ê˜‰ˆ².
+F
+java:S1148°"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+F
+java:S1148³"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+F
+java:S1148×"#Use a logger to log this exception.(¢ò¨½şÿÿÿÿ8‚“Éı±.
+u
+java:S3776‡"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(×âæùşÿÿÿÿ8ê˜‰ˆ².
+V	java:S106ó"9Replace this use of System.out or System.err by a logger.(¬¿ÒÑ8ê˜‰ˆ².
+X
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚“Éı±.
+V
+java:S2755í"3Disable access to external entities in XML parsing.(¼¤Şìûÿÿÿÿ8ê˜‰ˆ².
+E
+java:S1148P"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½š×ı±.
+F
+java:S1148¥"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ê˜‰ˆ².
+e
+java:S2095·"GUse try-with-resources or close this "Statement" in a "finally" clause.(Á¨úÀ8‚“Éı±.
+X
+java:S1141©"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚“Éı±.
+„
+java:S1130Ê"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(°èù­ûÿÿÿÿ8ê˜‰ˆ².
+F
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+j
+java:S2095¹"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(äÕ—³ûÿÿÿÿ8‚“Éı±.
+X
+java:S1141¢"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ê˜‰ˆ².
+F
+java:S1148¨"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ê˜‰ˆ².
+s	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8ê˜‰ˆ².
+F
+java:S1148À"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+E
+java:S1659"#Declare "_user" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
+p
+java:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Ÿ¾¢8‚“Éı±.
+s	java:S117ß"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‚“Éı±.

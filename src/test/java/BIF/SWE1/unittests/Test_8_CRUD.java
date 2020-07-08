@@ -65,9 +65,9 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("<span");
         assert body.contains("name=\"child_tail_id\"");
         assert body.contains("name=\"id\"");
-        assert body.contains("id=\"id_1\"");
-        assert body.contains("id=\"child_tail_id_1\"");
-        assert body.contains("id=\"description_1\"");
+        assert body.contains("id=\"tail_relations_1_id\"");
+        assert body.contains("id=\"tail_relations_1_child_tail_id\"");
+        assert body.contains("id=\"tail_relations_1_description\"");
         assert !body.contains("id=\"\"");
         assert !body.contains("id=\"description_2\"");
         assert !body.contains("id=\"id_2\"");
@@ -106,12 +106,12 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("<span");
         assert body.contains("name=\"child_tail_id\"");
         assert body.contains("name=\"id\"");
-        assert body.contains("id=\"id_1\"");
-        assert body.contains("id=\"child_tail_id_1\"");
-        assert body.contains("id=\"description_1\"");
+        assert body.contains("id=\"tail_relations_1_id\"");
+        assert body.contains("id=\"tail_relations_1_child_tail_id\"");
+        assert body.contains("id=\"tail_relations_1_description\"");
         assert !body.contains("id=\"\"");
-        assert !body.contains("id=\"description_2\"");
-        assert !body.contains("id=\"id_2\"");
+        assert !body.contains("id=\"tail_relations_2_description\"");
+        assert !body.contains("id=\"tail_relations_2_id\"");
         String compact = body.replace(" ", "");
         assert compact.replace(" ","").contains("<spanvalue=\"0\"");
         assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tail_relations'");
@@ -168,14 +168,14 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("value=\"TailContentJadida\"");
         assert body.contains("value=\"AlsoToday\"");
         assert body.contains("value=\"AlsoTomorrow\"");
-        assert body.contains("id=\"name_3\"");
-        assert body.contains("id=\"id_3\"");
+        assert body.contains("id=\"tails_3_name\"");
+        assert body.contains("id=\"tails_3_id\"");
         assert body.contains("oninput=\"noteOnInputFor('name','tails','3')");
         assert body.contains("id=\"tails_3\"");
         assert body.contains("textarea");
         compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','3')\">TailContentJadida</textarea>");
-        assert compact.contains("<spanvalue=\"0\"id=\"value_3\">");
+        assert compact.contains("<spanvalue=\"0\"id=\"tails_3_value\">");
     }
 
     @Test
@@ -269,6 +269,30 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         String compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','3')\">hiA</textarea>");
     }
+
+    @Test
+    public void test_CRUD_finding_POST_request() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?", "POST",
+                                "name=First"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+
+        assert body.contains("200 OK");
+        assert body.contains("EntityWrapper");
+        assert body.contains("value=\"First Tail\"");
+        assert !body.contains("value=\"Second Tail\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
+        assert body.contains("id=\"tails_1_created\"");
+        assert res.getContentType().contains("text/html");
+    }
+
 
     @Test
     public void test_CRUD_setJDBC() throws Exception

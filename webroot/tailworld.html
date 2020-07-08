@@ -108,13 +108,17 @@
                                         500
                                     );
                                 }
-                                $(document).ready(function(){setTimeout(function() {loadCRUDView('view');}, 200);});
+                                $(document).ready(function(){
+                                    setTimeout(function() {loadCRUDView('view');}, 200);
+                                    $('#reload_crud_button').click(function() {loadCRUDView('view');});
+                                });
                             </script>
 
 
                             <div class = "mainContentWrapper">
                                 <div class = container-fluid>
                                     <h1 id = "content_title"></h1>
+                                    <button id = "reload_crud_button">RELOAD</button>
                                 </div>
                             </div>
                             <div id="dynamic_content">
