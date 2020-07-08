@@ -363,6 +363,58 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("content-length: 14");
     }
 
+    @Test
+    public void test_CRUD_deleting_with_foreign_key_constrain_failure_with_POST_request() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        // 1. add relation between first and second tail:
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tail_relations?", "POST",
+                        "parent_tail_id=1&child_tail_id=2&description=SomeDescription"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains("EntityWrapper");
+        assert body.contains("value=\"SomeDescription\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tail_relations','2')\"");
+        assert body.contains("id=\"tail_relations_2_created\"");
+        assert body.contains("id=\"tail_relations_2\"");
+        assert body.contains("id=\"tail_relations_2_parent_tail_id\"");
+        assert res.getContentType().contains("text/html");
+
+        // 2. try deleting first tail (failing):
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/delete/tails?", "POST",
+                        "id=1"
+                )
+        );
+        res = crud.handle(req); // This should work... -> despite relation entries!
+        body = getBody(res).toString();
+        //assert body.contains("Deletion failed! Request does not contain 'id' value!");
+        //assert body.contains("500 Internal Server Error");
+        //assert body.contains("text/html");
+
+        // TODO:
+        // 3. Finding relation referencing deleted tail! (should find nothing!):
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tail_relations?", "POST",
+                        "parent_tail_id=1"
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains("Nothing found!");
+        assert body.contains("content-type: text/html");
+        assert body.contains("content-length: 14");
+    }
+
 
     @Test
     public void test_CRUD_setJDBC() throws Exception

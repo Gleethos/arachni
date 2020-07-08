@@ -218,7 +218,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
         };
         int rowCount = map.values().stream().findFirst().get().size();
-        String indexAttribute = map.keySet().stream().filter(k->k.contains("id")).findFirst().get();
+        String indexAttribute = map.keySet().stream().filter(k->k.equals("id")).findFirst().get();
+        if(indexAttribute.isBlank()) indexAttribute = map.keySet().stream().filter(k->k.contains("id")).findFirst().get();
         for(int i=0; i<rowCount; i++) {
             int inner = i;
             String entityID = map.get(indexAttribute).get(i).toString().equals("")?"new":map.get(indexAttribute).get(i).toString();
@@ -310,27 +311,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "   </div>\n" +
                     "</div>"
             );
-
             f.$("</div>");
         }
 
 
-
-        //List<String> tableNames = _listOfAllTables();
-        //String relationTable = tables
-        //        .keySet()
-        //        .stream()
-        //        .filter(k->!k.equals(tableName)&&k.contains("relation"))
-        //        .findFirst().get();
-        //if(relationTable!=null && !relationTable.isEmpty()) {
-        //    String foreignKey = null;
-        //    List<String> foreignAttributes = tables.get(relationTable);
-        //    for(String attribute : foreignAttributes) {
-        //        if(attribute.contains(tableName)&&attribute.contains("parent")&&attribute.contains("id")) {
-        //            foreignKey = attribute;
-        //        }
-        //    }
-        //}
         //TODO: also load children...
         //TODO: parse search result into forms!
         //TODO: add JS logic for sending save and update calls!
@@ -339,6 +323,27 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         //String result = _toCRUD(rs,req.getUrl().getFileName(), tableNames).toString();
         return result.toString();
     }
+
+    private String __findRelationTableOf(String tableName, String relationType, Map<String, List<String>> tables){
+        List<String> tableNames = _listOfAllTables();
+        String relationTable = tables
+                .keySet()
+                .stream()
+                .filter(k->!k.equals(tableName)&&k.contains("relation"))
+                .findFirst().get();
+
+        if(relationTable!=null && !relationTable.isBlank()) {
+            String foreignKey = null;
+            List<String> foreignAttributes = tables.get(relationTable);
+            for(String attribute : foreignAttributes) {
+                if(attribute.contains(tableName)&&attribute.contains(relationType)&&attribute.contains("id")) {
+                    foreignKey = attribute;
+                }
+            }
+        }
+        return relationTable;
+    }
+
 
     private void _delete(IRequest req, IResponse response)
     {

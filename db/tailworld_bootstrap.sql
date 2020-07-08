@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+--<#SPLIT#>--
 DROP TABLE IF EXISTS tail_tag_relations;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS tags;

@@ -1,4 +1,5 @@
-
+PRAGMA foreign_keys = ON;
+--<#SPLIT#>--
 DROP TABLE IF EXISTS temperatures;
 --<#SPLIT#>--
 CREATE TABLE temperatures(

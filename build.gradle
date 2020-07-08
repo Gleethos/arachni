@@ -17,11 +17,11 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.jetbrains:annotations:16.0.2'
-    compile group:'org.xerial', name:'sqlite-jdbc', version:'3.8.11.2'
+    compile group:'org.xerial', name:'sqlite-jdbc', version:'3.32.3'
 
-    compile files('libs/ojdbc7-12.1.0.2.jar')
-    compile files('libs/neureka-0.0.0.jar')
-    compile ("org.json:json:20171018")
+    compile files('libs/ojdbc7-12.1.0.2.jar') // For oracle server connection...
+    //compile files('libs/neureka-0.0.0.jar')
+    compile ("org.json:json:20171018") // For sql plugins...
 
 }
 
