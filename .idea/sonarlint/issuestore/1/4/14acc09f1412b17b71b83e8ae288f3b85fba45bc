@@ -1,62 +1,63 @@
 
-k
-java:S1192õ"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
-h
-java:S1192ç"KDefine a constant instead of duplicating this literal "<div id=\"" 3 times.(Ë×Ş8ïÅ¶Ó².
-j
-java:S1192í"GDefine a constant instead of duplicating this literal "</div>" 8 times.(²úæÃıÿÿÿÿ8ïÅ¶Ó².
-M
-java:S1172­"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8Ğ “Ü².
-Y	java:S125”"<This block of commented-out lines of code should be removed.(ÄÊ‘ó8Ğ “Ü².
-o
-java:S3776Ó"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(¡×Ï
-8ïÅ¶Ó².
-f
-java:S2147X"DCombine this catch with the one at line 87, which has the same body.(¿íÕàşÿÿÿÿ8–¨ó±.
-E
-java:S1148X"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
-Y	java:S125"<This block of commented-out lines of code should be removed.(Å‡ôÊ8ïÅ¶Ó².
-@
-java:S1148W"#Use a logger to log this exception.(™òò£8–¨ó±.
-g
-java:S3358ô"DExtract this nested ternary operation into an independent statement.(¸°Õúÿÿÿÿ8ïÅ¶Ó².
+P
+java:S1172Ö"-Remove this unused method parameter "tables".(»“ëªüÿÿÿÿ8ïÅ¶Ó².
 @
 java:S1148"#Use a logger to log this exception.(ä¦ºö8–¨ó±.
 E
 java:S1148Y"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8åˆÌ÷°.
-P
-java:S1172Ö"-Remove this unused method parameter "tables".(»“ëªüÿÿÿÿ8ïÅ¶Ó².
-l
-java:S1192?"JDefine a constant instead of duplicating this literal "text/html" 5 times.(ÕÍ×äøÿÿÿÿ8–¨ó±.
-Z
-java:S3655á"7Call "Optional#isPresent()" before accessing the value.(¹‹ËÊüÿÿÿÿ8ïÅ¶Ó².
-b
-java:S3358÷"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8ïÅ¶Ó².
-U
-java:S1135¥"2Complete the task associated to this TODO comment.(É»Üşÿÿÿÿ8Ğ “Ü².
-@
-java:S1148%"#Use a logger to log this exception.(ä¦ºö8ú±Š…².
-G
-java:S1144l"*Remove this unused private "_save" method.(‡ßÑé8¶óïô±.
-M
-java:S1144­"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8Ğ “Ü².
-^	java:S125™"<This block of commented-out lines of code should be removed.(ËÁ€ıÿÿÿÿ8Ğ “Ü².
-U
-java:S1135£"2Complete the task associated to this TODO comment.(Ùè÷şÿÿÿÿ8ïÅ¶Ó².
-O
-java:S1144]"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8–¨ó±.
-i
-java:S1192õ"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
-f
-java:S2147Y"DCombine this catch with the one at line 87, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
-j
-java:S1192{"HDefine a constant instead of duplicating this literal "created" 4 times.(À®¼«ùÿÿÿÿ8‡£ÉÑ².
 U
 java:S3655â"7Call "Optional#isPresent()" before accessing the value.(áŸ’8—àõõ±.
+i
+java:S1192Š"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
+k
+java:S1192í"HDefine a constant instead of duplicating this literal "</div>" 10 times.(²úæÃıÿÿÿÿ8ïÅ¶Ó².
+Y	java:S125÷"<This block of commented-out lines of code should be removed.(ƒ“Ê¢8…­¾ò².
+g
+java:S3358‰"DExtract this nested ternary operation into an independent statement.(¸°Õúÿÿÿÿ8ïÅ¶Ó².
+g
+java:S3358Š"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8Š·ş¨².
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(ËÁ€ıÿÿÿÿ8­Ïúğ².
+@
+java:S1148W"#Use a logger to log this exception.(™òò£8–¨ó±.
+Z
+java:S3655á"7Call "Optional#isPresent()" before accessing the value.(¹‹ËÊüÿÿÿÿ8ïÅ¶Ó².
+@
+java:S1148%"#Use a logger to log this exception.(ä¦ºö8ú±Š…².
+k
+java:S1192Š"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
+b
+java:S3358Œ"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8ïÅ¶Ó².
+G
+java:S1144l"*Remove this unused private "_save" method.(‡ßÑé8¶óïô±.
+Y	java:S125¿"<This block of commented-out lines of code should be removed.(ÄÊ‘ó8­Ïúğ².
+f
+java:S2147X"DCombine this catch with the one at line 87, which has the same body.(¿íÕàşÿÿÿÿ8–¨ó±.
+l
+java:S1192?"JDefine a constant instead of duplicating this literal "text/html" 5 times.(ÕÍ×äøÿÿÿÿ8–¨ó±.
+h
+java:S1192ç"KDefine a constant instead of duplicating this literal "<div id=\"" 3 times.(Ë×Ş8ïÅ¶Ó².
+E
+java:S1148X"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
+M
+java:S1144Ø"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8­Ïúğ².
+f
+java:S2147Y"DCombine this catch with the one at line 87, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
+U
+java:S1135Ï"2Complete the task associated to this TODO comment.(ó®êùÿÿÿÿ8§´üï².
 O
 java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8Ò–ßı±.
+M
+java:S1172Ø"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8­Ïúğ².
+Y	java:S125"<This block of commented-out lines of code should be removed.(Å‡ôÊ8ïÅ¶Ó².
 U
-java:S1135¤"2Complete the task associated to this TODO comment.(ó®êùÿÿÿÿ8Äâ¾±.
-^	java:S125§"<This block of commented-out lines of code should be removed.(µèÔ¦øÿÿÿÿ8Ğ “Ü².
-g
-java:S3358õ"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8Š·ş¨².
+java:S1135Ğ"2Complete the task associated to this TODO comment.(É»Üşÿÿÿÿ8§´üï².
+j
+java:S1192{"HDefine a constant instead of duplicating this literal "created" 5 times.(À®¼«ùÿÿÿÿ8‡£ÉÑ².
+U
+java:S1135Î"2Complete the task associated to this TODO comment.(Ùè÷şÿÿÿÿ8­Ïúğ².
+^	java:S125Ò"<This block of commented-out lines of code should be removed.(µèÔ¦øÿÿÿÿ8­Ïúğ².
+O
+java:S1144]"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8–¨ó±.
+o
+java:S3776Ó"RRefactor this method to reduce its Cognitive Complexity from 46 to the 15 allowed.(¡×Ï
+8ïÅ¶Ó².

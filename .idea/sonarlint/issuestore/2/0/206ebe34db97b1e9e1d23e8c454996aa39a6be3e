@@ -1,41 +1,41 @@
 
-a
-java:S1192g"FDefine a constant instead of duplicating this literal "UTF-8" 3 times.(±˜×Ùûÿÿÿÿ
-U
-java:S4719"9Replace charset name argument with StandardCharsets.UTF_8(­‰×¯þÿÿÿÿ
-C
-java:S1602†",Remove useless curly braces around statement(å®º‰
-[	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
-T
-java:S4719}"9Replace charset name argument with StandardCharsets.UTF_8(ù»‰­ýÿÿÿÿ
-T
-java:S4719g"9Replace charset name argument with StandardCharsets.UTF_8(±˜×Ùûÿÿÿÿ
-7	java:S131@""Add a default case to this switch.(âÁý­
 ?
 java:S1148ª"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-?
-java:S1148¤"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-[	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
 >
 java:S1148z"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-^
-java:S2259}"CA "NullPointerException" could be thrown; "input" is nullable here.(ù»‰­ýÿÿÿÿ
+?
+java:S1148¤"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+7	java:S131M""Add a default case to this switch.(âÁý­
+[	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
 F
 java:S2201"+The return value of "valueOf" must be used.(ÕÅˆÜøÿÿÿÿ
-J
-java:S1066"/Merge this if statement with the enclosing one.(Éž˜èüÿÿÿÿ
-7	java:S131M""Add a default case to this switch.(âÁý­
->
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-?
-java:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-[	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
->
-java:S1148i"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 ~
 java:S11920"hDefine a constant instead of duplicating this literal "[RESPONSE]: ERROR. Status code not set!" 3 times.(ØÇ–ñ
+>
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+[	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
 c
 java:S1192"MDefine a constant instead of duplicating this literal "Webio-Server" 3 times.(œ¬þé
 a	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(ö»ÜÄúÿÿÿÿ
+a
+java:S1192g"FDefine a constant instead of duplicating this literal "UTF-8" 3 times.(±˜×Ùûÿÿÿÿ
+^
+java:S2259}"CA "NullPointerException" could be thrown; "input" is nullable here.(ù»‰­ýÿÿÿÿ
+7	java:S131@""Add a default case to this switch.(âÁý­
+[	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(ØÇ–ñ
+J
+java:S1066"/Merge this if statement with the enclosing one.(Éž˜èüÿÿÿÿ
+C
+java:S1602†",Remove useless curly braces around statement(å®º‰
 ?
 java:S1148°"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+U
+java:S4719"9Replace charset name argument with StandardCharsets.UTF_8(­‰×¯þÿÿÿÿ
+T
+java:S4719g"9Replace charset name argument with StandardCharsets.UTF_8(±˜×Ùûÿÿÿÿ
+T
+java:S4719}"9Replace charset name argument with StandardCharsets.UTF_8(ù»‰­ýÿÿÿÿ
+?
+java:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+>
+java:S1148i"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

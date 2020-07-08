@@ -234,6 +234,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "<button style=\"width:100%;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
                     "SAVE" +
                     "</button>" +
+                    "</div>" +
+                    "<div class=\"col-sm-2 col-md-2 col-lg-2\">" +
+                    "<button style=\"width:100%;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                    "DELETE" +
+                    "</button>" +
                     "</div>"
             );
 
@@ -340,6 +345,22 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         return result.toString();
     }
 
+    private void _delete(IRequest req, IResponse response)
+    {
+        response.setContent("text/html");
+        String tableName = req.getUrl().getFileName();
+
+        Map<String, String> paramTable = req.getUrl().getParameter();
+        if( req.getMethod().equals("POST") && !paramTable.containsKey("id") ) paramTable.putAll(new Url(req.getContentString()).getParameter());
+
+        if( !paramTable.containsKey("id") ) {
+            response.setStatusCode(500);
+            response.setContent("Deletion failed! Request does not contain 'id' value!");
+            return;
+        }
+        String sql = "DELETE FROM "+tableName+" WHERE id = "+paramTable.get("id");
+        _execute(sql, response);
+    }
 
     private void _view(IRequest req, IResponse response)
     {

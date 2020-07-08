@@ -100,28 +100,20 @@
        });
 
        function loadFoundForEntity( tableName ) {
-              $( document ).ajaxComplete(function() {});
-              sendAndSet($('#' + tableName + '_search').children('input, textarea'), $('#' + tableName + '_result'), 'CRUD/find/' + tableName);
+              sendAndSet(
+                      $('#' + tableName + '_search').children('input, textarea'),
+                      $('#' + tableName + '_result'),
+                      'CRUD/find/' + tableName,
+                      function( response, status, xhr ) {
+                             if ( status == "error" ) {
+                                    alert('Finding failed!\nStatus: '+status);
+                             }
+                      }
+              );
        }
 
        function loadSavedForEntity( tableName, id ) {
               let entity = $('#' + tableName+'_'+id);
-              $( document ).ajaxComplete(function() {
-                     console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
-                     if(entity.html()==="") {
-                            entity.replaceWith("");
-                            alert('Saving failed! ');
-                     } else {
-                            entity
-                                    .children('.tabWrapper')
-                                    .children('.tabBody')
-                                    .children('div')
-                                    .children('div')
-                                    .children('.AttributeWrapper')
-                                    .children('textarea')
-                                    .first().focus();
-                     }
-              });
               console.log('Starting ajax for -> id: #' + tableName+'_'+id+'; url: '+'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *')
               sendAndSet(
                       entity
@@ -132,16 +124,56 @@
                               .children('.AttributeWrapper')
                               .children('input, textarea'),
                       entity,
-                      'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *'
+                      'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *',
+                      function( response, status, xhr ) {
+                             console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
+                             if(status === "error") {
+                                    entity.replaceWith("");
+                                    alert('Saving failed!\nStatus: '+status);
+                             } else if(entity.html()==="") {
+                                    entity.replaceWith(response);
+                                    entity
+                                            .children('.tabWrapper')
+                                            .children('.tabBody')
+                                            .children('div')
+                                            .children('div')
+                                            .children('.AttributeWrapper')
+                                            .children('textarea')
+                                            .first().focus();
+                             }
+                      }
               );
        }
 
-       function sendAndSet(fromSelector, intoSelector, url) {
+       function deleteEntity( tableName, id ) {
+              if(confirm("Do you really want to delete this entity?\nType: '"+tableName+"', id: '"+id+"'")){
+                     let entity = $('#' + tableName+'_'+id);
+                     sendAndSet(
+                             entity
+                                     .children('.tabWrapper')
+                                     .children('.tabBody')
+                                     .children('div')
+                                     .children('div')
+                                     .children('.AttributeWrapper')
+                                     .children('input, textarea'),
+                             entity,
+                             'CRUD/delete/' + tableName+' #' + tableName+'_'+id+' > *',
+                             function( response, status, xhr ) {
+                                    if(status === "error") {
+                                           entity.replaceWith(response);
+                                           alert('Deletion failed!\nStatus: '+status);
+                                    }// else if( entity.html()==="" ) {entity.replaceWith(response);}
+                             }
+                     );
+              }
+       }
+
+       function sendAndSet(fromSelector, intoSelector, url, callback) {
               var params = {};
               fromSelector.each(function () {
                      params[this.name] = this.value;
               });
-              var response = intoSelector.html("").load(url, params);
+              intoSelector.html("").load(url, params, callback);
        }
 
        function noteOnInputFor( attribute, tableName, id )
