@@ -190,7 +190,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
         Map<String, List<Object>> map = _query(sql.toString(), values);
 
-        String result = __entitiesToForm( tableName, map, tables );
+        String result = __entitiesToForm( tableName, map, tables, true);
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
     }
@@ -198,10 +198,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private String __entitiesToForm(
             String tableName,
-            Map<String, List<Object>> map,
-            Map<String, List<String>> tables
+            Map<String, List<Object>> entities,
+            Map<String, List<String>> tables,
+            boolean appendRelations
     ){
-        if(map.isEmpty()) return "<div>Nothing found...</div>";
+        if(entities.isEmpty()) return "<div>Nothing found...</div>";
 
         StringBuilder result = new StringBuilder();
         FrontendConsumer f = new FrontendConsumer() {
@@ -210,12 +211,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 return this;
             }
         };
-        int rowCount = map.values().stream().findFirst().get().size();
-        String indexAttribute = map.keySet().stream().filter(k->k.equals("id")).findFirst().get();
-        if(indexAttribute.isBlank()) indexAttribute = map.keySet().stream().filter(k->k.contains("id")).findFirst().get();
+        int rowCount = entities.values().stream().findFirst().get().size();
+        String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
+        if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
         for(int i=0; i<rowCount; i++) {
             int inner = i;
-            String entityID = map.get(indexAttribute).get(i).toString().equals("")?"new":map.get(indexAttribute).get(i).toString();
+            String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
             f.$(
@@ -246,7 +247,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 }
             };
 
-            map.forEach( (k,v) ->
+            entities.forEach( (k,v) ->
             {
                 FrontendConsumer ic = contentConsumer;
                 if(k.contains("id")||k.equals("created")||k.equals("deleted")){
@@ -304,17 +305,45 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "   </div>\n" +
                     "</div>"
             );
+            // Relation tables
+            if(appendRelations){
+                f.$(__buildRelationForms(tableName, entityID, tables));
+            }
             f.$("</div>");
         }
-
-
-        //TODO: also load children...
-        //TODO: parse search result into forms!
-        //TODO: add JS logic for sending save and update calls!
-
-        //ResultSet rs = stmt.executeQuery(sql.toString());
-        //String result = _toCRUD(rs,req.getUrl().getFileName(), tableNames).toString();
         return result.toString();
+    }
+
+    private String __buildRelationForms(String tableName, String id, Map<String, List<String>> tables)
+    {
+        StringBuilder result = new StringBuilder();
+        FrontendConsumer f = new FrontendConsumer() {
+            public FrontendConsumer $(Object o) {
+                result.append((o==null)?"":o.toString());
+                return this;
+            }
+        };
+
+        List<String> relationTypes = List.of("parent", "child", "");
+        for(String type : relationTypes) {
+            f.$(
+                    "<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n" +
+                            "   <div class=\"tabHead\">\n" +
+                            "       <button onclick=\"switchTab(event, '.ContentTab')\" class=\"selected\">Content</button>\n" +
+                            "       <button onclick=\"switchTab(event, '.MachinaTab')\">Machina</button>\n" +
+                            "   </div>\n" +
+                            "   <div class=\"tabBody\">\n" +
+                            "       <div class=\"ContentTab row\">\n" +
+                            //contentBuilder.toString()+
+                            "       </div>\n" +
+                            "       <div class=\"MachinaTab row\" style=\"display:none\">\n" +
+                            //metaBuilder.toString()+
+                            "       </div>\n" +
+                            "   </div>\n" +
+                            "</div>"
+            );
+        }
+        return null;
     }
 
     private Map<String,List<String>> __findRelationTablesOf(String tableName, String relationType, Map<String, List<String>> tables)
@@ -352,7 +381,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     {
         response.setContent("text/html");
         String tableName = req.getUrl().getFileName();
-
         Map<String, String> paramTable = req.getUrl().getParameter();
         if( req.getMethod().equals("POST") && !paramTable.containsKey("id") ) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
@@ -371,7 +399,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 _execute(sql, response);
             }
         });
-
         String sql = "DELETE FROM "+tableName+" WHERE id = "+paramTable.get("id");
         _execute(sql, response);
     }
@@ -411,7 +438,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<script>");
                     f.$(" function new_"+table+"() {");
                         f.$("$('#").$(table).$("_result').append(`");
-                        f.$(__entitiesToForm(table, templateEntity, tables));
+                        f.$(__entitiesToForm(table, templateEntity, tables, false));
                         f.$("`);");
                     f.$(" }");
                     f.$("</script>\n");
