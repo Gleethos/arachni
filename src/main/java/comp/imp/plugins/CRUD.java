@@ -103,8 +103,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     }
 
-    private void _save(IRequest req,  IResponse response) {
-
+    private void _save(IRequest req,  IResponse response)
+    {
         response.setContent("text/html");
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
@@ -136,16 +136,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     }
 
-    private String __generateSaveSQLFor(Map<String, String> m, String tableName) {
-        //if(m.getCreated()==null){
-        // m.setCreated(java.sql.Date.valueOf(new java.sql.Date(Calendar.getInstance().getTime().getTime()).toString()));
-        //}
-
-        Map<String, String> inserts = m;
+    private String __generateSaveSQLFor(Map<String, String> inserts, String tableName)
+    {
         List<String> attributes = new ArrayList<>(inserts.keySet());
         List<String> values = new ArrayList<>(inserts.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList());
 
-        String id = (m.get("id")==null || m.get("id").equals(""))?"":m.get("id");
+        String id = (inserts.get("id")==null || inserts.get("id").equals(""))?"":inserts.get("id");
         if(id.equals("")) {
             return "INSERT INTO "+tableName+"\n"+
                     "("+String.join(", ",attributes)+")\n"+
@@ -153,15 +149,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "("+String.join(",", values)+")";
         } else {
             List<String> pairs = new ArrayList<>();
-            for (int i=0; i<attributes.size(); i++){
-                pairs.add(attributes.get(i)+" = "+values.get(i));
-            }
+            for (int i=0; i<attributes.size(); i++) pairs.add(attributes.get(i)+" = "+values.get(i));
             return "UPDATE "+tableName+"\n"+
                     "SET\n" +
                     String.join(", ",pairs) +"\n" +
                     "WHERE id = "+id;
         }
-
     }
 
     private void _find(IRequest req,  IResponse response)
@@ -226,12 +219,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
             f.$(
-                    "<div class=\"col-sm-2 col-md-2 col-lg-2\">" +
+                    "<div class=\"col-sm-2 col-md-2 col-lg-2 ml-auto\">" + // ml-auto := float right for col classes...
                     "<button style=\"width:100%;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
                     "SAVE" +
                     "</button>" +
                     "</div>" +
-                    "<div class=\"col-sm-2 col-md-2 col-lg-2\">" +
+                    "<div class=\"col-sm-2 col-md-2 col-lg-2 ml-auto\">" +
                     "<button style=\"width:100%;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
                     "DELETE" +
                     "</button>" +
@@ -324,26 +317,36 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         return result.toString();
     }
 
-    private String __findRelationTableOf(String tableName, String relationType, Map<String, List<String>> tables){
-        List<String> tableNames = _listOfAllTables();
-        String relationTable = tables
+    private Map<String,List<String>> __findRelationTablesOf(String tableName, String relationType, Map<String, List<String>> tables)
+    {
+        List<String> relationTables = tables
                 .keySet()
                 .stream()
                 .filter(k->!k.equals(tableName)&&k.contains("relation"))
-                .findFirst().get();
-
-        if(relationTable!=null && !relationTable.isBlank()) {
-            String foreignKey = null;
-            List<String> foreignAttributes = tables.get(relationTable);
-            for(String attribute : foreignAttributes) {
-                if(attribute.contains(tableName)&&attribute.contains(relationType)&&attribute.contains("id")) {
-                    foreignKey = attribute;
+                .collect(Collectors.toList());
+        Map<String,List<String>> found = new TreeMap<>();
+        for ( String relationTable : relationTables ) found.put(relationTable, new ArrayList<>());
+        for ( String relationTable : relationTables ){
+            if( !relationTable.isEmpty() ) {
+                List<String> foreignAttributes = tables.get(relationTable);
+                for(String attribute : foreignAttributes) {
+                    String singularTableName = __toSingular(tableName);
+                    if( attribute.contains(singularTableName) && attribute.contains(relationType) && attribute.contains("id") ) {
+                        found.get(relationTable).add(attribute.split(" ")[0]);
+                    }
                 }
             }
         }
-        return relationTable;
+        return found;
     }
 
+    private String __toSingular(String word){
+        switch (word) {
+            case "people": return "person";
+        }
+        if (word.endsWith("s")) return word.substring(0, word.length()-1);
+        return word;
+    }
 
     private void _delete(IRequest req, IResponse response)
     {
@@ -358,6 +361,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             response.setContent("Deletion failed! Request does not contain 'id' value!");
             return;
         }
+        Map<String, List<String>> tables = _tablesSpace();
+        Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, "parent", tables);
+        relationTables.putAll(__findRelationTablesOf(tableName, "child", tables));
+        relationTables.putAll(__findRelationTablesOf(tableName, "", tables));
+        relationTables.forEach( (table, foreignKeys)->{
+            for(String foreignKey : foreignKeys) {
+                String sql = "DELETE FROM "+table+" WHERE "+foreignKey+" = "+paramTable.get("id");
+                _execute(sql, response);
+            }
+        });
+
         String sql = "DELETE FROM "+tableName+" WHERE id = "+paramTable.get("id");
         _execute(sql, response);
     }

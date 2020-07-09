@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-07-08T22:36:09" hostname="DESKTOP-6UFJ24U" time="0.105">
+<testsuite name="BIF.SWE1.unittests.UEB4Test" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-07-09T09:23:35" hostname="DESKTOP-6UFJ24U" time="0.184">
   <properties/>
   <testcase name="request_should_return_post_content_as_bytes" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.015"/>
-  <testcase name="response_should_send_byte_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
+  <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.038"/>
+  <testcase name="response_should_send_byte_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.002"/>
   <testcase name="request_should_handle_post" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
   <testcase name="response_should_send_stream_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
   <testcase name="request_should_parse_post_content_length" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.017"/>
+  <testcase name="pluginmanager_returns_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.029"/>
   <testcase name="request_should_parse_post_content_type" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
-  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.017"/>
-  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.018"/>
+  <testcase name="request_should_return_post_content_as_string" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
+  <testcase name="pluginmanager_returns_1_plugin" classname="BIF.SWE1.unittests.UEB4Test" time="0.02"/>
+  <testcase name="pluginmanager_should_clear_plugins" classname="BIF.SWE1.unittests.UEB4Test" time="0.028"/>
   <testcase name="request_should_return_post_content" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB4Test" time="0.0"/>
-  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.017"/>
-  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.017"/>
+  <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB4Test" time="0.001"/>
+  <testcase name="pluginmanager_hello_world" classname="BIF.SWE1.unittests.UEB4Test" time="0.033"/>
+  <testcase name="pluginmanager_plugins_are_not_null" classname="BIF.SWE1.unittests.UEB4Test" time="0.023"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

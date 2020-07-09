@@ -347,7 +347,7 @@ header p {
 
 .tabWrapper .tabHead{
     overflow: hidden;
-    margin: 0 0.33em;
+    padding: 0 0.33em;
     font-size: 80%;
     border-bottom: 0.2em solid #00e6ff;
 }
@@ -373,8 +373,16 @@ header p {
 }
 
 
-.tabWrapper .tabHead button:hover{
+.tabWrapper .tabHead button:hover {
     background-color: #00ff7b;
+}
+
+.tabBody {
+    -webkit-box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
+    padding-top: 0.37575em;
+    padding-bottom: 0.1em;
 }
 
 .tabWrapper .tabBody div{
@@ -443,8 +451,6 @@ header p {
 }
 
 .mainContentWrapper div {
-    margin-top: 0.33em;
-    margin-bottom: 0.33em;
 }
 
 .mainContentWrapper img {

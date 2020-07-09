@@ -395,11 +395,8 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         );
         res = crud.handle(req); // This should work... -> despite relation entries!
         body = getBody(res).toString();
-        //assert body.contains("Deletion failed! Request does not contain 'id' value!");
-        //assert body.contains("500 Internal Server Error");
-        //assert body.contains("text/html");
+        assert body.contains("text/html");
 
-        // TODO:
         // 3. Finding relation referencing deleted tail! (should find nothing!):
         req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
