@@ -395,6 +395,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         );
         res = crud.handle(req); // This should work... -> despite relation entries!
         body = getBody(res).toString();
+        assert body.contains("200 OK");
         assert body.contains("text/html");
 
         // 3. Finding relation referencing deleted tail! (should find nothing!):
@@ -402,6 +403,20 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
                 RequestHelper.getValidRequestStream(
                         "CRUD/find/tail_relations?", "POST",
                         "parent_tail_id=1"
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains("Nothing found!");
+        assert body.contains("content-type: text/html");
+        assert body.contains("content-length: 14");
+
+        // 3. Finding tag/tail relation referencing deleted tail! (should find nothing!):
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tail_tag_relations?", "POST",
+                        "id=1"
                 )
         );
         res = crud.handle(req);

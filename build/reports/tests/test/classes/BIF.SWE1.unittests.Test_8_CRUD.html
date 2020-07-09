@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8m38.58s</div>
+<div class="counter">0.291s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,52 +79,52 @@
 </thead>
 <tr>
 <td class="success">test_CRUD_deleting_with_foreign_key_constrain_failure_with_POST_request</td>
-<td class="success">5m18.20s</td>
+<td class="success">0.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_finding</td>
-<td class="success">0.020s</td>
+<td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_finding_POST_request</td>
-<td class="success">0.022s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_finding_and_deleting_with_POST_request</td>
-<td class="success">3m20.08s</td>
+<td class="success">0.036s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_saving_GET_requests</td>
-<td class="success">0.058s</td>
+<td class="success">0.053s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_saving_new_tail_with_POST</td>
-<td class="success">0.038s</td>
+<td class="success">0.023s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_saving_tail_fails_with_POST</td>
-<td class="success">0.020s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_saving_tail_with_POST</td>
-<td class="success">0.041s</td>
+<td class="success">0.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_search_fields</td>
-<td class="success">0.057s</td>
+<td class="success">0.045s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_CRUD_setJDBC</td>
-<td class="success">0.039s</td>
+<td class="success">0.024s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -138,7 +138,7 @@
 	at comp.imp.plugins.AbstractDatabaseConnection._createAndOrConnectToDatabase(AbstractDatabaseConnection.java:51)
 	at comp.imp.plugins.AbstractDatabaseConnection._createAndOrConnectToDatabase(AbstractDatabaseConnection.java:63)
 	at comp.imp.plugins.CRUD.handle(CRUD.java:81)
-	at BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_setJDBC(Test_8_CRUD.java:441)
+	at BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_setJDBC(Test_8_CRUD.java:453)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -188,42 +188,6 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-org.sqlite.SQLiteException: [SQLITE_BUSY]  The database file is locked (database is locked)
-	at org.sqlite.core.DB.newSQLException(DB.java:1010)
-	at org.sqlite.core.DB.newSQLException(DB.java:1022)
-	at org.sqlite.core.DB.execute(DB.java:861)
-	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:80)
-	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:53)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:286)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:93)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-org.sqlite.SQLiteException: [SQLITE_BUSY]  The database file is locked (database is locked)
-	at org.sqlite.core.DB.newSQLException(DB.java:1010)
-	at org.sqlite.core.DB.newSQLException(DB.java:1022)
-	at org.sqlite.core.DB.execute(DB.java:861)
-	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:80)
-	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:53)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:286)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:93)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-org.sqlite.SQLiteException: [SQLITE_BUSY]  The database file is locked (database is locked)
-	at org.sqlite.core.DB.newSQLException(DB.java:1010)
-	at org.sqlite.core.DB.newSQLException(DB.java:1022)
-	at org.sqlite.core.DB.execute(DB.java:861)
-	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:80)
-	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:53)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:286)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:93)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-org.sqlite.SQLiteException: [SQLITE_BUSY]  The database file is locked (database is locked)
-	at org.sqlite.core.DB.newSQLException(DB.java:1010)
-	at org.sqlite.core.DB.newSQLException(DB.java:1022)
-	at org.sqlite.core.DB.execute(DB.java:861)
-	at org.sqlite.core.CoreStatement.exec(CoreStatement.java:80)
-	at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:53)
-	at comp.imp.plugins.AbstractDatabaseConnection._execute(AbstractDatabaseConnection.java:286)
-	at comp.imp.plugins.TemperatureReader.lambda$new$0(TemperatureReader.java:93)
-	at java.base/java.lang.Thread.run(Thread.java:834)
 </pre>
 </span>
 </div>
@@ -235,7 +199,7 @@ org.sqlite.SQLiteException: [SQLITE_BUSY]  The database file is locked (database
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 09.07.2020, 11:23:36</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 09.07.2020, 11:32:26</p>
 </div>
 </div>
 </body>
