@@ -1,70 +1,83 @@
 
-@
-java:S1148"#Use a logger to log this exception.(ä¦ºö8–¨ó±.
-f
-java:S2147V"DCombine this catch with the one at line 85, which has the same body.(¿íÕàşÿÿÿÿ8–¨ó±.
-o
-java:S1192©"LDefine a constant instead of duplicating this literal "   </div>\n" 4 times.(ÆŒ©£ùÿÿÿÿ8Éğ½˜³.
-E
-java:S1148W"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8åˆÌ÷°.
-M
-java:S1144–"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8ƒíÈ•³.
-b
-java:S3358‡"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8ïÅ¶Ó².
-@
-java:S1148U"#Use a logger to log this exception.(™òò£8–¨ó±.
-Z
-java:S3655Ø"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8Òƒéÿ².
-g
-java:S3358„"DExtract this nested ternary operation into an independent statement.(¸°Õúÿÿÿÿ8ïÅ¶Ó².
-C
-java:S1172½"&Remove these unused method parameters.(À¯Ñ!8Ôææ—³.
-h
-java:S1192İ"KDefine a constant instead of duplicating this literal "<div id=\"" 3 times.(Ë×Ş8ïÅ¶Ó².
-?	java:S131õ""Add a default case to this switch.(òüÜÁ8Â Õ–³.
-O
-java:S1144ü",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8‹ø©”³.
 k
-java:S1192…"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
+java:S1192“"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8¾¬Ş¢³.
+@
+java:S11483"#Use a logger to log this exception.(ä¦ºö8¾¬Ş¢³.
+g
+java:S3358“"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8¾¬Ş¢³.
+l
+java:S1192ğ"IDefine a constant instead of duplicating this literal "</div>\n" 4 times.(ÆŒ©£ùÿÿÿÿ8ÓÃ·£³.
+i
+java:S1301™"KReplace this "switch" statement by "if" statements to increase readability.(òüÜÁ8ÓÃ·£³.
+U
+java:S1128"8Remove this unused import 'java.util.function.Supplier'.(†ïÿ‘8¾¬Ş¢³.
+F
+java:S1172Ä")Remove this unused method parameter "id".(À¯Ñ!8‡æî¢³.
+V
+java:S1481×"3Remove this unused "attributeTable" local variable.(İÛ¯äúÿÿÿÿ8ãÚÿÉ³.
+?	java:S131™""Add a default case to this switch.(òüÜÁ8ÓÃ·£³.
+o
+java:S3776Õ"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(¡×Ï
+8¾¬Ş¢³.
+E
+java:S1148e"#Use a logger to log this exception.(‘Û„ÿÿÿÿÿ8¾¬Ş¢³.
+h
+java:S1192ë"KDefine a constant instead of duplicating this literal "<div id=\"" 3 times.(Ë×Ş8¾¬Ş¢³.
+f
+java:S2147e"DCombine this catch with the one at line 99, which has the same body.(‘Û„ÿÿÿÿÿ8¾¬Ş¢³.
+Q
+java:S3985"/Remove this unused private "CRUDBuilder" class.(ÁüÅİûÿÿÿÿ8Ãß‰Ê³.
+Q
+java:S1481Ù"3Remove this unused "relationResult" local variable.(Ô©şó8Ùå£³.
+u
+java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(£²Ç—üÿÿÿÿ8¾¬Ş¢³.
 Z
-java:S3655×"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8—àõõ±.
+java:S3655ä"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8ïÅ¶Ó².
 O
 java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8Ò–ßı±.
-Z
-java:S3655Ö"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8ïÅ¶Ó².
-M
-java:S1172–"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8ƒíÈ•³.
-L
-java:S1481È")Remove this unused "type" local variable.(Éƒÿºûÿÿÿÿ8éˆä—³.
-u
-java:S3776 "RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(£²Ç—üÿÿÿÿ8¬ù÷ı².
-g
-java:S3358…"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8Š·ş¨².
+N
+java:S1068",Remove this unused "_builder" private field.(„•Ä×ÿÿÿÿÿ8™şŒÊ³.
+E
+java:S1148d"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
 k
-java:S1192ã"HDefine a constant instead of duplicating this literal "</div>" 12 times.(æ¯Ï€ÿÿÿÿÿ8ïÅ¶Ó².
-j
-java:S1192y"HDefine a constant instead of duplicating this literal "created" 5 times.(À®¼«ùÿÿÿÿ8‡£ÉÑ².
-i
-java:S1301õ"KReplace this "switch" statement by "if" statements to increase readability.(òüÜÁ8Â Õ–³.
-i
-java:S1192…"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8ïÅ¶Ó².
-s
-java:S1192­"PDefine a constant instead of duplicating this literal "       </div>\n" 4 times.(ÆŒ©£ùÿÿÿÿ8Éğ½˜³.
-G
-java:S1144j"*Remove this unused private "_save" method.(¥Å8¶óïô±.
-o
-java:S3776Ç"RRefactor this method to reduce its Cognitive Complexity from 49 to the 15 allowed.(¡×Ï
-8ïÅ¶Ó².
-@
-java:S1148%"#Use a logger to log this exception.(ä¦ºö8ú±Š…².
-l
-java:S1192>"JDefine a constant instead of duplicating this literal "text/html" 6 times.(ÕÍ×äøÿÿÿÿ8–¨ó±.
+java:S1192‡"HDefine a constant instead of duplicating this literal "created" 5 times.(À®¼«ùÿÿÿÿ8¾¬Ş¢³.
+f
+java:S2147d"DCombine this catch with the one at line 99, which has the same body.(¿íÕàşÿÿÿÿ8–¨ó±.
 O
-java:S1144["-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8–¨ó±.
+java:S1144i"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8¾¬Ş¢³.
+X	java:S125½"<This block of commented-out lines of code should be removed.(—ı<8Úèª¬³.
+@
+java:S1148c"#Use a logger to log this exception.(™òò£8–¨ó±.
+G
+java:S1144x"*Remove this unused private "_save" method.(¥Å8¾¬Ş¢³.
+M
+java:S1144º"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8ÓÃ·£³.
+Z
+java:S3655æ"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8¾¬Ş¢³.
 [
 java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8§’ıı².
-f
-java:S2147W"DCombine this catch with the one at line 85, which has the same body.(‘Û„ÿÿÿÿÿ8öæµ.
-E
-java:S1148V"#Use a logger to log this exception.(¿íÕàşÿÿÿÿ8åˆÌ÷°.
-Y	java:S125µ"<This block of commented-out lines of code should be removed.(ƒ“Ê¢8ƒíÈ•³.
+@
+java:S1148)"#Use a logger to log this exception.(ä¦ºö8¾¬Ş¢³.
+K
+java:S1172Ø"-Remove this unused method parameter "tables".(ò™Ô8Úèª¬³.
+g
+java:S3358’"DExtract this nested ternary operation into an independent statement.(¸°Õúÿÿÿÿ8ïÅ¶Ó².
+b
+java:S3358•"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8¾¬Ş¢³.
+i
+java:S1192“"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8¾¬Ş¢³.
+k
+java:S1192ñ"HDefine a constant instead of duplicating this literal "</div>" 10 times.(æ¯Ï€ÿÿÿÿÿ8¾¬Ş¢³.
+U
+java:S1135Û"2Complete the task associated to this TODO comment.(§ÜùÖûÿÿÿÿ8Æ†î£³.
+V
+java:S1144Ä"9Remove this unused private "__buildRelationForms" method.(À¯Ñ!8Úèª¬³.
+M
+java:S1172º"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8ÓÃ·£³.
+Z
+java:S3655å"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8—àõõ±.
+l
+java:S1192L"JDefine a constant instead of duplicating this literal "text/html" 6 times.(ÕÍ×äøÿÿÿÿ8¾¬Ş¢³.
+Y	java:S125Ù"<This block of commented-out lines of code should be removed.(ƒ“Ê¢8ÓÃ·£³.
+O
+java:S1144 ",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8ÓÃ·£³.

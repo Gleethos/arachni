@@ -19,6 +19,51 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
     private interface FrontendConsumer { FrontendConsumer $(Object s); }
 
+    private class CRUDBuilder {
+
+        private StringBuilder _builder = new StringBuilder();
+        private Map<String, List<String>> _tables;
+
+        CRUDBuilder(Map<String, List<String>> tables){
+            _tables = tables;
+        }
+
+        public CRUDBuilder $(Object o) {
+            _builder.append( ( o==null ) ? "" : o.toString() );
+            return this;
+        }
+
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda) {
+            $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
+            $("<div class=\"tabHead\">\n");
+            String selected = "selected";
+            for(String type : tabNames) {
+                String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
+                $("<button onclick=\"switchTab(event, '."+capitalized+"Tab')\" class=\""+selected+"\">"+capitalized+"</button>\n");
+                selected = "";
+            }
+            $(
+                    "</div>\n"+
+                            "<div class=\"tabBody\">\n"
+            );
+            String displayNone = "";
+            for(String type : tabNames) {
+                String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
+                $("<div class=\""+capitalized+"Tab row\" style=\""+displayNone+"\">\n");
+                lambda.accept(type);
+                $("</div>\n");
+                displayNone = "display:none";
+            }
+            $(
+                    "</div>\n"+
+                            "</div>\n"
+            );
+        }
+
+    }
+
+
     public CRUD() {
         super("jdbc:sqlite:C:/sqlite/db/TailDB", "", "");
     }
@@ -318,16 +363,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 return this;
             }
         };
-
         List<String> relationTypes = List.of("parent", "child", "");
         __tabsOf(
                 relationTypes, f,
                 type -> {
                     Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
-                    List<String> tableList = relationTables.keySet().stream().collect(Collectors.toList());
+                    List<String> relationTableList = relationTables.keySet().stream().collect(Collectors.toList());
                     __tabsOf(
-                            tableList, f,
+                            relationTableList, f,
                             table -> {
+
+                                Map<String, List<String>> attributeTable = _attributesTableOf(relationTables.get(table));
+
                                 Map<String, List<Object>> relationResult = _query(
                                         "SELECT * FROM "+""
                                 );//TODO: add response...
