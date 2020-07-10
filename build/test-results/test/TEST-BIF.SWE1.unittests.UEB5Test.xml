@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-09T09:32:25" hostname="DESKTOP-6UFJ24U" time="0.185">
+<testsuite name="BIF.SWE1.unittests.UEB5Test" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-07-10T13:57:03" hostname="DESKTOP-6UFJ24U" time="0.177">
   <properties/>
-  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.026"/>
+  <testcase name="milestone2_return_error_on_invalid_url" classname="BIF.SWE1.unittests.UEB5Test" time="0.019"/>
   <testcase name="pluginmanager_should_add_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.021"/>
   <testcase name="staticfileplugin_hello_world" classname="BIF.SWE1.unittests.UEB5Test" time="0.001"/>
-  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.025"/>
-  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.022"/>
-  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
-  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.022"/>
+  <testcase name="pluginmanager_return_all_plugins" classname="BIF.SWE1.unittests.UEB5Test" time="0.019"/>
+  <testcase name="pluginmanager_should_fail_adding_plugin_not_implementing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.024"/>
+  <testcase name="staticfileplugin_fail_on_missing_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
+  <testcase name="pluginmanager_contains_plugin_for_start_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.025"/>
   <testcase name="pluginmanager_all_plugins_have_unique_type" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB5Test" time="0.0"/>
-  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
-  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
-  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
+  <testcase name="pluginmanager_should_fail_adding_non_existing_plugin" classname="BIF.SWE1.unittests.UEB5Test" time="0.019"/>
+  <testcase name="staticfileplugin_return_file_content" classname="BIF.SWE1.unittests.UEB5Test" time="0.002"/>
+  <testcase name="staticfileplugin_return_file" classname="BIF.SWE1.unittests.UEB5Test" time="0.003"/>
   <testcase name="milestone2_return_main_page" classname="BIF.SWE1.unittests.UEB5Test" time="0.02"/>
   <system-out><![CDATA[File: i_am_a_unknown_url.html
 File /i_am_a_unknown_url.html not found
 File /i_am_a_unknown_url.html of type text/html returned
-File: missing-foo-08404e4d-90ff-49a0-b426-02ea484e32b1.txt
-File tmp-static-files/missing-foo-08404e4d-90ff-49a0-b426-02ea484e32b1.txt not found
-File tmp-static-files/missing-foo-08404e4d-90ff-49a0-b426-02ea484e32b1.txt of type text/plain returned
+File: missing-foo-2debedf5-d9ff-4338-97e5-e934992c28f3.txt
+File tmp-static-files/missing-foo-2debedf5-d9ff-4338-97e5-e934992c28f3.txt not found
+File tmp-static-files/missing-foo-2debedf5-d9ff-4338-97e5-e934992c28f3.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
-File: foo-29ccaa42-bc18-4082-acbd-d4c43b74a61c.txt
-File tmp-static-files/foo-29ccaa42-bc18-4082-acbd-d4c43b74a61c.txt of type text/plain returned
-File: foo-5e3ac5fb-1370-49ca-ba25-e60ff546c196.txt
-File tmp-static-files/foo-5e3ac5fb-1370-49ca-ba25-e60ff546c196.txt of type text/plain returned
+File: foo-f82102cd-473f-4565-b07a-ffca335ec6e9.txt
+File tmp-static-files/foo-f82102cd-473f-4565-b07a-ffca335ec6e9.txt of type text/plain returned
+File: foo-3ade51a9-fe33-4307-8726-e09186537111.txt
+File tmp-static-files/foo-3ade51a9-fe33-4307-8726-e09186537111.txt of type text/plain returned
 File: .
 File .\webroot/index.html of type text/html returned
 ]]></system-out>

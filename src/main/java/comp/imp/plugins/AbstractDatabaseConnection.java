@@ -17,6 +17,7 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public abstract class AbstractDatabaseConnection {
 
@@ -114,16 +115,38 @@ public abstract class AbstractDatabaseConnection {
         Map<String, List<String>> space = new HashMap<>();
         _for(sql, null, rs -> {
             try {
-                String def = rs.getString("sql");
-                def = def.split("\\(")[1];
-                def = def.split("\\)")[0];
-                String[] payload = def.split(",");
-                int inset = 0;
-                if(payload[payload.length-1].toLowerCase().contains("foreign")) inset = 1;
-                String[] attributes = new String[payload.length-inset];
-                for(int i=0; i<attributes.length; i++) attributes[i] = payload[i].trim();
-                space.put(rs.getString("name"), List.of(attributes));
-
+                String sqlCode = rs.getString("sql")
+                        .replace("  ", " ")
+                        .replace("  ", " ")// Format for parsing!
+                        .trim();
+                List<String> foundAttributes = new ArrayList<>();
+                List<String> foundForeigns = new ArrayList<>();
+                StringBuilder builder = new StringBuilder();
+                int depth = 0;
+                for(int i=0; i<sqlCode.length(); i++)
+                {
+                    char c = sqlCode.charAt(i);
+                    if ( c==')' ) depth--;
+                    if ( c==',' || (depth==0 && c==')') ) {
+                        String asStr = builder.toString().replace("(id)", "").trim();
+                        if(asStr.toUpperCase().startsWith("FOREIGN KEY")) foundForeigns.add(asStr);
+                        else foundAttributes.add(asStr);
+                        builder = new StringBuilder();
+                    } else if ( depth >= 1 ) builder.append(c);
+                    if ( c == '(' ) depth++;
+                }
+                for (String foreign : foundForeigns) {
+                    String variable = foreign.split("\\(")[1].split("\\)")[0].trim();
+                    for(int i=0; i<foundAttributes.size(); i++) {
+                        String attribute = foundAttributes.get(i);
+                        if(attribute.contains(variable)) {
+                            String newTail = foreign.replace("FOREIGN KEY ("+variable+")", "").trim();
+                            foundAttributes.set(i, attribute+" "+newTail);
+                        }
+                    }
+                }
+                foundAttributes.sort(Comparator.comparingInt(s -> s.split(" ")[0].length()));
+                space.put(rs.getString("name"), foundAttributes);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

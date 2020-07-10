@@ -11,6 +11,8 @@ import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class CRUD extends AbstractDatabaseConnection implements IPlugin
@@ -289,25 +291,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 ic.$("</div>");
             });
 
-            f.$(
-                    "<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n" +
-                    "   <div class=\"tabHead\">\n" +
-                    "       <button onclick=\"switchTab(event, '.ContentTab')\" class=\"selected\">Content</button>\n" +
-                    "       <button onclick=\"switchTab(event, '.MachinaTab')\">Machina</button>\n" +
-                    "   </div>\n" +
-                    "   <div class=\"tabBody\">\n" +
-                    "       <div class=\"ContentTab row\">\n" +
-                    contentBuilder.toString()+
-                    "       </div>\n" +
-                    "       <div class=\"MachinaTab row\" style=\"display:none\">\n" +
-                    metaBuilder.toString()+
-                    "       </div>\n" +
-                    "   </div>\n" +
-                    "</div>"
+            __tabsOf(
+                    List.of("Content", "Machina"),
+                    f,
+                    tab->{
+                        if(tab.equals("Content")) f.$(contentBuilder.toString());
+                        else f.$(metaBuilder);
+                    }
             );
+
             // Relation tables
             if(appendRelations){
-                f.$(__buildRelationForms(tableName, entityID, tables));
+                //f.$(__buildRelationForms(tableName, entityID, tables));
             }
             f.$("</div>");
         }
@@ -319,31 +314,58 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         StringBuilder result = new StringBuilder();
         FrontendConsumer f = new FrontendConsumer() {
             public FrontendConsumer $(Object o) {
-                result.append((o==null)?"":o.toString());
+                result.append( (o==null)?"":o.toString() );
                 return this;
             }
         };
 
         List<String> relationTypes = List.of("parent", "child", "");
-        for(String type : relationTypes) {
-            f.$(
-                    "<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n" +
-                            "   <div class=\"tabHead\">\n" +
-                            "       <button onclick=\"switchTab(event, '.ContentTab')\" class=\"selected\">Content</button>\n" +
-                            "       <button onclick=\"switchTab(event, '.MachinaTab')\">Machina</button>\n" +
-                            "   </div>\n" +
-                            "   <div class=\"tabBody\">\n" +
-                            "       <div class=\"ContentTab row\">\n" +
-                            //contentBuilder.toString()+
-                            "       </div>\n" +
-                            "       <div class=\"MachinaTab row\" style=\"display:none\">\n" +
-                            //metaBuilder.toString()+
-                            "       </div>\n" +
-                            "   </div>\n" +
-                            "</div>"
-            );
-        }
+        __tabsOf(
+                relationTypes, f,
+                type -> {
+                    Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
+                    List<String> tableList = relationTables.keySet().stream().collect(Collectors.toList());
+                    __tabsOf(
+                            tableList, f,
+                            table -> {
+                                Map<String, List<Object>> relationResult = _query(
+                                        "SELECT * FROM "+""
+                                );//TODO: add response...
+
+
+                            }
+                    );
+                }
+        );
+
         return null;
+    }
+
+    private void __tabsOf(List<String> tabNames, FrontendConsumer fc, Consumer<String> lambda) {
+        fc.$("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
+        fc.$("<div class=\"tabHead\">\n");
+        String selected = "selected";
+        for(String type : tabNames) {
+            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
+            fc.$("<button onclick=\"switchTab(event, '."+capitalized+"Tab')\" class=\""+selected+"\">"+capitalized+"</button>\n");
+            selected = "";
+        }
+        fc.$(
+                "</div>\n"+
+                "<div class=\"tabBody\">\n"
+        );
+        String displayNone = "";
+        for(String type : tabNames) {
+            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
+            fc.$("<div class=\""+capitalized+"Tab row\" style=\""+displayNone+"\">\n");
+                lambda.accept(type);
+            fc.$("</div>\n");
+            displayNone = "display:none";
+        }
+        fc.$(
+                "</div>\n"+
+                "</div>\n"
+        );
     }
 
     private Map<String,List<String>> __findRelationTablesOf(String tableName, String relationType, Map<String, List<String>> tables)
