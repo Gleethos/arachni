@@ -33,7 +33,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
-
         private void tabsOf(List<String> tabNames, Consumer<String> lambda) {
             $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
             $("<div class=\"tabHead\">\n");
@@ -59,6 +58,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "</div>\n"+
                             "</div>\n"
             );
+        }
+
+        @Override
+        public String toString(){
+            return _builder.toString();
         }
 
     }
@@ -251,13 +255,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     ){
         if(entities.isEmpty()) return "<div>Nothing found...</div>";
 
-        StringBuilder result = new StringBuilder();
-        FrontendConsumer f = new FrontendConsumer() {
-            public FrontendConsumer $(Object o) {
-                result.append((o==null)?"":o.toString());
-                return this;
-            }
-        };
+        CRUDBuilder f = new CRUDBuilder(tables);
         int rowCount = entities.values().stream().findFirst().get().size();
         String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
         if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
@@ -336,9 +334,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 ic.$("</div>");
             });
 
-            __tabsOf(
+            f.tabsOf(
                     List.of("Content", "Machina"),
-                    f,
                     tab->{
                         if(tab.equals("Content")) f.$(contentBuilder.toString());
                         else f.$(metaBuilder);
@@ -351,26 +348,20 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             f.$("</div>");
         }
-        return result.toString();
+        return f.toString();
     }
 
     private String __buildRelationForms(String tableName, String id, Map<String, List<String>> tables)
     {
-        StringBuilder result = new StringBuilder();
-        FrontendConsumer f = new FrontendConsumer() {
-            public FrontendConsumer $(Object o) {
-                result.append( (o==null)?"":o.toString() );
-                return this;
-            }
-        };
+        CRUDBuilder f = new CRUDBuilder(tables);
         List<String> relationTypes = List.of("parent", "child", "");
-        __tabsOf(
-                relationTypes, f,
+        f.tabsOf(
+                relationTypes,
                 type -> {
                     Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
                     List<String> relationTableList = relationTables.keySet().stream().collect(Collectors.toList());
-                    __tabsOf(
-                            relationTableList, f,
+                    f.tabsOf(
+                            relationTableList,
                             table -> {
 
                                 Map<String, List<String>> attributeTable = _attributesTableOf(relationTables.get(table));
@@ -386,33 +377,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         );
 
         return null;
-    }
-
-    private void __tabsOf(List<String> tabNames, FrontendConsumer fc, Consumer<String> lambda) {
-        fc.$("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
-        fc.$("<div class=\"tabHead\">\n");
-        String selected = "selected";
-        for(String type : tabNames) {
-            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
-            fc.$("<button onclick=\"switchTab(event, '."+capitalized+"Tab')\" class=\""+selected+"\">"+capitalized+"</button>\n");
-            selected = "";
-        }
-        fc.$(
-                "</div>\n"+
-                "<div class=\"tabBody\">\n"
-        );
-        String displayNone = "";
-        for(String type : tabNames) {
-            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
-            fc.$("<div class=\""+capitalized+"Tab row\" style=\""+displayNone+"\">\n");
-                lambda.accept(type);
-            fc.$("</div>\n");
-            displayNone = "display:none";
-        }
-        fc.$(
-                "</div>\n"+
-                "</div>\n"
-        );
     }
 
     private Map<String,List<String>> __findRelationTablesOf(String tableName, String relationType, Map<String, List<String>> tables)
