@@ -5,6 +5,7 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
 import comp.imp.Url;
+import org.sqlite.util.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -31,23 +32,31 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
-        private void tabsOf(List<String> tabNames, Consumer<String> lambda) {
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda)
+        {
+            Function<String, String> asClass = s->{
+                s = s.replace(" ", "_");
+                s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
+                return s;
+            };
+            Function<String, String> asText = s -> {
+                s = s.substring(0, 1).toUpperCase() + s.substring(1);
+                return s.replace("_", " ");
+            };
             $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
             $("<div class=\"tabHead\">\n");
             String selected = "selected";
             for(String type : tabNames) {
-                String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
-                $("<button onclick=\"switchTab(event, '."+capitalized+"Tab')\" class=\""+selected+"\">"+capitalized+"</button>\n");
+                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
                 selected = "";
             }
             $(
-                    "</div>\n"+
-                    "<div class=\"tabBody\">\n"
+                "</div>\n"+
+                "<div class=\"tabBody\">\n"
             );
             String displayNone = "";
-            for(String type : tabNames) {
-                String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
-                $("<div class=\""+capitalized+"Tab row\" style=\""+displayNone+"\">\n");
+            for( String type : tabNames ) {
+                $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
                 lambda.accept(type);
                 $("</div>\n");
                 displayNone = "display:none";
@@ -155,22 +164,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private void _save(IRequest req,  IResponse response)
     {
         response.setContent("text/html");
-        ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
-        String babaaba = req.getContentString();
-        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(babaaba).getParameter());
 
+        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(req.getContentString()).getParameter());
         Map<String, List<String>> tables = _tablesSpace();
-        Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
+        Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
-
         for(String column : columns) {
             if (!paramTable.containsKey(column) && column.equals("created")) {
                 paramTable.put("created", new java.sql.Date(System.currentTimeMillis()).toString());
             }
-            if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
         }
         if(!_execute(__generateSaveSQLFor(paramTable, tableName), response)) return;
         int lastID = _lastInsertID();
@@ -179,8 +184,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         _createAndOrConnectToDatabase(response);
         String foundParamID = paramTable.get("id");
         req.getUrl().getParameter().clear();
-        if(foundParamID==null) req.getUrl().getParameter().put("id", String.valueOf(lastID));
-        else req.getUrl().getParameter().put("id", foundParamID);
+        req.getUrl().getParameter().put("id", Objects.requireNonNullElseGet(foundParamID, () -> String.valueOf(lastID)));
         _find(req, response);
 
     }
@@ -216,7 +220,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         if(req.getMethod().equals("POST") && !paramTable.containsKey("id")) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
-        Map<String, List<String>> attributes = _attributesTableOf(tables.get(tableName));
+        Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
 
@@ -306,18 +310,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         :(lowerKey.contains("deleted")||lowerKey.contains("created"))
                                             ?"col-sm-12 col-md-4 col-lg-4"
                                             :"col-sm-12 col-md-6 col-lg-4";
-
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = tableName+"_"+entityID+"_"+attribute;
                 //---
-
                 ic.$("<div class=\""+bootstrapClasses+"\">");
                 ic.$("<div class=\"AttributeWrapper\">");
                 ic.$(
-                        "<span              " +
-                        "   value=\"0\"     " + // Counts onInput events to trigger persisting
+                        "<span                          " +
+                        "   value=\"0\"                 " + // Counts onInput events to trigger persisting
                         "   id=\""+attributeID+"\"      " +
-                        ">                  "
+                        ">                              "
                 ).$(
                         k
                 ).$(
@@ -350,35 +352,93 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         return f.toString();
     }
 
-    private String __buildRelationForms(String tableName, String id, Map<String, List<String>> tables)
-    {
+    private String __buildRelationForms(
+            String innerTableName,
+            String id, Map<String,
+            List<String>> tables
+    ) {
+        if(true) return null;
         CRUDBuilder f = new CRUDBuilder(tables);
-        Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, tables, s->true);//Todo make type be found....
-        List<String> relationTypes = List.of("parent", "child", "");
-        //f.tabsOf(
-        //        relationTypes,
-        //        type -> {
-        //            //Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
-        //            //List<String> relationTableList = relationTables.keySet().stream().collect(Collectors.toList());
-        //            //f.tabsOf(
-        //            //        relationTableList,
-        //            //        table -> {
-        //            //            Map<String, List<String>> attributeTable = _attributesTableOf(relationTables.get(table));
-        //            //
-        //            //            Map<String, List<Object>> relationResult = _query(
-        //            //                    "SELECT * FROM "+""
-        //            //            );//TODO: add response...
-        //            //
-        //            //
-        //            //        }
-        //            //);
-        //        }
-        //);
+        Map<String, Map<String,String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);//Todo make type be found....
+
+        f.tabsOf(
+                new ArrayList<>(relationTables.keySet()),
+                relationTable -> // Example :  tail_tag_relations
+                {
+                    List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTable).keySet());
+                    Map<String, List<String>> fromToMap = new TreeMap<>();
+                    /*
+                        The inner foreign key will be queried to be equivalent to
+                        the id of the table in the 'tableName' variable!
+                     */
+                    for( String innerKey : foreignKeys ) { // := from one to...
+                        for( String outerKey : foreignKeys ) { // := many !
+                            if(
+                                    ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
+                                            relationTables.get(relationTable).get(innerKey).contains("REFERENCES "+innerTableName)
+                            ) {
+
+                                String innerText = innerKey.replace("_id", "");
+                                String outerText = outerKey.replace("_id", "");
+                                fromToMap.put(
+                                        "one_"+innerText+"_has_many_"+outerText,
+                                        List.of(innerKey, outerKey)
+                                );
+                            }
+                        }
+                    }
+                    f.tabsOf(
+                            new ArrayList<>(fromToMap.keySet()),
+                            relationName -> {
+                                String innerKey = fromToMap.get(relationName).get(0);
+                                String outerKey = fromToMap.get(relationName).get(1);
+                                String outerTableName = relationTables.get(relationTable).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
+                                Map<String, List<Object>> relationResult = _query(
+                                        "SELECT * FROM "+relationTable+" WHERE "+innerKey+" = "+id
+                                );
+                                int numberOfFound = relationResult.values().stream().findFirst().get().size();
+                                for ( int i = 0; i < numberOfFound; i++ ) {
+                                    int index = i;
+                                    Map<String, List<Object>> currentRelationEntity =
+                                            relationResult
+                                                    .entrySet()
+                                                    .stream()
+                                                    .collect(Collectors.toMap(
+                                                            entry -> entry.getKey(),
+                                                            entry -> {
+                                                                entry.setValue(List.of(entry.getValue().get(index)));
+                                                                return entry.getValue();
+                                                            }
+                                                    ));
+                                    // There should never be more than one current relation entity :
+                                    assert currentRelationEntity.get(outerKey).size()==1;
+                                    __entitiesToForm(
+                                            relationTable,
+                                            currentRelationEntity,
+                                            tables,
+                                            false
+                                    );
+                                    Map<String, List<Object>> currentOuterEntity = _query(
+                                            "SELECT * FROM "+outerTableName+
+                                            " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
+                                    );
+                                    __entitiesToForm(
+                                            outerTableName,
+                                            currentOuterEntity,
+                                            tables,
+                                            false
+                                    );
+                                }
+
+                            }
+                    );
+                }
+        );
         return null;
     }
 
 
-    private Map< String, List<String> > __findRelationTablesOf (
+    private Map< String, Map<String, String> > __findRelationTablesOf (
             String tableName,
             Map<String,
             List<String>> tables,
@@ -389,20 +449,21 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 .stream()
                 .filter( k -> !k.equals(tableName) && k.contains("relation") )
                 .collect(Collectors.toList());
-        Map<String,List<String>> found = new TreeMap<>();
-        for ( String relationTable : relationTables ) found.put(relationTable, new ArrayList<>());
+        Map<String,Map<String,String>> found = new TreeMap<>();
+        for ( String relationTable : relationTables ) found.put(relationTable, new TreeMap<>());
         for ( String relationTable : relationTables ) {
             if( !relationTable.isEmpty() ) {
                 List<String> foreignAttributes = tables.get(relationTable);
                 for(String attribute : foreignAttributes) {
                     if ( filter.apply(attribute) ) {
                         String attributeName = attribute.split(" ")[0];
+                        attribute = attribute.substring(attributeName.length()+1);
                         if(
                             !attributeName.equals("id") &&
                             attributeName.contains("_id") &&
                             attribute.toUpperCase().contains("REFERENCES")
                         ) {
-                            found.get(relationTable).add(attributeName);
+                            found.get(relationTable).put(attributeName, attribute);
                         }
                     }
                 }
@@ -424,29 +485,42 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private void _delete( IRequest req, IResponse response )
     {
-        response.setContent("text/html");
+        response.setContentType("text/javascript");
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
         if( req.getMethod().equals("POST") && !paramTable.containsKey("id") ) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         if( !paramTable.containsKey("id") ) {
             response.setStatusCode(500);
+            response.setContentType("text/html");
             response.setContent("Deletion failed! Request does not contain 'id' value!");
             return;
         }
         Map< String, List<String> > tables = _tablesSpace();
-        Map< String, List<String> > relationTables = __findRelationTablesOf (
+        Map< String, Map<String, String> > relationTables = __findRelationTablesOf (
                 tableName,
                 tables,
                 s -> s.contains( "REFERENCES " + tableName )
         );
+        List<String> deletionIdentifier = new ArrayList<>();
         relationTables.forEach(
             (table, foreignKeys) -> {
-                for(String foreignKey : foreignKeys) {
+                for(String foreignKey : foreignKeys.keySet()) {
+                    Map<String, List<Object>> toBeDeleted = _query(
+                            "SELECT id FROM "+table+" WHERE "+foreignKey+" = "+paramTable.get("id")
+                    );
+                    List<Object> ids = toBeDeleted.get("id");
+                    for ( Object id : ids ) deletionIdentifier.add(table+"_"+id.toString());
                     String sql = "DELETE FROM "+table+" WHERE "+foreignKey+" = "+paramTable.get("id");
                     _execute(sql, response);
                 }
             }
+        );
+        response.setContent(
+                deletionIdentifier
+                        .stream()
+                        .map(e->"$('#"+e+"').replaceWith('');")
+                        .collect(Collectors.joining("\n"))
         );
         String sql = "DELETE FROM "+tableName+" WHERE id = "+paramTable.get("id");
         _execute(sql, response);

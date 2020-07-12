@@ -70,14 +70,17 @@
                                    <button onclick="switchTab(event, '.MachinaTab')">Settings</button>
                             </div>
                             <div class="tabBody">
-                                   <div class="ContentTab">
+                                   <div class="ContentTab row">
                                           <h2> Hello! This is the CRUD plugin! </h2>
                                    </div>
-                                   <div class="MachinaTab" style="display:none">
-                                          <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
+                                   <div class="MachinaTab row" style="display:none">
                                           <div
                                                   class="col-sm-12 col-md-12"
-                                                  style="padding:0.5em;border: 0.1em solid black;"
+                                          >
+                                                 <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
+                                          </div>
+                                          <div
+                                                  class="col-sm-12 col-md-12"
                                           >
                                                  <input
                                                          id="jdbc_url"
@@ -95,7 +98,6 @@
                             </div>
                      </div>
               </div>
-
        </div>
 </div>
 
@@ -126,7 +128,6 @@
 
        function loadSavedForEntity( tableName, id ) {
               let entity = $('#' + tableName+'_'+id);
-              console.log('Starting ajax for -> id: #' + tableName+'_'+id+'; url: '+'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *')
               sendAndSet(
                       entity
                               .children('.tabWrapper')
@@ -138,7 +139,6 @@
                       entity,
                       'CRUD/save/' + tableName+' #' + tableName+'_'+id+' > *',
                       function( response, status, xhr ) {
-                             console.log('Ajax complete: '+'#' + tableName+'_'+id+' !')
                              if(status === "error") {
                                     entity.replaceWith("");
                                     alert('Saving failed!\nStatus: '+status);
@@ -174,6 +174,8 @@
                                     if(status === "error") {
                                            entity.replaceWith(response);
                                            alert('Deletion failed!\nStatus: '+status);
+                                    } else {
+                                           eval(response);
                                     }// else if( entity.html()==="" ) {entity.replaceWith(response);}
                              }
                      );

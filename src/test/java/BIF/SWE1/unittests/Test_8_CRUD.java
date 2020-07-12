@@ -346,7 +346,10 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         res = crud.handle(req);
         body = getBody(res).toString();
         assert body.contains("200 OK");
+        assert body.contains("text/javascript");
         assert !body.contains("Deletion failed! Request does not contain 'id' value!");
+        assert body.contains("$('#tail_relations_1').replaceWith('');");
+        assert body.contains("$('#tail_tag_relations_1').replaceWith('');");
 
         // 4. Finding:
         req = createInstance().getRequest(
@@ -364,7 +367,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     }
 
     @Test
-    public void test_CRUD_deleting_with_foreign_key_constrain_failure_with_POST_request() throws Exception
+    public void test_CRUD_deleting_with_foreign_auto_delete_with_POST_request() throws Exception
     {
         Test8Provider provider = createInstance();
         IPlugin crud = provider.getCRUDPlugin("TestDB");
@@ -396,7 +399,10 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         res = crud.handle(req); // This should work... -> despite relation entries!
         body = getBody(res).toString();
         assert body.contains("200 OK");
-        assert body.contains("text/html");
+        assert body.contains("text/javascript");
+        assert body.contains("$('#tail_relations_1').replaceWith('');\n");
+        assert body.contains("$('#tail_relations_2').replaceWith('');\n");
+        assert body.contains("$('#tail_tag_relations_1').replaceWith('');");
 
         // 3. Finding relation referencing deleted tail! (should find nothing!):
         req = createInstance().getRequest(

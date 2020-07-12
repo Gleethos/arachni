@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BIF.SWE1.unittests.UEB6Test" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-07-12T17:49:35" hostname="DESKTOP-6UFJ24U" time="0.214">
+<testsuite name="BIF.SWE1.unittests.UEB6Test" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-07-12T21:23:06" hostname="DESKTOP-6UFJ24U" time="0.19">
   <properties/>
-  <testcase name="navi_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
-  <testcase name="temp_plugin_get_rest_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.019"/>
+  <testcase name="navi_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="temp_plugin_get_rest_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.017"/>
   <testcase name="navi_plugin_contains_summary" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
-  <testcase name="temp_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.064"/>
-  <testcase name="lower_plugin_handle_empty" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
-  <testcase name="temp_plugin_handle_rest_call" classname="BIF.SWE1.unittests.UEB6Test" time="0.054"/>
-  <testcase name="temp_plugin_get_different_urls" classname="BIF.SWE1.unittests.UEB6Test" time="0.015"/>
-  <testcase name="lower_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="temp_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.056"/>
+  <testcase name="lower_plugin_handle_empty" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="temp_plugin_handle_rest_call" classname="BIF.SWE1.unittests.UEB6Test" time="0.05"/>
+  <testcase name="temp_plugin_get_different_urls" classname="BIF.SWE1.unittests.UEB6Test" time="0.011"/>
+  <testcase name="lower_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
   <testcase name="HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
   <testcase name="lower_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
   <testcase name="navi_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
   <testcase name="navi_plugin_handle_empty" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
-  <testcase name="lower_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
-  <testcase name="temp_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.02"/>
+  <testcase name="lower_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.0"/>
+  <testcase name="temp_plugin_HelloWorld" classname="BIF.SWE1.unittests.UEB6Test" time="0.016"/>
   <testcase name="navi_plugin_handle" classname="BIF.SWE1.unittests.UEB6Test" time="0.001"/>
-  <testcase name="temp_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.018"/>
-  <testcase name="temp_plugin_get_url_2" classname="BIF.SWE1.unittests.UEB6Test" time="0.018"/>
+  <testcase name="temp_plugin_get_url" classname="BIF.SWE1.unittests.UEB6Test" time="0.017"/>
+  <testcase name="temp_plugin_get_url_2" classname="BIF.SWE1.unittests.UEB6Test" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
