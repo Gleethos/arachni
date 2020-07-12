@@ -8,19 +8,17 @@ import comp.imp.Url;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
     private interface FrontendConsumer { FrontendConsumer $(Object s); }
 
-    private class CRUDBuilder {
-
+    private class CRUDBuilder
+    {
         private StringBuilder _builder = new StringBuilder();
         private Map<String, List<String>> _tables;
 
@@ -44,7 +42,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             $(
                     "</div>\n"+
-                            "<div class=\"tabBody\">\n"
+                    "<div class=\"tabBody\">\n"
             );
             String displayNone = "";
             for(String type : tabNames) {
@@ -56,7 +54,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             $(
                     "</div>\n"+
-                            "</div>\n"
+                    "</div>\n"
             );
         }
 
@@ -345,6 +343,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             // Relation tables
             if(appendRelations){
                 //f.$(__buildRelationForms(tableName, entityID, tables));
+                __buildRelationForms(tableName, entityID, tables);
             }
             f.$("</div>");
         }
@@ -354,47 +353,57 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private String __buildRelationForms(String tableName, String id, Map<String, List<String>> tables)
     {
         CRUDBuilder f = new CRUDBuilder(tables);
+        Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, tables, s->true);//Todo make type be found....
         List<String> relationTypes = List.of("parent", "child", "");
-        f.tabsOf(
-                relationTypes,
-                type -> {
-                    Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
-                    List<String> relationTableList = relationTables.keySet().stream().collect(Collectors.toList());
-                    f.tabsOf(
-                            relationTableList,
-                            table -> {
-
-                                Map<String, List<String>> attributeTable = _attributesTableOf(relationTables.get(table));
-
-                                Map<String, List<Object>> relationResult = _query(
-                                        "SELECT * FROM "+""
-                                );//TODO: add response...
-
-
-                            }
-                    );
-                }
-        );
-
+        //f.tabsOf(
+        //        relationTypes,
+        //        type -> {
+        //            //Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, type, tables);
+        //            //List<String> relationTableList = relationTables.keySet().stream().collect(Collectors.toList());
+        //            //f.tabsOf(
+        //            //        relationTableList,
+        //            //        table -> {
+        //            //            Map<String, List<String>> attributeTable = _attributesTableOf(relationTables.get(table));
+        //            //
+        //            //            Map<String, List<Object>> relationResult = _query(
+        //            //                    "SELECT * FROM "+""
+        //            //            );//TODO: add response...
+        //            //
+        //            //
+        //            //        }
+        //            //);
+        //        }
+        //);
         return null;
     }
 
-    private Map<String,List<String>> __findRelationTablesOf(String tableName, String relationType, Map<String, List<String>> tables)
-    {
+
+    private Map< String, List<String> > __findRelationTablesOf (
+            String tableName,
+            Map<String,
+            List<String>> tables,
+            Function<String, Boolean> filter
+    ) {
         List<String> relationTables = tables
                 .keySet()
                 .stream()
-                .filter(k->!k.equals(tableName)&&k.contains("relation"))
+                .filter( k -> !k.equals(tableName) && k.contains("relation") )
                 .collect(Collectors.toList());
         Map<String,List<String>> found = new TreeMap<>();
         for ( String relationTable : relationTables ) found.put(relationTable, new ArrayList<>());
-        for ( String relationTable : relationTables ){
+        for ( String relationTable : relationTables ) {
             if( !relationTable.isEmpty() ) {
                 List<String> foreignAttributes = tables.get(relationTable);
                 for(String attribute : foreignAttributes) {
-                    String singularTableName = __toSingular(tableName);
-                    if( attribute.contains(singularTableName) && attribute.contains(relationType) && attribute.contains("id") ) {
-                        found.get(relationTable).add(attribute.split(" ")[0]);
+                    if ( filter.apply(attribute) ) {
+                        String attributeName = attribute.split(" ")[0];
+                        if(
+                            !attributeName.equals("id") &&
+                            attributeName.contains("_id") &&
+                            attribute.toUpperCase().contains("REFERENCES")
+                        ) {
+                            found.get(relationTable).add(attributeName);
+                        }
                     }
                 }
             }
@@ -402,15 +411,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         return found;
     }
 
-    private String __toSingular(String word){
-        switch (word) {
-            case "people": return "person";
+    private String __toSingular( String word ) {
+        switch ( word ) {
+            case "people" : return "person";
+            case "men" : return "man";
+            case "mice" : return "mouse";
+            case "children" : return "child";
         }
-        if (word.endsWith("s")) return word.substring(0, word.length()-1);
+        if ( word.endsWith("s") ) return word.substring( 0, word.length() - 1 );
         return word;
     }
 
-    private void _delete(IRequest req, IResponse response)
+    private void _delete( IRequest req, IResponse response )
     {
         response.setContent("text/html");
         String tableName = req.getUrl().getFileName();
@@ -422,65 +434,69 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             response.setContent("Deletion failed! Request does not contain 'id' value!");
             return;
         }
-        Map<String, List<String>> tables = _tablesSpace();
-        Map<String, List<String>> relationTables = __findRelationTablesOf(tableName, "parent", tables);
-        relationTables.putAll(__findRelationTablesOf(tableName, "child", tables));
-        relationTables.putAll(__findRelationTablesOf(tableName, "", tables));
-        relationTables.forEach( (table, foreignKeys)->{
-            for(String foreignKey : foreignKeys) {
-                String sql = "DELETE FROM "+table+" WHERE "+foreignKey+" = "+paramTable.get("id");
-                _execute(sql, response);
+        Map< String, List<String> > tables = _tablesSpace();
+        Map< String, List<String> > relationTables = __findRelationTablesOf (
+                tableName,
+                tables,
+                s -> s.contains( "REFERENCES " + tableName )
+        );
+        relationTables.forEach(
+            (table, foreignKeys) -> {
+                for(String foreignKey : foreignKeys) {
+                    String sql = "DELETE FROM "+table+" WHERE "+foreignKey+" = "+paramTable.get("id");
+                    _execute(sql, response);
+                }
             }
-        });
+        );
         String sql = "DELETE FROM "+tableName+" WHERE id = "+paramTable.get("id");
         _execute(sql, response);
     }
 
-    private void _view(IRequest req, IResponse response)
+    private void _view( IRequest req, IResponse response )
     {
         response.setContentType("text/html");
         String fileData = new util().readResource("CRUD/default.html");// send HTTP Headers
-
-        StringBuilder form = new StringBuilder(fileData);
+        StringBuilder form = new StringBuilder( fileData );
         FrontendConsumer f = new FrontendConsumer() {
-            public FrontendConsumer $(Object o) {
+            public FrontendConsumer $( Object o ) {
                 form.append(o.toString());
                 return this;
             }
         };
-        String today = new java.sql.Date(System.currentTimeMillis()).toString();
+        String today = new java.sql.Date( System.currentTimeMillis() ).toString();
         Map<String, List<String>> tables = _tablesSpace();
-        tables.forEach( (table, columns) ->
-        {
-            Map<String, List<Object>> templateEntity = new HashMap<>();
-            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-
-            f.$("<div class = \"mainContentWrapper\">");
-                f.$("<div class = container-fluid>");
-                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");//row?
-                        f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\"><label>").$(table).$(" - search :</label>");
-                        f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
+        tables.forEach(
+            ( table, columns ) ->
+            {
+                Map<String, List<Object>> templateEntity = new HashMap<>();
+                for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+                f.$("<div class = \"mainContentWrapper\">");
+                    f.$("<div class = container-fluid>");
+                        f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");//row?
+                            f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\"><label>").$(table).$(" - search :</label>");
+                            f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
+                            f.$("</div>");
+                            for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
                         f.$("</div>");
-                        for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+                        //f.$("<div class=\"row\">"); //This is not working? why?
+                            f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
+                            f.$("</div>");
+                        //f.$("</div>");
+                        f.$("<script>");
+                        f.$(" function new_"+table+"() {");
+                            f.$("$('#").$(table).$("_result').append(`");
+                            f.$(__entitiesToForm(table, templateEntity, tables, false));
+                            f.$("`);");
+                        f.$(" }");
+                        f.$("</script>\n");
+                        f.$("<button onclick=\"new_"+table+"()\">");
+                            f.$("NEW\n");
+                        f.$("</button>\n");
                     f.$("</div>");
-                    //f.$("<div class=\"row\">"); //This is not working? why?
-                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                            f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
-                        f.$("</div>");
-                    //f.$("</div>");
-                    f.$("<script>");
-                    f.$(" function new_"+table+"() {");
-                        f.$("$('#").$(table).$("_result').append(`");
-                        f.$(__entitiesToForm(table, templateEntity, tables, false));
-                        f.$("`);");
-                    f.$(" }");
-                    f.$("</script>\n");
-                    f.$("<button onclick=\"new_"+table+"()\">");
-                        f.$("NEW\n");
-                    f.$("</button>\n");
                 f.$("</div>");
-            f.$("</div>");
-        });
+            }
+        );
         response.setContent(form.toString());
     }
 
