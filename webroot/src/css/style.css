@@ -368,7 +368,7 @@ header p {
     background-color: #00e6ff;
     transition: 0.3s;
     border-radius: 0.33em 0.33em 0 0;
-    padding: 0.35em 0.55em 0.7em 0.55em;
+    padding: 0.35em 0.65em 0.7em 0.65em;
     margin: 0.35em 0.15em 0 0.15em;
 }
 
@@ -378,11 +378,14 @@ header p {
 }
 
 .tabBody {
+    padding-top: 0.37575em;
+    padding-bottom: 0.1em;
+}
+
+.LightTopShadow {
     -webkit-box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
     box-shadow: inset 0px 3px 5px -3px rgba(0,0,0,0.75);
-    padding-top: 0.37575em;
-    padding-bottom: 0.1em;
 }
 
 .tabWrapper .tabBody div{

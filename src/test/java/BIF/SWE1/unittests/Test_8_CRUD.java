@@ -299,6 +299,8 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
         assert body.contains("id=\"tails_1_created\"");
         assert !body.contains("content-length: 0");
+        String compact = body.replace(" ", "");
+        assert compact.contains("name=\"deleted\"value=\"\"");
         assert res.getContentType().contains("text/html");
     }
 
@@ -324,6 +326,8 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
         assert body.contains("id=\"tails_1_created\"");
         assert res.getContentType().contains("text/html");
+        String compact = body.replace(" ", "");
+        assert compact.contains("name=\"deleted\"value=\"\"");
 
         // 2. Deleting (failing):
         req = createInstance().getRequest(

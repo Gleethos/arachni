@@ -31,28 +31,44 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
-        private void tabsOf(List<String> tabNames, Consumer<String> lambda)
+        private Function<String, String> asClass = s -> {
+            s = s.replace(" ", "_");
+            s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
+            return s;
+        };
+        private Function<String, String> asText = s -> {
+            s = s.substring(0, 1).toUpperCase() + s.substring(1);
+            return s.replace("_", " ");
+        };
+
+        private void rootTabsOf(List<String> tabNames, Consumer<String> lambda)
         {
-            Function<String, String> asClass = s -> {
-                s = s.replace(" ", "_");
-                s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
-                return s;
-            };
-            Function<String, String> asText = s -> {
-                s = s.substring(0, 1).toUpperCase() + s.substring(1);
-                return s.replace("_", " ");
-            };
-            $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n");
-            $("<div class=\"tabHead\">\n");
+            $("<div class=\"tabWrapper\">\n<div class=\"tabHead\" style=\"font-size:1em;\">\n");
             String selected = "selected";
             for(String type : tabNames) {
                 $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
                 selected = "";
             }
-            $(
-                "</div>\n"+
-                "<div class=\"tabBody\">\n"
-            );
+            $("</div>\n<div class=\"tabBody\">\n");
+            String displayNone = "display:flex";
+            for( String type : tabNames ) {
+                $("<div class=\""+asClass.apply(type)+"Tab\" style=\""+displayNone+"\">\n");
+                lambda.accept(type);
+                $("</div>\n");
+                displayNone = "display:none";
+            }
+            $("</div>\n</div>\n");
+        }
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda)
+        {
+            $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n<div class=\"tabHead\">\n");
+            String selected = "selected";
+            for(String type : tabNames) {
+                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
+                selected = "";
+            }
+            $("</div>\n<div class=\"tabBody LightTopShadow\">\n");
             String displayNone = "display:flex";
             for( String type : tabNames ) {
                 $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
@@ -60,10 +76,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 $("</div>\n");
                 displayNone = "display:none";
             }
-            $(
-                    "</div>\n"+
-                    "</div>\n"
-            );
+            $("</div>\n</div>\n");
         }
 
         @Override
@@ -308,7 +321,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     return this;
                 }
             };
-
             entities.forEach( (k,v) ->
             {
                 FrontendConsumer ic = contentConsumer;
@@ -327,6 +339,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             :"col-sm-12 col-md-6 col-lg-4";
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = tableName+"_"+entityID+"_"+attribute;
+                String currentValue = (v.get(inner)==null)?"":v.get(inner).toString();
                 //---
                 ic.$("<div class=\""+bootstrapClasses+"\">");
                 ic.$("<div class=\"AttributeWrapper\">");
@@ -341,9 +354,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         "</span>" +
                         "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
                         "      name=\""+attribute+"\"                       " +
-                                ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+v.get(inner)+"\"") +
+                                ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
                         "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
-                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?v.get(inner)+"</textarea>":"")
+                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
                 );
                 ic.$("</div>");
                 ic.$("</div>");
@@ -556,44 +569,52 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, List<String>> tables = _tablesSpace();
         CRUDBuilder f = new CRUDBuilder(tables);
         f.$(fileData);
+        f.rootTabsOf(
+                new ArrayList<>(tables.keySet()),
+                table -> {
+                    List<String> columns = tables.get(table);
+                    Map<String, List<Object>> templateEntity = new HashMap<>();
+                    for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+                    f.$("<div class = \"mainContentWrapper\">");
+                    f.$("<div class = container-fluid>");
+                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">");//row?
+                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                            .$("<h3>").$(table.replace("_", " ")).$("</h3>");
+                    f.$("</div>");
+                    f.$("<div class=\"col-sm-12 col-md-6 col-lg-6\">");
+                    f.$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>");
+                    f.$("</div>");
+                    f.$("<div class=\"col-sm-12 col-md-6 col-lg-6\">");
+                    f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>");
+                    f.$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>");
+                    f.$("</div>");
+                    f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                    for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+                    f.$("</div>");
+                    f.$("</div>");
+                    f.$("<div class=\"row\">"); //This is not working? why?
+                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                    f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
+                    f.$("</div>");
+                    f.$("</div>");//......!!
+                    f.$("<script>");
+                    f.$(" function new_"+table+"() {");
+                    f.$("$('#").$(table).$("_result').append(`");
+                    f.$(__entitiesToForm(table, templateEntity, tables, false));
+                    f.$("`);");
+                    f.$(" }");
+                    f.$("</script>\n");
+                    f.$("<button onclick=\"new_"+table+"()\">");
+                    f.$("NEW\n");
+                    f.$("</button>\n");
+                    f.$("</div>");
+                    f.$("</div>");
+                }
+        );
         tables.forEach(
             ( table, columns ) ->
             {
-                Map<String, List<Object>> templateEntity = new HashMap<>();
-                for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-                f.$("<div class = \"mainContentWrapper\">");
-                    f.$("<div class = container-fluid>");
-                        f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">");//row?
-                            f.$("<div class=\"col-sm-12 col-md-8 col-lg-6\">")
-                                    .$("<h3>").$(table.replace("_", " ")).$("</h3>");
-                            f.$("</div>");
-                            f.$("<div class=\"col-sm-6 col-md-4 col-lg-3\">");
-                                    f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
-                            f.$("</div>");
-                            f.$("<div class=\"col-sm-6 col-md-6 col-lg-3\">");
-                                    f.$("<label>Number of entities: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)")+"</label>");
-                            f.$("</div>");
-                            f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                                for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
-                            f.$("</div>");
-                        f.$("</div>");
-                        f.$("<div class=\"row\">"); //This is not working? why?
-                            f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
-                            f.$("</div>");
-                        f.$("</div>");//......!!
-                        f.$("<script>");
-                        f.$(" function new_"+table+"() {");
-                            f.$("$('#").$(table).$("_result').append(`");
-                            f.$(__entitiesToForm(table, templateEntity, tables, false));
-                            f.$("`);");
-                        f.$(" }");
-                        f.$("</script>\n");
-                        f.$("<button onclick=\"new_"+table+"()\">");
-                            f.$("NEW\n");
-                        f.$("</button>\n");
-                    f.$("</div>");
-                f.$("</div>");
+
             }
         );
         response.setContent(f.toString());
