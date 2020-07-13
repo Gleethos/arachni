@@ -41,25 +41,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return s.replace("_", " ");
         };
 
-        //private void rootTabsOf(List<String> tabNames, Consumer<String> lambda)
-        //{
-        //    $("<div class=\"tabWrapper\">\n<div class=\"tabHead\" style=\"font-size:1em;\">\n");
-        //    String selected = "selected";
-        //    for(String type : tabNames) {
-        //        $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
-        //        selected = "";
-        //    }
-        //    $("</div>\n<div class=\"tabBody\">\n");
-        //    String displayNone = "display:flex";
-        //    for( String type : tabNames ) {
-        //        $("<div class=\""+asClass.apply(type)+"Tab\" style=\""+displayNone+"\">\n");
-        //        lambda.accept(type);
-        //        $("</div>\n");
-        //        displayNone = "display:none";
-        //    }
-        //    $("</div>\n</div>\n");
-        //}
-
         private void tabsOf(List<String> tabNames, Consumer<String> lambda){
             tabsOf(tabNames, lambda, "default");
         }
@@ -86,25 +67,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             $("</div>\n</div>\n");
         }
-
-        //private void compactTabsOf(List<String> tabNames, Consumer<String> lambda)
-        //{
-        //    $("<div class=\"tabWrapper col-sm-12 col-md-6 col-lg-6\">\n<div class=\"tabHead\">\n");
-        //    String selected = "selected";
-        //    for(String type : tabNames) {
-        //        $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
-        //        selected = "";
-        //    }
-        //    $("</div>\n<div class=\"tabBody LightTopShadow\">\n");
-        //    String displayNone = "display:flex";
-        //    for( String type : tabNames ) {
-        //        $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
-        //        lambda.accept(type);
-        //        $("</div>\n");
-        //        displayNone = "display:none";
-        //    }
-        //    $("</div>\n</div>\n");
-        //}
 
         @Override
         public String toString(){
