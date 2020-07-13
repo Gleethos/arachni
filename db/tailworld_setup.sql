@@ -13,6 +13,12 @@ VALUES
 
 --<#SPLIT#>--
 
+INSERT INTO tails
+(name, value, created)
+VALUES
+('Third Tail', 'A long time ago...', datetime('now'));
+
+--<#SPLIT#>--
 INSERT INTO tail_relations
 (parent_tail_id, child_tail_id, description, created)
 VALUES

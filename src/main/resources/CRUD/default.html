@@ -21,9 +21,9 @@
               box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
               border-bottom: solid black 1px;
               border-radius: 0.5em;
-              margin: 0.25em;
               background-color: #ffffff;
-              width: auto;
+              padding-bottom: 0.25em;
+              padding-top: 0.25em;
        }
        .EntityWrapper {
               border-radius: 1em;
@@ -204,9 +204,8 @@
               var tabBody = $(src.target).parent().parent().find('.tabBody');
               tabBody.children().css("display", "none");
               $(src.target).siblings().removeClass("selected");
-              $(src.target).parent().parent().find(target).css("display", "flex");
               $(src.target).addClass("selected");
-              console.log($(src.target).html());
+              $(src.target).parent().parent().children('.tabBody').children(target).css("display", "flex");
        }
 </script>
 

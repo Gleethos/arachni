@@ -5,7 +5,6 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
 import comp.imp.Url;
-import org.sqlite.util.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -34,7 +33,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         private void tabsOf(List<String> tabNames, Consumer<String> lambda)
         {
-            Function<String, String> asClass = s->{
+            Function<String, String> asClass = s -> {
                 s = s.replace(" ", "_");
                 s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
                 return s;
@@ -54,7 +53,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 "</div>\n"+
                 "<div class=\"tabBody\">\n"
             );
-            String displayNone = "";
+            String displayNone = "display:flex";
             for( String type : tabNames ) {
                 $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
                 lambda.accept(type);
@@ -140,9 +139,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             method.invoke(this, req, response);
             _commit(response);
             _close();
-        } catch (IllegalArgumentException e) { e.printStackTrace(); }
-        catch (IllegalAccessException e) { e.printStackTrace(); }
-        catch (InvocationTargetException e) { e.printStackTrace(); }
+        } catch (IllegalArgumentException e) {
+            if(e.getMessage()!=null)response.setContent(e.getMessage());
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e) {
+            if(e.getMessage()!=null)response.setContent(e.getMessage());
+            e.printStackTrace();
+        }
+        catch (InvocationTargetException e) {
+            if(e.getMessage()!=null) response.setContent(e.getMessage());
+            e.printStackTrace();
+        }
         return response;
     }
 
@@ -267,15 +275,22 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
             f.$(
-                    "<div class=\"col-sm-2 col-md-2 col-lg-2 ml-auto\">" + // ml-auto := float right for col classes...
-                    "<button style=\"width:100%;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
-                    "SAVE" +
-                    "</button>" +
-                    "</div>" +
-                    "<div class=\"col-sm-2 col-md-2 col-lg-2 ml-auto\">" +
-                    "<button style=\"width:100%;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
-                    "DELETE" +
-                    "</button>" +
+                    "<div class=\"col-sm-12 col-md-12 col-lg-12 ml-auto\">" + // ml-auto := float right for col classes...
+                        "<div style=\"float:right;\">" +
+                            "<button style=\"padding:0.25em;\" onclick=\"$( '#"+rowID+"' ).replaceWith('');\">" +
+                            "CLOSE" +
+                            "</button>" +
+                        "</div>" +
+                        "<div style=\"float:right;\">" +
+                            "<button style=\"padding:0.25em;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                            "SAVE" +
+                            "</button>" +
+                        "</div>" +
+                        "<div style=\"float:right;\">" +
+                            "<button style=\"padding:0.25em;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                            "DELETE" +
+                            "</button>" +
+                        "</div>" +
                     "</div>"
             );
 
@@ -343,9 +358,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             );
 
             // Relation tables
-            if(appendRelations){
-                //f.$(__buildRelationForms(tableName, entityID, tables));
-                __buildRelationForms(tableName, entityID, tables);
+            if(appendRelations && !tableName.contains("relations")){
+                f.$(__buildRelationForms(tableName, entityID, tables));
             }
             f.$("</div>");
         }
@@ -357,15 +371,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String id, Map<String,
             List<String>> tables
     ) {
-        if(true) return null;
         CRUDBuilder f = new CRUDBuilder(tables);
-        Map<String, Map<String,String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);//Todo make type be found....
-
+        Map<String, Map<String,String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);
         f.tabsOf(
                 new ArrayList<>(relationTables.keySet()),
-                relationTable -> // Example :  tail_tag_relations
+                relationTableName -> // Example :  tail_tag_relations
                 {
-                    List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTable).keySet());
+                    List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTableName).keySet());
                     Map<String, List<String>> fromToMap = new TreeMap<>();
                     /*
                         The inner foreign key will be queried to be equivalent to
@@ -375,13 +387,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         for( String outerKey : foreignKeys ) { // := many !
                             if(
                                     ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
-                                            relationTables.get(relationTable).get(innerKey).contains("REFERENCES "+innerTableName)
+                                            relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
                             ) {
-
                                 String innerText = innerKey.replace("_id", "");
                                 String outerText = outerKey.replace("_id", "");
                                 fromToMap.put(
-                                        "one_"+innerText+"_has_many_"+outerText,
+                                        innerText+"_joined_by_"+outerText,
                                         List.of(innerKey, outerKey)
                                 );
                             }
@@ -392,49 +403,60 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             relationName -> {
                                 String innerKey = fromToMap.get(relationName).get(0);
                                 String outerKey = fromToMap.get(relationName).get(1);
-                                String outerTableName = relationTables.get(relationTable).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
+                                String outerTableName = relationTables.get(relationTableName).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
                                 Map<String, List<Object>> relationResult = _query(
-                                        "SELECT * FROM "+relationTable+" WHERE "+innerKey+" = "+id
+                                        "SELECT * FROM "+relationTableName+" WHERE "+innerKey+" = "+id
                                 );
                                 int numberOfFound = relationResult.values().stream().findFirst().get().size();
                                 for ( int i = 0; i < numberOfFound; i++ ) {
                                     int index = i;
+                                    assert numberOfFound == relationResult.values().stream().findFirst().get().size();
                                     Map<String, List<Object>> currentRelationEntity =
-                                            relationResult
+                                            new TreeMap<>(relationResult)
                                                     .entrySet()
                                                     .stream()
-                                                    .collect(Collectors.toMap(
-                                                            entry -> entry.getKey(),
+                                                    .collect(
+                                                        Collectors.toMap(
+                                                                Map.Entry::getKey,
                                                             entry -> {
-                                                                entry.setValue(List.of(entry.getValue().get(index)));
+                                                                if(entry.getValue().get(index)!=null) {
+                                                                    entry.setValue(List.of(entry.getValue().get(index)));
+                                                                } else {
+                                                                    entry.setValue(List.of(""));
+                                                                }
                                                                 return entry.getValue();
                                                             }
-                                                    ));
+                                                        )
+                                                    );
                                     // There should never be more than one current relation entity :
                                     assert currentRelationEntity.get(outerKey).size()==1;
-                                    __entitiesToForm(
-                                            relationTable,
+                                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\" style=\"background-color:white; border-radius:1em;\">");
+                                    f.$(__entitiesToForm(
+                                            relationTableName,
                                             currentRelationEntity,
                                             tables,
                                             false
-                                    );
+                                    ));
+                                    f.$("</div>");
                                     Map<String, List<Object>> currentOuterEntity = _query(
                                             "SELECT * FROM "+outerTableName+
                                             " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
                                     );
-                                    __entitiesToForm(
+                                    assert currentOuterEntity.get("id").size()==1;
+                                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\" style=\"background-color:white; border-radius:1em;\">");
+                                    f.$(__entitiesToForm(
                                             outerTableName,
                                             currentOuterEntity,
                                             tables,
                                             false
-                                    );
+                                    ));
+                                    f.$("</div>");
                                 }
-
                             }
                     );
                 }
         );
-        return null;
+        return f.toString();
     }
 
 
@@ -530,15 +552,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     {
         response.setContentType("text/html");
         String fileData = new util().readResource("CRUD/default.html");// send HTTP Headers
-        StringBuilder form = new StringBuilder( fileData );
-        FrontendConsumer f = new FrontendConsumer() {
-            public FrontendConsumer $( Object o ) {
-                form.append(o.toString());
-                return this;
-            }
-        };
         String today = new java.sql.Date( System.currentTimeMillis() ).toString();
         Map<String, List<String>> tables = _tablesSpace();
+        CRUDBuilder f = new CRUDBuilder(tables);
+        f.$(fileData);
         tables.forEach(
             ( table, columns ) ->
             {
@@ -546,17 +563,25 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
                 f.$("<div class = \"mainContentWrapper\">");
                     f.$("<div class = container-fluid>");
-                        f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper\">");//row?
-                            f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\"><label>").$(table).$(" - search :</label>");
-                            f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
+                        f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">");//row?
+                            f.$("<div class=\"col-sm-12 col-md-8 col-lg-6\">")
+                                    .$("<h3>").$(table.replace("_", " ")).$("</h3>");
                             f.$("</div>");
-                            for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+                            f.$("<div class=\"col-sm-6 col-md-4 col-lg-3\">");
+                                    f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">find!</button>");
+                            f.$("</div>");
+                            f.$("<div class=\"col-sm-6 col-md-6 col-lg-3\">");
+                                    f.$("<label>Number of entities: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)")+"</label>");
+                            f.$("</div>");
+                            f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
+                            f.$("</div>");
                         f.$("</div>");
-                        //f.$("<div class=\"row\">"); //This is not working? why?
+                        f.$("<div class=\"row\">"); //This is not working? why?
                             f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
                                 f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
                             f.$("</div>");
-                        //f.$("</div>");
+                        f.$("</div>");//......!!
                         f.$("<script>");
                         f.$(" function new_"+table+"() {");
                             f.$("$('#").$(table).$("_result').append(`");
@@ -571,7 +596,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 f.$("</div>");
             }
         );
-        response.setContent(form.toString());
+        response.setContent(f.toString());
     }
 
 
