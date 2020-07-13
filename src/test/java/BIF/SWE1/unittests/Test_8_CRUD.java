@@ -207,6 +207,62 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     }
 
     @Test
+    public void test_saving_tail_with_POST_with_relations() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails",
+                        "POST",
+                        "id=1"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        assert body.contains("value=\""+date+"\""); // Autofill for created!
+        assert !body.contains("value=\"bla bla\"");
+        String compact = body.replace(" " , "");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tails','1')\">blabla</textarea>");
+        assert compact.contains("name=\"deleted\"value=\"\"");
+        assert compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("id=\"tags_1_description\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert !body.contains("content-length: 0");
+    }
+
+    @Test
+    public void test_saving_tail_with_POST_WITHOUT_relations() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails?appendRelations=false",
+                        "POST",
+                        "id=1"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        assert body.contains("value=\""+date+"\""); // Autofill for created!
+        assert !body.contains("value=\"bla bla\"");
+        String compact = body.replace(" " , "");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tails','1')\">blabla</textarea>");
+        assert compact.contains("name=\"deleted\"value=\"\"");
+        assert !compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert !compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert !compact.contains("id=\"tags_1_description\"");
+        assert !compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert !body.contains("content-length: 0");
+    }
+
+    @Test
     public void test_CRUD_saving_tail_fails_with_POST() throws Exception
     {
         Test8Provider provider = createInstance();
@@ -285,7 +341,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/find/tails?", "POST",
-                                "name=First"
+                                "name=First"// Appending relations is applied...
                 )
         );
         IResponse res = crud.handle(req);
@@ -301,7 +357,77 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert !body.contains("content-length: 0");
         String compact = body.replace(" ", "");
         assert compact.contains("name=\"deleted\"value=\"\"");
+        assert compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("id=\"tags_1_description\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
         assert res.getContentType().contains("text/html");
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?", "POST",
+                        "name=First&appendRelations=true"
+                )
+        );
+        res = crud.handle(req);
+        assert body.equals(getBody(res).toString());
+    }
+
+    @Test
+    public void test_CRUD_finding_without_relations_POST_request() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?", "POST",
+                        "name=First&appendRelations=false"
+                        // This should NOT work!^ Should be ignored... (includes relations...)
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+
+        assert body.contains("200 OK");
+        assert body.contains("EntityWrapper");
+        assert body.contains("value=\"First Tail\"");
+        assert body.contains("value=\"Second Tail\""); // It also contains second tail as relation entity!
+        assert !body.contains("value=\"Third Tail\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
+        assert body.contains("id=\"tails_1_created\"");
+        assert !body.contains("content-length: 0");
+        String compact = body.replace(" ", "");
+        assert compact.contains("name=\"deleted\"value=\"\"");
+        assert compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("id=\"tags_1_description\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert res.getContentType().contains("text/html");
+
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?appendRelations=false", "POST",
+                        "name=First"// This should NOT work! Should be ignored...
+                )
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+
+        assert body.contains("200 OK");
+        assert body.contains("EntityWrapper");
+        assert body.contains("value=\"First Tail\"");
+        assert !body.contains("value=\"Second Tail\""); // Now it does not contain second tail as relation entity!
+        assert !body.contains("value=\"Third Tail\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tails','1')\"");
+        assert body.contains("id=\"tails_1_created\"");
+        assert !body.contains("content-length: 0");
+        compact = body.replace(" ", "");
+        assert compact.contains("name=\"deleted\"value=\"\"");
+        assert !compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert !compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert !compact.contains("id=\"tags_1_description\"");
+        assert !compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert res.getContentType().contains("text/html");
+
     }
 
     @Test

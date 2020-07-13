@@ -41,18 +41,45 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return s.replace("_", " ");
         };
 
-        private void rootTabsOf(List<String> tabNames, Consumer<String> lambda)
+        //private void rootTabsOf(List<String> tabNames, Consumer<String> lambda)
+        //{
+        //    $("<div class=\"tabWrapper\">\n<div class=\"tabHead\" style=\"font-size:1em;\">\n");
+        //    String selected = "selected";
+        //    for(String type : tabNames) {
+        //        $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
+        //        selected = "";
+        //    }
+        //    $("</div>\n<div class=\"tabBody\">\n");
+        //    String displayNone = "display:flex";
+        //    for( String type : tabNames ) {
+        //        $("<div class=\""+asClass.apply(type)+"Tab\" style=\""+displayNone+"\">\n");
+        //        lambda.accept(type);
+        //        $("</div>\n");
+        //        displayNone = "display:none";
+        //    }
+        //    $("</div>\n</div>\n");
+        //}
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda){
+            tabsOf(tabNames, lambda, "default");
+        }
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda, String tabType)
         {
-            $("<div class=\"tabWrapper\">\n<div class=\"tabHead\" style=\"font-size:1em;\">\n");
+            String colSizes = (tabType.contains("compacted"))?"col-sm-12 col-md-10 col-lg-10":"col-sm-12 col-md-12 col-lg-12";
+            String additionalHeadStyles = (tabType.contains("root"))?"font-size:1em;":"";
+            $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
             String selected = "selected";
             for(String type : tabNames) {
                 $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
                 selected = "";
             }
-            $("</div>\n<div class=\"tabBody\">\n");
+            String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
+            $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
+            String rowClass = (tabType.contains("root"))?"":"row";
             String displayNone = "display:flex";
             for( String type : tabNames ) {
-                $("<div class=\""+asClass.apply(type)+"Tab\" style=\""+displayNone+"\">\n");
+                $("<div class=\""+asClass.apply(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
                 lambda.accept(type);
                 $("</div>\n");
                 displayNone = "display:none";
@@ -60,24 +87,24 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("</div>\n</div>\n");
         }
 
-        private void tabsOf(List<String> tabNames, Consumer<String> lambda)
-        {
-            $("<div class=\"tabWrapper col-sm-12 col-md-12 col-lg-12\">\n<div class=\"tabHead\">\n");
-            String selected = "selected";
-            for(String type : tabNames) {
-                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
-                selected = "";
-            }
-            $("</div>\n<div class=\"tabBody LightTopShadow\">\n");
-            String displayNone = "display:flex";
-            for( String type : tabNames ) {
-                $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
-                lambda.accept(type);
-                $("</div>\n");
-                displayNone = "display:none";
-            }
-            $("</div>\n</div>\n");
-        }
+        //private void compactTabsOf(List<String> tabNames, Consumer<String> lambda)
+        //{
+        //    $("<div class=\"tabWrapper col-sm-12 col-md-6 col-lg-6\">\n<div class=\"tabHead\">\n");
+        //    String selected = "selected";
+        //    for(String type : tabNames) {
+        //        $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
+        //        selected = "";
+        //    }
+        //    $("</div>\n<div class=\"tabBody LightTopShadow\">\n");
+        //    String displayNone = "display:flex";
+        //    for( String type : tabNames ) {
+        //        $("<div class=\""+asClass.apply(type)+"Tab row\" style=\""+displayNone+"\">\n");
+        //        lambda.accept(type);
+        //        $("</div>\n");
+        //        displayNone = "display:none";
+        //    }
+        //    $("</div>\n</div>\n");
+        //}
 
         @Override
         public String toString(){
@@ -85,7 +112,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
 
     }
-
 
     public CRUD() {
         super("jdbc:sqlite:C:/sqlite/db/TailDB", "", "");
@@ -187,6 +213,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         response.setContent("text/html");
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
+        boolean appendRelations = true;
+        if(paramTable.containsKey("appendRelations")) {
+            appendRelations = paramTable.get("appendRelations").toLowerCase().equals("true")?true:false;
+            paramTable.remove("appendRelations"); // Should be remove because other parameters will be viewed as attributes!
+        }
 
         if(req.getMethod().equals("POST")) paramTable.putAll(new Url(req.getContentString()).getParameter());
         Map<String, List<String>> tables = _tablesSpace();
@@ -206,6 +237,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         String foundParamID = paramTable.get("id");
         req.getUrl().getParameter().clear();
         req.getUrl().getParameter().put("id", Objects.requireNonNullElseGet(foundParamID, () -> String.valueOf(lastID)));
+        if(!appendRelations) req.getUrl().getParameter().put("appendRelations", "false");
         _find(req, response);
 
     }
@@ -238,6 +270,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         String tableName = req.getUrl().getFileName();
 
         Map<String, String> paramTable = req.getUrl().getParameter();
+        boolean appendRelations = true;
+        if(paramTable.containsKey("appendRelations")) {
+            appendRelations = paramTable.get("appendRelations").toLowerCase().equals("true")?true:false;
+            paramTable.remove("appendRelations");
+        }
         if(req.getMethod().equals("POST") && !paramTable.containsKey("id")) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
@@ -264,7 +301,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
         Map<String, List<Object>> map = _query(sql.toString(), values);
 
-        String result = __entitiesToForm( tableName, map, tables, true);
+        String result = __entitiesToForm( tableName, map, tables, appendRelations );
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
     }
@@ -278,6 +315,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     ){
         if(entities.isEmpty()) return "<div>Nothing found...</div>";
 
+        int importantFieldsNumber = entities
+                .keySet()
+                .stream()
+                .filter(k->!(k.contains("id") || k.equals("created") || k.equals("deleted")))
+                .collect(Collectors.toList())
+                .size();
+        boolean compacted = importantFieldsNumber < 2;
+
         CRUDBuilder f = new CRUDBuilder(tables);
         int rowCount = entities.values().stream().findFirst().get().size();
         String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
@@ -287,15 +332,27 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
             String rowID = tableName+"_"+entityID;
             f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
+            String colSizes = (compacted)?"col-sm-12 col-md-2 col-lg-1":"col-sm-12 col-md-12 col-lg-12";
             f.$(
-                    "<div class=\"col-sm-12 col-md-12 col-lg-12 ml-auto\">" + // ml-auto := float right for col classes...
+                    "<div class=\""+colSizes+" ml-auto\">" + // ml-auto := float right for col classes...
+                        "<div style=\"float:right;\">" +
+                            "<span style=\"padding:0.25em;\">" +
+                            tableName.replace("_", " ")+
+                            "</span>" +
+                        "</div>" +
                         "<div style=\"float:right;\">" +
                             "<button style=\"padding:0.25em;\" onclick=\"$( '#"+rowID+"' ).replaceWith('');\">" +
                             "CLOSE" +
                             "</button>" +
                         "</div>" +
                         "<div style=\"float:right;\">" +
-                            "<button style=\"padding:0.25em;\" onclick=\"loadSavedForEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                            "<button " +
+                                "style=\"padding:0.25em;\" " +
+                                "onclick=\"loadSavedForEntity( "+
+                                        ((appendRelations)?"":"'?appendRelations=false', ")+
+                                        " '"+tableName+"', '"+entityID+
+                                "' )\"" +
+                            ">" +
                             "SAVE" +
                             "</button>" +
                         "</div>" +
@@ -337,6 +394,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         :(lowerKey.contains("deleted")||lowerKey.contains("created"))
                                             ?"col-sm-12 col-md-4 col-lg-4"
                                             :"col-sm-12 col-md-6 col-lg-4";
+                if(compacted) {
+                    bootstrapClasses
+                            .replace("-12", "_#_")
+                            .replace("-1", "-2")
+                            .replace("_#_", "-12");
+                }
                 String attribute = k.toLowerCase().replace(" ","_");
                 String attributeID = tableName+"_"+entityID+"_"+attribute;
                 String currentValue = (v.get(inner)==null)?"":v.get(inner).toString();
@@ -348,9 +411,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         "   value=\"0\"                 " + // Counts onInput events to trigger persisting
                         "   id=\""+attributeID+"\"      " +
                         ">                              "
-                ).$(
-                        k
-                ).$(
+                ).$( k ).$(
                         "</span>" +
                         "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
                         "      name=\""+attribute+"\"                       " +
@@ -361,13 +422,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 ic.$("</div>");
                 ic.$("</div>");
             });
-
             f.tabsOf(
                     List.of("Content", "Machina"),
                     tab->{
                         if(tab.equals("Content")) f.$(contentBuilder.toString());
                         else f.$(metaBuilder);
-                    }
+                    },
+                    (compacted)?"compacted":"default"
             );
 
             // Relation tables
@@ -569,7 +630,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, List<String>> tables = _tablesSpace();
         CRUDBuilder f = new CRUDBuilder(tables);
         f.$(fileData);
-        f.rootTabsOf(
+        f.tabsOf(
                 new ArrayList<>(tables.keySet()),
                 table -> {
                     List<String> columns = tables.get(table);
@@ -596,7 +657,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
                     f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
                     f.$("</div>");
-                    f.$("</div>");//......!!
+                    f.$("</div>");
                     f.$("<script>");
                     f.$(" function new_"+table+"() {");
                     f.$("$('#").$(table).$("_result').append(`");
@@ -609,13 +670,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("</button>\n");
                     f.$("</div>");
                     f.$("</div>");
-                }
-        );
-        tables.forEach(
-            ( table, columns ) ->
-            {
-
-            }
+                },
+                "root"
         );
         response.setContent(f.toString());
     }

@@ -2,21 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-0e1b4545-f459-48d7-ab47-8eb2606c4cf1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-116d1173-522a-4e2d-8275-2acb9269c1a1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4e6501f4-4f89-4560-bff6-0440ba3be7c4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-561f1a71-4eb3-472f-b35d-149bb6e6d950.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-61e820fc-3f6b-42b3-9d50-064bcdef8d71.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-63e663f2-b02c-4b6b-99c9-89dc7fa47c22.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-67b8bc07-e7e9-4214-8b5b-e2dbe1259168.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-80a6cc42-3f4e-4a6d-b4df-f8c03bf1c50d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-814ef4ca-e670-4ba2-9655-762ab78ce163.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-8222ca01-8943-4d61-8287-77558ad775a2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-86a325b2-6adf-4b8a-89bf-2540e7dc3fa5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-9243c723-10bc-48b2-97a1-99062bda83da.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a497c5a2-d91c-4d44-960f-dd1c53c4e9a1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-dbdc0c14-3443-40d3-8190-91e64b1f4373.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e6a470d6-5190-4412-bcba-f1ddc6edd5c8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-05ed0b4b-fe1e-4b92-b4b1-cea1d973d6a8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-07c4e718-ece6-45e2-a877-4950d7ad8ee6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-25ef57a2-69c3-4af1-b269-bf6f03abbda3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-291c284c-1675-488a-891e-f1355cf14624.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-3ebda06a-2f9f-4d14-b1ef-d1260c62ee63.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-40bfb98b-fcd4-4de0-9b42-f009a2633214.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4900a727-01ec-4af0-8e43-91e1cfb5f5aa.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4b4eebd4-b703-4013-bb9a-a17fdeb8a22e.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4ece18d0-6d93-477c-815d-590d910f40b6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-600ef23b-50a6-43da-b95b-f618b7099f8c.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-68e71336-eeae-499b-bc93-2b1c43d7b6ad.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-6fa4fd5a-e930-46a9-9525-1bf08970c7d5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-7054a410-0b49-4a41-b570-caeef576f0d4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-70dc2045-50a1-4506-9d57-13bd433b3573.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-8879d663-ee1e-480d-b487-87fbfc407d1a.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a533c85f-23f4-457b-a283-3db1c19d9dca.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-af81dc19-caf1-4e77-9816-23e8a186548d.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-b182f85b-04f0-4541-b0e2-32d4cb322ad8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-bd404afd-cca2-4f8b-b64f-5902b5cd4dc9.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-c5f175df-c40b-4b3f-8f48-7484f4ebd9fd.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ca058b3e-e2d6-4707-95ee-e49ee3ba113d.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-cd7828b8-660a-45ff-9b67-ee97db135010.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-cdce27d2-9ede-4e1d-81a5-094e61ff2051.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-d01b0166-de00-41bf-84e1-e7fc7a50b763.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-d2ec162d-e026-445f-82cf-09e25fd8ca7b.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e43305bd-317b-4379-88a5-36aab0768ad2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e8bec1c6-aee0-4e5e-9744-d19e5644c0f0.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -27,36 +39,64 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Test_8_CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Test_8_CRUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Test_8_CRUD.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Test_8_CRUD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB2Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB2Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB3Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB3Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB4Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB4Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB5Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB5Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB6Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB6Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.unittests.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.unittests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.TestWeb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.TestWeb.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Test_8_CRUD.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Test_8_CRUD.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Tests7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Tests7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB1Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB1Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB2Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB2Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB3Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB3Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB4Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB4Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/TestWeb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/Test8Provider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/Tests7Provider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/uebungen/UEB6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/AbstractTestFixture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/RequestHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Test_8_CRUD.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/Tests7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB1Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB2Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB3Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB4Test$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB4Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB5Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/UEB6Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/mocks/Ueb5NoTestPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/BIF/SWE1/unittests/mocks/Ueb5TestPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.TestWeb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Test_8_CRUD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.Tests7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB1Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB2Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB3Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB4Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB5Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/BIF.SWE1.unittests.UEB6Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/BIF.SWE1.unittests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.TestWeb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Test_8_CRUD.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.Tests7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB1Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB2Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB3Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB4Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB5Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-BIF.SWE1.unittests.UEB6Test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB-saving" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB-saving" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/src/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,51 +220,13 @@
       <recent name="D:\development\java\remoteTest\webio\webroot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.arachni [test]">
+  <component name="RunManager" selected="JAR Application.arachni-1.0-SNAPSHOT.jar">
     <configuration name="TestWeb.testServerStart" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;BIF.SWE1.TestWeb.testServerStart&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_8_CRUD.test_CRUD_finding" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_finding&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_8_CRUD.test_CRUD_saving" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;BIF.SWE1.unittests.Test_8_CRUD.test_CRUD_saving&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -257,6 +259,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="arachni [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="arachni [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -276,12 +297,16 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="arachni-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/arachni-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.arachni [test]" />
+        <item itemvalue="JAR Application.arachni-1.0-SNAPSHOT.jar" />
+        <item itemvalue="Gradle.arachni [jar]" />
         <item itemvalue="Gradle.arachni [clean]" />
-        <item itemvalue="Gradle.Test_8_CRUD.test_CRUD_saving" />
-        <item itemvalue="Gradle.Test_8_CRUD.test_CRUD_finding" />
+        <item itemvalue="Gradle.arachni [test]" />
         <item itemvalue="Gradle.TestWeb.testServerStart" />
       </list>
     </recent_temporary>
@@ -392,7 +417,7 @@
       <workItem from="1594201787364" duration="9547000" />
       <workItem from="1594223986182" duration="26117000" />
       <workItem from="1594304674053" duration="16257000" />
-      <workItem from="1594395776639" duration="38231000" />
+      <workItem from="1594395776639" duration="46448000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1587840208108</created>
@@ -555,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594638703244</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update">
+      <created>1594643921568</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1594643921568</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,106 +617,106 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593859897852" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1594638700620">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1594643920096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594638700620" />
-    <state width="1040" height="234" key="GridCell.Tab.0.bottom" timestamp="1594642462449">
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594643920096" />
+    <state width="1028" height="257" key="GridCell.Tab.0.bottom" timestamp="1594652101244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.0.center" timestamp="1594642462449">
+    <state width="1028" height="257" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652101244" />
+    <state width="1028" height="257" key="GridCell.Tab.0.center" timestamp="1594652101244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.0.left" timestamp="1594642462449">
+    <state width="1028" height="257" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594652101244" />
+    <state width="1028" height="257" key="GridCell.Tab.0.left" timestamp="1594652101244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.0.right" timestamp="1594642462449">
+    <state width="1028" height="257" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594652101244" />
+    <state width="1028" height="257" key="GridCell.Tab.0.right" timestamp="1594652101244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.1.bottom" timestamp="1594642462449">
+    <state width="1028" height="257" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594652101244" />
+    <state width="1034" height="234" key="GridCell.Tab.1.bottom" timestamp="1594652101445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.1.center" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652101445" />
+    <state width="1034" height="234" key="GridCell.Tab.1.center" timestamp="1594652101445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.1.left" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594652101445" />
+    <state width="1034" height="234" key="GridCell.Tab.1.left" timestamp="1594652101445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.1.right" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594652101445" />
+    <state width="1034" height="234" key="GridCell.Tab.1.right" timestamp="1594652101445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.2.bottom" timestamp="1594642462450">
+    <state width="1034" height="234" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594652101445" />
+    <state width="1035" height="234" key="GridCell.Tab.2.bottom" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
-    <state width="1040" height="234" key="GridCell.Tab.2.center" timestamp="1594642462450">
+    <state width="1035" height="234" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.2.center" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
-    <state width="1040" height="234" key="GridCell.Tab.2.left" timestamp="1594642462450">
+    <state width="1035" height="234" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.2.left" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
-    <state width="1040" height="234" key="GridCell.Tab.2.right" timestamp="1594642462450">
+    <state width="1035" height="234" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.2.right" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
-    <state width="1040" height="234" key="GridCell.Tab.3.bottom" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.3.bottom" timestamp="1594652101233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.3.center" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652101233" />
+    <state width="1035" height="234" key="GridCell.Tab.3.center" timestamp="1594652101233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.3.left" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1594652101233" />
+    <state width="1035" height="234" key="GridCell.Tab.3.left" timestamp="1594652101233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.3.right" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1594652101233" />
+    <state width="1035" height="234" key="GridCell.Tab.3.right" timestamp="1594652101233">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.4.bottom" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1594652101233" />
+    <state width="1034" height="234" key="GridCell.Tab.4.bottom" timestamp="1594652112300">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.4.center" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652112300" />
+    <state width="1034" height="234" key="GridCell.Tab.4.center" timestamp="1594652112299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.4.left" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1594652112299" />
+    <state width="1034" height="234" key="GridCell.Tab.4.left" timestamp="1594652112299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.4.right" timestamp="1594642462449">
+    <state width="1034" height="234" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1594652112299" />
+    <state width="1034" height="234" key="GridCell.Tab.4.right" timestamp="1594652112299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.5.bottom" timestamp="1594642462450">
+    <state width="1034" height="234" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1594652112299" />
+    <state width="1035" height="234" key="GridCell.Tab.5.bottom" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
-    <state width="1040" height="234" key="GridCell.Tab.5.center" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.5.center" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.5.left" timestamp="1594642462449">
+    <state width="1035" height="234" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.5.left" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1594642462449" />
-    <state width="1040" height="234" key="GridCell.Tab.5.right" timestamp="1594642462450">
+    <state width="1035" height="234" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
+    <state width="1035" height="234" key="GridCell.Tab.5.right" timestamp="1594652101234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1040" height="234" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1594642462450" />
+    <state width="1035" height="234" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1594652101234" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1594030234105">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -693,10 +725,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594286881709" />
-    <state width="1466" height="293" key="XDebugger.FullValuePopup" timestamp="1594642333210">
+    <state width="1536" height="293" key="XDebugger.FullValuePopup" timestamp="1594650719180">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1466" height="293" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1594642333210" />
+    <state width="1536" height="293" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1594650719180" />
     <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587827936245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -742,33 +774,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>355</line>
-          <option name="timeStamp" value="424" />
+          <line>386</line>
+          <option name="timeStamp" value="454" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>354</line>
-          <option name="timeStamp" value="425" />
+          <line>411</line>
+          <option name="timeStamp" value="458" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="448" />
+          <line>223</line>
+          <option name="timeStamp" value="459" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>318</line>
-          <option name="timeStamp" value="449" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
+          <line>267</line>
+          <option name="timeStamp" value="460" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>319</line>
-          <option name="timeStamp" value="450" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>328</line>
-          <option name="timeStamp" value="451" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="461" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
