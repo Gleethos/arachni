@@ -436,7 +436,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     }
                     f.tabsOf(
                             new ArrayList<>(fromToMap.keySet()),
-                            relationName -> {
+                            relationName ->
+                            {
                                 String innerKey = fromToMap.get(relationName).get(0);
                                 String outerKey = fromToMap.get(relationName).get(1);
                                 String outerTableName = relationTables.get(relationTableName).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
@@ -466,28 +467,39 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     );
                                     // There should never be more than one current relation entity :
                                     assert currentRelationEntity.get(outerKey).size()==1;
-                                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\" style=\"background-color:white; border-radius:1em;\">");
-                                    f.$(__entitiesToForm(
-                                            relationTableName,
-                                            currentRelationEntity,
-                                            tables,
-                                            false
-                                    ));
+                                    f.$("<div " +
+                                            "id=\"" + "\" " +
+                                            "class=\"col-sm-12 col-md-12 col-lg-12\" " +
+                                            "style=\"background-color:white; border-radius:1em;\"" +
+                                        ">"
+                                    );
+                                    f.$(__entitiesToForm(relationTableName, currentRelationEntity, tables, false));
                                     f.$("</div>");
                                     Map<String, List<Object>> currentOuterEntity = _query(
-                                            "SELECT * FROM "+outerTableName+
-                                            " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
+                                            "SELECT * FROM "+outerTableName+ " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
                                     );
                                     assert currentOuterEntity.get("id").size()==1;
-                                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\" style=\"background-color:white; border-radius:1em;\">");
-                                    f.$(__entitiesToForm(
-                                            outerTableName,
-                                            currentOuterEntity,
-                                            tables,
-                                            false
-                                    ));
+                                    f.$("<div " +
+                                            "id=\"" + "\" " +
+                                            "class=\"col-sm-12 col-md-12 col-lg-12\" " +
+                                            "style=\"background-color:white; border-radius:1em;\"" +
+                                            ">"
+                                    );
+                                    f.$(__entitiesToForm(outerTableName, currentOuterEntity, tables, false));
                                     f.$("</div>");
-                                }
+                                } // :=  Entry loop end!
+
+
+                                //f.$("<script>");
+                                //f.$(" function new_"+relationTableName+"() {");
+                                //f.$("$('#").$(relationTableName).$("_result').append(`");
+                                //f.$(__entitiesToForm(relationTableName, templateEntity, tables, false));
+                                //f.$("`);");
+                                //f.$(" }");
+                                //f.$("</script>\n");
+                                //f.$("<button onclick=\"new_"+relationTableName+"()\">");
+                                //f.$("NEW\n");
+                                //f.$("</button>\n");
                             }
                     );
                 }
@@ -588,16 +600,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     {
         response.setContentType("text/html");
         String fileData = new util().readResource("CRUD/default.html");// send HTTP Headers
-        String today = new java.sql.Date( System.currentTimeMillis() ).toString();
         Map<String, List<String>> tables = _tablesSpace();
         CRUDBuilder f = new CRUDBuilder(tables);
         f.$(fileData);
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
                 table -> {
-                    List<String> columns = tables.get(table);
-                    Map<String, List<Object>> templateEntity = new HashMap<>();
-                    for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
                     f.$("<div class = \"mainContentWrapper\">");
                     f.$("<div class = container-fluid>");
                     f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">");//row?
@@ -612,6 +620,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>");
                     f.$("</div>");
                     f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                    List<String> columns = tables.get(table);
                     for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
                     f.$("</div>");
                     f.$("</div>");
@@ -620,22 +629,44 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
                     f.$("</div>");
                     f.$("</div>");
-                    f.$("<script>");
-                    f.$(" function new_"+table+"() {");
-                    f.$("$('#").$(table).$("_result').append(`");
-                    f.$(__entitiesToForm(table, templateEntity, tables, false));
-                    f.$("`);");
-                    f.$(" }");
-                    f.$("</script>\n");
-                    f.$("<button onclick=\"new_"+table+"()\">");
-                    f.$("NEW\n");
-                    f.$("</button>\n");
+                    //Map<String, List<Object>> templateEntity = new HashMap<>();
+                    //for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+                    //f.$("<script>");
+                    //f.$(" function new_"+table+"() {");
+                    //f.$("$('#").$(table).$("_result').append(`");
+                    //f.$(__entitiesToForm(table, templateEntity, tables, false));
+                    //f.$("`);");
+                    //f.$(" }");
+                    //f.$("</script>\n");
+                    //f.$("<button onclick=\"new_"+table+"()\">");
+                    //f.$("NEW\n");
+                    //f.$("</button>\n");
+                    f.$(__generateNewButton(table, tables));
                     f.$("</div>");
                     f.$("</div>");
                 },
                 "root"
         );
         response.setContent(f.toString());
+    }
+
+    private String __generateNewButton( String table, Map<String, List<String>> tables ){
+        String today = new java.sql.Date( System.currentTimeMillis() ).toString();
+        List<String> columns = tables.get(table);
+        Map<String, List<Object>> templateEntity = new HashMap<>();
+        for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+        CRUDBuilder f = new CRUDBuilder(tables);
+        f.$("<script>");
+        f.$(" function new_"+table+"() {");
+        f.$("$('#").$(table).$("_result').append(`");
+        f.$(__entitiesToForm(table, templateEntity, tables, false));
+        f.$("`);");
+        f.$(" }");
+        f.$("</script>\n");
+        f.$("<button onclick=\"new_"+table+"()\">");
+        f.$("NEW\n");
+        f.$("</button>\n");
+        return f.toString();
     }
 
 
