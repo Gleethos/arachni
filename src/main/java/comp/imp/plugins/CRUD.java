@@ -68,6 +68,24 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("</div>\n</div>\n");
         }
 
+        private void generateNewButton( String table ){
+            String today = new java.sql.Date( System.currentTimeMillis() ).toString();
+            List<String> columns = _tables.get(table);
+            Map<String, List<Object>> templateEntity = new HashMap<>();
+            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+            CRUDBuilder f = new CRUDBuilder(_tables);
+            f.$("<script>");
+            f.$(" function new_"+table+"() {");
+            f.$("$('#").$(table).$("_result').append(`");
+            f.$(__entitiesToForm(table, templateEntity, _tables, false));
+            f.$("`);");
+            f.$(" }");
+            f.$("</script>\n");
+            f.$("<button onclick=\"new_"+table+"()\">");
+            f.$("NEW\n");
+            f.$("</button>\n");
+        }
+
         @Override
         public String toString(){
             return _builder.toString();
@@ -489,17 +507,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     f.$("</div>");
                                 } // :=  Entry loop end!
 
+                                f.generateNewButton( relationTableName );
 
-                                //f.$("<script>");
-                                //f.$(" function new_"+relationTableName+"() {");
-                                //f.$("$('#").$(relationTableName).$("_result').append(`");
-                                //f.$(__entitiesToForm(relationTableName, templateEntity, tables, false));
-                                //f.$("`);");
-                                //f.$(" }");
-                                //f.$("</script>\n");
-                                //f.$("<button onclick=\"new_"+relationTableName+"()\">");
-                                //f.$("NEW\n");
-                                //f.$("</button>\n");
                             }
                     );
                 }
@@ -629,19 +638,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
                     f.$("</div>");
                     f.$("</div>");
-                    //Map<String, List<Object>> templateEntity = new HashMap<>();
-                    //for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-                    //f.$("<script>");
-                    //f.$(" function new_"+table+"() {");
-                    //f.$("$('#").$(table).$("_result').append(`");
-                    //f.$(__entitiesToForm(table, templateEntity, tables, false));
-                    //f.$("`);");
-                    //f.$(" }");
-                    //f.$("</script>\n");
-                    //f.$("<button onclick=\"new_"+table+"()\">");
-                    //f.$("NEW\n");
-                    //f.$("</button>\n");
-                    f.$(__generateNewButton(table, tables));
+                    f.generateNewButton( table );
                     f.$("</div>");
                     f.$("</div>");
                 },
@@ -649,27 +646,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         );
         response.setContent(f.toString());
     }
-
-    private String __generateNewButton( String table, Map<String, List<String>> tables ){
-        String today = new java.sql.Date( System.currentTimeMillis() ).toString();
-        List<String> columns = tables.get(table);
-        Map<String, List<Object>> templateEntity = new HashMap<>();
-        for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-        CRUDBuilder f = new CRUDBuilder(tables);
-        f.$("<script>");
-        f.$(" function new_"+table+"() {");
-        f.$("$('#").$(table).$("_result').append(`");
-        f.$(__entitiesToForm(table, templateEntity, tables, false));
-        f.$("`);");
-        f.$(" }");
-        f.$("</script>\n");
-        f.$("<button onclick=\"new_"+table+"()\">");
-        f.$("NEW\n");
-        f.$("</button>\n");
-        return f.toString();
-    }
-
-
 
 
 }
