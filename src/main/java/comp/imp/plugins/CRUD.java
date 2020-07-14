@@ -73,17 +73,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             List<String> columns = _tables.get(table);
             Map<String, List<Object>> templateEntity = new HashMap<>();
             for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-            CRUDBuilder f = new CRUDBuilder(_tables);
-            f.$("<script>");
-            f.$(" function new_"+table+"() {");
-            f.$("$('#").$(table).$("_result').append(`");
-            f.$(__entitiesToForm(table, templateEntity, _tables, false));
-            f.$("`);");
-            f.$(" }");
-            f.$("</script>\n");
-            f.$("<button onclick=\"new_"+table+"()\">");
-            f.$("NEW\n");
-            f.$("</button>\n");
+            $("<script>");
+            $(" function new_"+table+"() {");
+            $("$('#").$(table).$("_result').append(`");
+            $(__entitiesToForm(table, templateEntity, _tables, false));
+            $("`);");
+            $(" }");
+            $("</script>\n");
+            $("<button onclick=\"new_"+table+"()\">");
+            $("NEW\n");
+            $("</button>\n");
         }
 
         @Override
@@ -505,9 +504,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     );
                                     f.$(__entitiesToForm(outerTableName, currentOuterEntity, tables, false));
                                     f.$("</div>");
+
                                 } // :=  Entry loop end!
 
                                 f.generateNewButton( relationTableName );
+                                f.generateNewButton( outerTableName );
 
                             }
                     );
