@@ -69,20 +69,32 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
 
         private void generateNewButton( String table ){
+            generateNewButton( table, e->e, s->s);
+        }
+
+        private void generateNewButton(
+                String table,
+                Function<Map<String, List<Object>>, Map<String, List<Object>>> templateLambda,
+                Function<String, String> htmlLambda
+        ){
             String today = new java.sql.Date( System.currentTimeMillis() ).toString();
             List<String> columns = _tables.get(table);
             Map<String, List<Object>> templateEntity = new HashMap<>();
             for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-            $("<script>");
-            $(" function new_"+table+"() {");
-            $("$('#").$(table).$("_result').append(`");
-            $(__entitiesToForm(table, templateEntity, _tables, false));
-            $("`);");
-            $(" }");
-            $("</script>\n");
-            $("<button onclick=\"new_"+table+"()\">");
-            $("NEW\n");
-            $("</button>\n");
+            templateEntity = templateLambda.apply(templateEntity);
+            CRUDBuilder b = new CRUDBuilder(_tables);
+            b.$("<script>");
+            b.$(" function new_"+table+"() {");
+            b.$("$('#").$(table).$("_result').append(`");
+            b.$(__entitiesToForm(table, templateEntity, _tables, false));
+            b.$("`);");
+            b.$(" }");
+            b.$("</script>\n");
+            b.$("<button onclick=\"new_"+table+"()\">");
+            b.$("NEW\n");
+            b.$("</button>\n");
+            //TODO: Make button creation possible...
+            $(b.toString());
         }
 
         @Override
@@ -247,7 +259,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         response.setContent("text/html");
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
-
+        
         Map<String, String> paramTable = req.getUrl().getParameter();
         boolean appendRelations = true;
         if(paramTable.containsKey("appendRelations")) {
@@ -328,9 +340,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             "<button " +
                                 "style=\"padding:0.25em;\" " +
                                 "onclick=\"loadSavedForEntity( "+
-                                        ((appendRelations)?"":"'?appendRelations=false', ")+
-                                        " '"+tableName+"', '"+entityID+
-                                "' )\"" +
+                                        "'"+tableName+"',   " +
+                                        "'"+entityID+"',    "+
+                                        ((appendRelations)?"''":"'?appendRelations=false'")+
+                                ")\"" +
                             ">" +
                             "SAVE" +
                             "</button>" +
