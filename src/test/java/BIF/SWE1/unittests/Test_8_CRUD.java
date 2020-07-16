@@ -12,6 +12,32 @@ import java.io.File;
 public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
 
     @Test
+    public void test_default_CRUD_response() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream("CRUD")
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("200 OK");
+        assert body.contains(".children('.tabBody')");
+        assert body.contains("confirm(\"Do you really want to");
+        assert body.contains("eval(response);");
+        assert body.contains("parseInt(element.attr('value'))");
+        assert body.contains("'CRUD/delete/' + tableName+' #' + tableName+'_'+id+' > *',");
+        assert !body.contains("content-length: 0");
+        assert res.getContentType().contains("text/html");
+        String compact = body.replace(" ", "").replace("\n","");
+        assert compact.contains(".each(function(){params[this.name]=this.value;});");
+        assert compact.contains("children('input,textarea')");
+        assert compact.contains("switchTab(src,target)");
+        assert compact.contains("tabBody.children().css(\"display\",\"none\");");
+        assert compact.contains(".children('textarea').first().focus();");
+    }
+
+    @Test
     public void test_CRUD_search_fields() throws Exception
     {
         Test8Provider provider = createInstance();

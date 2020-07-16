@@ -104,7 +104,7 @@
 
 
 <script>
-       $(document).ready(function(){
+       $(document).ready( function() {
               $('#tail_world_redirect_button').click(function() {
                      window.location = window.location.origin+'/tailworld.html';
               });
@@ -119,18 +119,15 @@
                       $('#' + tableName + '_result'),
                       'CRUD/find/' + tableName,
                       function( response, status, xhr ) {
-                             if ( status == "error" ) {
-                                    alert('Finding failed!\nStatus: '+status);
+                             if ( status === "error" ) {
+                                    alert('Finding failed!\nStatus: '+status+'\nResponse: '+response);
                              }
                       }
               );
        }
 
-       function loadSavedForEntity( tableName, id ) {
-              loadSavedForEntity( '', tableName, id );
-       }
-
-       function loadSavedForEntity(  urlSearchParams, tableName, id ) {
+       function loadSavedForEntity( tableName, id, urlSearchParams ) {
+              console.log(" urltail : "+urlSearchParams+"; tablename : "+tableName+"; id : "+id+"; ");
               let entity = $('#' + tableName+'_'+id);
               sendAndSet(
                       entity
@@ -141,7 +138,7 @@
                               .children('.AttributeWrapper')
                               .children('input, textarea'),
                       entity,
-                      'CRUD/save/' + tableName+urlSearchParams+' #' + tableName+'_'+id+' > *',
+                      'CRUD/save/' + tableName + urlSearchParams+' #' + tableName+'_'+id+' > *',
                       function( response, status, xhr ) {
                              if(status === "error") {
                                     entity.replaceWith("");
@@ -154,8 +151,7 @@
                                             .children('div')
                                             .children('div')
                                             .children('.AttributeWrapper')
-                                            .children('textarea')
-                                            .first().focus();
+                                            .children('textarea').first().focus();
                              }
                       }
               );
@@ -188,9 +184,7 @@
 
        function sendAndSet(fromSelector, intoSelector, url, callback) {
               var params = {};
-              fromSelector.each(function () {
-                     params[this.name] = this.value;
-              });
+              fromSelector.each(function () { params[this.name] = this.value; });
               intoSelector.html("").load(url, params, callback);
        }
 
@@ -198,7 +192,7 @@
        {
               let element = $('#'+tableName+'_'+id+'_'+attribute);
               element.attr('value',parseInt(element.attr('value'))+1);
-              if( parseInt(element.attr('value'))>10 ) {
+              if( parseInt(element.attr('value'))>175 ) {
                      element.attr('value',0);
                      loadSavedForEntity(tableName, id);
               }

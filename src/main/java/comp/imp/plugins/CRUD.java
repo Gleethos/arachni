@@ -15,94 +15,6 @@ import java.util.stream.Collectors;
 
 public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
-    private interface FrontendConsumer { FrontendConsumer $(Object s); }
-
-    private class CRUDBuilder
-    {
-        private StringBuilder _builder = new StringBuilder();
-        private Map<String, List<String>> _tables;
-
-        CRUDBuilder(Map<String, List<String>> tables){
-            _tables = tables;
-        }
-
-        public CRUDBuilder $(Object o) {
-            _builder.append( ( o==null ) ? "" : o.toString() );
-            return this;
-        }
-
-        private Function<String, String> asClass = s -> {
-            s = s.replace(" ", "_");
-            s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
-            return s;
-        };
-        private Function<String, String> asText = s -> {
-            s = s.substring(0, 1).toUpperCase() + s.substring(1);
-            return s.replace("_", " ");
-        };
-
-        private void tabsOf(List<String> tabNames, Consumer<String> lambda){
-            tabsOf(tabNames, lambda, "default");
-        }
-
-        private void tabsOf(List<String> tabNames, Consumer<String> lambda, String tabType)
-        {
-            String colSizes = (tabType.contains("compacted"))?"col-sm-12 col-md-10 col-lg-10":"col-sm-12 col-md-12 col-lg-12";
-            String additionalHeadStyles = (tabType.contains("root"))?"font-size:1em;":"";
-            $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
-            String selected = "selected";
-            for(String type : tabNames) {
-                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
-                selected = "";
-            }
-            String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
-            $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
-            String rowClass = (tabType.contains("root"))?"":"row";
-            String displayNone = "display:flex";
-            for( String type : tabNames ) {
-                $("<div class=\""+asClass.apply(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
-                lambda.accept(type);
-                $("</div>\n");
-                displayNone = "display:none";
-            }
-            $("</div>\n</div>\n");
-        }
-
-        private void generateNewButton( String table ){
-            generateNewButton( table, e->e, s->s);
-        }
-
-        private void generateNewButton(
-                String table,
-                Function<Map<String, List<Object>>, Map<String, List<Object>>> templateLambda,
-                Function<String, String> htmlLambda
-        ){
-            String today = new java.sql.Date( System.currentTimeMillis() ).toString();
-            List<String> columns = _tables.get(table);
-            Map<String, List<Object>> templateEntity = new HashMap<>();
-            for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
-            templateEntity = templateLambda.apply(templateEntity);
-            CRUDBuilder b = new CRUDBuilder(_tables);
-            b.$("<script>");
-            b.$(" function new_"+table+"() {");
-            b.$("$('#").$(table).$("_result').append(`");
-            b.$(__entitiesToForm(table, templateEntity, _tables, false));
-            b.$("`);");
-            b.$(" }");
-            b.$("</script>\n");
-            b.$("<button onclick=\"new_"+table+"()\">");
-            b.$("NEW\n");
-            b.$("</button>\n");
-            //TODO: Make button creation possible...
-            $(b.toString());
-        }
-
-        @Override
-        public String toString(){
-            return _builder.toString();
-        }
-
-    }
 
     public CRUD() {
         super("jdbc:sqlite:C:/sqlite/db/TailDB", "", "");
@@ -292,242 +204,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
         Map<String, List<Object>> map = _query(sql.toString(), values);
 
-        String result = __entitiesToForm( tableName, map, tables, appendRelations );
+        String result = new CRUDBuilder(tables).entitiesToForm( tableName, map, appendRelations ).toString();
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
-    }
-
-
-    private String __entitiesToForm(
-            String tableName,
-            Map<String, List<Object>> entities,
-            Map<String, List<String>> tables,
-            boolean appendRelations
-    ){
-        if(entities.isEmpty()) return "<div>Nothing found...</div>";
-
-        int importantFieldsNumber = entities
-                .keySet()
-                .stream()
-                .filter(k->!(k.contains("id") || k.equals("created") || k.equals("deleted")))
-                .collect(Collectors.toList())
-                .size();
-        boolean compacted = importantFieldsNumber < 2;
-
-        CRUDBuilder f = new CRUDBuilder(tables);
-        int rowCount = entities.values().stream().findFirst().get().size();
-        String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
-        if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
-        for(int i=0; i<rowCount; i++) {
-            int inner = i;
-            String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
-            String rowID = tableName+"_"+entityID;
-            f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
-            String colSizes = (compacted)?"col-sm-12 col-md-2 col-lg-1":"col-sm-12 col-md-12 col-lg-12";
-            f.$(
-                    "<div class=\""+colSizes+" ml-auto\">" + // ml-auto := float right for col classes...
-                        "<div style=\"float:right;\">" +
-                            "<span style=\"padding:0.25em;\">" +
-                            tableName.replace("_", " ")+
-                            "</span>" +
-                        "</div>" +
-                        "<div style=\"float:right;\">" +
-                            "<button style=\"padding:0.25em;\" onclick=\"$( '#"+rowID+"' ).replaceWith('');\">" +
-                            "CLOSE" +
-                            "</button>" +
-                        "</div>" +
-                        "<div style=\"float:right;\">" +
-                            "<button " +
-                                "style=\"padding:0.25em;\" " +
-                                "onclick=\"loadSavedForEntity( "+
-                                        "'"+tableName+"',   " +
-                                        "'"+entityID+"',    "+
-                                        ((appendRelations)?"''":"'?appendRelations=false'")+
-                                ")\"" +
-                            ">" +
-                            "SAVE" +
-                            "</button>" +
-                        "</div>" +
-                        "<div style=\"float:right;\">" +
-                            "<button style=\"padding:0.25em;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
-                            "DELETE" +
-                            "</button>" +
-                        "</div>" +
-                    "</div>"
-            );
-
-            StringBuilder contentBuilder = new StringBuilder();
-            FrontendConsumer contentConsumer = new FrontendConsumer() {
-                public FrontendConsumer $(Object o) {
-                    contentBuilder.append((o==null)?"":o.toString());
-                    return this;
-                }
-            };
-            StringBuilder metaBuilder = new StringBuilder();
-            FrontendConsumer metaConsumer = new FrontendConsumer() {
-                public FrontendConsumer $(Object o) {
-                    metaBuilder.append((o==null)?"":o.toString());
-                    return this;
-                }
-            };
-            entities.forEach( (k,v) ->
-            {
-                FrontendConsumer ic = contentConsumer;
-                if(k.contains("id")||k.equals("created")||k.equals("deleted")){
-                    ic = metaConsumer;
-                }
-                //--- Form variables:
-                String lowerKey = k.toLowerCase();
-                String bootstrapClasses =
-                        (lowerKey.contains("id"))
-                                ?(lowerKey.equals("id"))?"col-sm-2 col-md-1 col-lg-1":"col-sm-2 col-md-2 col-lg-2"
-                                : (lowerKey.contains("value")||lowerKey.contains("content"))
-                                        ?"col-sm-12 col-md-12 col-lg-12"
-                                        :(lowerKey.contains("deleted")||lowerKey.contains("created"))
-                                            ?"col-sm-12 col-md-4 col-lg-4"
-                                            :"col-sm-12 col-md-6 col-lg-4";
-                if(compacted) {
-                    bootstrapClasses
-                            .replace("-12", "_#_")
-                            .replace("-1", "-2")
-                            .replace("_#_", "-12");
-                }
-                String attribute = k.toLowerCase().replace(" ","_");
-                String attributeID = tableName+"_"+entityID+"_"+attribute;
-                String currentValue = (v.get(inner)==null)?"":v.get(inner).toString();
-                //---
-                ic.$("<div class=\""+bootstrapClasses+"\">");
-                ic.$("<div class=\"AttributeWrapper\">");
-                ic.$(
-                        "<span                          " +
-                        "   value=\"0\"                 " + // Counts onInput events to trigger persisting
-                        "   id=\""+attributeID+"\"      " +
-                        ">                              "
-                ).$( k ).$(
-                        "</span>" +
-                        "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
-                        "      name=\""+attribute+"\"                       " +
-                                ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
-                        "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
-                        ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
-                );
-                ic.$("</div>");
-                ic.$("</div>");
-            });
-            f.tabsOf(
-                    List.of("Content", "Machina"),
-                    tab->{
-                        if(tab.equals("Content")) f.$(contentBuilder.toString());
-                        else f.$(metaBuilder);
-                    },
-                    (compacted)?"compacted":"default"
-            );
-
-            // Relation tables
-            if(appendRelations && !tableName.contains("relations")){
-                f.$(__buildRelationForms(tableName, entityID, tables));
-            }
-            f.$("</div>");
-        }
-        return f.toString();
-    }
-
-    private String __buildRelationForms(
-            String innerTableName,
-            String id, Map<String,
-            List<String>> tables
-    ) {
-        CRUDBuilder f = new CRUDBuilder(tables);
-        Map<String, Map<String,String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);
-        f.tabsOf(
-                new ArrayList<>(relationTables.keySet()),
-                relationTableName -> // Example :  tail_tag_relations
-                {
-                    List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTableName).keySet());
-                    Map<String, List<String>> fromToMap = new TreeMap<>();
-                    /*
-                        The inner foreign key will be queried to be equivalent to
-                        the id of the table in the 'tableName' variable!
-                     */
-                    for( String innerKey : foreignKeys ) { // := from one to...
-                        for( String outerKey : foreignKeys ) { // := many !
-                            if(
-                                    ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
-                                            relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
-                            ) {
-                                String innerText = innerKey.replace("_id", "");
-                                String outerText = outerKey.replace("_id", "");
-                                fromToMap.put(
-                                        innerText+"_joined_by_"+outerText,
-                                        List.of(innerKey, outerKey)
-                                );
-                            }
-                        }
-                    }
-                    f.tabsOf(
-                            new ArrayList<>(fromToMap.keySet()),
-                            relationName ->
-                            {
-                                String innerKey = fromToMap.get(relationName).get(0);
-                                String outerKey = fromToMap.get(relationName).get(1);
-                                String outerTableName = relationTables.get(relationTableName).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
-                                Map<String, List<Object>> relationResult = _query(
-                                        "SELECT * FROM "+relationTableName+" WHERE "+innerKey+" = "+id
-                                );
-                                int numberOfFound = relationResult.values().stream().findFirst().get().size();
-                                for ( int i = 0; i < numberOfFound; i++ ) {
-                                    int index = i;
-                                    assert numberOfFound == relationResult.values().stream().findFirst().get().size();
-                                    Map<String, List<Object>> currentRelationEntity =
-                                            new TreeMap<>(relationResult)
-                                                    .entrySet()
-                                                    .stream()
-                                                    .collect(
-                                                        Collectors.toMap(
-                                                                Map.Entry::getKey,
-                                                            entry -> {
-                                                                if(entry.getValue().get(index)!=null) {
-                                                                    entry.setValue(List.of(entry.getValue().get(index)));
-                                                                } else {
-                                                                    entry.setValue(List.of(""));
-                                                                }
-                                                                return entry.getValue();
-                                                            }
-                                                        )
-                                                    );
-                                    // There should never be more than one current relation entity :
-                                    assert currentRelationEntity.get(outerKey).size()==1;
-                                    f.$("<div " +
-                                            "id=\"" + "\" " +
-                                            "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                                            "style=\"background-color:white; border-radius:1em;\"" +
-                                        ">"
-                                    );
-                                    f.$(__entitiesToForm(relationTableName, currentRelationEntity, tables, false));
-                                    f.$("</div>");
-                                    Map<String, List<Object>> currentOuterEntity = _query(
-                                            "SELECT * FROM "+outerTableName+ " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
-                                    );
-                                    assert currentOuterEntity.get("id").size()==1;
-                                    f.$("<div " +
-                                            "id=\"" + "\" " +
-                                            "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                                            "style=\"background-color:white; border-radius:1em;\"" +
-                                            ">"
-                                    );
-                                    f.$(__entitiesToForm(outerTableName, currentOuterEntity, tables, false));
-                                    f.$("</div>");
-
-                                } // :=  Entry loop end!
-
-                                f.generateNewButton( relationTableName );
-                                f.generateNewButton( outerTableName );
-
-                            }
-                    );
-                }
-        );
-        return f.toString();
     }
 
 
@@ -659,6 +338,388 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 "root"
         );
         response.setContent(f.toString());
+    }
+
+
+    /**
+     * <-------------------------------------------------------------------------->
+     *     END OF MAIN IMPLEMENTATION - FOLLOWING : NESTED HTML BUILDER CLASS !
+     * </------------------------------------------------------------------------->
+     */
+
+    private interface FrontendConsumer { FrontendConsumer $(Object s); }
+
+    private class CRUDBuilder
+    {
+        private StringBuilder _builder = new StringBuilder();
+        private Map<String, List<String>> _tables;
+
+        CRUDBuilder(Map<String, List<String>> tables){
+            _tables = tables;
+        }
+
+        public CRUDBuilder $(Object o) {
+            _builder.append( ( o==null ) ? "" : o.toString() );
+            return this;
+        }
+
+        private Function<String, String> asClass = s -> {
+            s = s.replace(" ", "_");
+            s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
+            return s;
+        };
+        private Function<String, String> asText = s -> {
+            s = s.substring(0, 1).toUpperCase() + s.substring(1);
+            return s.replace("_", " ");
+        };
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda){
+            tabsOf(tabNames, lambda, "default");
+        }
+
+        private void tabsOf(List<String> tabNames, Consumer<String> lambda, String tabType)
+        {
+            String colSizes = (tabType.contains("compacted"))?"col-sm-12 col-md-10 col-lg-10":"col-sm-12 col-md-12 col-lg-12";
+            String additionalHeadStyles = (tabType.contains("root"))?"font-size:1em;":"";
+            $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
+            String selected = "selected";
+            for(String type : tabNames) {
+                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
+                selected = "";
+            }
+            String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
+            $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
+            String rowClass = (tabType.contains("root"))?"":"row";
+            String displayNone = "display:flex";
+            for( String type : tabNames ) {
+                $("<div class=\""+asClass.apply(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
+                lambda.accept(type);
+                $("</div>\n");
+                displayNone = "display:none";
+            }
+            $("</div>\n</div>\n");
+        }
+
+        private void generateNewButton( String table, boolean appendRelations ){
+            generateNewButton(
+                    List.of(table),
+                    e->entitiesToForm( table, e.get(0), appendRelations ),
+                    ""
+            );
+        }
+
+        private void generateNewButton( String table ){
+            generateNewButton(
+                    List.of(table),
+                    e->entitiesToForm(table, e.get(0), false),
+                    ""
+            );
+        }
+
+        private void generateNewButton (
+                List<String> tableNames,
+                Consumer< List<Map<String, List<Object>>>> templateLambda,
+                String id
+        ) {
+            String today = new java.sql.Date( System.currentTimeMillis() ).toString();
+            List<Map<String, List<Object>>> templates = new ArrayList<>();
+
+            for( String table : tableNames ) {
+                Map<String, List<Object>> templateEntity = new HashMap<>();
+                List<String> columns = _tables.get(table);
+                for(String c : columns) templateEntity.put(c.split(" ")[0], List.of((c.split(" ")[0].equals("created"))?today:""));
+                templates.add(templateEntity);
+            }
+
+            String table = String.join("_and_", tableNames);
+            table = (id.isBlank())?table:table+"_"+id;
+            $("<script>");
+            $(" function new_"+table+"() {");
+            $("$('#").$(table).$("_result').append(`");
+            templateLambda.accept(templates);
+            $("`);");
+            $(" }");
+            $("</script>\n");
+            $("<button onclick=\"new_"+table+"()\">");
+            $("NEW\n");
+            $("</button>\n");
+            // TODO : Make button creation possible for relation...
+        }
+
+        private String entitiesToForm(
+                String tableName,
+                Map<String, List<Object>> entities,
+                boolean appendRelations
+        ) {
+            if(entities.isEmpty()) return "<div>Nothing found...</div>";
+
+            int importantFieldsNumber = entities
+                    .keySet()
+                    .stream()
+                    .filter(k->!(k.contains("id") || k.equals("created") || k.equals("deleted")))
+                    .collect(Collectors.toList())
+                    .size();
+            boolean compacted = importantFieldsNumber < 2;
+
+            CRUDBuilder f = this;
+            int rowCount = entities.values().stream().findFirst().get().size();
+            String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
+            if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
+            for(int i=0; i<rowCount; i++) {
+                int inner = i;
+                String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
+                String rowID = tableName+"_"+entityID;
+                f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
+                String colSizes = (compacted)?"col-sm-12 col-md-2 col-lg-1":"col-sm-12 col-md-12 col-lg-12";
+                f.$(
+                        "<div class=\""+colSizes+" ml-auto\">" + // ml-auto := float right for col classes...
+                                "<div style=\"float:right;\">" +
+                                "<span style=\"padding:0.25em;\">" +
+                                tableName.replace("_", " ")+
+                                "</span>" +
+                                "</div>" +
+                                "<div style=\"float:right;\">" +
+                                "<button style=\"padding:0.25em;\" onclick=\"$( '#"+rowID+"' ).replaceWith('');\">" +
+                                "CLOSE" +
+                                "</button>" +
+                                "</div>" +
+                                "<div style=\"float:right;\">" +
+                                "<button " +
+                                "style=\"padding:0.25em;\" " +
+                                "onclick=\"loadSavedForEntity( "+
+                                    "'"+tableName+"',   " +
+                                    "'"+entityID+"',    "+
+                                    ((appendRelations)?"''":"'?appendRelations=false'")+
+                                ")\"" +
+                                ">" +
+                                "SAVE" +
+                                "</button>" +
+                                "</div>" +
+                                "<div style=\"float:right;\">" +
+                                "<button style=\"padding:0.25em;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                                "DELETE" +
+                                "</button>" +
+                                "</div>" +
+                                "</div>"
+                );
+
+                StringBuilder contentBuilder = new StringBuilder();
+                FrontendConsumer contentConsumer = new FrontendConsumer() {
+                    public FrontendConsumer $(Object o) {
+                        contentBuilder.append((o==null)?"":o.toString());
+                        return this;
+                    }
+                };
+                StringBuilder metaBuilder = new StringBuilder();
+                FrontendConsumer metaConsumer = new FrontendConsumer() {
+                    public FrontendConsumer $(Object o) {
+                        metaBuilder.append((o==null)?"":o.toString());
+                        return this;
+                    }
+                };
+                entities.forEach(
+                (k,v) ->
+                {
+                    FrontendConsumer ic = contentConsumer;
+                    if(k.contains("id")||k.equals("created")||k.equals("deleted")){
+                        ic = metaConsumer;
+                    }
+                    //--- Form variables:
+                    String lowerKey = k.toLowerCase();
+                    String bootstrapClasses =
+                            (lowerKey.contains("id"))
+                                    ?(lowerKey.equals("id"))?"col-sm-2 col-md-1 col-lg-1":"col-sm-2 col-md-2 col-lg-2"
+                                    : (lowerKey.contains("value")||lowerKey.contains("content"))
+                                    ?"col-sm-12 col-md-12 col-lg-12"
+                                    :(lowerKey.contains("deleted")||lowerKey.contains("created"))
+                                    ?"col-sm-12 col-md-4 col-lg-4"
+                                    :"col-sm-12 col-md-6 col-lg-4";
+                    if(compacted) {
+                        bootstrapClasses
+                                .replace("-12", "_#_")
+                                .replace("-1", "-2")
+                                .replace("_#_", "-12");
+                    }
+                    String attribute = k.toLowerCase().replace(" ","_");
+                    String attributeID = tableName+"_"+entityID+"_"+attribute;
+                    String currentValue = (v.get(inner)==null)?"":v.get(inner).toString();
+                    //---
+                    ic.$("<div class=\""+bootstrapClasses+"\">");
+                    ic.$("<div class=\"AttributeWrapper\">");
+                    ic.$("<span                          " +
+                         "   value=\"0\"                 " + // Counts onInput events to trigger persisting
+                         "   id=\""+attributeID+"\"      " +
+                         ">                              "
+                    ).$( k ).$(
+                            "</span>" +
+                                    "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
+                                    "      name=\""+attribute+"\"                       " +
+                                    ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
+                                    "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
+                                    ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
+                    );
+                    ic.$("</div>");
+                    ic.$("</div>");
+                });
+                f.tabsOf(
+                        List.of("Content", "Machina"),
+                        tab ->
+                        {
+                            if(tab.equals("Content")) f.$(contentBuilder.toString());
+                            else f.$(metaBuilder);
+                        },
+                        (compacted)?"compacted":"default"
+                );
+
+                // Relation tables
+                if(appendRelations && !tableName.contains("relations")) f.buildRelationForms(tableName, entityID);
+                f.$("</div>");
+            }
+            return f.toString();
+        }
+
+        private CRUDBuilder buildRelationForms(
+                String innerTableName,
+                String id
+        ) {
+            Map<String, Map<String,String>> relationTables = __findRelationTablesOf(innerTableName, _tables, s->true);
+
+            // Building tabs for each relation TABLE ! :
+            tabsOf(
+                    new ArrayList<>(relationTables.keySet()),
+                    relationTableName -> // Example :  tail_tag_relations
+                    {
+                        List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTableName).keySet());
+
+                        Map<String, List<String>> hasManyRelations = new TreeMap<>();
+                        /*
+                            The inner foreign key will be queried to be equivalent to
+                            the id of the table in the 'tableName' variable!
+                        */
+                        for( String innerKey : foreignKeys ) { // := from one to...
+                            for( String outerKey : foreignKeys ) { // := many !
+                                if(
+                                        ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
+                                                relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
+                                ) {
+                                    String innerText = innerKey.replace("_id", "");
+                                    String outerText = outerKey.replace("_id", "");
+                                    hasManyRelations.put(
+                                            innerText+"_has_many_"+outerText,
+                                            List.of(innerKey, outerKey) // one : many
+                                    );
+                                }
+                            }
+                        }
+
+                        // Building tabs for each relation type within a given table... :
+                        tabsOf(
+                                new ArrayList<>( hasManyRelations.keySet() ),
+                                relationType ->
+                                {
+                                    String innerKey = hasManyRelations.get(relationType).get(0);
+                                    String outerKey = hasManyRelations.get(relationType).get(1);
+                                    String outerTableName = relationTables.get(relationTableName).get(outerKey).split("REFERENCES ")[1].split(" ")[0];
+                                    Map<String, List<Object>> relationResult = _query(
+                                            "SELECT * FROM "+relationTableName+" WHERE "+innerKey+" = "+id
+                                    );
+                                    int numberOfFound = relationResult.values().stream().findFirst().get().size();
+
+                                    // This id will be targeted by the "new button" generated at the end of the loop below:
+                                    $("<div id=\""+relationTableName+"_and_"+outerTableName+"_"+id+"_result"+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    $("<div class=\"row\">");
+                                    for ( int i = 0; i < numberOfFound; i++ )
+                                    {
+                                        int index = i;
+                                        assert numberOfFound == relationResult.values().stream().findFirst().get().size();
+                                        Map<String, List<Object>> currentRelationEntity =
+                                                new TreeMap<>(relationResult).entrySet().stream().collect(
+                                                                Collectors.toMap(
+                                                                        Map.Entry::getKey,
+                                                                        entry -> {
+                                                                            if(entry.getValue().get(index)!=null) {
+                                                                                entry.setValue(List.of(entry.getValue().get(index)));
+                                                                            } else entry.setValue(List.of(""));
+                                                                            return entry.getValue();
+                                                                        }
+                                                                )
+                                                        );
+                                        // There should never be more than one current relation entity :
+                                        assert currentRelationEntity.get(outerKey).size()==1;
+
+                                        Map<String, List<Object>> currentOuterEntity = _query(
+                                                "SELECT * FROM "+outerTableName+ " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
+                                        );
+                                        // There should not be more than one current
+                                        assert currentOuterEntity.get("id").size() == 1;
+
+                                        generateRelationEntity( // Will append the relation entity and the outer entity!
+                                                relationTableName,
+                                                currentRelationEntity,
+                                                outerTableName,
+                                                currentOuterEntity
+                                        );
+
+                                    } // :=  Entry loop end!
+                                    $("</div>");
+                                    $("</div>");
+                                    $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    generateNewButton (
+                                            List.of (
+                                                    relationTableName,
+                                                    outerTableName
+                                            ),
+                                            entities -> {
+                                                entities.get(0).put(innerKey, List.of(id)); // Current inner id !
+                                                generateRelationEntity(
+                                                    relationTableName,
+                                                    entities.get(0),
+                                                    outerTableName,
+                                                    entities.get(1)
+                                                );
+                                            },
+                                            id
+                                    );
+                                    $("</div>");
+
+                                }
+                        );
+                    }
+            );
+            return this;
+        }
+
+        public CRUDBuilder generateRelationEntity (
+                String relationTableName,
+                Map<String, List<Object>> currentRelationEntity,
+                String outerTableName,
+                Map<String, List<Object>> currentOuterEntity
+        ) {
+            $("<div " +
+                    "id=\"" + "\" " +
+                    "class=\"col-sm-12 col-md-12 col-lg-12\" " +
+                    "style=\"background-color:#56aebd; border-radius:1em;\"" +
+                    ">"
+            );
+            entitiesToForm( relationTableName, currentRelationEntity, false );
+            $("</div>");
+
+            $("<div " +
+                    "id=\"" + "\" " +
+                    "class=\"col-sm-12 col-md-12 col-lg-12\" " +
+                    "style=\"background-color:#56aebd; border-radius:1em; margin-bottom:1em; border-bottom: 2px solid black;\"" +
+                    ">"
+            );
+            entitiesToForm( outerTableName, currentOuterEntity, false );
+            $("</div>");
+            //"$('#input1, #input2').bind(\"focus blur change keyup\", function(){ .... });"
+            return this;
+        }
+
+        @Override
+        public String toString(){
+            return _builder.toString();
+        }
     }
 
 

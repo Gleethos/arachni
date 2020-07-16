@@ -184,11 +184,7 @@
 
        function sendAndSet(fromSelector, intoSelector, url, callback) {
               var params = {};
-              fromSelector.each(function () { params[this.name] = this.value; console.log("-> "+this.name+" , "+this.value); });
-              console.log("Found parameters : "+params);
-              console.log("From selector : "+fromSelector+" ... "+fromSelector.html());
-              console.log("Into selector : "+intoSelector+" ... "+intoSelector.html());
-              console.log("URL : "+url);
+              fromSelector.each(function () { params[this.name] = this.value; });
               intoSelector.html("").load(url, params, callback);
        }
 
@@ -196,7 +192,7 @@
        {
               let element = $('#'+tableName+'_'+id+'_'+attribute);
               element.attr('value',parseInt(element.attr('value'))+1);
-              if( parseInt(element.attr('value'))>10 ) {
+              if( parseInt(element.attr('value'))>175 ) {
                      element.attr('value',0);
                      loadSavedForEntity(tableName, id);
               }
