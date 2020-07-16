@@ -308,32 +308,37 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
                 table -> {
-                    f.$("<div class = \"mainContentWrapper\">");
-                    f.$("<div class = container-fluid>");
-                    f.$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">");//row?
-                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                            .$("<h3>").$(table.replace("_", " ")).$("</h3>");
-                    f.$("</div>");
-                    f.$("<div class=\"col-sm-12 col-md-6 col-lg-6\">");
-                    f.$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>");
-                    f.$("</div>");
-                    f.$("<div class=\"col-sm-12 col-md-6 col-lg-6\">");
-                    f.$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>");
-                    f.$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>");
-                    f.$("</div>");
-                    f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                    List<String> columns = tables.get(table);
-                    for(String c : columns) f.$("<input name=\"").$(c.split(" ")[0]).$("\" placeholder=\"").$(c).$("\"></input>");
-                    f.$("</div>");
-                    f.$("</div>");
-                    f.$("<div class=\"row\">"); //This is not working? why?
-                    f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                    f.$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>");
-                    f.$("</div>");
-                    f.$("</div>");
-                    f.generateNewButton( table );
-                    f.$("</div>");
-                    f.$("</div>");
+                    f.$("<div class = \"mainContentWrapper\">")
+                        .$("<div class = container-fluid>")
+                            .$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">")//row?
+                                .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                                .$("<h3>").$(table.replace("_", " ")).$("</h3>")
+                                .$("</div>")
+                                .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
+                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>")
+                                .$("</div>")
+                                .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
+                                    .$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>")
+                                    .$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>")
+                                .$("</div>")
+                                .$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                    List<String> columns = tables.get(table);
+                                    for(String c : columns){
+                                        f.$("<input name=\"")
+                                                .$(c.split(" ")[0])
+                                                .$("\" placeholder=\"")
+                                                .$(c)
+                                                .$("\"></input>");
+                                    }
+                                f.$("</div>")
+                            .$("</div>")
+                            .$("<div class=\"row\">") //This is not working? why?
+                                .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                                    .$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>")
+                                .$("</div>")
+                            .$("</div>").generateNewButton( table )
+                        .$("</div>")
+                    .$("</div>");
                 },
                 "root"
         );
@@ -363,15 +368,26 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
-        private Function<String, String> asClass = s -> {
-            s = s.replace(" ", "_");
-            s = s.replaceFirst("_[a-z]", String.valueOf(Character.toUpperCase(s.charAt(s.indexOf("_") + 1))));
-            return s;
-        };
-        private Function<String, String> asText = s -> {
+        private String _snakeToClass(String s){
+            List<String> parts = Arrays.asList(s.split("_"))
+                    .stream()
+                    .map(word->word.substring(0, 1).toUpperCase() + word.substring(1))
+                    .collect(Collectors.toList());
+            return String.join("", parts);
+        }
+
+        private String _snakeToText(String s){
             s = s.substring(0, 1).toUpperCase() + s.substring(1);
             return s.replace("_", " ");
-        };
+        }
+
+        private String _snakeToTitle(String s){
+            List<String> parts = Arrays.asList(s.split("_"))
+                    .stream()
+                    .map(word->word.substring(0, 1).toUpperCase() + word.substring(1))
+                    .collect(Collectors.toList());
+            return String.join(" ", parts);
+        }
 
         private void tabsOf(List<String> tabNames, Consumer<String> lambda){
             tabsOf(tabNames, lambda, "default");
@@ -384,15 +400,15 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
             String selected = "selected";
             for(String type : tabNames) {
-                $("<button onclick=\"switchTab(event, '."+asClass.apply(type)+"Tab')\" class=\""+selected+"\">"+asText.apply(type)+"</button>\n");
+                $("<button onclick=\"switchTab(event, '."+_snakeToClass(type)+"Tab')\" class=\""+selected+"\">"+_snakeToText(type)+"</button>\n");
                 selected = "";
             }
             String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
             $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
-            String rowClass = (tabType.contains("root"))?"":"row";
+            String rowClass = (tabType.contains("root")||tabType.contains("noRow"))?"":"row";
             String displayNone = "display:flex";
             for( String type : tabNames ) {
-                $("<div class=\""+asClass.apply(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
+                $("<div class=\""+_snakeToClass(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
                 lambda.accept(type);
                 $("</div>\n");
                 displayNone = "display:none";
@@ -408,15 +424,15 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             );
         }
 
-        private void generateNewButton( String table ){
-            generateNewButton(
+        private CRUDBuilder generateNewButton( String table ){
+            return generateNewButton(
                     List.of(table),
-                    e->entitiesToForm(table, e.get(0), false),
+                    e -> entitiesToForm(table, e.get(0), false),
                     ""
             );
         }
 
-        private void generateNewButton (
+        private CRUDBuilder generateNewButton (
                 List<String> tableNames,
                 Consumer< List<Map<String, List<Object>>>> templateLambda,
                 String id
@@ -444,6 +460,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("NEW\n");
             $("</button>\n");
             // TODO : Make button creation possible for relation...
+            return this;
         }
 
         private String entitiesToForm(
@@ -528,17 +545,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     String lowerKey = k.toLowerCase();
                     String bootstrapClasses =
                             (lowerKey.contains("id"))
-                                    ?(lowerKey.equals("id"))?"col-sm-2 col-md-1 col-lg-1":"col-sm-2 col-md-2 col-lg-2"
+                                    ?(lowerKey.equals("id"))?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
                                     : (lowerKey.contains("value")||lowerKey.contains("content"))
                                     ?"col-sm-12 col-md-12 col-lg-12"
                                     :(lowerKey.contains("deleted")||lowerKey.contains("created"))
                                     ?"col-sm-12 col-md-4 col-lg-4"
                                     :"col-sm-12 col-md-6 col-lg-4";
                     if(compacted) {
-                        bootstrapClasses
-                                .replace("-12", "_#_")
-                                .replace("-1", "-2")
-                                .replace("_#_", "-12");
+                        bootstrapClasses.replace("-2", "-3");
                     }
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
@@ -550,7 +564,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                          "   value=\"0\"                 " + // Counts onInput events to trigger persisting
                          "   id=\""+attributeID+"\"      " +
                          ">                              "
-                    ).$( k ).$(
+                    ).$( _snakeToTitle(k) ).$(
                             "</span>" +
                                     "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
                                     "      name=\""+attribute+"\"                       " +
@@ -627,7 +641,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
                                     // This id will be targeted by the "new button" generated at the end of the loop below:
                                     $("<div id=\""+relationTableName+"_and_"+outerTableName+"_"+id+"_result"+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                    $("<div class=\"row\">");
+                                    $("<div class=\"\">");// The 'row' class is deliberately left out here!
+                                    // -> creates a nice padding for some reason! :)
                                     for ( int i = 0; i < numberOfFound; i++ )
                                     {
                                         int index = i;
@@ -684,7 +699,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
                                 }
                         );
-                    }
+                    },
+                    "noRow"
             );
             return this;
         }
