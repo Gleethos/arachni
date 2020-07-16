@@ -339,6 +339,29 @@ header p {
     background: rgba(255, 255, 255, 0.3);
 }
 
+/*-- link hover effect --*/
+
+.mainContentWrapper a {
+    background: linear-gradient(
+            to bottom, var(--mainColor) 0%,
+            var(--mainColor) 100%
+    );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 2px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size .2s;
+    cursor: pointer;
+    border-radius: 0.1em;
+    padding: 0.25em 0.25em 0.25em 0.25em;
+    margin: 0.25em 0.25em 0.25em 0.25em;
+}
+.mainContentWrapper a:hover {
+    background-size: 4px 50px;
+    color: cyan;
+    background-color: #99dcff;
+}
 
 /*--Tab-classes--*/
 
@@ -493,8 +516,6 @@ code {
     background-color: rgb(217, 253, 255);
     font-size: 1em;
     padding: 0.5em;
-    margin-left: 0.175em;
-    margin-right: 0.174em;
     margin-top: 0.175em;
     margin-bottom: 1em;
 

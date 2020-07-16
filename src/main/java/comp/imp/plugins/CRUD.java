@@ -178,6 +178,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             appendRelations = paramTable.get("appendRelations").toLowerCase().equals("true")?true:false;
             paramTable.remove("appendRelations");
         }
+        boolean quickSearch = false;
+        if(paramTable.containsKey("searchQuickly")) {
+            quickSearch = paramTable.get("searchQuickly").toLowerCase().equals("true")?true:false;
+            paramTable.remove("searchQuickly");
+        }
         if(req.getMethod().equals("POST") && !paramTable.containsKey("id")) paramTable.putAll(new Url(req.getContentString()).getParameter());
 
         Map<String, List<String>> tables = _tablesSpace();
@@ -203,8 +208,46 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             if ( i < cols.size()-1 ) sql.append("OR ");
         }
         Map<String, List<Object>> map = _query(sql.toString(), values);
+        String result = "";
+        if(quickSearch)
+        {
+            String keyAttribute = "id";
+            String[] preferenceList = new String[]{ "description", "name", "title" };
+            int matchId = -1;
+            for(String currentAttribute : new ArrayList<>(attributes.keySet())) {
+                for (int i=0; i<preferenceList.length; i++) {
+                    if ( currentAttribute.equals(preferenceList[i]) && i>matchId ) {
+                        keyAttribute = currentAttribute;
+                        matchId = i;
+                    }
+                }
+            }
+            CRUDBuilder b = new CRUDBuilder(tables);
+            b.$("<div id=\""+tableName+"_quick_search_result\" class=\"row\">")
+                .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+            b.$("<span><h3> "+b._snakeToTitle(keyAttribute)+"(s) :</h3></span>");
+            b.$("</div>");
 
-        String result = new CRUDBuilder(tables).entitiesToForm( tableName, map, appendRelations ).toString();
+            int numberOfFound = map.get("id").size();
+            for( int i=0; i<numberOfFound; i++ ) {
+                Object value = map.get(keyAttribute).get(i);
+                b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 contentBox\">");
+                b.$("<a style=\"padding:0.25em;\" onclick=\"")
+                        .$("$('#"+tableName+"_id_search_input').val('"+map.get("id").get(i)+"');")
+                        .$("loadFoundForEntity('").$(
+                        tableName
+                ).$("');$('#"+tableName+"_quick_search_result').replaceWith('');\">")
+                        .$(value.toString())
+                        .$("</a>");
+                b.$("</div>");
+            }
+            b.$("</div>");
+            result = b.toString();
+        }
+        else
+        {
+            result = new CRUDBuilder(tables).entitiesToForm( tableName, map, appendRelations ).toString();
+        }
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
     }
@@ -312,7 +355,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                .$("<h3>").$(f._snakeToTitle(table)).$("</h3>")
+                                .$("<h1>").$(f._snakeToTitle(table)).$("</h1>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
                                     .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>")
@@ -320,10 +363,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
                                     .$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>")
                                     .$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>")
+                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(table).$("')\">QUICK SEARCH</button>")
                                 .$("</div>");
                                 List<String> columns = tables.get(table);
-                                //f.$("<div class=\"row\">") //This is not working? why?
-                                //.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
                                 f.tabsOf(
                                         Map.of(
                                                 "quick",
@@ -340,6 +382,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                                 .$(".val($('#"+table+"_quick_search_input').val());\n"
                                                         );
                                                     }
+                                                            f.$("loadQuickSearchForEntity('"+table+"');");
                                                             f.$("\"")
                                                             .$(">");
                                                     f.$("</div>");
@@ -360,8 +403,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         ),
                                         "noRow"
                                 );
-                            //f.$("</div>");
-                            //f.$("</div>");
                             f.$("</div>")
                             .$("<div class=\"row\">")
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
@@ -526,7 +567,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 int inner = i;
                 String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
                 String rowID = tableName+"_"+entityID;
-                f.$("<div id=\""+rowID+"\" class=\"EntityWrapper row\">");
+                String entityShadow = (appendRelations)?"EntityShadow":"EntityShadowInset";
+                f.$("<div id=\""+rowID+"\" class=\"EntityWrapper "+entityShadow+" row\">");
                 String colSizes = (compacted)?"col-sm-12 col-md-2 col-lg-1":"col-sm-12 col-md-12 col-lg-12";
                 f.$(
                         "<div class=\""+colSizes+" ml-auto\">" + // ml-auto := float right for col classes...
@@ -754,7 +796,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<div " +
                     "id=\"" + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                    "style=\"background-color:#56aebd; border-radius:1em;\"" +
+                    "style=\"margin-bottom:0.5em;\"" +
                     ">"
             );
             entitiesToForm( relationTableName, currentRelationEntity, false );
@@ -763,7 +805,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<div " +
                     "id=\"" + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                    "style=\"background-color:#56aebd; border-radius:1em; margin-bottom:1em; border-bottom: 2px solid black;\"" +
+                    "style=\"background-color:#fff; margin-bottom:1em;\"" +
                     ">"
             );
             entitiesToForm( outerTableName, currentOuterEntity, false );
