@@ -308,11 +308,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
                 table -> {
-                    f.$("<div class = \"mainContentWrapper\">")
+                    f.$("<div class = \"mainContentWrapper col-sm-12 col-md-12 col-lg-12\">")
                         .$("<div class = container-fluid>")
-                            .$("<div id=\"" + table + "_search\" class=\"SearchWrapper row\">")//row?
+                            .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                .$("<h3>").$(table.replace("_", " ")).$("</h3>")
+                                .$("<h3>").$(f._snakeToTitle(table)).$("</h3>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
                                     .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>")
@@ -320,19 +320,50 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
                                     .$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>")
                                     .$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>")
-                                .$("</div>")
-                                .$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                                    List<String> columns = tables.get(table);
-                                    for(String c : columns){
-                                        f.$("<input name=\"")
-                                                .$(c.split(" ")[0])
-                                                .$("\" placeholder=\"")
-                                                .$(c)
-                                                .$("\"></input>");
-                                    }
-                                f.$("</div>")
-                            .$("</div>")
-                            .$("<div class=\"row\">") //This is not working? why?
+                                .$("</div>");
+                                List<String> columns = tables.get(table);
+                                //f.$("<div class=\"row\">") //This is not working? why?
+                                //.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                f.tabsOf(
+                                        Map.of(
+                                                "quick",
+                                                searchType -> {
+                                                    f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                                    f.$("<input style=\"width:100%;\"")
+                                                            .$("name=\"search\" ")
+                                                            .$("placeholder=\"anything\"")
+                                                            .$("id=\""+table+"_quick_search_input"+"\"")
+                                                            .$("oninput=\"");
+                                                    for(String c : columns){
+                                                        String attributeName = c.split(" ")[0];
+                                                        f.$("$('#").$(table+"_"+attributeName+"_search_input')")
+                                                                .$(".val($('#"+table+"_quick_search_input').val());\n"
+                                                        );
+                                                    }
+                                                            f.$("\"")
+                                                            .$(">");
+                                                    f.$("</div>");
+                                                },
+                                                "specific",
+                                                searchType -> {
+                                                    f.$("<div id=\"" + table + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                                    for(String c : columns){
+                                                        String attributeName = c.split(" ")[0];
+                                                        f.$("<input ")
+                                                                .$("name=\"").$(attributeName).$("\" ")
+                                                                .$("placeholder=\"").$(c).$("\"")
+                                                                .$("id=\"").$(table+"_"+attributeName+"_search_input").$("\"")
+                                                        .$(">");
+                                                    }
+                                                    f.$("</div>");
+                                                }
+                                        ),
+                                        "noRow"
+                                );
+                            //f.$("</div>");
+                            //f.$("</div>");
+                            f.$("</div>")
+                            .$("<div class=\"row\">")
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
                                     .$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>")
                                 .$("</div>")
@@ -389,6 +420,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return String.join(" ", parts);
         }
 
+        private void tabsOf(Map<String, Consumer<String>> tabGenMap, String tabType){
+            tabsOf(
+                    new ArrayList<>(tabGenMap.keySet()),
+                    searchType -> tabGenMap.get(searchType).accept(searchType),
+                    tabType
+            );
+        }
+
         private void tabsOf(List<String> tabNames, Consumer<String> lambda){
             tabsOf(tabNames, lambda, "default");
         }
@@ -396,6 +435,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         private void tabsOf(List<String> tabNames, Consumer<String> lambda, String tabType)
         {
             String colSizes = (tabType.contains("compacted"))?"col-sm-12 col-md-10 col-lg-10":"col-sm-12 col-md-12 col-lg-12";
+            colSizes = (tabType.contains("root"))?"":colSizes;
             String additionalHeadStyles = (tabType.contains("root"))?"font-size:1em;":"";
             $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
             String selected = "selected";

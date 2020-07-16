@@ -115,7 +115,7 @@
 
        function loadFoundForEntity( tableName ) {
               sendAndSet(
-                      $('#' + tableName + '_search').children('.SearchHead').children('input, textarea'),
+                      $('#' + tableName + '_search').children('input, textarea'),
                       $('#' + tableName + '_result'),
                       'CRUD/find/' + tableName,
                       function( response, status, xhr ) {
@@ -127,7 +127,6 @@
        }
 
        function loadSavedForEntity( tableName, id, urlSearchParams ) {
-              console.log(" urltail : "+urlSearchParams+"; tablename : "+tableName+"; id : "+id+"; ");
               let entity = $('#' + tableName+'_'+id);
               sendAndSet(
                       entity

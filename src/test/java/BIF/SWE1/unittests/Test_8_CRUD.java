@@ -35,6 +35,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
         assert compact.contains("switchTab(src,target)");
         assert compact.contains("tabBody.children().css(\"display\",\"none\");");
         assert compact.contains(".children('textarea').first().focus();");
+        assert compact.contains("$('#'+tableName+'_search').children('input,textarea')");
     }
 
     @Test
