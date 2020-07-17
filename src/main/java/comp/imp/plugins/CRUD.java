@@ -113,11 +113,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         response.setContent("text/html");
         Map<String, String> params = req.getUrl().getParameter();
         String result = "";
-        if(params.containsKey("url")) {
-            _setUrl(params.get("url").trim());
-            result = "JDBC url set to : '"+params.get("url")+"'";
+        if(params.containsKey("db_url")) {
+            _setUrl(params.get("db_url").trim());
+            result = "JDBC url set to : '"+params.get("db_url")+"'";
         } else {
-            result = "GET parameter key 'url' not found in request!";
+            result = "GET parameter key 'db_url' not found in request!";
         }
         response.setContent(result);
 

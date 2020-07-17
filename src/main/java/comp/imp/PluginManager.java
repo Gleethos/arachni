@@ -45,7 +45,7 @@ public class PluginManager implements IPluginManager {
         if(!_plugins.containsKey(plugin)){
             try {
                 if(!loadPlugin(plugin,"build/classes/java/main/comp/imp/plugins")){
-                    if(!loadPlugin(plugin,"build/classes/java/test/BIF/SWE1/unittests/mocks")){
+                    if(!loadPlugin(plugin,"build/classes/java/test/testsuite/unittests/mocks")){
                         if(!loadPlugin(plugin,"plugins")) {
                             throw new IllegalStateException("Plugin not found!");
                         }

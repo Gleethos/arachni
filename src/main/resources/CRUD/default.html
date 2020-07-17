@@ -85,22 +85,30 @@
                                           <div
                                                   class="col-sm-12 col-md-12"
                                           >
-                                                 <button id="tail_world_redirect_button">Redirect to TailWorld!</button>
+                                                 <button id="crud_world_redirect_button">Reload this world!</button>
                                           </div>
                                           <div
                                                   class="col-sm-12 col-md-12"
                                           >
                                                  <input
-                                                         id="jdbc_url"
+                                                         id="jdbc_world_url"
                                                          style="width:100%"
+                                                         placeholder="sql-world source folder"
+                                                 ><br>
+                                                 <input
+                                                         id="sql_world_source"
+                                                         style="width:100%"
+                                                         placeholder="db-world source file"
                                                  ><br>
                                                  jdbc:sqlite:C:/sqlite/db/TailDB<br>
                                                  jdbc:sqlite:C:/sqlite/db/TestDB<br>
-                                                 <button id="set_db_url_button">Set DB</button>
+                                                 <button id="set_crud_world_button">Set DB</button>
                                                  <div
-                                                         id="set_db_url_response_box"
+                                                         id="set_crud_world_response_button"
                                                          style="padding:0.5em;border: 0.1em solid black;"
-                                                 >...response...</div>
+                                                 >
+                                                        ...response...
+                                                 </div>
                                           </div>
                                    </div>
                             </div>
@@ -108,16 +116,14 @@
               </div>
        </div>
 </div>
-
-
-
 <script>
        $(document).ready( function() {
-              $('#tail_world_redirect_button').click(function() {
+              $('#crud_world_redirect_button').click(function() {
                      window.location = window.location.origin+'/tailworld.html';
               });
-              $('#set_db_url_button').click(function() {
-                     $('#set_db_url_response_box').load('CRUD/setJDBC?url='+$('#jdbc_url').val());
+              $('#set_crud_world_button').click(function() {
+                     $('#set_crud_world_response_button')
+                             .load('CRUD/setJDBC?db_url='+$('#jdbc_world_url').val()+'&sql_source='+$('#sql_world_source').val());
               });
        });
 
