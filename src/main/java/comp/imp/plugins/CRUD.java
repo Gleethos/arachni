@@ -6,6 +6,7 @@ import comp.IResponse;
 import comp.imp.Response;
 import comp.imp.Url;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -30,12 +31,23 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
      * Test constructor!
      * @param url
      */
-    public CRUD(String url)
+    public CRUD(String url, String worldfolder)
     {
         super(url, "", "");
         try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
-        _executeFile("tailworld_bootstrap.sql");
-        _executeFile("tailworld_setup.sql");
+        List<String> filesFound = new ArrayList<>();
+        File folder = new File("db/"+worldfolder);
+        for (final File f : folder.listFiles()) {
+            if (f.isFile()) {
+                if (f.getName().endsWith(".sql")) filesFound.add(f.getAbsolutePath());
+            }
+        }
+        String bootstrap = filesFound.stream().filter(f->f.endsWith("bootstrap.sql")).findFirst().get();
+        String setup = filesFound.stream().filter(f->f.endsWith("setup.sql")).findFirst().get();
+        if( bootstrap == null ) throw new IllegalStateException("CRUD could not read bootstrap file in folder '"+worldfolder+"'!");
+        if( setup == null ) throw new IllegalStateException("CRUD could not read setup file in folder '"+worldfolder+"'!");
+        _executeFile(bootstrap);
+        _executeFile(setup);
         _close();
     }
 

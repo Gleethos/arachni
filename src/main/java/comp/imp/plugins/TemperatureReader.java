@@ -42,7 +42,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
             String result = _toJSON(rs).toString();
             //System.out.println("Temp table exists? : "+result);
             if(result.contains(":0")){
-                _executeFile("bootstrap.sql");
+                _executeFile("temperature/bootstrap.sql");
             } else {
                 check = "SELECT count(*) FROM temperatures";
                 rs = stmt.executeQuery(check);
@@ -54,7 +54,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
 
         }
         _temp_count = entryCount;
-        _executeFile("setup.sql");
+        _executeFile("temperature/setup.sql");
         _close();
         int startSupply = entryCount;
         Thread iot = new Thread( () -> {

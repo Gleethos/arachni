@@ -2,21 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-02951306-b5f0-4b71-a604-c47c1c1565ef.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-05809768-8de1-42c7-b396-700b6f77fffc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-0d5b3717-4348-49c4-9207-d30557757435.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-0f974576-cfb0-4f6d-9cd1-17e70054567f.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-19bd72ac-29d7-415c-afac-f621c9d6785e.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-21780adc-ee10-42d7-bab6-dcd5be515380.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-2c45b818-1c4d-4a64-8239-367b435e63fb.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-378afcf3-9881-4240-a927-71c42b635ec7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-5c469cdf-3cc7-4cf8-ad2b-050bcdb3e2fc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-5e685c36-4e30-4f56-9440-8380eafc8d00.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-752c17c6-8360-4699-8fcc-4d78057ad7c2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-842cfa91-bb92-4fe5-ab84-4192f5c54381.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a2e9fe0d-5529-4ec0-ba7a-e9b9651dd405.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-af6c0d4a-3a5a-4436-afdc-d174f38de42c.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ca586e95-8245-418a-be38-a742ec65cb3f.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ce80d821-c3f7-4f7a-a283-fc7f4037e507.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-d0250879-da0f-464d-bffd-89f54ca34f55.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-d195e8e7-c9e3-48f0-9b92-24a2270abe20.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-df1f5597-7d8b-414b-93ee-3d1718636b34.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ed1258d4-5929-4097-b26e-c7bdef86e93f.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-f46c4b6b-5658-4fc2-9a26-92aac9222ffd.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14acc09f1412b17b71b83e8ae288f3b85fba45bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14acc09f1412b17b71b83e8ae288f3b85fba45bc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cdccd8538c68a9bad340da63c916d60573f695f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cdccd8538c68a9bad340da63c916d60573f695f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/689ea7346e5bb2ad2ea9047c0a780f1bfb47ae8a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/689ea7346e5bb2ad2ea9047c0a780f1bfb47ae8a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/bootstrap.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/temperature/bootstrap.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/temperature/setup.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/tailworld_bootstrap.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/tailworld/tailworld_bootstrap.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/tailworld_setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/tailworld/tailworld_setup.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webroot/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webroot/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/TestWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Test8Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/uebungen/Test8Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Tests7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/db/TestDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/db/TestDB-saving" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB-saving" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,17 +157,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\development\java\studium\arachni\webroot\src\css" />
-      <recent name="D:\development\java\studium\arachni\webroot\src" />
-      <recent name="D:\development\java\remoteTest\webio\libs" />
-      <recent name="D:\development\java\remoteTest\webio" />
-      <recent name="D:\development\java\remoteTest\webio\webroot" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -138,6 +166,16 @@
       <recent name="D:\development\java\remoteTest\webio\webroot\src\main" />
       <recent name="D:\development\java\remoteTest\webio\webroot" />
       <recent name="D:\development\java\remoteTest\webio" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\development\java\studium\arachni\db\temperature" />
+      <recent name="D:\development\java\studium\arachni\db\tailworld" />
+      <recent name="D:\development\java\studium\arachni\webroot\src\css" />
+      <recent name="D:\development\java\studium\arachni\webroot\src" />
+      <recent name="D:\development\java\remoteTest\webio\libs" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.arachni [test]">
@@ -340,7 +378,8 @@
       <workItem from="1594395776639" duration="56510000" />
       <workItem from="1594753276471" duration="10038000" />
       <workItem from="1594837019197" duration="349000" />
-      <workItem from="1594837384136" duration="30889000" />
+      <workItem from="1594837384136" duration="30934000" />
+      <workItem from="1594973856281" duration="3635000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1587840208108</created>
@@ -573,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594910143506</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="update">
+      <created>1594939184383</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1594939184383</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,106 +649,106 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593859897852" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1594937678916">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1594939183144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594937678916" />
-    <state width="1021" height="91" key="GridCell.Tab.0.bottom" timestamp="1594939131763">
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594939183144" />
+    <state width="1017" height="275" key="GridCell.Tab.0.bottom" timestamp="1594977986800">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1021" height="91" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594939131763" />
-    <state width="1021" height="91" key="GridCell.Tab.0.center" timestamp="1594939131763">
+    <state width="1017" height="275" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977986800" />
+    <state width="1017" height="275" key="GridCell.Tab.0.center" timestamp="1594977986800">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1021" height="91" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594939131763" />
-    <state width="1021" height="91" key="GridCell.Tab.0.left" timestamp="1594939131763">
+    <state width="1017" height="275" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594977986800" />
+    <state width="1017" height="275" key="GridCell.Tab.0.left" timestamp="1594977986800">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1021" height="91" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594939131763" />
-    <state width="1021" height="91" key="GridCell.Tab.0.right" timestamp="1594939131763">
+    <state width="1017" height="275" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594977986800" />
+    <state width="1017" height="275" key="GridCell.Tab.0.right" timestamp="1594977986800">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1021" height="91" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594939131763" />
-    <state width="1027" height="209" key="GridCell.Tab.1.bottom" timestamp="1594936517658">
+    <state width="1017" height="275" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594977986800" />
+    <state width="1024" height="209" key="GridCell.Tab.1.bottom" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.1.center" timestamp="1594936517657">
+    <state width="1024" height="209" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.1.center" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594936517657" />
-    <state width="1027" height="209" key="GridCell.Tab.1.left" timestamp="1594936517657">
+    <state width="1024" height="209" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.1.left" timestamp="1594977910222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594936517657" />
-    <state width="1027" height="209" key="GridCell.Tab.1.right" timestamp="1594936517657">
+    <state width="1024" height="209" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594977910222" />
+    <state width="1024" height="209" key="GridCell.Tab.1.right" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594936517657" />
-    <state width="1027" height="209" key="GridCell.Tab.2.bottom" timestamp="1594936517659">
+    <state width="1024" height="209" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.2.bottom" timestamp="1594977910224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594936517659" />
-    <state width="1027" height="209" key="GridCell.Tab.2.center" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977910224" />
+    <state width="1024" height="209" key="GridCell.Tab.2.center" timestamp="1594977910224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.2.left" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1594977910224" />
+    <state width="1024" height="209" key="GridCell.Tab.2.left" timestamp="1594977910224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.2.right" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1594977910224" />
+    <state width="1024" height="209" key="GridCell.Tab.2.right" timestamp="1594977910224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.3.bottom" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1594977910224" />
+    <state width="1024" height="209" key="GridCell.Tab.3.bottom" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.3.center" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.3.center" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.3.left" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.3.left" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.3.right" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.3.right" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.4.bottom" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.4.bottom" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.4.center" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.4.center" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.4.left" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.4.left" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.4.right" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.4.right" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.5.bottom" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.5.bottom" timestamp="1594977910224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.5.center" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594977910224" />
+    <state width="1024" height="209" key="GridCell.Tab.5.center" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.5.left" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.5.left" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
-    <state width="1027" height="209" key="GridCell.Tab.5.right" timestamp="1594936517658">
+    <state width="1024" height="209" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
+    <state width="1024" height="209" key="GridCell.Tab.5.right" timestamp="1594977910223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1027" height="209" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1594936517658" />
+    <state width="1024" height="209" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1594977910223" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1594030234105">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -711,10 +757,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594652446883" />
-    <state width="1536" height="293" key="XDebugger.FullValuePopup" timestamp="1594650719180">
+    <state width="1534" height="293" key="XDebugger.FullValuePopup" timestamp="1594976497923">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1536" height="293" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1594650719180" />
+    <state width="1534" height="293" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1594976497923" />
     <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587827936245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -760,33 +806,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>413</line>
-          <option name="timeStamp" value="454" />
+          <line>262</line>
+          <option name="timeStamp" value="472" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>438</line>
-          <option name="timeStamp" value="458" />
+          <line>263</line>
+          <option name="timeStamp" value="473" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BIF/SWE1/unittests/Test_8_CRUD.java</url>
-          <line>250</line>
-          <option name="timeStamp" value="459" />
+          <line>302</line>
+          <option name="timeStamp" value="475" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="462" />
+          <line>48</line>
+          <option name="timeStamp" value="476" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="463" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="464" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
+          <line>557</line>
+          <option name="timeStamp" value="477" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

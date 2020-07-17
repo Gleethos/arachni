@@ -37,10 +37,10 @@ public class Test8Provider {
         return new ToLower();
     }
 
-    public IPlugin getCRUDPlugin(String name){
+    public IPlugin getCRUDPlugin(String name, String world){
         File f = new File("test/db");
         String path = f.getAbsolutePath().replace("\\", "/");
-        return new CRUD("jdbc:sqlite:"+path+"/"+name);
+        return new CRUD("jdbc:sqlite:"+path+"/"+name, world);
     }
 
     public String getCRUDUrl(LocalDate localDate, LocalDate localDate1) {

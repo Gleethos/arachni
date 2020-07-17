@@ -557,7 +557,7 @@ public abstract class AbstractDatabaseConnection {
     protected void _executeFile(String name){
         Connection conn = _connection;
         String[] commands;
-        File file = new File("db/", name);
+        File file = (name.contains(":"))?new File(name):new File("db/", name);
         int fileLength = (int) file.length();
         try {
             byte[] fileData = IPlugin.util.readFileData(file, fileLength);

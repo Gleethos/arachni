@@ -269,7 +269,7 @@ public class Tests7 extends AbstractTestFixture<Tests7Provider> {
     @Test
     public void test_plugin_utility_and_sql_setup(){
         String[] commands = new String[0];
-        File file = new File("db/", "setup.sql");
+        File file = new File("db/temperature", "setup.sql");
         int fileLength = (int) file.length();
         try {
             byte[] fileData = IPlugin.util.readFileData(file, fileLength);
@@ -280,7 +280,7 @@ public class Tests7 extends AbstractTestFixture<Tests7Provider> {
             commands = query.split("--<#SPLIT#>--");
             assertTrue("", commands.length>=6);
             for(String command : commands){
-                assertTrue("Statement does not conatin 'temperatures'!", command.contains("temperatures"));
+                assertTrue("Statement does not contain 'temperatures'!", command.contains("temperatures"));
             }
         } catch (IOException e) {
             e.printStackTrace();

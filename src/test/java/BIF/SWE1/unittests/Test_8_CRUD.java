@@ -15,7 +15,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_default_CRUD_response() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream("CRUD")
         );
@@ -42,7 +42,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_search_fields() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream("CRUD")
         );
@@ -74,7 +74,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_finding() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/find/tail_relations?" +
@@ -116,7 +116,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_saving_GET_requests() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/save/tail_relations?" +
@@ -212,7 +212,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_saving_tail_with_POST() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
 
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -234,10 +234,45 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     }
 
     @Test
+    public void test_finding_tail_with_POST_via_QUICKSEARCH() throws Exception
+    {
+        Test8Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/tails?searchQuickly=true",
+                        "POST",
+                        "name=d"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        assert !body.contains("value=\""+date+"\""); // Autofill for created!
+        assert !body.contains("value=\"bla bla\"");
+        String compact = body.replace(" " , "");
+        assert !compact.contains("oninput=\"noteOnInputFor('value','tails','1')\">blabla</textarea>");
+        assert !compact.contains("name=\"deleted\"value=\"\"");
+        assert !compact.contains("name=\"name\"value=\"FirstTag\"");
+        assert !compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert !compact.contains("id=\"tags_1_description\"");
+        assert !compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert !body.contains("content-length: 0");
+
+        assert compact.contains("id=\"tails_quick_search_result\"");
+        assert compact.contains("onclick=\"$('#tails_id_search_input').val('2');loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
+        assert compact.contains("ThirdTail");
+        assert compact.contains("SecondTail");
+        assert compact.contains("Name");
+        assert res.getContentLength()<620;
+    }
+
+    @Test
     public void test_saving_tail_with_POST_with_relations() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
 
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -265,7 +300,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_saving_tail_with_POST_WITHOUT_relations() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
 
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -293,7 +328,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_saving_tail_fails_with_POST() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/save/tails",
@@ -327,7 +362,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_saving_new_tail_with_POST() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB-saving");
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/save/tails",
@@ -364,7 +399,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_finding_POST_request() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/find/tails?", "POST",
@@ -403,7 +438,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_finding_without_relations_POST_request() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
                         "CRUD/find/tails?", "POST",
@@ -461,7 +496,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_finding_and_deleting_with_POST_request() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         // 1. Finding:
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -529,7 +564,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_deleting_with_foreign_auto_delete_with_POST_request() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         // 1. add relation between first and second tail:
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -597,7 +632,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test8Provider> {
     public void test_CRUD_setJDBC() throws Exception
     {
         Test8Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB");
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
         String path = new File("test/db").getAbsolutePath().replace("\\","/");
         assert crud instanceof CRUD;
         assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
