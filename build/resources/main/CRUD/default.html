@@ -90,22 +90,37 @@
                                           <div
                                                   class="col-sm-12 col-md-12"
                                           >
+                                                 <h3>Your World Source :</h3>
+                                          </div>
+                                          <div
+                                                  class="col-sm-12 col-md-12"
+                                          >
                                                  <input
                                                          id="jdbc_world_url"
-                                                         style="width:100%"
+                                                         style="width:100%;text-align: center;"
                                                          placeholder="sql-world source folder"
-                                                 ><br>
+                                                 >
+                                          </div>
+                                          <div
+                                                  class="col-sm-12 col-md-12"
+                                          >
+                                                 <h3>JDBC Source File :</h3>
+                                          </div>
+                                          <
+                                                  class="col-sm-12 col-md-12"
+                                          >
                                                  <input
                                                          id="sql_world_source"
-                                                         style="width:100%"
+                                                         style="width:100%;text-align: center;"
                                                          placeholder="db-world source file"
                                                  ><br>
+                                                 <span>Examples:</span><br>
                                                  jdbc:sqlite:C:/sqlite/db/TailDB<br>
                                                  jdbc:sqlite:C:/sqlite/db/TestDB<br>
                                                  <button id="set_crud_world_button">Set DB</button>
                                                  <div
                                                          id="set_crud_world_response_button"
-                                                         style="padding:0.5em;border: 0.1em solid black;"
+                                                         class="contentBox"
                                                  >
                                                         ...response...
                                                  </div>
@@ -185,7 +200,7 @@
 
        function deleteEntity( tableName, id ) {
               if(confirm("Do you really want to delete this entity?\nType: '"+tableName+"', id: '"+id+"'")){
-                     let entity = $('#' + tableName+'_'+id);
+                     let entity = $( '#' + tableName + '_' + id );
                      sendAndSet(
                              entity
                                      .children('.tabWrapper')

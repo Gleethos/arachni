@@ -1,7 +1,12 @@
 package testsuite.unittests;
 
 
-import static org.junit.Assert.*;
+import comp.IPlugin;
+import comp.IPluginManager;
+import comp.IRequest;
+import comp.IResponse;
+import org.junit.*;
+import testsuite.provider.Test_4_Provider;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -9,17 +14,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.util.stream.StreamSupport;
 
-import testsuite.provider.Test_4_Provider;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import comp.IPlugin;
-import comp.IPluginManager;
-import comp.IRequest;
-import comp.IResponse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class Test_4_PluginManager extends AbstractTestFixture<Test_4_Provider> {
 

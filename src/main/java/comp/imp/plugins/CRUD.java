@@ -34,6 +34,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     public CRUD(String url, String worldfolder)
     {
         super(url, "", "");
+        _initializeWorldSource(worldfolder);
+    }
+
+    private void _initializeWorldSource(String worldfolder){
         try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
         List<String> filesFound = new ArrayList<>();
         File folder = new File("db/"+worldfolder);
@@ -420,7 +424,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
                                     .$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>")
                                 .$("</div>")
-                            .$("</div>").generateNewButton( table )
+                            .$("</div>")
+                                    .generateNewButton(
+                                    List.of(table),
+                                    e -> f.entitiesToForm(table, e.get(0), true),
+                                    ""
+                            )
                         .$("</div>")
                     .$("</div>");
                 },
@@ -541,7 +550,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
 
             String table = String.join("_and_", tableNames);
-            table = (id.isBlank())?table:table+"_"+id;
+            table = ( id.isBlank() ) ? table : table+"_"+id ;
             $("<script>");
             $(" function new_"+table+"() {");
             $("$('#").$(table).$("_result').append(`");
@@ -550,7 +559,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $(" }");
             $("</script>\n");
             $("<button onclick=\"new_"+table+"()\">");
-            $("NEW\n");
+            $("NEW "+table.replace("_", " ").toUpperCase());
             $("</button>\n");
             // TODO : Make button creation possible for relation...
             return this;
@@ -559,6 +568,36 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         private String entitiesToForm(
                 String tableName,
                 Map<String, List<Object>> entities,
+                boolean appendRelations
+        ) {
+            if(entities.isEmpty()) return "<div>Nothing found...</div>";
+            String indexAttribute = entities.keySet().stream()
+                    .filter(k->k.contains("id"))
+                    .sorted((x, y) -> Integer.compare(y.length(), x.length()))
+                    .findFirst()
+                    .get();
+            Function<Map<String, String>, String> entityID = e -> (e.get(indexAttribute).equals(""))?"new":e.get(indexAttribute);
+            Function<Map<String, String>, String> rowID = e -> tableName+"_"+entityID.apply(e);
+            return entitiesToForm(
+                    tableName,
+                    entities,
+                    Map.of(
+                            "close", e->"$( '#"+rowID.apply(e)+"' ).replaceWith('');",
+                            "save", e->"loadSavedForEntity( "+
+                                    "'"+tableName+"',   " +
+                                    "'"+entityID.apply(e)+"',    "+
+                                    ((appendRelations)?"''":"'?appendRelations=false'")+
+                                    ")",
+                            "delete", e->"deleteEntity( '"+tableName+"', '"+entityID.apply(e)+"' )"
+                    ),
+                    appendRelations
+            );
+        }
+
+        private String entitiesToForm(
+                String tableName,
+                Map<String, List<Object>> entities,
+                Map<String, Function<Map<String, String>,String>> onclickGenerators,
                 boolean appendRelations
         ) {
             if(entities.isEmpty()) return "<div>Nothing found...</div>";
@@ -575,8 +614,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             int rowCount = entities.values().stream().findFirst().get().size();
             String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
             if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
-            for(int i=0; i<rowCount; i++) {
+            for( int i=0; i < rowCount; i++ )
+            {
                 int inner = i;
+                Map<String, String> currentEntity = new TreeMap<>(entities).entrySet().stream().collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,
+                                entry -> (entry.getValue().get(inner)!=null)? entry.getValue().get(inner).toString() : ""
+                        )
+                );
+
                 String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
                 String rowID = tableName+"_"+entityID;
                 String entityShadow = (appendRelations)?"EntityShadow":"EntityShadowInset";
@@ -590,24 +637,26 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 "</span>" +
                                 "</div>" +
                                 "<div style=\"float:right;\">" +
-                                "<button style=\"padding:0.25em;\" onclick=\"$( '#"+rowID+"' ).replaceWith('');\">" +
+                                "<button style=\"padding:0.25em;background-color:lightblue;\" onclick=\"" +
+                                onclickGenerators.get("close").apply(currentEntity)+
+                                "\">" +
                                 "CLOSE" +
                                 "</button>" +
                                 "</div>" +
                                 "<div style=\"float:right;\">" +
                                 "<button " +
-                                "style=\"padding:0.25em;\" " +
-                                "onclick=\"loadSavedForEntity( "+
-                                    "'"+tableName+"',   " +
-                                    "'"+entityID+"',    "+
-                                    ((appendRelations)?"''":"'?appendRelations=false'")+
-                                ")\"" +
+                                "style=\"padding:0.25em;background-color:lightgreen;\" " +
+                                "onclick=\"" +
+                                onclickGenerators.get("save").apply(currentEntity)+
+                                "\"" +
                                 ">" +
                                 "SAVE" +
                                 "</button>" +
                                 "</div>" +
                                 "<div style=\"float:right;\">" +
-                                "<button style=\"padding:0.25em;\" onclick=\"deleteEntity( '"+tableName+"', '"+entityID+"' )\">" +
+                                "<button style=\"padding:0.25em;background-color:salmon;\" onclick=\"" +
+                                onclickGenerators.get("delete").apply(currentEntity)+
+                                "\">" +
                                 "DELETE" +
                                 "</button>" +
                                 "</div>" +
@@ -628,8 +677,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         return this;
                     }
                 };
-                entities.forEach(
-                (k,v) ->
+                currentEntity.forEach(
+                (k,currentValue) ->
                 {
                     FrontendConsumer ic = contentConsumer;
                     if(k.contains("id")||k.equals("created")||k.equals("deleted")){
@@ -650,14 +699,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     }
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
-                    String currentValue = (v.get(inner)==null)?"":v.get(inner).toString();
                     //---
                     ic.$("<div class=\""+bootstrapClasses+"\">");
                     ic.$("<div class=\"AttributeWrapper\">");
-                    ic.$("<span                          " +
-                         "   value=\"0\"                 " + // Counts onInput events to trigger persisting
-                         "   id=\""+attributeID+"\"      " +
-                         ">                              "
+                    ic.$("<span                           " +
+                         "   value=\"0\"                  " + // Counts onInput events to trigger saving
+                         "   id=\""+attributeID+"\"       " +
+                         ">                               "
                     ).$( _snakeToTitle(k) ).$(
                             "</span>" +
                                     "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
@@ -680,7 +728,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 );
 
                 // Relation tables
-                if(appendRelations && !tableName.contains("relations")) f.buildRelationForms(tableName, entityID);
+                if(appendRelations && !tableName.contains("relations") && !entityID.equals("new")) {
+                    f.buildRelationForms(tableName, entityID);
+                }
                 f.$("</div>");
             }
             return f.toString();
@@ -779,8 +829,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     outerTableName
                                             ),
                                             entities -> {
-                                                entities.get(0).put(innerKey, List.of(id)); // Current inner id !
-                                                generateRelationEntity(
+                                                entities.get(0).put( innerKey, List.of(id) ); // Current inner id !
+                                                generateRelationEntity (
                                                     relationTableName,
                                                     entities.get(0),
                                                     outerTableName,
