@@ -496,7 +496,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         private void tabsOf(List<String> tabNames, Consumer<String> lambda, String tabType)
         {
-            String colSizes = (tabType.contains("compacted"))?"col-sm-12 col-md-10 col-lg-10":"col-sm-12 col-md-12 col-lg-12";
+            String colSizes = "col-sm-12 col-md-12 col-lg-12";
             colSizes = (tabType.contains("root"))?"":colSizes;
             String additionalHeadStyles = (tabType.contains("root"))?"font-size:1em;":"";
             $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
@@ -561,7 +561,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<button onclick=\"new_"+table+"()\">");
             $("NEW "+table.replace("_", " ").toUpperCase());
             $("</button>\n");
-            // TODO : Make button creation possible for relation...
+
             return this;
         }
 
@@ -577,13 +577,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     .findFirst()
                     .get();
             Function<Map<String, String>, String> entityID = e -> (e.get(indexAttribute).equals(""))?"new":e.get(indexAttribute);
-            Function<Map<String, String>, String> rowID = e -> tableName+"_"+entityID.apply(e);
+            Function<Map<String, String>, String> rowID = e -> tableName+"_"+entityID.apply(e)+((appendRelations)?"":"_related");
             return entitiesToForm(
                     tableName,
                     entities,
                     Map.of(
                             "close", e->"$( '#"+rowID.apply(e)+"' ).replaceWith('');",
-                            "save", e->"loadSavedForEntity( "+
+                            "save", e->
+                                    "loadSavedForEntity( "+
                                     "'"+tableName+"',   " +
                                     "'"+entityID.apply(e)+"',    "+
                                     ((appendRelations)?"''":"'?appendRelations=false'")+
@@ -608,7 +609,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     .filter(k->!(k.contains("id") || k.equals("created") || k.equals("deleted")))
                     .collect(Collectors.toList())
                     .size();
-            boolean compacted = importantFieldsNumber < 2;
 
             CRUDBuilder f = this;
             int rowCount = entities.values().stream().findFirst().get().size();
@@ -625,43 +625,57 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 );
 
                 String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
-                String rowID = tableName+"_"+entityID;
+                String rowID = tableName+"_"+entityID+((appendRelations)?"":"_related");
                 String entityShadow = (appendRelations)?"EntityShadow":"EntityShadowInset";
                 f.$("<div id=\""+rowID+"\" class=\"EntityWrapper "+entityShadow+" row\">");
-                String colSizes = (compacted)?"col-sm-12 col-md-2 col-lg-1":"col-sm-12 col-md-12 col-lg-12";
-                f.$(
-                        "<div class=\""+colSizes+" ml-auto\">" + // ml-auto := float right for col classes...
+                String colSizes = "col-sm-12 col-md-12 col-lg-12";
+                if(!onclickGenerators.isEmpty()){
+                    f.$("<div id=\""+rowID+"_buttons\" class=\""+colSizes+" ml-auto\">"); // ml-auto := float right for col classes...
+                    f.$(
+                            "<div style=\"float:right;\">" +
+                                    "<span style=\"padding:0.25em;\">" +
+                                    tableName.replace("_", " ")+
+                                    "</span>" +
+                            "</div>"
+                    );
+                    if( onclickGenerators.containsKey("close") ) {
+                        f.$(
                                 "<div style=\"float:right;\">" +
-                                "<span style=\"padding:0.25em;\">" +
-                                tableName.replace("_", " ")+
-                                "</span>" +
-                                "</div>" +
+                                        "<button style=\"padding:0.25em;background-color:lightblue;\" onclick=\"" +
+                                        onclickGenerators.get("close").apply(currentEntity)+
+                                        "\">" +
+                                        "CLOSE" +
+                                        "</button>" +
+                                        "</div>"
+                        );
+                    }
+                    if ( onclickGenerators.containsKey("save") ) {
+                        f.$(
                                 "<div style=\"float:right;\">" +
-                                "<button style=\"padding:0.25em;background-color:lightblue;\" onclick=\"" +
-                                onclickGenerators.get("close").apply(currentEntity)+
-                                "\">" +
-                                "CLOSE" +
-                                "</button>" +
-                                "</div>" +
+                                        "<button " +
+                                        "style=\"padding:0.25em;background-color:lightgreen;\" " +
+                                        "onclick=\"" +
+                                        onclickGenerators.get("save").apply(currentEntity)+
+                                        "\"" +
+                                        ">" +
+                                        "SAVE" +
+                                        "</button>" +
+                                        "</div>"
+                        );
+                    }
+                    if ( onclickGenerators.containsKey("delete") ) {
+                        f.$(
                                 "<div style=\"float:right;\">" +
-                                "<button " +
-                                "style=\"padding:0.25em;background-color:lightgreen;\" " +
-                                "onclick=\"" +
-                                onclickGenerators.get("save").apply(currentEntity)+
-                                "\"" +
-                                ">" +
-                                "SAVE" +
-                                "</button>" +
-                                "</div>" +
-                                "<div style=\"float:right;\">" +
-                                "<button style=\"padding:0.25em;background-color:salmon;\" onclick=\"" +
-                                onclickGenerators.get("delete").apply(currentEntity)+
-                                "\">" +
-                                "DELETE" +
-                                "</button>" +
-                                "</div>" +
-                                "</div>"
-                );
+                                        "<button style=\"padding:0.25em;background-color:salmon;\" onclick=\"" +
+                                        onclickGenerators.get("delete").apply(currentEntity)+
+                                        "\">" +
+                                        "DELETE" +
+                                        "</button>" +
+                                        "</div>"
+                        );
+                    }
+                    f.$("</div>");
+                }
 
                 StringBuilder contentBuilder = new StringBuilder();
                 FrontendConsumer contentConsumer = new FrontendConsumer() {
@@ -694,9 +708,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     :(lowerKey.contains("deleted")||lowerKey.contains("created"))
                                     ?"col-sm-12 col-md-4 col-lg-4"
                                     :"col-sm-12 col-md-6 col-lg-4";
-                    if(compacted) {
-                        bootstrapClasses.replace("-2", "-3");
-                    }
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
                     //---
@@ -724,7 +735,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             if(tab.equals("Content")) f.$(contentBuilder.toString());
                             else f.$(metaBuilder);
                         },
-                        (compacted)?"compacted":"default"
+                        "default"
                 );
 
                 // Relation tables
@@ -861,7 +872,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "style=\"margin-bottom:0.5em;\"" +
                     ">"
             );
-            entitiesToForm( relationTableName, currentRelationEntity, false );
+            Function<Map<String, String>, String> entityID = e ->
+                (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
+
+            Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
+            entitiesToForm(//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    relationTableName,
+                    currentRelationEntity,
+                    Map.of(),
+                    false
+            );
+            //entitiesToForm( relationTableName, currentRelationEntity, false );
             $("</div>");
 
             $("<div " +
@@ -870,7 +891,37 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "style=\"background-color:#fff; margin-bottom:1em;\"" +
                     ">"
             );
-            entitiesToForm( outerTableName, currentOuterEntity, false );
+            Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
+            Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
+            entitiesToForm(//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    outerTableName,
+                    currentOuterEntity,
+                    Map.of(
+                            "close", e->
+                                    "$( '#"+outerRowID.apply(e)+"' ).replaceWith('');"+
+                                    "$( '#"+rowID.apply(e)+"' ).replaceWith('');",
+                            "save", e->
+                                    "var buttons = $('#"+outerRowID.apply(e)+"_buttons').html();" +
+                                    "loadSavedForRelation(  " +
+                                            "'"+relationTableName+"',    " +
+                                            "'"+entityID.apply(e)+"',    " +
+                                            "'?appendRelations=false',    " +
+                                    //--------------------------------------------
+                                            "'"+outerTableName+"',    " +
+                                            "'"+outerEntityID.apply(e)+"',    " +
+                                            "'?appendRelations=false',    " +
+                                            "function(){" +
+                                                "$('#"+outerRowID.apply(e)+"_buttons').html(buttons);" +
+                                                "$('#"+rowID.apply(e)+"_buttons').replaceWith('');" +
+                                            "}" +
+                                    ");",
+                            "delete", e->
+                                    "deleteEntity( '"+outerTableName+"', '"+outerEntityID.apply(e)+"' );"+
+                                    "deleteEntity( '"+relationTableName+"', '"+entityID.apply(e)+"' )"
+                    ),
+                    false
+            );
+            //entitiesToForm( outerTableName, currentOuterEntity, false );
             $("</div>");
             //"$('#input1, #input2').bind(\"focus blur change keyup\", function(){ .... });"
             return this;

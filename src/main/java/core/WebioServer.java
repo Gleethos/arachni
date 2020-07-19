@@ -6,9 +6,16 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class WebioServer
 {
+    private final ThreadPoolExecutor _pool =
+            (ThreadPoolExecutor) Executors.newFixedThreadPool(
+                    Runtime.getRuntime().availableProcessors()
+            );
+
     /**  Main port used to connect to WEBIO! */
     private static final int PORT = 8080;// port to listen connection
 
@@ -105,9 +112,8 @@ public class WebioServer
                 Socket client = serverConnect.accept();
                 log.println("[SERVER]: Connection opened with: "+client.toString()+" (" + new Date() + ")");
                 ClientHandler handler = new ClientHandler(client, _manager, log);
-                // create dedicated thread to manage the client connection
-                Thread thread = new Thread(handler);
-                thread.start();
+                // Submit as task for the thread pool!
+                _pool.submit(handler);
             }
         } catch (IOException e) {
             System.err.println("[SERVER]: Connection error : " + e.getMessage());

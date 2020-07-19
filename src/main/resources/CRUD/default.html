@@ -168,7 +168,23 @@
               );
        }
 
+       function loadSavedForRelation(
+               relationTableName, relationID, relationUrl,
+               outerTableName, outerID, outerUrl, afterLoad
+       ) {
+              console.log(relationTableName +"|"+ relationID +"|"+ relationUrl +"|"+
+                      outerTableName +"|"+ outerID +"|"+ outerUrl);
+              _loadSavedForEntity(relationTableName, relationID+"_related", relationUrl, function () {
+                     _loadSavedForEntity(outerTableName, outerID+"_related", outerUrl, afterLoad);
+              });
+
+       }
+
        function loadSavedForEntity( tableName, id, urlSearchParams ) {
+              _loadSavedForEntity( tableName, id, urlSearchParams, function(){} );
+       }
+
+       function _loadSavedForEntity( tableName, id, urlSearchParams, afterLoad ) {
               let entity = $('#' + tableName+'_'+id);
               sendAndSet(
                       entity
@@ -181,10 +197,10 @@
                       entity,
                       'CRUD/save/' + tableName + urlSearchParams+' #' + tableName+'_'+id+' > *',
                       function( response, status, xhr ) {
-                             if(status === "error") {
+                             if( status === "error" ) {
                                     entity.replaceWith("");
                                     alert('Saving failed!\nStatus: '+status);
-                             } else if(entity.html()==="") {
+                             } else if( entity.html()==="" ) {
                                     entity.replaceWith(response);
                                     entity
                                             .children('.tabWrapper')
@@ -194,6 +210,7 @@
                                             .children('.AttributeWrapper')
                                             .children('textarea').first().focus();
                              }
+                             afterLoad();
                       }
               );
        }

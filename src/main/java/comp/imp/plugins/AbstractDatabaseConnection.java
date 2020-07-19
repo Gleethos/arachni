@@ -26,12 +26,18 @@ public abstract class AbstractDatabaseConnection {
      */
     private String _url, _user, _pwd;
 
-    protected Connection _connection;
+    //protected Connection _connection;
+
+    private Map<Thread, Connection> _connections = new HashMap();
 
     AbstractDatabaseConnection(String url, String name, String password){
         _url = url;
         _user = name;
         _pwd = password;
+    }
+
+    protected Connection _connection(){
+        return _connections.get(Thread.currentThread());
     }
 
     public String getURL(){
@@ -47,13 +53,11 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _createAndOrConnectToDatabase() throws SQLException
     {
-        this._connection = null;
-        if(_user.equals("")||_pwd.equals("")){
-             _connection = DriverManager.getConnection(_url);
-        } else {
-            _connection = DriverManager.getConnection(_url, _user, _pwd);
-        }
-        _connection.setAutoCommit(false);
+        Connection connection = null;
+        if(_user.equals("")||_pwd.equals("")) connection = DriverManager.getConnection(_url);
+        else connection = DriverManager.getConnection(_url, _user, _pwd);
+        connection.setAutoCommit(false);
+        _connections.put(Thread.currentThread(), connection);
     }
 
     /**
@@ -75,7 +79,13 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _commit(IResponse response) {
         try {
-            if(_connection!=null) _connection.commit();
+            //if(_connection!=null) _connection.commit();
+            if(
+                    _connections.containsKey(Thread.currentThread())
+                    && _connections.get(Thread.currentThread()) != null
+            ){
+                _connections.get(Thread.currentThread()).commit();
+            }
         } catch (SQLException e) {
             response.setContent(e.getMessage());
             e.printStackTrace();
@@ -87,11 +97,18 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _close(){
         try {
-            if(_connection!=null) _connection.close();
+            //if(_connection!=null) _connection.close();
+            if(
+                    _connections.containsKey(Thread.currentThread())
+                            && _connections.get(Thread.currentThread()) != null
+            ){
+                _connections.get(Thread.currentThread()).close();
+                _connections.put(Thread.currentThread(), null);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        _connection=null;
+        //_connection=null;
     }
 
     /**
@@ -173,7 +190,7 @@ public abstract class AbstractDatabaseConnection {
     }
 
     private PreparedStatement _newPreparedStatement(String sql, List<Object> values) throws SQLException {
-        PreparedStatement pstmt = _connection.prepareStatement(sql);
+        PreparedStatement pstmt = _connections.get(Thread.currentThread()).prepareStatement(sql);
         if(values!=null) {
             for(int i=0; i<values.size(); i++) pstmt.setObject(i+1, values.get(i));
         }
@@ -203,7 +220,7 @@ public abstract class AbstractDatabaseConnection {
             }
         } else {
             try {
-                Statement stmt = _connection.createStatement();
+                Statement stmt = _connections.get(Thread.currentThread()).createStatement();
                 try {
                     ResultSet rs = stmt.executeQuery(sql);// loop through the result set
                     if(start!=null) start.accept(rs);
@@ -302,7 +319,7 @@ public abstract class AbstractDatabaseConnection {
      * @param sql
      */
     protected void _execute(String sql){
-        Connection conn = _connection;
+        Connection conn = _connections.get(Thread.currentThread());
         try {
             Statement stmt = conn.createStatement();
             try {
@@ -322,7 +339,7 @@ public abstract class AbstractDatabaseConnection {
      * @param sql
      */
     protected boolean _execute(String sql, IResponse response){
-        Connection conn = _connection;
+        Connection conn = _connections.get(Thread.currentThread());
         try {
             Statement stmt = conn.createStatement();
             try {
@@ -555,7 +572,7 @@ public abstract class AbstractDatabaseConnection {
 
 
     protected void _executeFile(String name){
-        Connection conn = _connection;
+        Connection conn = _connections.get(Thread.currentThread());//_connection;
         String[] commands;
         File file = (name.contains(":"))?new File(name):new File("db/", name);
         int fileLength = (int) file.length();

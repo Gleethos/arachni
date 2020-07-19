@@ -50,7 +50,7 @@ public class Oracle extends AbstractDatabaseConnection implements IPlugin
             response.setContent(e.getMessage());
             return response;
         }
-        Connection conn = _connection;
+        Connection conn = _connection();
         try {
             Statement stmt= conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

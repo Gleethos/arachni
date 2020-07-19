@@ -30,7 +30,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         Connection conn = null;
         try {
             _createAndOrConnectToDatabase();
-            conn = _connection;
+            conn = _connection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Connection iotConn = _connection;
+                Connection iotConn = _connection();
                 try {
                     _execute(command);
                     try {
@@ -136,7 +136,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
         Connection conn = null;
         try {
             _createAndOrConnectToDatabase();
-            conn = _connection;
+            conn = _connection();
         } catch (Exception e) {
             e.printStackTrace();
             response.setContent(e.getMessage());
