@@ -172,8 +172,6 @@
                relationTableName, relationID, relationUrl,
                outerTableName, outerID, outerUrl, afterLoad
        ) {
-              console.log(relationTableName +"|"+ relationID +"|"+ relationUrl +"|"+
-                      outerTableName +"|"+ outerID +"|"+ outerUrl);
               _loadSavedForEntity(relationTableName, relationID+"_related", relationUrl, function () {
                      _loadSavedForEntity(outerTableName, outerID+"_related", outerUrl, afterLoad);
               });
