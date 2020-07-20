@@ -148,13 +148,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         response.setContent("text/html");
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
-        boolean appendRelations = true;
-        if(paramTable.containsKey("appendRelations")) {
-            appendRelations = paramTable.get("appendRelations").toLowerCase().equals("true")?true:false;
-            paramTable.remove("appendRelations"); // Should be remove because other parameters will be viewed as attributes!
-        }
+        Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
 
-        if(req.getMethod().equals("POST")) paramTable.putAll(new Url(req.getContentString()).getParameter());
+        boolean appendRelations = settingTable.get("appendRelations").equals("true");
+
+
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
@@ -169,10 +167,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         _commit(response);
         _close();
         _createAndOrConnectToDatabase(response);
+
         String foundParamID = paramTable.get("id");
         req.getUrl().getParameter().clear();
         req.getUrl().getParameter().put("id", Objects.requireNonNullElseGet(foundParamID, () -> String.valueOf(lastID)));
-        if(!appendRelations) req.getUrl().getParameter().put("appendRelations", "false");
+        //if(!appendRelations) req.getUrl().getParameter().put("appendRelations", "false");
+        req.getUrl().getParameter().putAll(settingTable);
         _find(req, response);
 
     }
@@ -204,18 +204,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
         
-        Map<String, String> paramTable = req.getUrl().getParameter();
-        boolean appendRelations = true;
-        if(paramTable.containsKey("appendRelations")) {
-            appendRelations = paramTable.get("appendRelations").toLowerCase().equals("true")?true:false;
-            paramTable.remove("appendRelations");
-        }
-        boolean quickSearch = false;
-        if(paramTable.containsKey("searchQuickly")) {
-            quickSearch = paramTable.get("searchQuickly").toLowerCase().equals("true")?true:false;
-            paramTable.remove("searchQuickly");
-        }
-        if(req.getMethod().equals("POST") && !paramTable.containsKey("id")) paramTable.putAll(new Url(req.getContentString()).getParameter());
+        Map<String, String> paramTable = new TreeMap<>();
+        Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
+
+        boolean appendRelations = settingTable.get("appendRelations").equals("true");
+        boolean quickSearch     = settingTable.get("searchQuickly").equals("true");
 
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
@@ -278,7 +271,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
         else
         {
-            result = new CRUDBuilder(tables).entitiesToForm( tableName, map, appendRelations ).toString();
+            result = new CRUDBuilder(tables).entitiesToForm( tableName, map, settingTable ).toString();
         }
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
@@ -443,7 +436,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             .$("</div>")
                                     .generateNewButton(
                                     List.of(table),
-                                    e -> f.entitiesToForm(table, e.get(0), true),
+                                    e -> f.entitiesToForm(table, e.get(0), Map.of("appendRelations", "true")),
                                     "", ""
                             )
                         .$("</div>")
@@ -534,21 +527,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("</div>\n</div>\n");
         }
 
-        private void generateNewButton( String table, boolean appendRelations ){
-            generateNewButton(
-                    List.of(table),
-                    e->entitiesToForm( table, e.get(0), appendRelations ),
-                    "", ""
-            );
-        }
-
-        private CRUDBuilder generateNewButton( String table ){
-            return generateNewButton(
-                    List.of(table),
-                    e -> entitiesToForm(table, e.get(0), false),
-                    "", ""
-            );
-        }
 
         private CRUDBuilder generateNewButton (
                 List<String> tableNames,
@@ -585,20 +563,24 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         private String entitiesToForm(
                 String tableName,
                 Map<String, List<Object>> entities,
-                boolean appendRelations
+                Map<String, String> settingsTable
         ) {
+            boolean appendRelations = settingsTable.get("appendRelations").equals("true");
+            boolean appendButtons   = (settingsTable.containsKey("appendButtons"))?settingsTable.get("appendButtons").equals("true"):true;
+
             if(entities.isEmpty()) return "<div>Nothing found...</div>";
             String indexAttribute = entities.keySet().stream()
                     .filter(k->k.contains("id"))
                     .sorted((x, y) -> Integer.compare(y.length(), x.length()))
                     .findFirst()
                     .get();
+
             Function<Map<String, String>, String> entityID = e -> (e.get(indexAttribute).equals(""))?"new":e.get(indexAttribute);
             Function<Map<String, String>, String> rowID = e -> tableName+"_"+entityID.apply(e)+((appendRelations)?"":"_related");
             return entitiesToForm(
                     tableName,
                     entities,
-                    Map.of(
+                    (appendButtons) ? Map.of(
                             "close", e->"$( '#"+rowID.apply(e)+"' ).replaceWith('');",
                             "save", e->
                                     "loadSavedForEntity( "+
@@ -607,8 +589,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     ((appendRelations)?"''":"'?appendRelations=false'")+
                                     ")",
                             "delete", e->"deleteEntity( '"+tableName+"', '"+entityID.apply(e)+"' )"
-                    ),
-                    appendRelations
+                    ) : Map.of(),
+                    settingsTable
             );
         }
 
@@ -616,16 +598,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String tableName,
                 Map<String, List<Object>> entities,
                 Map<String, Function<Map<String, String>,String>> onclickGenerators,
-                boolean appendRelations
+                Map<String, String> settingsTable
         ) {
             if(entities.isEmpty()) return "<div>Nothing found...</div>";
 
-            int importantFieldsNumber = entities
-                    .keySet()
-                    .stream()
-                    .filter(k->!(k.contains("id") || k.equals("created") || k.equals("deleted")))
-                    .collect(Collectors.toList())
-                    .size();
+            boolean appendRelations = settingsTable.get("appendRelations").equals("true");
 
             CRUDBuilder f = this;
             int rowCount = entities.values().stream().findFirst().get().size();
@@ -766,7 +743,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return f.toString();
         }
 
-        private CRUDBuilder buildRelationForms(
+        private CRUDBuilder buildRelationForms (
                 String innerTableName,
                 String id
         ) {
@@ -899,7 +876,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
             Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
 
-            entitiesToForm(relationTableName, currentRelationEntity, Map.of(), false);
+            entitiesToForm(relationTableName, currentRelationEntity, Map.of(), Map.of("appendRelations","false"));
             $("</div>");
 
             $("<div " +
@@ -936,7 +913,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     "deleteEntity( '"+outerTableName+"',    '"+outerEntityID.apply(e)+"' );"+
                                     "deleteEntity( '"+relationTableName+"', '"+entityID.apply(e)+"'      );"
                     ),
-                    false
+                    Map.of("appendRelations","false")
             );
             $("</div>");
             return this;

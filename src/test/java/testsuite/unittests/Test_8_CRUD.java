@@ -230,13 +230,139 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         IResponse res = crud.handle(req);
         String date = new java.sql.Date(System.currentTimeMillis()).toString();
         String body = getBody(res).toString();
-        assert body.contains("value=\""+date+"\""); // Autofill for created!
-        assert body.contains("value=\"InTheFuture\"");
-        assert body.contains("value=\"SuperTail\"");
-        assert !body.contains("value=\"TailContent...\"");
+        TestUtility.assertContains(body, new String[]{
+                "id=\"tails_4_buttons\"", "class=\"EntityWrapper EntityShadow row\"",
+                "id=\"tails_4\"",
+                "id=\"tags_new_related_buttons\"",
+                "value=\""+date+"\"", // Autofill for created!
+                "value=\"InTheFuture\"",
+                "value=\"SuperTail\"",
+                "onclick=\"new_tail_tag_relations_and_tags_4_joined_on_tag_id()\"",
+                "oninput=\"noteOnInputFor('id','tags','new')",
+                "class=\"TagsDescription\""
+        });
+        TestUtility.assertNotContains(body, new String[]{
+                "value=\"TailContent...\"",
+                "content-length: 0",
+                "id=\"tails_4_related\"", // A new tail will not have any relations!
+                "id=\"tails_4_related_buttons\"",
+        });
         String compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','4')\">TailContent...</textarea>");
-        assert !body.contains("content-length: 0");
+    }
+
+    @Test
+    public void test_CRUD_saving_RELATED_tail_with_POST_WITH_buttons() throws Exception
+    {
+        /*
+          NOTE: if an entity that is being searched for is without relation, then IT IS THE RELATION!
+          This is being tested below: ( 'appendRelations=false'  ==  RELATED! )
+         */
+        Test_8_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails?appendButtons=true&appendRelations=false",
+                        "POST",
+                        "name=SuperTail&value=TailContent...&created=&deleted=InTheFuture"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        TestUtility.assertContains(body, new String[]{
+                // NOTE: if an entity that is being searched for is without relation, then IT IS THE RELATION!
+                "id=\"tails_4_related\"",  // <=-~ ( ! ) - RELATED
+                "id=\"tails_4_related_buttons\"",  // <=-~ ( ! ) - WITH BUTTONS
+                "value=\""+date+"\"", // Autofill for created!
+                "value=\"InTheFuture\"",
+                "value=\"SuperTail\"", "EntityShadowInset"
+        });
+        TestUtility.assertNotContains(body, new String[]{
+                "id=\"tags_new_related_buttons\"", // <- Important! No new entitiy!
+                "id=\"tails_4\"",
+                "value=\"TailContent...\"",
+                "content-length: 0",
+        });
+        String compact = body.replace(" " , "");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tails','4')\">TailContent...</textarea>");
+    }
+
+    @Test
+    public void test_CRUD_saving_RELATED_tail_with_POST_WITHOUT_buttons() throws Exception
+    {
+        /*
+          NOTE: if an entity that is being searched for is without relation, then IT IS THE RELATION!
+          This is being tested below: ( 'appendRelations=false'  ==  RELATED! )
+         */
+        Test_8_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails?appendButtons=false&appendRelations=false",
+                        "POST",
+                        "name=SuperTail&value=TailContent...&created=&deleted=InTheFuture"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        TestUtility.assertContains(body, new String[]{
+            "id=\"tails_4_related\"",
+            "value=\""+date+"\"", // Autofill for created!
+            "value=\"InTheFuture\"",
+            "value=\"SuperTail\"", "EntityShadowInset", "id=\"tails_4_related\""
+        });
+        TestUtility.assertNotContains(body, new String[]{
+            "id=\"tails_4_buttons\"", "class=\"EntityWrapper EntityShadow row\"",
+            "id=\"tags_new_related_buttons\"",
+            "id=\"tails_4_related_buttons\"", // <=-~ ( ! ) - WITHOUT BUTTONS
+            "id=\"tails_4\"",
+            "value=\"TailContent...\"",
+            "content-length: 0", "buttons", "SAVE", "DELETE", "CLEAR"
+        });
+        String compact = body.replace(" " , "");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tails','4')\">TailContent...</textarea>");
+    }
+
+    @Test
+    public void test_CRUD_saving_tail_with_POST_WITHOUT_buttons_in_main_entity() throws Exception
+    {
+        /*
+            What is meant by main entity:
+            The entity that is being searched for (which is the one being saved in this test).
+            It will be searched for after saving in order to build the html frontend...
+            This test tries to only make the CRUD generate buttons for relations...
+         */
+        Test_8_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB-saving", "tailworld");
+
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails?appendButtons=false&appendRelations=true",
+                        "POST",
+                        "name=SuperTail&value=TailContent...&created=&deleted=InTheFuture"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String date = new java.sql.Date(System.currentTimeMillis()).toString();
+        String body = getBody(res).toString();
+        TestUtility.assertContains(body, new String[]{
+                "class=\"EntityWrapper EntityShadow row\"",
+                "id=\"tags_new_related_buttons\"", // <- 'New relations' entity inside RELATION buttons!
+                "value=\""+date+"\"", // Autofill for created!
+                "value=\"InTheFuture\"",
+                "value=\"SuperTail\""
+        });
+        TestUtility.assertNotContains(body, new String[]{
+                "id=\"tails_4_buttons\"", // <=-~ ( ! ) - WITHOUT BUTTONS
+                "value=\"TailContent...\"",
+                "content-length: 0",
+        });
+        String compact = body.replace(" " , "");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tails','4')\">TailContent...</textarea>");
     }
 
     @Test
