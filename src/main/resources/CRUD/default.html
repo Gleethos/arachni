@@ -169,17 +169,29 @@
        }
 
        function loadSavedForRelation(
-               relationTableName, relationID, relationUrl,
-               outerTableName, outerID, outerUrl, afterLoad
+               relationTableName, relationID,
+               outerTableName, outerID,
+               outerKey, idClass, uid,
+               afterLoad
        ) {
-              _loadSavedForEntity(relationTableName, relationID+"_related", relationUrl, function () {
-                     _loadSavedForEntity(outerTableName, outerID+"_related", outerUrl, afterLoad);
+              _loadSavedForEntity(outerTableName, outerID+"_related", '?appendRelations=false', function () {
+                     var newID = $('#'+outerTableName+"_"+uid).find('.'+idClass).val();
+                     console.log("Joined entity '"+outerTableName+"' with id "+outerID+" saved and loaded : ");
+                     console.log("Returned ID: $('#"+outerTableName+"_"+uid+"').find('."+idClass+"').val() == '"+newID+"'\n");
+                     var relationTableJoinField = $('#'+relationTableName+"_"+uid).find('#'+relationTableName+'_'+relationID+'_'+outerKey);
+                     console.log("Joining relation entity '"+relationTableName+"' with id "+relationID+" joins by attribute '"+outerKey+"' !");
+                     console.log("Joining key '"+outerKey+"' currently :");
+                     console.log("$('#"+relationTableName+"_"+uid+"').find('#"+relationTableName+'_'+relationID+'_'+outerKey+"').val() == '"+relationTableJoinField.val()+"'");
+                     console.log("... will bew replaced by id '"+newID+"' of joined entity !\n");
+                     relationTableJoinField.val(newID);
+                     _loadSavedForEntity(relationTableName, relationID+"_related", '?appendRelations=false', afterLoad);
               });
-
        }
 
        function loadSavedForEntity( tableName, id, urlSearchParams ) {
-              _loadSavedForEntity( tableName, id, urlSearchParams, function(){} );
+              _loadSavedForEntity( tableName, id, urlSearchParams, function(){
+                     console.log("Saving and loading relation done!");
+              } );
        }
 
        function _loadSavedForEntity( tableName, id, urlSearchParams, afterLoad ) {
@@ -246,7 +258,7 @@
 
        function noteOnInputFor( attribute, tableName, id )
        {
-              let element = $('#'+tableName+'_'+id+'_'+attribute);
+              let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
               element.attr('value',parseInt(element.attr('value'))+1);
               if( parseInt(element.attr('value'))>175 ) {
                      element.attr('value',0);

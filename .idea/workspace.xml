@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/hs_err_pid11060.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-40b081bd-dd32-47c2-badc-cbbb64c76916.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-c3e97ee4-ecce-4725-a543-73d47fce6f8b.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e510f28f-824b-4004-8e47-114ec450333f.txt" afterDir="false" />
+    <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-0f4fbd99-e4cc-4ed6-8608-bf1ee937278b.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-8ec9e5b4-6666-44ec-87e0-869c68012b34.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-c0e9a07a-2d4c-4cdc-b028-f58aa4c7b1f8.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileContent/fileContent.lock" afterDir="false" />
@@ -18,17 +17,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/Oracle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/core/WebioServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/core/WebioServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/CRUD/default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/Oracle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/WebioServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/WebioServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CRUD/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/TestWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/TestWeb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB-saving" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB-saving" afterDir="false" />
     </list>
@@ -356,7 +349,7 @@
       <workItem from="1594837019197" duration="349000" />
       <workItem from="1594837384136" duration="30934000" />
       <workItem from="1594973856281" duration="13222000" />
-      <workItem from="1595149821439" duration="20624000" />
+      <workItem from="1595149821439" duration="30412000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1587840208108</created>
@@ -617,7 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1595159349214</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="update">
+      <created>1595193859306</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1595193859306</updated>
+    </task>
+    <task id="LOCAL-00039" summary="update">
+      <created>1595193882151</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1595193882151</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,26 +654,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593859897852" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1595159417926">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1595240754565">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595159417926" />
-    <state width="1491" height="187" key="GridCell.Tab.0.bottom" timestamp="1595193617740">
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595240754565" />
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom" timestamp="1595239632087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="187" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595193617740" />
-    <state width="1491" height="187" key="GridCell.Tab.0.center" timestamp="1595193617740">
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595239632087" />
+    <state width="1491" height="224" key="GridCell.Tab.0.center" timestamp="1595239632087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="187" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595193617740" />
-    <state width="1491" height="187" key="GridCell.Tab.0.left" timestamp="1595193617740">
+    <state width="1491" height="224" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595239632087" />
+    <state width="1491" height="224" key="GridCell.Tab.0.left" timestamp="1595239632087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="187" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595193617740" />
-    <state width="1491" height="187" key="GridCell.Tab.0.right" timestamp="1595193617740">
+    <state width="1491" height="224" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595239632087" />
+    <state width="1491" height="224" key="GridCell.Tab.0.right" timestamp="1595239632087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="187" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595193617740" />
+    <state width="1491" height="224" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595239632087" />
     <state width="1491" height="187" key="GridCell.Tab.1.bottom" timestamp="1595193617740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

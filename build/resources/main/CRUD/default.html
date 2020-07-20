@@ -170,14 +170,18 @@
 
        function loadSavedForRelation(
                relationTableName, relationID, relationUrl,
-               outerTableName, outerID, outerUrl, afterLoad
+               outerTableName, outerID, outerUrl,
+               outerKey, idClass, uid,
+               afterLoad
        ) {
-              console.log(relationTableName +"|"+ relationID +"|"+ relationUrl +"|"+
-                      outerTableName +"|"+ outerID +"|"+ outerUrl);
-              _loadSavedForEntity(relationTableName, relationID+"_related", relationUrl, function () {
-                     _loadSavedForEntity(outerTableName, outerID+"_related", outerUrl, afterLoad);
+              _loadSavedForEntity(outerTableName, outerID+"_related", outerUrl, function () {
+                     var newID = $('#'+outerTableName+"_"+uid).find('.'+idClass).val();
+                     console.log("new id: "+newID+" ... "+'#'+outerTableName+'_'+outerID+'_id');
+                     console.log('#'+relationTableName+'_'+relationID+'_'+outerKey);
+                     console.log('This: '+$('#'+relationTableName+"_"+uid).find('#'+relationTableName+'_'+relationID+'_'+outerKey).val())
+                     $('#'+relationTableName+"_"+uid).find('#'+relationTableName+'_'+relationID+'_'+outerKey).val(newID);
+                     _loadSavedForEntity(relationTableName, relationID+"_related", relationUrl, afterLoad);
               });
-
        }
 
        function loadSavedForEntity( tableName, id, urlSearchParams ) {
@@ -248,7 +252,7 @@
 
        function noteOnInputFor( attribute, tableName, id )
        {
-              let element = $('#'+tableName+'_'+id+'_'+attribute);
+              let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
               element.attr('value',parseInt(element.attr('value'))+1);
               if( parseInt(element.attr('value'))>175 ) {
                      element.attr('value',0);

@@ -428,7 +428,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     .generateNewButton(
                                     List.of(table),
                                     e -> f.entitiesToForm(table, e.get(0), true),
-                                    ""
+                                    "", ""
                             )
                         .$("</div>")
                     .$("</div>");
@@ -522,7 +522,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             generateNewButton(
                     List.of(table),
                     e->entitiesToForm( table, e.get(0), appendRelations ),
-                    ""
+                    "", ""
             );
         }
 
@@ -530,14 +530,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return generateNewButton(
                     List.of(table),
                     e -> entitiesToForm(table, e.get(0), false),
-                    ""
+                    "", ""
             );
         }
 
         private CRUDBuilder generateNewButton (
                 List<String> tableNames,
                 Consumer< List<Map<String, List<Object>>>> templateLambda,
-                String id
+                String id, String join
         ) {
             String today = new java.sql.Date( System.currentTimeMillis() ).toString();
             List<Map<String, List<Object>>> templates = new ArrayList<>();
@@ -551,6 +551,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
             String table = String.join("_and_", tableNames);
             table = ( id.isBlank() ) ? table : table+"_"+id ;
+            table = ( join.isBlank() ) ? table : table + "_joined_on_"+join;
             $("<script>");
             $(" function new_"+table+"() {");
             $("$('#").$(table).$("_result').append(`");
@@ -715,11 +716,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     ic.$("<div class=\"AttributeWrapper\">");
                     ic.$("<span                           " +
                          "   value=\"0\"                  " + // Counts onInput events to trigger saving
-                         "   id=\""+attributeID+"\"       " +
+                         "   id=\""+attributeID+"_span\"       " +
                          ">                               "
                     ).$( _snakeToTitle(k) ).$(
                             "</span>" +
                                     "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
+                                    "      id=\""+attributeID+"\" " +
+                                    "      class=\""+_snakeToClass(tableName+"_"+attribute)+"\"     " +
                                     "      name=\""+attribute+"\"                       " +
                                     ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
                                     "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
@@ -795,7 +798,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     int numberOfFound = relationResult.values().stream().findFirst().get().size();
 
                                     // This id will be targeted by the "new button" generated at the end of the loop below:
-                                    $("<div id=\""+relationTableName+"_and_"+outerTableName+"_"+id+"_result"+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    $("<div id=\""+relationTableName+"_and_"+outerTableName+"_"+id+"_joined_on_"+outerKey+"_result"+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
                                     $("<div class=\"\">");// The 'row' class is deliberately left out here!
                                     // -> creates a nice padding for some reason! :)
                                     for ( int i = 0; i < numberOfFound; i++ )
@@ -827,7 +830,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                 relationTableName,
                                                 currentRelationEntity,
                                                 outerTableName,
-                                                currentOuterEntity
+                                                currentOuterEntity,
+                                                outerKey
                                         );
 
                                     } // :=  Entry loop end!
@@ -845,10 +849,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     relationTableName,
                                                     entities.get(0),
                                                     outerTableName,
-                                                    entities.get(1)
+                                                    entities.get(1),
+                                                    outerKey
                                                 );
                                             },
-                                            id
+                                            id, outerKey
                                     );
                                     $("</div>");
 
@@ -864,56 +869,52 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String relationTableName,
                 Map<String, List<Object>> currentRelationEntity,
                 String outerTableName,
-                Map<String, List<Object>> currentOuterEntity
+                Map<String, List<Object>> currentOuterEntity,
+                String outerKey
         ) {
+            String uid = Long.toHexString(new Random().nextLong()).replace("-", "");
             $("<div " +
-                    "id=\"" + "\" " +
+                    "id=\"" + relationTableName + "_" + uid + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
                     "style=\"margin-bottom:0.5em;\"" +
                     ">"
             );
             Function<Map<String, String>, String> entityID = e ->
                 (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
-
             Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
-            entitiesToForm(//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    relationTableName,
-                    currentRelationEntity,
-                    Map.of(),
-                    false
-            );
-            //entitiesToForm( relationTableName, currentRelationEntity, false );
+
+            entitiesToForm(relationTableName, currentRelationEntity, Map.of(), false);
             $("</div>");
 
             $("<div " +
-                    "id=\"" + "\" " +
+                    "id=\"" + outerTableName + "_" + uid + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
                     "style=\"background-color:#fff; margin-bottom:1em;\"" +
                     ">"
             );
             Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
             Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
-            entitiesToForm(//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            entitiesToForm(
                     outerTableName,
                     currentOuterEntity,
                     Map.of(
                             "close", e->
-                                    "$( '#"+outerRowID.apply(e)+"' ).replaceWith('');"+
-                                    "$( '#"+rowID.apply(e)+"' ).replaceWith('');",
+                                    "$( '#"+outerRowID.apply(e)+"' ).replaceWith('');$( '#"+rowID.apply(e)+"' ).replaceWith('');",
                             "save", e->
-                                    "var buttons = $('#"+outerRowID.apply(e)+"_buttons').html();" +
-                                    "loadSavedForRelation(  " +
-                                            "'"+relationTableName+"',    " +
-                                            "'"+entityID.apply(e)+"',    " +
-                                            "'?appendRelations=false',    " +
-                                    //--------------------------------------------
-                                            "'"+outerTableName+"',    " +
-                                            "'"+outerEntityID.apply(e)+"',    " +
-                                            "'?appendRelations=false',    " +
-                                            "function(){" +
-                                                "$('#"+outerRowID.apply(e)+"_buttons').html(buttons);" +
-                                                "$('#"+rowID.apply(e)+"_buttons').replaceWith('');" +
-                                            "}" +
+                                    "var buttons = $('#"+outerRowID.apply(e)+"_buttons').html();            " +
+                                    "loadSavedForRelation(                                                  " +
+                                            "  '"+relationTableName+"',                                     " +
+                                            "  '"+entityID.apply(e)+"',                                     " +
+                                    //-------  -------------------------------------
+                                            "  '"+outerTableName+"',                                        " +
+                                            "  '"+outerEntityID.apply(e)+"',                                " +
+                                            "  '"+outerKey+"',                                              " +
+                                            "  '"+_snakeToClass(outerTableName+"_id")+"',                " +
+                                            "  '"+uid + "',                                                 " +
+                                            "  function(){                                                  " +
+                                            "      $('#"+outerRowID.apply(e)+"_buttons').html(buttons);     " +
+                                            "      $('#"+rowID.apply(e)+"_buttons').replaceWith('');        " +
+                                            "  }" +
                                     ");",
                             "delete", e->
                                     "deleteEntity( '"+outerTableName+"', '"+outerEntityID.apply(e)+"' );"+
@@ -921,9 +922,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     ),
                     false
             );
-            //entitiesToForm( outerTableName, currentOuterEntity, false );
             $("</div>");
-            //"$('#input1, #input2').bind(\"focus blur change keyup\", function(){ .... });"
             return this;
         }
 
