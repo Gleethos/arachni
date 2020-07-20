@@ -905,7 +905,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     "loadSavedForRelation(                                                  " +
                                             "  '"+relationTableName+"',                                     " +
                                             "  '"+entityID.apply(e)+"',                                     " +
-                                    //-------  -------------------------------------
+                                    //-------------------------------------------------------------------------
                                             "  '"+outerTableName+"',                                        " +
                                             "  '"+outerEntityID.apply(e)+"',                                " +
                                             "  '"+outerKey+"',                                              " +
@@ -917,8 +917,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             "  }" +
                                     ");",
                             "delete", e->
-                                    "deleteEntity( '"+outerTableName+"', '"+outerEntityID.apply(e)+"' );"+
-                                    "deleteEntity( '"+relationTableName+"', '"+entityID.apply(e)+"' )"
+                                    "deleteEntity( '"+outerTableName+"',    '"+outerEntityID.apply(e)+"' );"+
+                                    "deleteEntity( '"+relationTableName+"', '"+entityID.apply(e)+"'      );"
                     ),
                     false
             );
