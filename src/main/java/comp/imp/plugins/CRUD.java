@@ -59,9 +59,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     public float canHandle(IRequest req)
     {
         float abillity = BASELINE;
-        if(req.getUrl().getRawUrl().contains("Tail"))  abillity *= 1 + (0.7 * (1-abillity));
+        if(req.getUrl().getRawUrl().contains("world"))  abillity *= 1 + (0.7 * (1-abillity));
         if(req.getUrl().getRawUrl().toLowerCase().contains("crud")) abillity *= 1 + (3.0 * (1-abillity));
-        if(req.getUrl().getRawUrl().contains("TailWorld")) abillity *= 1 + (0.17 * (1-abillity));
+        if(req.getUrl().getRawUrl().toLowerCase().contains("crudworld")) abillity *= 1 + (0.17 * (1-abillity));
         if(req.getUrl().getExtension().equals("")) abillity *= 1 + (0.15 * (1-abillity));
         return abillity;
     }
@@ -366,13 +366,20 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         _execute(sql, response);
     }
 
-    private void _view( IRequest req, IResponse response )
-    {
+    private void _view( IRequest req, IResponse response ) {
         response.setContentType("text/html");
-        String fileData = new util().readResource("CRUD/default.html");// send HTTP Headers
+        String fileData = new util().readResource("CRUD/crudworld.html");// send HTTP Headers
         Map<String, List<String>> tables = _tablesSpace();
         CRUDBuilder f = new CRUDBuilder(tables);
         f.$(fileData);
+        response.setContent(f.toString());
+    }
+
+    private void _world( IRequest req, IResponse response )
+    {
+        response.setContentType("text/html");
+        Map<String, List<String>> tables = _tablesSpace();
+        CRUDBuilder f = new CRUDBuilder(tables);
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
                 table -> {

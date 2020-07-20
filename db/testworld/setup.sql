@@ -58,7 +58,8 @@
 
 
 -----------------------------------------------------------------------------------
---<#SPLIT#>-- (MAX) ID-STATES:
+--<#SPLIT#>--
+-- (MAX) ID-STATES:
 -- humans.id                              == 2 ;  ->( 1:'Bean', 2:'Teddy'            )
 -- attributes.id                          == 2 ;  ->( 1:'Friendship', 2:'Weirdness'  )
 -- human_relations.id                     == 1 ;  ->( 1:( sup:1, inf:2 )             )
@@ -108,7 +109,8 @@
 
 
 -----------------------------------------------------------------------------------
---<#SPLIT#>-- (MAX) ID-STATES:
+--<#SPLIT#>--
+-- (MAX) ID-STATES:
 -- humans.id                              == 3 ;  ->( 1:'Bean',        2:'Teddy',      3:'Neighbour'     )
 -- attributes.id                          == 3 ;  ->( 1:'Friendship',  2:'Weirdness',  3:'Enemies'       )
 -- human_relations.id                     == 2 ;  ->( 1:( sup:1, inf:2 ),       2:( sup:1, inf:3 )       )

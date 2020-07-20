@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title id="crud_world_page_title"> CRUDWORLD </title>
+        <link rel="icon" href="/src/favicon/favicon.ico" >
+        <meta name="description" content="a world of tails">
+        <meta name="author" content="Daniel Nepp">
+        <meta name="keywords" content="Story, Tail">
+        <!-----------------------------------ROBOTS---------------------------------------------->
+        <meta name="robots" content="all">
+        <meta name="revisit-after" content="30 days">
+        <!-----------------------------------JQUERY---------------------------------------------->
+        <script src="../../../../webroot/src/js/jquery.min.js"></script>
+        <!-----------------------------------BOOTSTRAP------------------------------------------>
+        <link rel="stylesheet" href="../../../../webroot/src/css/bootstrap.min.css">
+        <script src="../../../../webroot/src/js/bootstrap.min.js"></script>
+        <script src="../../../../webroot/src/js/popper.min.js"></script>
+        <!-----------------------------------CUSTOM CSS------------------------------------------>
+        <link rel="stylesheet" href="../../../../webroot/src/css/style.css">
+        <!-----------------------------------VANTA---------------------------------------------->
+        <script src="../../../../webroot/src/js/three.min.js"></script>
+        <script src="../../../../webroot/src/js/vanta.birds.min.js"></script>
+        <style>
+            .SearchWrapper {
+                -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                border-bottom: solid black 1px;
+                margin-bottom: 0.25em;
+                padding-bottom: 0.25em;
+                padding-top: 0.25em;
+                border-radius: 1em;
+                background-color: lightblue;
+            }
+            .SearchHead {
+                -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                border-bottom: solid black 1px;
+                border-radius: 0.5em;
+                background-color: #ffffff;
+                padding-bottom: 0.25em;
+                padding-top: 0.25em;
+            }
+            .EntityWrapper {
+                padding-bottom:1.25em;
+                padding-top: 1.5em;
+            }
+            .EntityShadow {
+                border-radius: 1em;
+                -webkit-box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+            }
+            .EntityShadowInset {
+                -webkit-box-shadow: inset 0px 0px 19px -3px rgba(0,0,0,0.75);
+                -moz-box-shadow: inset 0px 0px 19px -3px rgba(0,0,0,0.75);
+                box-shadow: inset 0px 0px 19px -3px rgba(0,0,0,0.75);
+            }
+
+            .AttributeWrapper {
+                background-color: lightblue;
+                border-radius: 0.5em;
+                -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                padding: 0.25em;
+                padding-bottom:1em;
+                margin-top: 0.2222em;
+                margin-bottom: 0.2222em;
+            }
+            .AttributeWrapper input{width: 99%}
+            .AttributeWrapper textarea{width: 99%}
+            .AttributeWrapper span{font-weight: bold;}
+
+            .RelationWrapper {
+                background-color: white;
+                border-radius: 0.5em;
+                -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+                padding: 0.25em;
+                padding-bottom:1em;
+                margin-top: 0.2222em;
+                margin-bottom: 0.2222em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div id="BirdBox" class="mainframe" style="background-image: url('../../../../webroot/src/img/distant_bgr.jpg');">
+
+                <nav class="" id="navTile">
+                    <div id="navContainer" class="">
+                        <div style = "" class = "topEarthGradient dynamicSideMargin">
+                            <h1 id="crud_world_title">CRUDWORLD</h1>
+                        </div>
+                        <div class="pull-right nightBox" id="NavbarMenu" >
+                            <ul class="nav navbar-right" id="NavbarList">
+                                <li>
+                                    <a href="../../../../webroot/index.html">
+                                        <img src="../../../../webroot/src/img/icons/house.png">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Gleethos/arachni">
+                                        <img src="../../../../webroot/src/img/icons/github-logo.png">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="webroot/src/index.html">
+                                        <img src="../../../../webroot/src/img/icons/cogwheel.png">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="navi">
+                        <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+                        <label for="mobile-nav" class="gaadiexp white" tabindex="0" style="margin-left: 0;"><span></span></label>
+                        <div role="navigation" class="header-nav">
+                            <div class="fixed-nav">
+                                <div class="menu">
+                                    <ul class="side-nav">
+                                        <li></li>
+                                        <li></li>
+                                        <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadCRUDView('../TOC')">Table Of Content</a></li>
+                                        <li><a target="_blank" href="../../../../webroot/index.html">Home</a></li>
+                                        <li><a target="_blank" href="main/index.html">Documentation</a></li>
+                                        <li><a target="_blank" href="https://github.com/Gleethos/arachni">Github</a></li>
+                                        <li><a target="_blank" href="">Introduction</a></li>
+                                        <li><a target="_blank" href="">Reasons</a></li>
+                                        <li><a target="" href="coverage/test/html/index.html">Code Coverage</a>
+                                        <li><a target="" href="coverage/test/html/jacoco-sessions.html">Last Test Session</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!----------------------------------LAYOUT------------------------------------------------->
+                <main class="parallax">
+                    <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                        <div>
+                            <image src="src/img/parallax/woods.png"></image>
+                        </div>
+                    </div>
+                    <div class="parallax__layer">
+                        <div id="mainTile" class="cardBox dynamicSideMargin">
+                            <script>
+                                function loadCRUDView(target){
+                                    var newTitle = (target.endsWith("world"))?target.toUpperCase():target.toUpperCase()+"WORLD";
+                                    $('#crud_world_page_title').html(newTitle);
+                                    $('#crud_world_title').html(newTitle);
+                                    $('#dynamic_content').hide("fast", function() {
+                                        $('#content_title').hide("fast", function(){
+                                            var split = target.split("/");
+                                            split = split[split.length-1];
+                                            $('#content_title').html(split.charAt(0).toUpperCase() + split.substring(1)).show("fast");
+                                        });
+                                        $('#dynamic_content').html("").load('CRUD/'+target);
+                                    });
+                                    setTimeout(function() {$('#dynamic_content').show("fast");}, 500);
+                                }
+                                $(document).ready(function(){
+                                    setTimeout(function() {loadCRUDView('world');}, 200);
+                                    $('#reload_crud_button').click(function() {loadCRUDView('world');});
+                                });
+                            </script>
+
+
+                            <div class = "mainContentWrapper">
+                                <div class = container-fluid>
+                                    <h1 id = "content_title"></h1>
+                                    <button id = "reload_crud_button">RELOAD</button>
+                                </div>
+                            </div>
+                            <div class = "mainContentWrapper">
+                                <div class = container-fluid>
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class="tabWrapper">
+                                            <div class="tabHead">
+                                                <button onclick="switchTab(event, '.ContentTab')" class="selected">Hello</button>
+                                                <button onclick="switchTab(event, '.MachinaTab')">Settings</button>
+                                            </div>
+                                            <div class="tabBody">
+                                                <div class="ContentTab row">
+                                                    <h2> Hello! This is the CRUD plugin! </h2>
+                                                </div>
+                                                <div class="MachinaTab row" style="display:none">
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <button id="crud_world_redirect_button">Reload this world!</button>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3>Your World Source :</h3>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <input
+                                                                id="jdbc_world_url"
+                                                                style="width:100%;text-align: center;"
+                                                                placeholder="sql-world source folder"
+                                                        >
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h3>JDBC Source File :</h3>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <input
+                                                                id="sql_world_source"
+                                                                style="width:100%;text-align: center;"
+                                                                placeholder="db-world source file"
+                                                        ><br>
+                                                        <span>Examples:</span><br>
+                                                        jdbc:sqlite:C:/sqlite/db/TailDB<br>
+                                                        jdbc:sqlite:C:/sqlite/db/TestDB<br>
+                                                        <button id="set_crud_world_button">Set DB</button>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <div
+                                                                id="set_crud_world_response_button"
+                                                                class="contentBox"
+                                                        >
+                                                            ...response...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready( function() {
+                                    $('#crud_world_redirect_button').click(function() {
+                                        window.location = window.location.origin+'/crud';
+                                    });
+                                    $('#set_crud_world_button').click(function() {
+                                        $('#set_crud_world_response_button')
+                                            .load('CRUD/setJDBC?db_url='+$('#jdbc_world_url').val()+'&sql_source='+$('#sql_world_source').val());
+                                    });
+                                });
+                            </script>
+
+
+                            <script>
+
+                                function loadFoundForEntity( tableName ) {
+                                    sendAndSet(
+                                        $('#' + tableName + '_search').children('input, textarea'),
+                                        $('#' + tableName + '_result'),
+                                        'CRUD/find/' + tableName,
+                                        function( response, status, xhr ) {
+                                            if ( status === "error" ) {
+                                                alert('Finding failed!\nStatus: '+status+'\nResponse: '+response);
+                                            }
+                                        }
+                                    );
+                                }
+
+                                function loadQuickSearchForEntity( tableName ) {
+                                    sendAndSet(
+                                        $('#' + tableName + '_search').children('input, textarea'),
+                                        $('#' + tableName + '_result'),
+                                        'CRUD/find/' + tableName + '?searchQuickly=true',
+                                        function( response, status, xhr ) {
+                                            if ( status === "error" ) {
+                                                alert('Finding failed!\nStatus: '+status+'\nResponse: '+response);
+                                            }
+                                        }
+                                    );
+                                }
+
+                                function loadSavedForRelation(
+                                    relationTableName, relationID,
+                                    outerTableName, outerID,
+                                    outerKey, idClass, uid,
+                                    afterLoad
+                                ) {
+                                    _loadSavedForEntity(outerTableName, outerID+"_related", '?appendRelations=false', function () {
+                                        var newID = $('#'+outerTableName+"_"+uid).find('.'+idClass).val();
+                                        console.log("Joined entity '"+outerTableName+"' with id "+outerID+" saved and loaded : ");
+                                        console.log("Returned ID: $('#"+outerTableName+"_"+uid+"').find('."+idClass+"').val() == '"+newID+"'\n");
+                                        var relationTableJoinField = $('#'+relationTableName+"_"+uid).find('#'+relationTableName+'_'+relationID+'_'+outerKey);
+                                        console.log("Joining relation entity '"+relationTableName+"' with id "+relationID+" joins by attribute '"+outerKey+"' !");
+                                        console.log("Joining key '"+outerKey+"' currently :");
+                                        console.log("$('#"+relationTableName+"_"+uid+"').find('#"+relationTableName+'_'+relationID+'_'+outerKey+"').val() == '"+relationTableJoinField.val()+"'");
+                                        console.log("... will bew replaced by id '"+newID+"' of joined entity !\n");
+                                        relationTableJoinField.val(newID);
+                                        _loadSavedForEntity(relationTableName, relationID+"_related", '?appendRelations=false', afterLoad);
+                                    });
+                                }
+
+                                function loadSavedForEntity( tableName, id, urlSearchParams ) {
+                                    _loadSavedForEntity( tableName, id, urlSearchParams, function(){
+                                        console.log("Saving and loading relation done!");
+                                    } );
+                                }
+
+                                function _loadSavedForEntity( tableName, id, urlSearchParams, afterLoad ) {
+                                    let entity = $('#' + tableName+'_'+id);
+                                    sendAndSet(
+                                        entity
+                                            .children('.tabWrapper')
+                                            .children('.tabBody')
+                                            .children('div')
+                                            .children('div')
+                                            .children('.AttributeWrapper')
+                                            .children('input, textarea'),
+                                        entity,
+                                        'CRUD/save/' + tableName + urlSearchParams+' #' + tableName+'_'+id+' > *',
+                                        function( response, status, xhr ) {
+                                            if( status === "error" ) {
+                                                entity.replaceWith("");
+                                                alert('Saving failed!\nStatus: '+status);
+                                            } else if( entity.html()==="" ) {
+                                                entity.replaceWith(response);
+                                                entity
+                                                    .children('.tabWrapper')
+                                                    .children('.tabBody')
+                                                    .children('div')
+                                                    .children('div')
+                                                    .children('.AttributeWrapper')
+                                                    .children('textarea').first().focus();
+                                            }
+                                            afterLoad();
+                                        }
+                                    );
+                                }
+
+                                function deleteEntity( tableName, id ) {
+                                    if(confirm("Do you really want to delete this entity?\nType: '"+tableName+"', id: '"+id+"'")){
+                                        let entity = $( '#' + tableName + '_' + id );
+                                        sendAndSet(
+                                            entity
+                                                .children('.tabWrapper')
+                                                .children('.tabBody')
+                                                .children('div')
+                                                .children('div')
+                                                .children('.AttributeWrapper')
+                                                .children('input, textarea'),
+                                            entity,
+                                            'CRUD/delete/' + tableName+' #' + tableName+'_'+id+' > *',
+                                            function( response, status, xhr ) {
+                                                if(status === "error") {
+                                                    entity.replaceWith(response);
+                                                    alert('Deletion failed!\nStatus: '+status);
+                                                } else {
+                                                    eval(response);
+                                                }// else if( entity.html()==="" ) {entity.replaceWith(response);}
+                                            }
+                                        );
+                                    }
+                                }
+
+                                function sendAndSet(fromSelector, intoSelector, url, callback) {
+                                    var params = {};
+                                    fromSelector.each(function () { params[this.name] = this.value; });
+                                    intoSelector.html("").load(url, params, callback);
+                                }
+
+                                function noteOnInputFor( attribute, tableName, id )
+                                {
+                                    let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
+                                    element.attr('value',parseInt(element.attr('value'))+1);
+                                    if( parseInt(element.attr('value'))>175 ) {
+                                        element.attr('value',0);
+                                        loadSavedForEntity(tableName, id);
+                                    }
+                                }
+
+                                function switchTab(src, target) {
+                                    var tabBody = $(src.target).parent().parent().find('.tabBody');
+                                    tabBody.children().css("display", "none");
+                                    $(src.target).siblings().removeClass("selected");
+                                    $(src.target).addClass("selected");
+                                    $(src.target).parent().parent().children('.tabBody').children(target).css("display", "flex");
+                                }
+                            </script>
+                            <div id="dynamic_content">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer>
+                    <section>
+                        <ul>
+                            <h4>
+                                Contact:
+                            </h4>
+                            <li>
+                                <a>
+                                    danneydan@gmx.at
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    gleethos@gmx.at
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </footer>
+            </div>
+        </div>
+
+        <script>
+            VANTA.BIRDS({
+                el: "#BirdBox",
+                backgroundColor: 0x0,
+                color1: 0x59cc65,
+                color2: 0xa6fc,
+                colorMode: "lerp",
+                birdSize: 0.70,
+                wingSpan: 17.00,
+                speedLimit: 4.00,
+                separation: 21.00,
+                alignment: 16.00,
+                cohesion: 25.00,
+                backgroundAlpha: 0.00
+            })
+        </script>
+    </body>
+</html>

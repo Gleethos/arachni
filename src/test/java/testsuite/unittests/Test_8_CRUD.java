@@ -39,8 +39,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("$('#'+tableName+'_search').children('input,textarea')");
     }
 
-    @Test
-    public void test_CRUD_search_fields() throws Exception
+    public void test_CRUD_default_response_2() throws Exception
     {
         Test_8_Provider provider = createInstance();
         IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
@@ -58,6 +57,39 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("name=\"child_tail_id");
         assert body.contains("id=\"tags_search\"");
         assert body.contains("id=\"tail_relations_search\"");
+        assert body.contains("<button onclick=");
+        assert body.contains("each(function () {");
+        assert body.contains("text/html");
+        assert body.contains("load");
+        assert body.contains("tails");
+        assert body.contains("input");
+        assert body.contains("textarea");
+        assert !body.contains("content-length: 0");
+        assert res.getContentType().contains("text/html");
+        String compact = body.replace(" ", "").replace("\n","");
+        assert compact.contains(".each(function(){params[this.name]=this.value;});");
+        assert compact.contains("children('input,textarea')");
+    }
+
+    @Test
+    public void test_CRUD_search_fields() throws Exception
+    {
+        Test_8_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream("CRUD/view")
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+
+        assert body.contains("200 OK");
+        assert body.contains("id=\"sql_world_source\"");
+        assert body.contains("id=\"jdbc_world_url\"");
+        assert !body.contains("name=\"parent_tail_id");
+        assert !body.contains("name=\"id");
+        assert !body.contains("name=\"child_tail_id");
+        assert !body.contains("id=\"tags_search\"");
+        assert !body.contains("id=\"tail_relations_search\"");
         assert body.contains("<button onclick=");
         assert body.contains("each(function () {");
         assert body.contains("text/html");

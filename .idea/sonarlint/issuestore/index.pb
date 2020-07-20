@@ -19,8 +19,6 @@ B
 webroot/index.html,f\5\f52aa6d17fd8d2e2e141adc4d699b4edc9849495
 E
 webroot/starbase.html,c\3\c36f403d00dd6ae39cd4c64f6a886aea419590a0
-F
-webroot/tailworld.html,c\4\c446cf1abd01b3772c6c2d139491e568bb46b52f
 :
 
 index.html,f\6\f6013a00b362253c64368d6eebc50ea2131754e2
@@ -68,3 +66,7 @@ X
 (src/test/java/testsuite/TestUtility.java,e\d\ed75f81a29e47459758539be76c94152e73eca98
 b
 2src/test/java/testsuite/unittests/Test_8_CRUD.java,f\5\f5d3de1b88a1a8beddf0d15f146a663478cd2f3b
+J
+db/testworld/bootstrap.sql,d\c\dcad9471aeafece35ad628bf98fc31d15adfac2f
+F
+db/testworld/setup.sql,8\8\88beb4ae2e45d0b6c675c7858ae4c6df105ee598

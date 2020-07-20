@@ -1,90 +1,90 @@
 
-[	java:S106Í"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8‰ß©Ä¶.
-s	java:S117ı"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
-„
-java:S1130¯"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(×âæùşÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148è"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148Í"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8õ–­³.
-N
-java:S1481…"0Remove this unused "columnValue" local variable.(êø¬ò8‰ß©Ä¶.
-m
-java:S2095Á"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(åõÆ¸8˜ç¿Ä¶.
-]	java:S125"<This block of commented-out lines of code should be removed.(ÏÕßúÿÿÿÿ8÷ƒ·Ä¶.
-V
-java:S2755•"3Disable access to external entities in XML parsing.(¼¤Şìûÿÿÿÿ8‰ß©Ä¶.
-E
-java:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
-E
-java:S1148m"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-s	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
-j
-java:S2095ß"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ç¿Ûşÿÿÿÿ8…Ÿ¿Ä¶.
-u
-java:S3776ó"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(ã»Ô½ùÿÿÿÿ8‰ß©Ä¶.
-h
-java:S2259Ÿ"EA "NullPointerException" could be thrown; "dataDoc" is nullable here.(‘‰ø£ıÿÿÿÿ8‰ß©Ä¶.
-u
-java:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(×âæùşÿÿÿÿ8‰ß©Ä¶.
-X
-java:S1141Ñ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
-X
-java:S1141Ù"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
-X	java:S125o"<This block of commented-out lines of code should be removed.(æ­®î8æŒ³Ä¶.
-X
-java:S1141Å"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148¨"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‰ß©Ä¶.
-E
-java:S1148["#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
 Q
 java:S3740"/Provide the parametrized type for this generic.(á÷Æ¡üÿÿÿÿ8Ë¨œÄ¶.
-u
-java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(°èù­ûÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148û"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148ÿ"#Use a logger to log this exception.(¢ò¨½şÿÿÿÿ8‰ß©Ä¶.
-^	java:S125¿"<This block of commented-out lines of code should be removed.(”˜üÖÿÿÿÿÿ8Ğ³¸Ä¶.
-X
-java:S1141Ê"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
-j
-java:S2095á"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(äÕ—³ûÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148·"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-u
-java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(—ªıµûÿÿÿÿ8‰ß©Ä¶.
-V	java:S106›"9Replace this use of System.out or System.err by a logger.(¬¿ÒÑ8‰ß©Ä¶.
-E
-java:S1659"#Declare "_user" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
-F
-java:S1148å"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-Y	java:S125¬"<This block of commented-out lines of code should be removed.(êÛ¯¿8‰ß©Ä¶.
-F
-java:S1148Û"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-D
-java:S1659""Declare "_pwd" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
-F
-java:S1148Ğ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-p
-java:S3776Í"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Ÿ¾¢8‰ß©Ä¶.
-X
-java:S1141à"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
-j
-java:S20959"HUse try-with-resources or close this "Connection" in a "finally" clause.(åŒİìÿÿÿÿÿ8ìÅµÄ¶.
-s	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
-X	java:S125d"<This block of commented-out lines of code should be removed.(«µ÷«8æŒ³Ä¶.
-]	java:S125R"<This block of commented-out lines of code should be removed.(¡œßİÿÿÿÿÿ8«½³Ä¶.
-F
-java:S1148Ê"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-F
-java:S1148Ø"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
-e
-java:S2095:"HUse try-with-resources or close this "Connection" in a "finally" clause.(˜”ÑÖ8ìÅµÄ¶.
 „
 java:S1130ò"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(°èù­ûÿÿÿÿ8‰ß©Ä¶.
 E
+java:S1659"#Declare "_user" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
+j
+java:S20959"HUse try-with-resources or close this "Connection" in a "finally" clause.(åŒİìÿÿÿÿÿ8ìÅµÄ¶.
+X
+java:S1141à"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
+s	java:S117ı"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
+E
+java:S1148["#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+u
+java:S3776ó"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(ã»Ô½ùÿÿÿÿ8‰ß©Ä¶.
+V
+java:S2755•"3Disable access to external entities in XML parsing.(¼¤Şìûÿÿÿÿ8‰ß©Ä¶.
+[	java:S106Í"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8‰ß©Ä¶.
+X
+java:S1141Å"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
+s	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
+X
+java:S1141Ù"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
+F
+java:S1148è"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+u
+java:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(°èù­ûÿÿÿÿ8‰ß©Ä¶.
+E
 java:S1148|"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‰ß©Ä¶.
+]	java:S125"<This block of commented-out lines of code should be removed.(ÏÕßúÿÿÿÿ8÷ƒ·Ä¶.
+s	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸİÀøùÿÿÿÿ8‰ß©Ä¶.
+X
+java:S1141Ê"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
+F
+java:S1148Í"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+u
+java:S3776¯"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(×âæùşÿÿÿÿ8‰ß©Ä¶.
+E
+java:S1148m"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+p
+java:S3776Í"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Ÿ¾¢8‰ß©Ä¶.
+j
+java:S2095á"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(äÕ—³ûÿÿÿÿ8‰ß©Ä¶.
+E
+java:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‚“Éı±.
+D
+java:S1659""Declare "_pwd" on a separate line.(¡±ºøÿÿÿÿ8Ã’›.
+^	java:S125¿"<This block of commented-out lines of code should be removed.(”˜üÖÿÿÿÿÿ8Ğ³¸Ä¶.
+F
+java:S1148¨"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‰ß©Ä¶.
+u
+java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(—ªıµûÿÿÿÿ8‰ß©Ä¶.
+N
+java:S1481…"0Remove this unused "columnValue" local variable.(êø¬ò8‰ß©Ä¶.
+F
+java:S1148Ê"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+]	java:S125R"<This block of commented-out lines of code should be removed.(¡œßİÿÿÿÿÿ8«½³Ä¶.
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8õ–­³.
+X
+java:S1141Ñ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‰ß©Ä¶.
+F
+java:S1148å"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+j
+java:S2095ß"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ç¿Ûşÿÿÿÿ8…Ÿ¿Ä¶.
+X	java:S125o"<This block of commented-out lines of code should be removed.(æ­®î8æŒ³Ä¶.
+m
+java:S2095Á"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(åõÆ¸8˜ç¿Ä¶.
+F
+java:S1148ÿ"#Use a logger to log this exception.(¢ò¨½şÿÿÿÿ8‰ß©Ä¶.
+V	java:S106›"9Replace this use of System.out or System.err by a logger.(¬¿ÒÑ8‰ß©Ä¶.
+F
+java:S1148·"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+e
+java:S2095:"HUse try-with-resources or close this "Connection" in a "finally" clause.(˜”ÑÖ8ìÅµÄ¶.
+F
+java:S1148û"#Use a logger to log this exception.(Ö·÷şÿÿÿÿ8‰ß©Ä¶.
+F
+java:S1148Ğ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+F
+java:S1148Ø"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+h
+java:S2259Ÿ"EA "NullPointerException" could be thrown; "dataDoc" is nullable here.(‘‰ø£ıÿÿÿÿ8‰ß©Ä¶.
+X	java:S125d"<This block of commented-out lines of code should be removed.(«µ÷«8æŒ³Ä¶.
+F
+java:S1148Û"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰ß©Ä¶.
+„
+java:S1130¯"aRemove the declaration of thrown exception 'org.json.JSONException' which is a runtime exception.(×âæùşÿÿÿÿ8‰ß©Ä¶.
+Y	java:S125¬"<This block of commented-out lines of code should be removed.(êÛ¯¿8‰ß©Ä¶.
