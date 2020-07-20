@@ -54,3 +54,17 @@ Q
 !src/main/java/comp/IResponse.java,0\4\04c6304ea14ae8062ccc3f0b7d4549196624a3a6
 G
 src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+k
+;src/test/java/testsuite/unittests/Test_4_PluginManager.java,2\8\28591e2c8d40914bff3539cf0ab96bf41a274eae
+e
+5src/test/java/testsuite/provider/Test_4_Provider.java,8\4\84cf02b6cebe36c5bc9aaa5ac5da1d76435405b9
+e
+5src/test/java/testsuite/provider/Test_9_Provider.java,3\e\3e3ef456655c85766b449a25bff91f41b7ab893c
+S
+#src/main/java/core/WebioServer.java,f\9\f9323fa3c49c8dabd55a499f59a64912eaee5b55
+T
+$src/test/java/testsuite/TestWeb.java,7\f\7f43b926072c70fecb4287d840eef3b907874fbd
+X
+(src/test/java/testsuite/TestUtility.java,e\d\ed75f81a29e47459758539be76c94152e73eca98
+b
+2src/test/java/testsuite/unittests/Test_8_CRUD.java,f\5\f5d3de1b88a1a8beddf0d15f146a663478cd2f3b

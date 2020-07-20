@@ -1,114 +1,125 @@
 
-E
-java:S1148V"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
-b
-java:S3358ö"DExtract this nested ternary operation into an independent statement.(´È÷½8»û¹Ìµ.
-r
-java:S1192x"PDefine a constant instead of duplicating this literal "appendRelations" 7 times.(Èàçøÿÿÿÿ8¿ÇŠµ.
-l
-java:S1192="JDefine a constant instead of duplicating this literal "text/html" 6 times.(ÕÍ×äøÿÿÿÿ8¿ÇŠµ.
-
-java:S1157²"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(Şâàş8¸ÙáÀµ.
-N
-java:S2201ı"+The return value of "replace" must be used.(œ½çéøÿÿÿÿ8»û¹Ìµ.
-i
-java:S1192á"FDefine a constant instead of duplicating this literal "\">\n" 3 times.(˜å˜˜şÿÿÿÿ8»û¹Ìµ.
-j
-java:S1192¾"LDefine a constant instead of duplicating this literal "REFERENCES " 3 times.(Íà¬´8ƒµÊËµ.
-i
-java:S1192â"KDefine a constant instead of duplicating this literal "<div id=\"" 5 times.(ëáÕ©8ƒµÊËµ.
-m
-java:S1192Å"ODefine a constant instead of duplicating this literal "SELECT * FROM " 3 times.(ñ©Šõ8¸ÙáÀµ.
-d
-java:S1192ù"FDefine a constant instead of duplicating this literal "id=\"" 4 times.(šÖûÊ8»û¹Ìµ.
-o
-java:S37766"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÛÓîë8¿ÇŠµ.
-m
-java:S1192Ç"JDefine a constant instead of duplicating this literal "</button>" 3 times.(©Ô’Œıÿÿÿÿ8»û¹Ìµ.
-O
-java:S1144¢"1Remove this unused private "__toSingular" method.(Âù¡–8ƒµÊËµ.
-t
-java:S4276„"WRefactor this code to use the more specialised Functional Interface 'Predicate<String>'(Éí©a8ƒµÊËµ.
-‘
-java:S1192ã"nDefine a constant instead of duplicating this literal "<div class=\"col-sm-12 col-md-12 col-lg-12\">" 4 times.(ªÀ¯ùÿÿÿÿ8ƒµÊËµ.
+q
+java:S1192†"NDefine a constant instead of duplicating this literal "appendButtons" 3 times.(¥Òğêûÿÿÿÿ8ª¶ç¶.
 k
-java:S1192­"HDefine a constant instead of duplicating this literal "deleted" 3 times.(ÿøãÏüÿÿÿÿ8»û¹Ìµ.
-f
-java:S2147\"DCombine this catch with the one at line 84, which has the same body.(ÿŠïıÿÿÿÿ8¿ÇŠµ.
-k
-java:S1192Æ"HDefine a constant instead of duplicating this literal " WHERE " 4 times.(¦æèšøÿÿÿÿ8©²µ.
-†
-java:S1157·"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(’ÄÉ¶üÿÿÿÿ8ì‚ãÀµ.
-Z
-java:S3655³"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8»û¹Ìµ.
-F
-java:S1125²"(Remove the literal "true" boolean value.(Şâàş8¸ÙáÀµ.
-E
-java:S1148Z"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
-G
-java:S1144r"*Remove this unused private "_save" method.(¥Å8¿ÇŠµ.
-p
-java:S3776£"RRefactor this method to reduce its Cognitive Complexity from 67 to the 15 allowed.(ŠÀö8»û¹Ìµ.
-K
-java:S1125·"(Remove the literal "true" boolean value.(’ÄÉ¶üÿÿÿÿ8ì‚ãÀµ.
-b
-java:S3358ù"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8»û¹Ìµ.
-k
-java:S1192ƒ"HDefine a constant instead of duplicating this literal "created" 6 times.(À®¼«ùÿÿÿÿ8šçµ.
-k
-java:S1192÷"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8»û¹Ìµ.
+java:S1192ş"HDefine a constant instead of duplicating this literal "</div>" 26 times.(ÖÙ¿Øıÿÿÿÿ8õªéæ¶.
 u
-java:S3776€"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Õş›…ıÿÿÿÿ8ƒµÊËµ.
-O
-java:S1144­",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8ƒµÊËµ.
-z
-java:S1192¿"]Define a constant instead of duplicating this literal "<div style=\"float:right;\">" 4 times.(•ÑÆ_8»û¹Ìµ.
-U
-java:S1135Ÿ"2Complete the task associated to this TODO comment.(ã†Àçúÿÿÿÿ8»û¹Ìµ.
-
-java:S1192Ş"^Define a constant instead of duplicating this literal "col-sm-12 col-md-12 col-lg-12" 3 times.(‚¯óßüÿÿÿÿ8»û¹Ìµ.
-O
-java:S1144c"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8¿ÇŠµ.
-M
-java:S1144Ø"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8ƒµÊËµ.
-a
-java:S2147X"DCombine this catch with the one at line 84, which has the same body.(™è“î8¿ÇŠµ.
-p
-java:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¥Æ‹8»û¹Ìµ.
-c
-java:S1192”"FDefine a constant instead of duplicating this literal "noRow" 3 times.(Ì¢­8»û¹Ìµ.
-@
-java:S1148"#Use a logger to log this exception.(ä¦ºö8¿ÇŠµ.
-l
-java:S1192¶"NDefine a constant instead of duplicating this literal "searchQuickly" 3 times.(½ö®‘8ïüãÀµ.
-u
-java:S3776©"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(£²Ç—üÿÿÿÿ8¿ÇŠµ.
-E
-java:S1148^"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
-Z
-java:S3655´"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8Ùé¶Àµ.
-€
-java:S1157y"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(Şâàş8¿ÇŠµ.
-?	java:S131£""Add a default case to this switch.(òüÜÁ8ƒµÊËµ.
-M
-java:S1172Ø"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8ƒµÊËµ.
-@
-java:S1148$"#Use a logger to log this exception.(ä¦ºö8¿ÇŠµ.
+java:S3776É"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(£²Ç—üÿÿÿÿ8õªéæ¶.
 Y
-java:S1144ô"6Remove this unused private "generateNewButton" method.(ËäÓîıÿÿÿÿ8»û¹Ìµ.
-l
-java:S1192ì"NDefine a constant instead of duplicating this literal "<div class=\"" 3 times.(œû‡á8»û¹Ìµ.
-g
-java:S3358÷"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8ƒµÊËµ.
-k
-java:S1192å"HDefine a constant instead of duplicating this literal "</div>" 26 times.(ÖÙ¿Øıÿÿÿÿ8ƒµÊËµ.
-i
-java:S1192÷"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8»û¹Ìµ.
-E
-java:S1125y"(Remove the literal "true" boolean value.(Şâàş8¿ÇŠµ.
-M
-java:S5411‘"*Use the primitive boolean expression here.(†ù¢İşÿÿÿÿ8ƒµÊËµ.
-f
-java:S1858ù"H"entitiesToForm" returns a string, there's no need to call "toString()".(Õ¿éñ8ƒµÊËµ.
+java:S36551"7Call "Optional#isPresent()" before accessing the value.(‹Œ½Òúÿÿÿÿ8Ö›Û²¶.
+
+java:S1192ü"^Define a constant instead of duplicating this literal "col-sm-12 col-md-12 col-lg-12" 3 times.(ã¦î¾şÿÿÿÿ8õªéæ¶.
+F
+java:S1125¹"(Remove the literal "true" boolean value.(ô¾­à8ÿÜµç¶.
+p
+java:S3776ê"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¥Æ‹8õªéæ¶.
+‘
+java:S1192ü"nDefine a constant instead of duplicating this literal "<div class=\"col-sm-12 col-md-12 col-lg-12\">" 4 times.(ªÀ¯ùÿÿÿÿ8õªéæ¶.
 Z
-java:S3655µ"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8ƒµÊËµ.
+java:S3655á"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8†”¢æ¶.
+p
+java:S3776Õ"RRefactor this method to reduce its Cognitive Complexity from 70 to the 15 allowed.(ŠÀö8õªéæ¶.
+i
+java:S1192¼"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8õªéæ¶.
+k
+java:S1192¼"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8õªéæ¶.
+d
+java:S1192x"GDefine a constant instead of duplicating this literal "db_url" 3 times.(€ˆş£8Ö›Û²¶.
+O
+java:S1144Æ",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8õªéæ¶.
+i
+java:S1192û"KDefine a constant instead of duplicating this literal "<div id=\"" 6 times.(ëáÕ©8ë”çæ¶.
+k
+java:S1192¡"HDefine a constant instead of duplicating this literal "created" 5 times.(À®¼«ùÿÿÿÿ8õªéæ¶.
+U
+java:S3655¼"7Call "Optional#isPresent()" before accessing the value.(ºÏòõ8õªéæ¶.
+b
+java:S2147h"ECombine this catch with the one at line 100, which has the same body.(™è“î8¿ÇŠµ.
+?	java:S131¼""Add a default case to this switch.(òüÜÁ8õªéæ¶.
+E
+java:S1148j"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
+g
+java:S3358Í"DExtract this nested ternary operation into an independent statement.(Œáƒ¸şÿÿÿÿ8ş°ç¶.
+H
+java:S1144’"*Remove this unused private "_save" method.(¥Å8——âå¶.
+j
+java:S1192×"LDefine a constant instead of duplicating this literal "REFERENCES " 3 times.(Íà¬´8õªéæ¶.
+m
+java:S1192‚"JDefine a constant instead of duplicating this literal "</button>" 3 times.(©Ô’Œıÿÿÿÿ8õªéæ¶.
+W
+java:S1481Ò"4Remove this unused "appendRelations" local variable.(úñÎûşÿÿÿÿ8¾£›ç¶.
+c
+java:S1192…"FDefine a constant instead of duplicating this literal "false" 4 times.(ËÔùG8æÁåå¶.
+Z
+java:S3655à"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8ë”çæ¶.
+g
+java:S1192Ã"IDefine a constant instead of duplicating this literal "_related" 4 times.(¶„êú8õªéæ¶.
+d
+java:S1192’"FDefine a constant instead of duplicating this literal "id=\"" 4 times.(šÖûÊ8õªéæ¶.
+O
+java:S1144s"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8¿ÇŠµ.
+@
+java:S1148"#Use a logger to log this exception.(ä¦ºö8¿ÇŠµ.
+M
+java:S1144ñ"*Remove this unused private "_view" method.(Ô¢¾çüÿÿÿÿ8õªéæ¶.
+i
+java:S1192ÿ"FDefine a constant instead of duplicating this literal "\">\n" 3 times.(˜å˜˜şÿÿÿÿ8õªéæ¶.
+m
+java:S1192Ş"ODefine a constant instead of duplicating this literal "SELECT * FROM " 3 times.(ñ©Šõ8ë”çæ¶.
+z
+java:S1192õ"]Define a constant instead of duplicating this literal "<div style=\"float:right;\">" 4 times.(•ÑÆ_8õªéæ¶.
+M
+java:S1172ñ"*Remove this unused method parameter "req".(Ô¢¾çüÿÿÿÿ8õªéæ¶.
+f
+java:S1854Ò"CRemove this useless assignment to local variable "appendRelations".(úñÎûşÿÿÿÿ8¾£›ç¶.
+E
+java:S1148n"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
+b
+java:S3358¾"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8õªéæ¶.
+Q
+java:S1066."/Merge this if statement with the enclosing one.(ÁöÚıÿÿÿÿ8Ö›Û²¶.
+E
+java:S1148f"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¿ÇŠµ.
+S
+java:S36552"7Call "Optional#isPresent()" before accessing the value.(È½î 8Ö›Û²¶.
+@
+java:S1148)"#Use a logger to log this exception.(ä¦ºö8¿ÇŠµ.
+u
+java:S3776™"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Õş›…ıÿÿÿÿ8õªéæ¶.
+g
+java:S3358¼"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8õªéæ¶.
+k
+java:S1192ß"HDefine a constant instead of duplicating this literal " WHERE " 4 times.(¦æèšøÿÿÿÿ8õªéæ¶.
+f
+java:S1858’"H"entitiesToForm" returns a string, there's no need to call "toString()".(¸¤õ8¾£›ç¶.
+s
+java:S1192„"PDefine a constant instead of duplicating this literal "appendRelations" 8 times.(Ä¿Ó¡ÿÿÿÿÿ8——âå¶.
+l
+java:S1192M"JDefine a constant instead of duplicating this literal "text/html" 6 times.(ÕÍ×äøÿÿÿÿ8¿ÇŠµ.
+g
+java:S2147l"ECombine this catch with the one at line 100, which has the same body.(ÿŠïıÿÿÿÿ8¿ÇŠµ.
+b
+java:S3358»"DExtract this nested ternary operation into an independent statement.(´È÷½8ë”çæ¶.
+o
+java:S3776F"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÛÓîë8¿ÇŠµ.
+c
+java:S1192…"FDefine a constant instead of duplicating this literal "noRow" 4 times.(ËÔùG8——âå¶.
+n
+java:S1192Ï"PDefine a constant instead of duplicating this literal "deleteEntity( '" 3 times.(è°Úş8õªéæ¶.
+e
+java:S1192Ï"GDefine a constant instead of duplicating this literal "delete" 4 times.(è°Úş8õªéæ¶.
+M
+java:S5411ª"*Use the primitive boolean expression here.(†ù¢İşÿÿÿÿ8õªéæ¶.
+i
+java:S1192È"FDefine a constant instead of duplicating this literal "close" 4 times.(“¤ä‰şÿÿÿÿ8õªéæ¶.
+Z
+java:S3655â"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8õªéæ¶.
+O
+java:S1144»"1Remove this unused private "__toSingular" method.(Âù¡–8õªéæ¶.
+t
+java:S4276"WRefactor this code to use the more specialised Functional Interface 'Predicate<String>'(Éí©a8õªéæ¶.
+f
+java:S1854™"CRemove this useless assignment to local variable "appendRelations".(úñÎûşÿÿÿÿ8îÊÁç¶.
+W
+java:S1481™"4Remove this unused "appendRelations" local variable.(úñÎûşÿÿÿÿ8îÊÁç¶.
+Y	java:S125®"<This block of commented-out lines of code should be removed.(éÍ©Î8îÊÁç¶.
