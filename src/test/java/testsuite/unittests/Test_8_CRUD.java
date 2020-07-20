@@ -1,5 +1,6 @@
 package testsuite.unittests;
 
+import testsuite.TestUtility;
 import testsuite.provider.Test_8_Provider;
 import comp.IPlugin;
 import comp.IRequest;
@@ -206,7 +207,11 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("content-length: 0");
         compact = body.replace(" " , "");
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','4')\">TailContentJadida</textarea>");
-        assert compact.contains("<spanvalue=\"0\"id=\"tails_4_value\">");
+        assert compact.contains("<spanvalue=\"0\"id=\"tails_4_value_span\">");
+        assert compact.contains("<spanvalue=\"0\"id=\"tails_4_created_span\">");
+        assert compact.contains("<spanvalue=\"0\"id=\"tails_4_deleted_span\">");
+        assert compact.contains("<spanvalue=\"0\"id=\"tails_4_name_span\">");
+        assert compact.contains("<textareaid=\"tails_4_value\"class=\"TailsValue\"name=\"value\"oninput=\"noteOnInputFor('value','tails','4')\">TailContentJadida</textarea>");
     }
 
     @Test
@@ -432,7 +437,10 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
                 )
         );
         res = crud.handle(req);
-        assert body.equals(getBody(res).toString());
+        String otherBody = getBody(res).toString();
+        assert TestUtility.similarity(body, otherBody) > 0.994;
+
+
     }
 
     @Test

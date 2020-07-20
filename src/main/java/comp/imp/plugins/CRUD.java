@@ -127,6 +127,22 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     }
 
+    private Map<String, String> _defaultEntitySetting(IRequest req, Map<String, String> paramTable){
+        Map<String, String> settingsTable = new TreeMap<>(Map.of(
+                "appendRelations",  "true",
+                "noRow",            "false",
+                "appendButtons",    "true",
+                "searchQuickly",    "false"
+        ));
+        paramTable.putAll(req.getUrl().getParameter());
+        paramTable.forEach((k,v)->{ if(settingsTable.containsKey(k)) settingsTable.put(k,v); });
+        if( req.getMethod().equals("POST") ) {
+            paramTable.putAll(new Url(req.getContentString()).getParameter());
+        }
+        settingsTable.forEach((k,v)->paramTable.remove(k));
+        return settingsTable;
+    }
+
     private void _save(IRequest req,  IResponse response)
     {
         response.setContent("text/html");
