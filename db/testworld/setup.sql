@@ -131,12 +131,20 @@
 --<#SPLIT#>--
 -- First human - attribute relation :
 
-    INSERT INTO human_attribute_relations -- id : 4
+    INSERT INTO human_attribute_relations -- id : 1
     (human_id, attribute_id, description, created)
     VALUES
     (4, 4, 'Jup! John is mysterious. ', datetime('now'));
     --  John <->  Mysterious !
 
+--<#SPLIT#>--
+-- Second human - attribute relation :
+
+    INSERT INTO human_attribute_relations -- id : 1
+    (human_id, attribute_id, description, created)
+    VALUES
+    (4, 2, 'John is a weired person...', datetime('now'));
+    --  John <->  Mysterious !
 
 --<#SPLIT#>--
 
