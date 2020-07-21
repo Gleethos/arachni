@@ -186,7 +186,7 @@
                                                                 placeholder="sql-world source folder"
                                                         ><br>
                                                         <div>--<#AVAILABLE#SQL#SOURCES#>--</div>
-                                                        <button id="load_crud_world_sql_button">Set DB</button>
+                                                        <button id="load_crud_world_sql_button">Bootstrap SQL</button>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12">
                                                         <h3>JDBC Source File :</h3>
@@ -198,8 +198,6 @@
                                                                 placeholder="db-world source file"
                                                         ><br>
                                                         <span>Examples:</span><br>
-                                                        jdbc:sqlite:C:/sqlite/db/TailDB<br>
-                                                        jdbc:sqlite:C:/sqlite/db/TestDB<br>
                                                         <div>--<#AVAILABLE#DATABASES#>--</div>
                                                         <button id="set_crud_world_db_button">Set DB</button>
                                                     </div>
@@ -248,8 +246,15 @@
                                     });
                                     $('#load_crud_world_sql_button').click(function() {
                                         var sql = $('#sql_world_source');
-                                        $('#set_crud_world_response_button').load('CRUD/setJDBC?sql_source='+sql.val());
-                                        loadCRUDView('world');
+                                        if(
+                                            confirm(
+                                                "Do you really want to bootstrap '"+sql.val()+"' ?\n" +
+                                                "Tables might be dropped and their data would be lost permanently!"
+                                            )
+                                        ) {
+                                            $('#set_crud_world_response_button').load('CRUD/setJDBC?sql_source='+sql.val());
+                                            loadCRUDView('world');
+                                        }
                                     })
                                 });
                             </script>

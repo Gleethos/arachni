@@ -2,45 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-33f4115d-7549-4c8e-b5be-e4d42d126042.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-3df99971-730a-4e2f-aefb-6a3b56ad28a2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-41cdcc4e-70fa-48bd-a334-2df2eb6b5ff4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-428ea868-344c-47da-b80b-37d78f5038a7.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4599e678-180e-4e72-b45b-a8bdf060605a.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-474ae52a-1e23-4583-95fb-ae29789c3d4e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4a7a9c9e-8ac7-4acc-858b-38a66837938c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-4ba16ff0-9506-43e3-9301-09a2542a004b.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-7d592f30-4ea4-4ac0-9345-1ae1684fa615.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-84fa73f0-91e1-41ad-b052-d79238b5293c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-875ae6f0-ba5e-4ccc-8813-57da13ccba98.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-8daf7331-a0de-4958-993f-164cd752ee9c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a1312828-d8d5-4687-96ba-4147017efd60.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a581bd85-9a28-4db1-8c16-8b35d7bb4c7d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-a7f11864-aa61-4fa6-8782-835625ae85a5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-b567e028-b6cc-405e-b21c-32e833a5547d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-b63788b8-9201-495c-8472-ad0178cf0ae5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-b7890f3b-25a7-4105-9d44-c01899a66c99.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ba245914-7426-46dc-8db6-3f21ff81d85a.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e683c628-97c8-4503-a4f8-07fcda2fe710.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-f43716e4-c400-4d53-ab91-67e585827c41.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-6c169107-27b7-486d-98df-d0e1743bca3f.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-dd150af7-3f4e-465a-afc7-e0e773f758a5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-f4c8021d-3ec3-4c64-8488-857f71ddcf33.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/dbs/THIS_IS_A_TEST_VALUE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CRUD/crudworld.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CRUD/crudworld.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/dbs/TestWorldDB" beforeDir="false" afterPath="$PROJECT_DIR$/storage/dbs/TestWorldDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/db/TestDB-saving" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB-saving" afterDir="false" />
@@ -388,7 +359,7 @@
       <workItem from="1595149821439" duration="41631000" />
       <workItem from="1595271962768" duration="5623000" />
       <workItem from="1595284766962" duration="2495000" />
-      <workItem from="1595323497657" duration="27965000" />
+      <workItem from="1595323497657" duration="28939000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1587840208108</created>
@@ -726,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595351059650</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="update">
+      <created>1595364886716</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1595364886716</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,10 +734,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593859897852" />
-    <state x="352" y="0" key="CommitChangelistDialog2" timestamp="1595351057255">
+    <state x="352" y="0" key="CommitChangelistDialog2" timestamp="1595364885562">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="352" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595351057255" />
+    <state x="352" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595364885562" />
     <state width="1534" height="440" key="DebuggerActiveHint" timestamp="1595337011552">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -768,22 +746,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595286198310" />
-    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1595364832088">
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1595365847242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595364832088" />
-    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1595364832088">
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595365847242" />
+    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1595365847242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595364832088" />
-    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1595364832088">
+    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595365847242" />
+    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1595365847241">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595364832088" />
-    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1595364832088">
+    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595365847241" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1595365847242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595364832088" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595365847242" />
     <state width="1491" height="322" key="GridCell.Tab.1.bottom" timestamp="1595364429260">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -876,10 +854,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595353675487" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595287219982">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595364893603">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595287219982" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595364893603" />
     <state width="760" height="447" key="XDebugger.FullValuePopup" timestamp="1595364284268">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
