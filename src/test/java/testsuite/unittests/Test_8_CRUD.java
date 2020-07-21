@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
+public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
 
     @Test
     public void test_default_CRUD_response() throws Exception
@@ -37,38 +37,6 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("tabBody.children().css(\"display\",\"none\");");
         assert compact.contains(".children('textarea').first().focus();");
         assert compact.contains("$('#'+tableName+'_search').children('input,textarea')");
-    }
-
-    public void test_CRUD_default_response_2() throws Exception
-    {
-        Test_8_Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld");
-        IRequest req = createInstance().getRequest(
-                RequestHelper.getValidRequestStream("CRUD")
-        );
-        IResponse res = crud.handle(req);
-        String body = getBody(res).toString();
-
-        assert body.contains("200 OK");
-        assert body.contains("id=\"sql_world_source\"");
-        assert body.contains("id=\"jdbc_world_url\"");
-        assert body.contains("name=\"parent_tail_id");
-        assert body.contains("name=\"id");
-        assert body.contains("name=\"child_tail_id");
-        assert body.contains("id=\"tags_search\"");
-        assert body.contains("id=\"tail_relations_search\"");
-        assert body.contains("<button onclick=");
-        assert body.contains("each(function () {");
-        assert body.contains("text/html");
-        assert body.contains("load");
-        assert body.contains("tails");
-        assert body.contains("input");
-        assert body.contains("textarea");
-        assert !body.contains("content-length: 0");
-        assert res.getContentType().contains("text/html");
-        String compact = body.replace(" ", "").replace("\n","");
-        assert compact.contains(".each(function(){params[this.name]=this.value;});");
-        assert compact.contains("children('input,textarea')");
     }
 
     @Test
@@ -596,9 +564,9 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         );
         res = crud.handle(req);
         String otherBody = getBody(res).toString();
-        assert TestUtility.similarity(body, otherBody) > 0.994;
-
-
+        assert body.length()==otherBody.length();
+        double similarity = TestUtility.similarity(body, otherBody);
+        assert similarity > 0.995;
     }
 
     @Test
@@ -810,7 +778,7 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
 
-        String expected = "jdbc:sqlite:"+new File("db/").getAbsolutePath()+"\\THIS_IS_A_TEST_VALUE";
+        String expected = "jdbc:sqlite:"+new File("storage/dbs/").getAbsolutePath()+"\\THIS_IS_A_TEST_VALUE";
         assert body.contains("JDBC url set to : '"+expected+"'");
         assert ((CRUD)crud).getURL().equals(expected);
         assert res.getContentType().contains("text/html");

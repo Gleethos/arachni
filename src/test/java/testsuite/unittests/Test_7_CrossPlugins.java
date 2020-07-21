@@ -269,7 +269,7 @@ public class Test_7_CrossPlugins extends AbstractTestFixture<Test_7_Provider> {
     @Test
     public void test_plugin_utility_and_sql_setup(){
         String[] commands = new String[0];
-        File file = new File("db/temperature", "setup.sql");
+        File file = new File("storage/sql/temperature", "setup.sql");
         int fileLength = (int) file.length();
         try {
             byte[] fileData = IPlugin.util.readFileData(file, fileLength);

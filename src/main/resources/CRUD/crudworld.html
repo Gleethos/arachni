@@ -184,7 +184,9 @@
                                                                 id="sql_world_source"
                                                                 style="width:100%;text-align: center;"
                                                                 placeholder="sql-world source folder"
-                                                        >
+                                                        ><br>
+                                                        <div>--<#AVAILABLE#SQL#SOURCES#>--</div>
+                                                        <button id="load_crud_world_sql_button">Set DB</button>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12">
                                                         <h3>JDBC Source File :</h3>
@@ -198,7 +200,8 @@
                                                         <span>Examples:</span><br>
                                                         jdbc:sqlite:C:/sqlite/db/TailDB<br>
                                                         jdbc:sqlite:C:/sqlite/db/TestDB<br>
-                                                        <button id="set_crud_world_button">Set DB</button>
+                                                        <div>--<#AVAILABLE#DATABASES#>--</div>
+                                                        <button id="set_crud_world_db_button">Set DB</button>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12">
                                                         <div
@@ -234,15 +237,20 @@
                                     $('#crud_world_redirect_button').click(function() {
                                         window.location = window.location.origin+'/crud';
                                     });
-                                    $('#set_crud_world_button').click(function() {
+                                    $('#set_crud_world_db_button').click(function() {
                                         var url = $('#jdbc_world_url');
-                                        var sql = $('#sql_world_source');
-                                        $('#set_crud_world_response_button').load('CRUD/setJDBC?db_url='+url.val()+'&sql_source='+sql.val());
-                                        var newTitle = sql.val();
+                                        $('#set_crud_world_response_button').load('CRUD/setJDBC?db_url='+url.val());
+                                        var newTitle = url.val().split("/");
+                                        newTitle = newTitle[newTitle.length-1];
                                         $('#crud_world_page_title').html(newTitle);
                                         $('#crud_world_title').html(newTitle);
                                         loadCRUDView('world');
                                     });
+                                    $('#load_crud_world_sql_button').click(function() {
+                                        var sql = $('#sql_world_source');
+                                        $('#set_crud_world_response_button').load('CRUD/setJDBC?sql_source='+sql.val());
+                                        loadCRUDView('world');
+                                    })
                                 });
                             </script>
 

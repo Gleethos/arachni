@@ -1,5 +1,7 @@
 PRAGMA foreign_keys = ON;
 --<#SPLIT#>--
+DROP TABLE IF EXISTS human_relation_attribute_relations;
+--<#SPLIT#>--
 DROP TABLE IF EXISTS human_attribute_relations;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS attributes;
@@ -29,7 +31,7 @@ CREATE TABLE human_relations(
 
 --<#SPLIT#>--
 
-CREATE TABLE human_relation_attribute_relation(
+CREATE TABLE human_relation_attribute_relations(
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   relation_id INTEGER NOT NULL,
   attribute_id INTEGER NOT NULL,
@@ -56,6 +58,7 @@ CREATE TABLE human_attribute_relations(
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   human_id INTEGER NOT NULL,
   attribute_id INTEGER NOT NULL,
+  description TEXT NOT NULL,
   created TEXT NOT NULL,
   deleted TEXT,
   FOREIGN KEY (human_id) REFERENCES humans (id),

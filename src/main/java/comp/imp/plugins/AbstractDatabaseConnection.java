@@ -97,11 +97,7 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _close(){
         try {
-            //if(_connection!=null) _connection.close();
-            if(
-                    _connections.containsKey(Thread.currentThread())
-                            && _connections.get(Thread.currentThread()) != null
-            ){
+            if(_connections.containsKey(Thread.currentThread()) && _connections.get(Thread.currentThread()) != null){
                 _connections.get(Thread.currentThread()).close();
                 _connections.put(Thread.currentThread(), null);
             }
@@ -318,7 +314,8 @@ public abstract class AbstractDatabaseConnection {
      * SQL execution on connection!
      * @param sql
      */
-    protected void _execute(String sql){
+    protected void _execute(String sql) {
+        if(sql.isBlank()) return;
         Connection conn = _connections.get(Thread.currentThread());
         try {
             Statement stmt = conn.createStatement();
@@ -574,7 +571,7 @@ public abstract class AbstractDatabaseConnection {
     protected void _executeFile(String name){
         Connection conn = _connections.get(Thread.currentThread());//_connection;
         String[] commands;
-        File file = (name.contains(":"))?new File(name):new File("db/", name);
+        File file = (name.contains(":"))?new File(name):new File("storage/sql/", name);
         int fileLength = (int) file.length();
         try {
             byte[] fileData = IPlugin.util.readFileData(file, fileLength);

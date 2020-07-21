@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="TestWorldDB" uuid="865e4d24-aeba-42b3-bc4b-63b2a06918d3">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\development\java\studium\arachni\test\db\TestWorldDB</jdbc-url>
+    </data-source>
+  </component>
+</project>

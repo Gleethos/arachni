@@ -18,7 +18,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
 
     public CRUD() {
-        super("jdbc:sqlite:C:/sqlite/db/TailDB", "", "");
+        super("jdbc:sqlite:"+new File("storage/dbs").getAbsolutePath()+"/TailDB", "", "");
     }
 
     public CRUD(String url, String name, String password)
@@ -40,7 +40,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private void _initializeWorldSource( String worldfolder ) {
         try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
         List<String> filesFound = new ArrayList<>();
-        File folder = new File("db/"+worldfolder);
+        worldfolder = (worldfolder.contains(":"))?worldfolder:"storage/sql/"+worldfolder;
+        File folder = new File(worldfolder);
         for ( final File f : folder.listFiles() ) {
             if (f.isFile()) {
                 if (f.getName().endsWith(".sql")) filesFound.add(f.getAbsolutePath());
@@ -121,7 +122,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String url = params.get("db_url").trim();
             if ( !url.startsWith("jdbc:sqlite:") ) {
                 if (url.contains(":")) url = "jdbc:sqlite:" + url;
-                else url = "jdbc:sqlite:" + new File("db/" + url).getAbsolutePath();
+                else url = "jdbc:sqlite:" + new File("storage/dbs/" + url).getAbsolutePath();
             }
             _setUrl(url);
             result += "JDBC url set to : '"+url+"'.\n";
@@ -161,9 +162,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, String> paramTable = req.getUrl().getParameter();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
 
-        boolean appendRelations = settingTable.get("appendRelations").equals("true");
-
-
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
@@ -178,11 +176,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         _commit(response);
         _close();
         _createAndOrConnectToDatabase(response);
-
         String foundParamID = paramTable.get("id");
         req.getUrl().getParameter().clear();
         req.getUrl().getParameter().put("id", Objects.requireNonNullElseGet(foundParamID, () -> String.valueOf(lastID)));
-        //if(!appendRelations) req.getUrl().getParameter().put("appendRelations", "false");
         req.getUrl().getParameter().putAll(settingTable);
         _find(req, response);
 
@@ -218,7 +214,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, String> paramTable = new TreeMap<>();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
 
-        boolean appendRelations = settingTable.get("appendRelations").equals("true");
         boolean quickSearch     = settingTable.get("searchQuickly").equals("true");
 
         Map<String, List<String>> tables = _tablesSpace();
@@ -379,8 +374,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private void _view( IRequest req, IResponse response ) {
         response.setContentType("text/html");
+
+        //WIP!
+
         String fileData = new util().readResource("CRUD/crudworld.html");// send HTTP Headers
         Map<String, List<String>> tables = _tablesSpace();
+
         CRUDBuilder f = new CRUDBuilder(tables);
         f.$(fileData);
         response.setContent(f.toString());
@@ -876,6 +875,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
+        public String _newUID(){
+            String uid = Long.toHexString(System.currentTimeMillis())+Integer.toHexString(Math.abs(new Random().nextInt()));
+            return uid + Integer.toHexString(Math.abs(new Random().nextInt())).substring(0, 20-uid.length());
+        }
+
         public CRUDBuilder generateRelationEntity (
                 String relationTableName,
                 Map<String, List<Object>> currentRelationEntity,
@@ -883,7 +887,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 Map<String, List<Object>> currentOuterEntity,
                 String outerKey
         ) {
-            String uid = Long.toHexString(new Random().nextLong()).replace("-", "");
+            String uid = _newUID();
+
             $("<div " +
                     "id=\"" + relationTableName + "_" + uid + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
