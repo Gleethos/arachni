@@ -26,8 +26,6 @@ public abstract class AbstractDatabaseConnection {
      */
     private String _url, _user, _pwd;
 
-    //protected Connection _connection;
-
     private Map<Thread, Connection> _connections = new HashMap();
 
     AbstractDatabaseConnection(String url, String name, String password){
@@ -45,7 +43,17 @@ public abstract class AbstractDatabaseConnection {
     }
 
     protected void _setUrl(String url) {
+        String oldUrl = _url;
         _url = url;
+        try {
+            _close(); // closing current connection!
+            _createAndOrConnectToDatabase();
+            _close(); // closing new connection!
+        } catch (Exception e) {
+            _url = oldUrl; // Because the new url failed!
+            try {_createAndOrConnectToDatabase();} catch (Exception ee) {} // Reopening connection!
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -79,11 +87,7 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _commit(IResponse response) {
         try {
-            //if(_connection!=null) _connection.commit();
-            if(
-                    _connections.containsKey(Thread.currentThread())
-                    && _connections.get(Thread.currentThread()) != null
-            ){
+            if(_connections.containsKey(Thread.currentThread()) && _connections.get(Thread.currentThread()) != null){
                 _connections.get(Thread.currentThread()).commit();
             }
         } catch (SQLException e) {

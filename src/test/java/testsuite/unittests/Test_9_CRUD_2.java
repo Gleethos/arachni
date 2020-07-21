@@ -13,6 +13,30 @@ import java.io.File;
 public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
 
     @Test
+    public void test_view_CRUD_response() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream("CRUD/view")
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+
+        String path = new File("storage/dbs").getAbsolutePath();
+        TestUtility.assertContains(body, new String[]{
+                "<button onclick=\"$('#jdbc_world_url').val('"+path+"\\TestWorldDB');\">"+path+"\\TestWorldDB</button>"
+        });
+        path = new File("storage/sql").getAbsolutePath();
+        TestUtility.assertContains(body, new String[]{
+                "<button onclick=\"$('#sql_world_source').val('"+path+"\\tailworld');\">"+path+"\\tailworld</button>",
+                "<button onclick=\"$('#sql_world_source').val('"+path+"\\temperature');\">"+path+"\\temperature</button>",
+                "<button onclick=\"$('#sql_world_source').val('"+path+"\\testworld');\">"+path+"\\testworld</button>"
+        });
+
+    }
+
+    @Test
     public void test_CRUD_response_in_testworld() throws Exception
     {
         Test_9_Provider provider = createInstance();

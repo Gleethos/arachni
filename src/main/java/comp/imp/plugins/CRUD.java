@@ -18,7 +18,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
 
     public CRUD() {
-        super("jdbc:sqlite:"+new File("storage/dbs").getAbsolutePath()+"/TailDB", "", "");
+        super("jdbc:sqlite:"+new File("storage/dbs").getAbsolutePath()+"/CRUD_WORLD_DB", "", "");
     }
 
     public CRUD(String url, String name, String password)
@@ -214,12 +214,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         Map<String, String> paramTable = new TreeMap<>();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
 
-        boolean quickSearch     = settingTable.get("searchQuickly").equals("true");
+        boolean quickSearch = settingTable.get("searchQuickly").equals("true");
 
         Map<String, List<String>> tables = _tablesSpace();
         Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
-        List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
+        List<String> columns = new ArrayList<>(attributes.keySet());
 
         for(String column : columns) {
             if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
@@ -375,15 +375,29 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private void _view( IRequest req, IResponse response ) {
         response.setContentType("text/html");
 
-        //WIP!
-
         String fileData = new util().readResource("CRUD/crudworld.html");// send HTTP Headers
         Map<String, List<String>> tables = _tablesSpace();
 
-        CRUDBuilder f = new CRUDBuilder(tables);
-        f.$(fileData);
-        response.setContent(f.toString());
+        fileData = fileData.replace(
+                "--<#AVAILABLE#DATABASES#>--",
+                new CRUDBuilder(tables).folderFileButtonsForTarget(
+                        "storage/dbs",
+                        "jdbc_world_url",
+                        f -> f.isFile()
+                ).toString()
+        );
+        fileData = fileData.replace(
+                "--<#AVAILABLE#SQL#SOURCES#>--",
+                new CRUDBuilder(tables).folderFileButtonsForTarget(
+                        "storage/sql",
+                        "sql_world_source",
+                        f -> f.isDirectory()
+                ).toString()
+        );
+        response.setContent(fileData);
     }
+
+
 
     private void _world( IRequest req, IResponse response )
     {
@@ -506,6 +520,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     .map(word->word.substring(0, 1).toUpperCase() + word.substring(1))
                     .collect(Collectors.toList());
             return String.join(" ", parts);
+        }
+
+        private CRUDBuilder folderFileButtonsForTarget(String path, String targetSelector, Function<File, Boolean> check){
+            File folder = new File( path );
+            for ( final File f : folder.listFiles() ) {
+                if ( check.apply(f) ) {
+                    $("<button onclick=\"$('#"+targetSelector+"').val('"+f.getAbsolutePath()+"');\">");
+                    $(f.getAbsoluteFile());
+                    $("</button>");
+                }
+            }
+            return this;
         }
 
         private void tabsOf(Map<String, Consumer<String>> tabGenMap, String tabType){
