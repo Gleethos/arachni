@@ -1,70 +1,52 @@
 
-c
-java:S2095–"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
-A
-java:S2676J"Use the original value instead.(’¿Õşüÿÿÿÿ8İæÕŠ›.
-Q	java:S125+"<This block of commented-out lines of code should be removed.(¶ ö
-X
-java:S1141´"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ë ª±.
-F
-java:S1148°"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
-<
-java:S2676N"Use the original value instead.(íÎ”8İæÕŠ›.
-?
-java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å
-W
-java:S1141^"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
-F
-java:S1148»"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùâ±ø±.
-F
-java:S1148À"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùâ±ø±.
->	java:S1085")Either remove or fill this block of code.(”ı¾
-A
-java:S2676P"Use the original value instead.(©áÀ¾øÿÿÿÿ8İæÕŠ›.
-E
-java:S1148Y"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
-W
-java:S4719Å"9Replace charset name argument with StandardCharsets.UTF_8(ù—à»8³éãŒ›.
-V
-java:S2755«"3Disable access to external entities in XML parsing.(ƒ¶ŠÊûÿÿÿÿ8ÈÈ‚œ.
-X
-java:S1141©"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
-F
-java:S1148Î"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùâ±ø±.
-d
-java:S2259("BA "NullPointerException" could be thrown; "conn" is nullable here.(ìï‡Àûÿÿÿÿ8ùâ±ø±.
-A
-java:S2676L"Use the original value instead.(¤›·âşÿÿÿÿ8ùâ±ø±.
-T	java:S106d"9Replace this use of System.out or System.err by a logger.(·¬•8¼×Š›.
-E
-java:S1148#"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
-F
-java:S1148·"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ë ª±.
-X
-java:S1141­"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
-<
-java:S2676G"Use the original value instead.(íÑìœ8İæÕŠ›.
-Y	java:S125—"<This block of commented-out lines of code should be removed.(ÿî¼ 8³éãŒ›.
-F
-java:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
+m	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÑìœ8İæÕŠ›.
 l
 java:S2259²"IA "NullPointerException" could be thrown; "transformer" is nullable here.(Éç‡ıÿÿÿÿ8³éãŒ›.
-e
-java:S2184F"HCast one of the operands of this multiplication operation to a "double".(É½ü€8İæÕŠ›.
-E
-java:S1148a"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³éãŒ›.
-r	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¿Õşüÿÿÿÿ8İæÕŠ›.
-i
-java:S2095("GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8³éãŒ›.
-m	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÑìœ8İæÕŠ›.
-:
-java:S2676H"Use the original value instead.(™¬›Ùûÿÿÿÿ
-^	java:S125“"<This block of commented-out lines of code should be removed.(İò´ÿÿÿÿÿ8³éãŒ›.
-E	java:S108C")Either remove or fill this block of code.(”ı¾8İæÕŠ›.
-h
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(ÿğÍØ
-k	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¬›Ùûÿÿÿÿ
-t
-java:S3776}"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(¾üÔüÿÿÿÿ8¼×Š›.
 K
 java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+A
+java:S2676P"Use the original value instead.(©áÀ¾øÿÿÿÿ8İæÕŠ›.
+<
+java:S2676N"Use the original value instead.(íÎ”8İæÕŠ›.
+X
+java:S1141©"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
+e
+java:S2184F"HCast one of the operands of this multiplication operation to a "double".(É½ü€8İæÕŠ›.
+X
+java:S1141­"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.
+X
+java:S1141´"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ë ª±.
+T	java:S106d"9Replace this use of System.out or System.err by a logger.(·¬•8¼×Š›.
+<
+java:S2676G"Use the original value instead.(íÑìœ8İæÕŠ›.
+t
+java:S3776}"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(¾üÔüÿÿÿÿ8¼×Š›.
+V
+java:S2755«"3Disable access to external entities in XML parsing.(ƒ¶ŠÊûÿÿÿÿ8ÈÈ‚œ.
+>	java:S1085")Either remove or fill this block of code.(”ı¾
+E	java:S108C")Either remove or fill this block of code.(”ı¾8İæÕŠ›.
+i
+java:S2095("GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8³éãŒ›.
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(ÿğÍØ
+A
+java:S2676J"Use the original value instead.(’¿Õşüÿÿÿÿ8İæÕŠ›.
+?
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å
+r	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¿Õşüÿÿÿÿ8İæÕŠ›.
+Q	java:S125+"<This block of commented-out lines of code should be removed.(¶ ö
+c
+java:S2095–"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
+W
+java:S4719Å"9Replace charset name argument with StandardCharsets.UTF_8(ù—à»8³éãŒ›.
+Y	java:S125—"<This block of commented-out lines of code should be removed.(ÿî¼ 8³éãŒ›.
+A
+java:S2676L"Use the original value instead.(¤›·âşÿÿÿÿ8ùâ±ø±.
+k	java:S117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¬›Ùûÿÿÿÿ
+d
+java:S2259("BA "NullPointerException" could be thrown; "conn" is nullable here.(ìï‡Àûÿÿÿÿ8ùâ±ø±.
+^	java:S125“"<This block of commented-out lines of code should be removed.(İò´ÿÿÿÿÿ8³éãŒ›.
+:
+java:S2676H"Use the original value instead.(™¬›Ùûÿÿÿÿ
+W
+java:S1141^"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8³éãŒ›.

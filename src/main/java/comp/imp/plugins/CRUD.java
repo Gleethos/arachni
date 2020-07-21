@@ -37,11 +37,11 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         _initializeWorldSource(worldfolder);
     }
 
-    private void _initializeWorldSource(String worldfolder){
+    private void _initializeWorldSource( String worldfolder ) {
         try { _createAndOrConnectToDatabase(); } catch (Exception e) { e.printStackTrace(); }
         List<String> filesFound = new ArrayList<>();
         File folder = new File("db/"+worldfolder);
-        for (final File f : folder.listFiles()) {
+        for ( final File f : folder.listFiles() ) {
             if (f.isFile()) {
                 if (f.getName().endsWith(".sql")) filesFound.add(f.getAbsolutePath());
             }
@@ -114,14 +114,25 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private void _setJDBC(IRequest req,  IResponse response)
     {
-        response.setContent("text/html");
+        response.setContentType("text/html");
         Map<String, String> params = req.getUrl().getParameter();
         String result = "";
-        if(params.containsKey("db_url")) {
-            _setUrl(params.get("db_url").trim());
-            result = "JDBC url set to : '"+params.get("db_url")+"'";
+        if( params.containsKey("db_url") ) {
+            String url = params.get("db_url").trim();
+            if ( !url.startsWith("jdbc:sqlite:") ) {
+                if (url.contains(":")) url = "jdbc:sqlite:" + url;
+                else url = "jdbc:sqlite:" + new File("db/" + url).getAbsolutePath();
+            }
+            _setUrl(url);
+            result += "JDBC url set to : '"+url+"'.\n";
         } else {
-            result = "GET parameter key 'db_url' not found in request!";
+            result += "GET parameter key 'db_url' not found in request!\n";
+        }
+        if( params.containsKey("sql_source") ) {
+            _initializeWorldSource(params.get("sql_source"));
+            result += "SQL source set to : '"+params.get("sql_source")+"'.\n";
+        } else {
+            result += "GET parameter key 'sql_source' not found in request!\n";
         }
         response.setContent(result);
 

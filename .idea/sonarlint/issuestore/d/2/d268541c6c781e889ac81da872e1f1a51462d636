@@ -1,11 +1,5 @@
 
->
-java:S1148;"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-b
-java:S20957"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ
 O
 java:S4719@"9Replace charset name argument with StandardCharsets.UTF_8(ù—à»
->
-java:S11481"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-E
-java:S1148H"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8è¦½þ².
+b
+java:S20957"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ

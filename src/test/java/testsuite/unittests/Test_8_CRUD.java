@@ -810,8 +810,9 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
 
-        assert body.contains("JDBC url set to : 'THIS_IS_A_TEST_VALUE'");
-        assert ((CRUD)crud).getURL().equals("THIS_IS_A_TEST_VALUE");
+        String expected = "jdbc:sqlite:"+new File("db/").getAbsolutePath()+"\\THIS_IS_A_TEST_VALUE";
+        assert body.contains("JDBC url set to : '"+expected+"'");
+        assert ((CRUD)crud).getURL().equals(expected);
         assert res.getContentType().contains("text/html");
 
         req = createInstance().getRequest(
@@ -823,6 +824,17 @@ public class Test_8_CRUD  extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/TestDB'");
         assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
         assert res.getContentType().contains("text/html");
+
+        req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream("CRUD/setJDBC?db_url="+path+"/TestDB") // Without prefix should work too!
+        );
+        res = crud.handle(req);
+        body = getBody(res).toString();
+
+        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/TestDB'");
+        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
+        assert res.getContentType().contains("text/html");
+
     }
 
 
