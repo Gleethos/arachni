@@ -23,15 +23,17 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
 
-        String path = new File("storage/dbs").getAbsolutePath();
+        String path = new File("storage/dbs").getAbsolutePath().replace("\\", "/");
+        String value = new File("storage/dbs").getAbsolutePath();
         TestUtility.assertContains(body, new String[]{
-                "<button onclick=\"$('#jdbc_world_url').val('"+path+"\\TestWorldDB');\">"+path+"\\TestWorldDB</button>"
+                "<button onclick=\"$('#jdbc_world_url').val('"+path+"/TestWorldDB');\">"+value+"\\TestWorldDB</button>"
         });
-        path = new File("storage/sql").getAbsolutePath();
+        path = new File("storage/sql").getAbsolutePath().replace("\\", "/");
+        value = new File("storage/sql").getAbsolutePath();
         TestUtility.assertContains(body, new String[]{
-                "<button onclick=\"$('#sql_world_source').val('"+path+"\\tailworld');\">"+path+"\\tailworld</button>",
-                "<button onclick=\"$('#sql_world_source').val('"+path+"\\temperature');\">"+path+"\\temperature</button>",
-                "<button onclick=\"$('#sql_world_source').val('"+path+"\\testworld');\">"+path+"\\testworld</button>"
+                "<button onclick=\"$('#sql_world_source').val('"+path+"/tailworld');\">"+value+"\\tailworld</button>",
+                "<button onclick=\"$('#sql_world_source').val('"+path+"/temperature');\">"+value+"\\temperature</button>",
+                "<button onclick=\"$('#sql_world_source').val('"+path+"/testworld');\">"+value+"\\testworld</button>"
         });
 
     }

@@ -526,7 +526,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             File folder = new File( path );
             for ( final File f : folder.listFiles() ) {
                 if ( check.apply(f) ) {
-                    $("<button onclick=\"$('#"+targetSelector+"').val('"+f.getAbsolutePath()+"');\">");
+                    String filePath = f.getAbsolutePath().replace("\\", "/");
+                    $("<button onclick=\"$('#"+targetSelector+"').val('"+filePath+"');\">");
                     $(f.getAbsoluteFile());
                     $("</button>");
                 }
