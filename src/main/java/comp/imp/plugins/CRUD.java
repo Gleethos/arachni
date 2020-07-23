@@ -341,17 +341,23 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             if ( paramTable.containsKey(a) && !paramTable.get(a).equals("") ) searchAttributes.add(a);
         }
 
-        String keyAttribute = "id";
-        String[] preferenceList = new String[]{ "description", "name", "title" };
-        int matchId = -1;
-        for( String currentAttribute : attributes ) {
-            for (int i=0; i<preferenceList.length; i++) {
-                if ( currentAttribute.equals(preferenceList[i]) && i>matchId ) {
-                    keyAttribute = currentAttribute;
-                    matchId = i;
+
+        Function<List<String>, String> findBestAttribute = (attributeList)->{
+            String bestAttribute = "id";
+            String[] preferenceList = new String[]{ "description", "name", "title" };
+            int matchId = -1;
+            for( String currentAttribute : attributeList ) {
+                for (int i=0; i<preferenceList.length; i++) {
+                    if ( currentAttribute.equals(preferenceList[i]) && i>matchId ) {
+                        bestAttribute = currentAttribute;
+                        matchId = i;
+                    }
                 }
             }
-        }
+            return bestAttribute;
+        };
+        String keyAttribute = findBestAttribute.apply(attributes);
+
 
         List<Object> values = new ArrayList<>();
         StringBuilder sql = new StringBuilder("SELECT id, "+keyAttribute+" FROM " + innerTableName);
