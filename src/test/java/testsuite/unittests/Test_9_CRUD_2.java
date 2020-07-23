@@ -209,8 +209,195 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert !body.toLowerCase().contains("close");
     }
 
+    @Test
+    public void quick_search_with_POST_method_ignores_url_search_parameter_and_return_expected_result() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/attributes?searchQuickly=true&attribute_quick_search_parameter=Mysterious",
+                        "POST",
+                        "name=Friendship"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("id=\"attributes_quick_search_result\"");
+        assert body.contains("Friendship");
+        assert !body.contains("Mysterious");
+    }
+
+    @Test
+    public void quick_search_with_GET_method_uses_search_parameter_and_return_expected_result() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/attributes?searchQuickly=true&attributes_quick_search_parameter=Mysterious",
+                        "GET",
+                        "name=Friendship"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("id=\"attributes_quick_search_result\"");
+        assert body.contains("Mysterious");
+        assert !body.contains("Friendship");
+    }
+
+    @Test
+    public void quick_search_with_GET_method_returns_error_message_because_search_parameter_is_missing() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/attributes?searchQuickly=true",
+                        "GET"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
+        assert body.contains("500");
+    }
+
+    @Test
+    public void relational_quick_search_with_GET_method_returns_error_message_because_search_parameter_is_missing() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/attributes->humans?searchQuickly=true", "GET"
+        )))).toString();
+        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
+        assert body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
+        assert body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
+        assert body.contains("500");
+
+        body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/attributes->humans?" +
+                        "searchQuickly=true&" +
+                        "attributes_quick_search_parameter=rie&" +
+                        "humans_quick_search_parameter=ean&" +
+                        "relation_table_name=human_attribute_relations&" +
+                        "key_relation=FAIL",
+                "GET"
+        )))).toString();
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
+        assert body.contains("ERROR : Quick-Search expects value 'FAIL' of url parameter 'key_relation' to contain '->' identifier!");
+        assert body.contains("500");
+    }
+
+    @Test
+    public void relational_quick_search_with_GET_method_returns_error_message_because_relation_table_unknown() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/attributes->humans?" +
+                        "searchQuickly=true&" +
+                        "attributes_quick_search_parameter=rie&" +
+                        "humans_quick_search_parameter=ean&" +
+                        "relation_table_name=FAIL&" +
+                        "key_relation=attribute_id->human_id",
+                "GET"
+        )))).toString();
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
+        assert !body.contains("ERROR : Quick-Search expects value 'FAIL' of url parameter 'key_relation' to contain '->' identifier!");
+        assert body.contains("ERROR : Relation table with name 'FAIL' not found!");
+        assert body.contains("500");
+    }
+
+    @Test
+    public void relational_quick_search_with_GET_method_returns_error_message_because_table_unknown() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/FAIL_TABLE->humans?" +
+                        "searchQuickly=true&" +
+                        "attributes_quick_search_parameter=rie&" +
+                        "humans_quick_search_parameter=ean&" +
+                        "relation_table_name=FAIL&" +
+                        "key_relation=attribute_id->human_id",
+                "GET"
+        )))).toString();
+        assert body.contains("500");
+        assert body.contains("Cannot find entity 'FAIL_TABLE'! : Table not found in database!");
+    }
+
+    @Test
+    public void relational_quick_search_with_GET_method_returns_error_message_because_outer_table_unknown() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/attributes->OUTER_FAIL_TABLE?" +
+                        "searchQuickly=true&" +
+                        "attributes_quick_search_parameter=rie&" +
+                        "humans_quick_search_parameter=ean&" +
+                        "relation_table_name=FAIL&" +
+                        "key_relation=attribute_id->human_id",
+                "GET"
+        )))).toString();
+        assert body.contains("500");
+        assert body.contains("Cannot find entity 'OUTER_FAIL_TABLE'! : Table not found in database!");
+    }
+
+    @Test
+    public void relational_quick_search_with_GET_method_returns_expected_result() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
+                "CRUD/find/attributes->humans?" +
+                        "searchQuickly=true&" +
+                        "attributes_quick_search_parameter=rie&" +
+                        "humans_quick_search_parameter=ean&" +
+                        "relation_table_name=human_attribute_relations&" +
+                        "key_relation=attribute_id->human_id",
+                "GET"
+        )))).toString();
+        assert body.contains("200");
+        //TODO!
+        //assert body.contains("Cannot find entity 'OUTER_FAIL_TABLE'! : Table not found in database!");
+    }
+
+    @Test
+    public void quick_search_with_GET_method_returns_expected_result() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/find/attributes?searchQuickly=true&attributes_search_parameter=ne",
+                        "GET"
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
+        assert body.contains("500");
+    }
+
     @Override
     protected Test_9_Provider createInstance() {
         return new Test_9_Provider();
     }
+
 }

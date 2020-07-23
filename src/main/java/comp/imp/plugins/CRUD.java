@@ -3,7 +3,6 @@ package comp.imp.plugins;
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
-import comp.imp.Request;
 import comp.imp.Response;
 import comp.imp.Url;
 
@@ -165,10 +164,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         Map<String, List<String>> tables = _tablesSpace();
         if(!tables.containsKey(tableName)){
+            response.setStatusCode(500);
             response.setContent("Cannot save entity '"+tableName+"'! : Table not found in database!");
+            _close();
             return;
         }
-        Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
+        Map<String, List<String>> attributes = __attributesPropertiesTableOf(tables.get(tableName));
 
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
         for(String column : columns) {
@@ -213,8 +214,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private void _find(IRequest req,  IResponse response)
     {
         response.setContentType("text/html");
-        ArrayList<String> cols = new ArrayList<>();
+        ArrayList<String> searchAttributes = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
+        String outerTableName = "";
         
         Map<String, String> paramTable = new TreeMap<>();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
@@ -223,49 +225,85 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         boolean quickSearch = settingTable.get("searchQuickly").equals("true");
 
         Map<String, List<String>> tables = _tablesSpace();
-        Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
-
-        List<String> columns = new ArrayList<>(attributes.keySet());
-
-        for(String column : columns) {
-            if(paramTable.containsKey(column) && !paramTable.get(column).equals("")) cols.add(column);
+        if ( tableName.contains("->") ) { // Relational quick search!!
+            String[] parts = tableName.split("->");
+            tableName = parts[0];
+            outerTableName = parts[1];
         }
-        List<Object> values = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM " + tableName);
-        if ( !cols.isEmpty() ) sql.append(" WHERE ");
-        for ( int i=0; i<cols.size(); i++ ) {
-            String type = attributes.get(cols.get(i)).get(0);
-            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
-                sql.append(cols.get(i)).append(" LIKE ? ");
-                values.add("%"+paramTable.get(cols.get(i))+"%");
-            } else {
-                sql.append(cols.get(i)).append(" = ? ");
-                values.add(paramTable.get(cols.get(i)));
-            }
-            if ( i < cols.size()-1 ) sql.append("OR ");
+        if ( !tables.containsKey(tableName) ) {
+            response.setStatusCode(500);
+            response.setContent("Cannot find entity '"+tableName+"'! : Table not found in database!");
+            _close();
+            return;
         }
-        Map<String, List<Object>> map = _query(sql.toString(), values);
-        String result = "";
-        if(quickSearch)
-        {
-            String keyAttribute = "id";
-            String[] preferenceList = new String[]{ "description", "name", "title" };
-            int matchId = -1;
-            for(String currentAttribute : new ArrayList<>(attributes.keySet())) {
-                for (int i=0; i<preferenceList.length; i++) {
-                    if ( currentAttribute.equals(preferenceList[i]) && i>matchId ) {
-                        keyAttribute = currentAttribute;
-                        matchId = i;
+        if ( !outerTableName.isBlank() && !tables.containsKey(outerTableName) ) {
+            response.setStatusCode(500);
+            response.setContent("Cannot find entity '"+outerTableName+"'! : Table not found in database!");
+            _close();
+            return;
+        }
+        if ( quickSearch) {
+            if ( req.getMethod().equals("GET") ) {
+                String message = "";
+                if ( !paramTable.containsKey(tableName+"_quick_search_parameter") ) {
+                    message += "ERROR : Quick-Search expects url parameter '"+tableName+"_quick_search_parameter'!\n";
+                }
+                if ( !outerTableName.isBlank() ){
+                    if ( !paramTable.containsKey(outerTableName+"_quick_search_parameter") ) {
+                        message += "ERROR : Quick-Search expects url parameter '"+outerTableName+"_quick_search_parameter'!\n";
+                    }
+                    if ( !paramTable.containsKey("relation_table_name") ) {
+                        message += "ERROR : Quick-Search expects url parameter 'relation_table_name'!\n";
+                    } else if ( !tables.containsKey(paramTable.get("relation_table_name")) ) {
+                        message += "ERROR : Relation table with name '"+paramTable.get("relation_table_name")+"' not found!";
+                    }
+                    if ( !paramTable.containsKey("key_relation") ) {
+                        message += "ERROR : Quick-Search expects url parameter 'key_relation'!\n";
+                    } else if ( !paramTable.get("key_relation").contains("->") ) {
+                        message += "ERROR : Quick-Search expects value '"+paramTable.get("key_relation")
+                                +"' of url parameter 'key_relation' to contain '->' identifier!\n";
                     }
                 }
+                if ( !message.isBlank() ) {
+                    response.setStatusCode(500);
+                    response.setContent(message);
+                    _close();
+                    return;
+                }
             }
-            CRUDBuilder b = new CRUDBuilder(tables);
+        }
+
+
+        //!!
+
+        Map<String, List<Object>> map =
+                (quickSearch) ?
+                        __findQuickly(
+                                tables,
+                            tableName,
+                            searchAttributes,
+                            paramTable
+                        )
+                        :
+                        __findEntities(
+                                tables,
+                            tableName,
+                            searchAttributes,
+                            paramTable
+                        );
+        //!!!
+
+        String result = "";
+        if ( quickSearch )
+        {
+            String keyAttribute = map.keySet().stream().findFirst().get();
+            CRUDBuilder b = new CRUDBuilder( tables );
             b.$("<div id=\""+tableName+"_quick_search_result\" class=\"row\">")
                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
             b.$("<span><h3> "+b._snakeToTitle(keyAttribute)+"(s) :</h3></span>");
             b.$("</div>");
 
-            int numberOfFound = map.get("id").size();
+            int numberOfFound = map.get(keyAttribute).size();
             for( int i=0; i<numberOfFound; i++ ) {
                 Object value = map.get(keyAttribute).get(i);
                 b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 contentBox\">");
@@ -287,6 +325,84 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
+    }
+
+    private Map<String, List<Object>> __findQuickly(
+            Map<String, List<String>> tables,
+            String innerTableName,
+            List<String> searchAttributes,
+            Map<String, String> paramTable
+    ){
+        Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(innerTableName));
+
+        List<String> attributes = new ArrayList<>(attributesProperties.keySet());
+
+        if ( paramTable.containsKey( innerTableName+"_quick_search_parameter" ) ) {
+            for ( String a : attributes ) paramTable.put( a, paramTable.get(innerTableName+"_quick_search_parameter") );
+        }
+
+        for ( String a : attributes ) {
+            if ( paramTable.containsKey(a) && !paramTable.get(a).equals("") ) searchAttributes.add(a);
+        }
+
+        String keyAttribute = "id";
+        String[] preferenceList = new String[]{ "description", "name", "title" };
+        int matchId = -1;
+        for( String currentAttribute : attributes ) {
+            for (int i=0; i<preferenceList.length; i++) {
+                if ( currentAttribute.equals(preferenceList[i]) && i>matchId ) {
+                    keyAttribute = currentAttribute;
+                    matchId = i;
+                }
+            }
+        }
+
+        List<Object> values = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT id, "+keyAttribute+" FROM " + innerTableName);
+        if ( !searchAttributes.isEmpty() ) sql.append(" WHERE ");
+        for ( int i=0; i < searchAttributes.size(); i++ ) {
+            String type = attributesProperties.get(searchAttributes.get(i)).get(0);
+            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
+                sql.append(searchAttributes.get(i)).append(" LIKE ? ");
+                values.add("%"+paramTable.get(searchAttributes.get(i))+"%");
+            } else {
+                sql.append(searchAttributes.get(i)).append(" = ? ");
+                values.add(paramTable.get(searchAttributes.get(i)));
+            }
+            if ( i < searchAttributes.size()-1 ) sql.append("OR ");
+        }
+        return _query(sql.toString(), values);
+    }
+
+    private Map<String, List<Object>> __findEntities(
+            Map<String, List<String>> tables,
+            String tableName,
+            List<String> searchAttributes,
+            Map<String, String> paramTable
+    ){
+        Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(tableName));
+
+        List<String> attributes = new ArrayList<>(attributesProperties.keySet());
+
+        for ( String a : attributes ) {
+            if ( paramTable.containsKey(a) && !paramTable.get(a).equals("") ) searchAttributes.add(a);
+        }
+
+        List<Object> values = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM " + tableName);
+        if ( !searchAttributes.isEmpty() ) sql.append(" WHERE ");
+        for ( int i=0; i < searchAttributes.size(); i++ ) {
+            String type = attributesProperties.get(searchAttributes.get(i)).get(0);
+            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
+                sql.append(searchAttributes.get(i)).append(" LIKE ? ");
+                values.add("%"+paramTable.get(searchAttributes.get(i))+"%");
+            } else {
+                sql.append(searchAttributes.get(i)).append(" = ? ");
+                values.add(paramTable.get(searchAttributes.get(i)));
+            }
+            if ( i < searchAttributes.size()-1 ) sql.append("OR ");
+        }
+        return _query(sql.toString(), values);
     }
 
 
@@ -423,22 +539,34 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         CRUDBuilder f = new CRUDBuilder(tables);
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
-                table -> {
+                tableName -> {
                     f.$("<div class = \"mainContentWrapper col-sm-12 col-md-12 col-lg-12\">")
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                .$("<h1>").$(f._snakeToTitle(table)).$("</h1>")
+                                .$("<h1>").$(f._snakeToTitle(tableName)).$("</h1>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+table).get("COUNT(*)").get(0)+"</label>")
+                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+tableName).get("COUNT(*)").get(0)+"</label>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<button onclick=\"$('#"+table+"_result').html('');\">CLEAR</button>")
-                                    .$("<button onclick=\"loadFoundForEntity('").$(table).$("')\">SEARCH</button>")
-                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(table).$("')\">QUICK SEARCH</button>")
+                                    .$("<button onclick=\"$('#"+tableName+"_result').html('');\">CLEAR</button>")
+                                    .$("<button onclick=\"loadFoundForEntity('").$(tableName).$("')\">SEARCH</button>")
+                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(tableName).$("')\">QUICK SEARCH</button>")
                                 .$("</div>");
-                                List<String> columns = tables.get(table);
+
+                    Map<String, Map<String, String>> relationTables = __findRelationTablesOf(tableName, tables, s->true);
+                    List<String> relationTableList = new ArrayList<>(relationTables.keySet());
+                    for ( String relationTableName : relationTableList ) {
+                        f._forRelationKeys(
+                                relationTables.get(relationTableName),
+                                tableName,
+                                (innerKey, outerKey, outerTable) ->{
+                                    // TODO!
+                                }
+                        );
+                    }
+                                List<String> columns = tables.get(tableName);
                                 f.tabsOf(
                                         Map.of(
                                                 "quick",
@@ -447,28 +575,28 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     f.$("<input style=\"width:100%;\"")
                                                             .$("name=\"search\" ")
                                                             .$("placeholder=\"anything\"")
-                                                            .$("id=\""+table+"_quick_search_input"+"\"")
+                                                            .$("id=\""+tableName+"_quick_search_input"+"\"")
                                                             .$("oninput=\"");
                                                     for(String c : columns){
                                                         String attributeName = c.split(" ")[0];
-                                                        f.$("$('#").$(table+"_"+attributeName+"_search_input')")
-                                                                .$(".val($('#"+table+"_quick_search_input').val());\n"
+                                                        f.$("$('#").$(tableName+"_"+attributeName+"_search_input')")
+                                                                .$(".val($('#"+tableName+"_quick_search_input').val());\n"
                                                         );
                                                     }
-                                                            f.$("loadQuickSearchForEntity('"+table+"');");
+                                                            f.$("loadQuickSearchForEntity('"+tableName+"');");
                                                             f.$("\"")
                                                             .$(">");
                                                     f.$("</div>");
                                                 },
                                                 "specific",
                                                 searchType -> {
-                                                    f.$("<div id=\"" + table + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                                    f.$("<div id=\"" + tableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
                                                     for(String c : columns){
                                                         String attributeName = c.split(" ")[0];
                                                         f.$("<input ")
                                                                 .$("name=\"").$(attributeName).$("\" ")
                                                                 .$("placeholder=\"").$(c).$("\"")
-                                                                .$("id=\"").$(table+"_"+attributeName+"_search_input").$("\"")
+                                                                .$("id=\"").$(tableName+"_"+attributeName+"_search_input").$("\"")
                                                         .$(">");
                                                     }
                                                     f.$("</div>");
@@ -479,12 +607,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             f.$("</div>")
                             .$("<div class=\"row\">")
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                    .$("<div id=\"").$(table).$("_result\" class=\"SearchResult\"></div>")
+                                    .$("<div id=\"").$(tableName).$("_result\" class=\"SearchResult\"></div>")
                                 .$("</div>")
                             .$("</div>")
                                     .generateNewButton(
-                                    List.of(table),
-                                    e -> f.entitiesToForm(table, e.get(0), Map.of("appendRelations", "true")),
+                                    List.of(tableName),
+                                    e -> f.entitiesToForm(tableName, e.get(0), Map.of("appendRelations", "true")),
                                     "", ""
                             )
                         .$("</div>")
@@ -501,6 +629,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
      *     END OF MAIN IMPLEMENTATION - FOLLOWING : NESTED HTML BUILDER CLASS !
      * </------------------------------------------------------------------------->
      */
+
+    interface RelationKeyConsumer {
+        void accept(String innerKey, String outerKey, String outerTable);
+    }
 
     private interface FrontendConsumer { FrontendConsumer $(Object s); }
 
@@ -804,6 +936,27 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return f.toString();
         }
 
+
+        private CRUDBuilder _forRelationKeys(
+                Map<String,String> relationTable,
+                String innerTableName,
+                RelationKeyConsumer consumer
+        ) {
+            List<String> foreignKeys = new ArrayList<>(relationTable.keySet());
+            for( String innerKey : foreignKeys ) { // := from one to...
+                for( String outerKey : foreignKeys ) { // := many !
+                    if(
+                            ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
+                                    relationTable.get(innerKey).contains("REFERENCES "+innerTableName)
+                    ) {
+                        String outerTable = relationTable.get(outerKey).split("REFERENCES ")[1].split(" ")[0].trim();
+                        consumer.accept(innerKey, outerKey, outerTable);
+                    }
+                }
+            }
+            return this;
+        }
+
         private CRUDBuilder buildRelationForms (
                 String innerTableName,
                 String id
@@ -817,26 +970,38 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     {
                         List<String> foreignKeys = new ArrayList<>(relationTables.get(relationTableName).keySet());
 
-                        Map<String, List<String>> hasManyRelations = new TreeMap<>();
                         /*
                             The inner foreign key will be queried to be equivalent to
                             the id of the table in the 'tableName' variable!
                         */
-                        for( String innerKey : foreignKeys ) { // := from one to...
-                            for( String outerKey : foreignKeys ) { // := many !
-                                if(
-                                        ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
-                                                relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
-                                ) {
-                                    String innerText = innerKey.replace("_id", "");
+                        Map<String, List<String>> hasManyRelations = new TreeMap<>();
+                        _forRelationKeys(
+                                relationTables.get(relationTableName),
+                                innerTableName,
+                                (innerKey, outerKey, outerTable)->{
                                     String outerText = outerKey.replace("_id", "");
                                     hasManyRelations.put(
                                             "found_"+__toPlural(outerText),
                                             List.of(innerKey, outerKey) // one : many
                                     );
                                 }
-                            }
-                        }
+                        );
+
+
+                        //for( String innerKey : foreignKeys ) { // := from one to...
+                        //    for( String outerKey : foreignKeys ) { // := many !
+                        //        if(
+                        //                ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
+                        //                        relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
+                        //        ) {
+                        //            String outerText = outerKey.replace("_id", "");
+                        //            hasManyRelations.put(
+                        //                    "found_"+__toPlural(outerText),
+                        //                    List.of(innerKey, outerKey) // one : many
+                        //            );
+                        //        }
+                        //    }
+                        //}
 
                         // Building tabs for each relation type within a given table... :
                         tabsOf(
@@ -932,7 +1097,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String outerKey
         ) {
             String uid = _newUID();
-            $("<div style=\"border: 1px solid black; margin-bottom:1em;\">");
+            $("<div style=\"border: 1px solid grey; margin-bottom:1em;\">");
             String relationUID = relationTableName + "_" + uid;
             $("<div " +
                     "id=\"" + relationUID + "\" " +
@@ -940,9 +1105,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "style=\"margin-bottom:0.5em;\"" +
                     ">"
             );
-            Function<Map<String, String>, String> entityID = e ->
-                (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
-            Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
+            //Function<Map<String, String>, String> entityID = e ->
+            //    (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
+            //Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
 
             entitiesToForm(relationTableName, currentRelationEntity, Map.of(), Map.of("appendRelations","false"));
             $("</div>");
@@ -953,8 +1118,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "style=\"background-color:#fff;\"" +
                     ">"
             );
-            Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
-            Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
+            //Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
+            //Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
 
             String relationIDClass = _snakeToClass(relationTableName+"_id");
             String outerIDClass = _snakeToClass(outerTableName+"_id");

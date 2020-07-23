@@ -171,7 +171,7 @@ public abstract class AbstractDatabaseConnection {
         return space;
     }
 
-    protected Map<String, List<String>> __attributesTableOf(List<String> attributeList)
+    protected Map<String, List<String>> __attributesPropertiesTableOf(List<String> attributeList)
     {
         Map<String, List<String>> attributes = new HashMap<>();
         for( String a : attributeList ){
