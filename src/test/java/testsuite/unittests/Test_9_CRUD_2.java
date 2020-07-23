@@ -144,6 +144,70 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
     }
 
 
+    @Test
+    public void saving_non_existing_table_in_testworld_returns_error_message() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/tails?appendRelations=false&appendButtons=false",
+                        "POST",
+                        "description=TEST_DESCRIPTION&name=TEST_NAME" // 'e' is contained in all other 'name' attributes...
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+        assert body.contains("Cannot save entity 'tails'! : Table not found in database!");
+    }
+
+    /**
+     * This test addresses a bug that occurred when saving entities with entry values similar to
+     * present values in other entities.
+     * The save method inside the crud plugin uses the find method after saving in order to return
+     * a representation of the saved entity.
+     * however the find method would than return many entities instead of the one which was requested to be saved...
+     * @throws Exception
+     */
+    @Test
+    public void saving_in_testworld_returns_only_saved() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+        IRequest req = createInstance().getRequest(
+                RequestHelper.getValidRequestStream(
+                        "CRUD/save/attributes?appendRelations=false&appendButtons=false",
+                        "POST",
+                        "description=MANGO_SHAKE&name=e" // 'e' is contained in all other 'name' attributes...
+                )
+        );
+        IResponse res = crud.handle(req);
+        String body = getBody(res).toString();
+
+        // Should not contain descriptions of other attributes :
+        assert !body.contains("A kind of relationship...");
+        assert !body.contains("Also a kind of relationship...");
+        assert !body.contains("Not so nice...");
+        assert !body.contains("...  O.o  ...");
+
+        // However the description of the newly saved entity should be included :
+        assert body.contains("value=\"MANGO_SHAKE\"");
+
+        // Should NOT contain names of other attributes :
+        assert !body.contains("Friendship");
+        assert !body.contains("Weirdness");
+        assert !body.contains("Enemies");
+        assert !body.contains("Mysterious");
+
+        // However the name of the newly saved entity should be included :
+
+        assert body.contains("value=\"e\"");
+        assert body.contains("id=\"attributes_5_related\"");
+        assert body.contains("id=\"attributes_5_deleted_span\"");
+        assert body.contains("class=\"AttributesDeleted\"");
+        assert !body.toLowerCase().contains("save");
+        assert !body.toLowerCase().contains("close");
+    }
 
     @Override
     protected Test_9_Provider createInstance() {

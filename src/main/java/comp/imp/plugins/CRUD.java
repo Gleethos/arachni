@@ -3,6 +3,7 @@ package comp.imp.plugins;
 import comp.IPlugin;
 import comp.IRequest;
 import comp.IResponse;
+import comp.imp.Request;
 import comp.imp.Response;
 import comp.imp.Url;
 
@@ -157,12 +158,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private void _save(IRequest req,  IResponse response)
     {
-        response.setContent("text/html");
+        response.setContentType("text/html");
         String tableName = req.getUrl().getFileName();
         Map<String, String> paramTable = req.getUrl().getParameter();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
 
         Map<String, List<String>> tables = _tablesSpace();
+        if(!tables.containsKey(tableName)){
+            response.setContent("Cannot save entity '"+tableName+"'! : Table not found in database!");
+            return;
+        }
         Map<String, List<String>> attributes = __attributesTableOf(tables.get(tableName));
 
         List<String> columns = attributes.keySet().stream().collect(Collectors.toList());
@@ -207,12 +212,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private void _find(IRequest req,  IResponse response)
     {
-        response.setContent("text/html");
+        response.setContentType("text/html");
         ArrayList<String> cols = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
         
         Map<String, String> paramTable = new TreeMap<>();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
+        if(req.getUrl().getParameter().containsKey("id")) paramTable = Map.of("id", req.getUrl().getParameter().get("id"));
 
         boolean quickSearch = settingTable.get("searchQuickly").equals("true");
 
@@ -326,6 +332,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             case "children" : return "child";
         }
         if ( word.endsWith("s") ) return word.substring( 0, word.length() - 1 );
+        return word;
+    }
+
+    private String __toPlural( String word ) {
+        switch ( word ) {
+            case "person" : return "people";
+            case "man" : return "men";
+            case "mouse" : return "mice";
+            case "child" : return "children";
+        }
+        if ( !word.endsWith("s") ) return word + "s";
         return word;
     }
 
@@ -555,7 +572,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
             String selected = "selected";
             for(String type : tabNames) {
-                $("<button onclick=\"switchTab(event, '."+_snakeToClass(type)+"Tab')\" class=\""+selected+"\">"+_snakeToText(type)+"</button>\n");
+                $("<button onclick=\"switchTab(event, '."+_snakeToClass(type)+"Tab')\" class=\""+selected+"\">"+_snakeToTitle(type)+"</button>\n");
                 selected = "";
             }
             String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
@@ -668,7 +685,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 f.$("<div id=\""+rowID+"\" class=\"EntityWrapper "+entityShadow+" row\">");
                 String colSizes = "col-sm-12 col-md-12 col-lg-12";
                 if(!onclickGenerators.isEmpty()){
-                    f.$("<div id=\""+rowID+"_buttons\" class=\""+colSizes+" ml-auto\">"); // ml-auto := float right for col classes...
+                    f.$("<div id=\""+rowID+"_buttons\" class=\"EntityButtons "+colSizes+" ml-auto\">"); // ml-auto := float right for col classes...
                     f.$(
                             "<div style=\"float:right;\">" +
                                     "<span style=\"padding:0.25em;\">" +
@@ -814,7 +831,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     String innerText = innerKey.replace("_id", "");
                                     String outerText = outerKey.replace("_id", "");
                                     hasManyRelations.put(
-                                            innerText+"_has_many_"+outerText,
+                                            "found_"+__toPlural(outerText),
                                             List.of(innerKey, outerKey) // one : many
                                     );
                                 }
@@ -915,9 +932,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String outerKey
         ) {
             String uid = _newUID();
-
+            $("<div style=\"border: 1px solid black; margin-bottom:1em;\">");
+            String relationUID = relationTableName + "_" + uid;
             $("<div " +
-                    "id=\"" + relationTableName + "_" + uid + "\" " +
+                    "id=\"" + relationUID + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
                     "style=\"margin-bottom:0.5em;\"" +
                     ">"
@@ -928,43 +946,54 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
             entitiesToForm(relationTableName, currentRelationEntity, Map.of(), Map.of("appendRelations","false"));
             $("</div>");
-
+            String outerUID = outerTableName + "_" + uid;
             $("<div " +
-                    "id=\"" + outerTableName + "_" + uid + "\" " +
+                    "id=\"" + outerUID + "\" " +
                     "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                    "style=\"background-color:#fff; margin-bottom:1em;\"" +
+                    "style=\"background-color:#fff;\"" +
                     ">"
             );
             Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
             Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
+
+            String relationIDClass = _snakeToClass(relationTableName+"_id");
+            String outerIDClass = _snakeToClass(outerTableName+"_id");
             entitiesToForm(
                     outerTableName,
                     currentOuterEntity,
                     Map.of(
                             "close", e->
-                                    "$( '#"+outerRowID.apply(e)+"' ).replaceWith('');$( '#"+rowID.apply(e)+"' ).replaceWith('');",
-                            "save", e->
-                                    "var buttons = $('#"+outerRowID.apply(e)+"_buttons').html();            " +
+                                    "$('#"+outerUID+ "').find('.EntityWrapper').replaceWith('');" +
+                                    "$('#"+relationUID+"').find('.EntityWrapper').replaceWith('');"
+                            ,
+                            "save", e->// vvv ! dirty but powerful little hack :D ! vvv (loaded buttons will not be know about the relation table...)
+                                    "let buttons = $('#"+outerUID+"').find('.EntityButtons').html();" +
+                                    "let relationID = $('#"+relationUID+"').find('."+relationIDClass+"').val();" +
+                                    "let outerID = $('#"+outerUID+"').find('."+outerIDClass+"').val();" +
                                     "loadSavedForRelation(                                                  " +
                                             "  '"+relationTableName+"',                                     " +
-                                            "  '"+entityID.apply(e)+"',                                     " +
-                                    //-------------------------------------------------------------------------
+                                            "  (relationID==='')?'new':relationID,                          " +
+                                            //-------------------------------------------------------------------------
                                             "  '"+outerTableName+"',                                        " +
-                                            "  '"+outerEntityID.apply(e)+"',                                " +
+                                            "  (outerID==='')?'new':outerID,                                " +
                                             "  '"+outerKey+"',                                              " +
-                                            "  '"+_snakeToClass(outerTableName+"_id")+"',                " +
+                                            "  '"+outerIDClass+"',                " +
                                             "  '"+uid + "',                                                 " +
                                             "  function(){                                                  " +
-                                            "      $('#"+outerRowID.apply(e)+"_buttons').html(buttons);     " +
-                                            "      $('#"+rowID.apply(e)+"_buttons').replaceWith('');        " +
+                                            "       $('#"+outerUID+"').find('.EntityButtons').html(buttons);" +
                                             "  }" +
                                     ");",
                             "delete", e->
-                                    "deleteEntity( '"+outerTableName+"',    '"+outerEntityID.apply(e)+"' );"+
-                                    "deleteEntity( '"+relationTableName+"', '"+entityID.apply(e)+"'      );"
+                                    "let relationID = $('#"+relationUID+"').find('."+relationIDClass+"').val();" +
+                                    "let outerID = $('#"+outerUID+"').find('."+outerIDClass+"').val();" +
+                                    "deleteEntity( '"+outerTableName+"', (outerID==='')?'new':outerID );"+
+                                    "deleteEntity( '"+relationTableName+"', (relationID==='')?'new':relationID );" +
+                                    "$('#"+outerUID+ "').find('.EntityWrapper').replaceWith('');" +
+                                    "$('#"+relationUID+"').find('.EntityWrapper').replaceWith('');"
                     ),
                     Map.of("appendRelations","false")
             );
+            $("</div>");
             $("</div>");
             return this;
         }

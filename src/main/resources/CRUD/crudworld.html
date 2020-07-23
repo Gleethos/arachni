@@ -297,26 +297,30 @@
                                 ) {
                                     _loadSavedForEntity(outerTableName, outerID+"_related", '?appendRelations=false', function () {
                                         var newID = $('#'+outerTableName+"_"+uid).find('.'+idClass).val();
-                                        console.log("Joined entity '"+outerTableName+"' with id "+outerID+" saved and loaded : ");
+                                        console.log("Joined entity '"+outerTableName+"' with id '"+outerID+"' saved and loaded : ");
                                         console.log("Returned ID: $('#"+outerTableName+"_"+uid+"').find('."+idClass+"').val() == '"+newID+"'\n");
                                         var relationTableJoinField = $('#'+relationTableName+"_"+uid).find('#'+relationTableName+'_'+relationID+'_'+outerKey);
-                                        console.log("Joining relation entity '"+relationTableName+"' with id "+relationID+" joins by attribute '"+outerKey+"' !");
+                                        console.log("Joining relation entity '"+relationTableName+"' with id '"+relationID+"' joins by attribute '"+outerKey+"' !");
                                         console.log("Joining key '"+outerKey+"' currently :");
                                         console.log("$('#"+relationTableName+"_"+uid+"').find('#"+relationTableName+'_'+relationID+'_'+outerKey+"').val() == '"+relationTableJoinField.val()+"'");
                                         console.log("... will bew replaced by id '"+newID+"' of joined entity !\n");
                                         relationTableJoinField.val(newID);
-                                        _loadSavedForEntity(relationTableName, relationID+"_related", '?appendRelations=false', afterLoad);
+                                        _loadSavedForEntity(relationTableName, relationID+"_related", '?appendRelations=false&appendButtons=false', afterLoad);
                                     });
                                 }
 
                                 function loadSavedForEntity( tableName, id, urlSearchParams ) {
+                                    console.log("\nSaving and loading entity...  table : '"+tableName+"', id : '"+id+"', url : '"+urlSearchParams+"'");
                                     _loadSavedForEntity( tableName, id, urlSearchParams, function(){
-                                        console.log("Saving and loading relation done!");
+                                        console.log("Saving and loading table '"+tableName+"' with id '"+id+"' and url '"+urlSearchParams+"' done!\n");
                                     } );
                                 }
 
                                 function _loadSavedForEntity( tableName, id, urlSearchParams, afterLoad ) {
                                     let entity = $('#' + tableName+'_'+id);
+                                    console.log("Saving and loading entity by DOM id  :  $('#"+tableName+"_"+id+"')");
+                                    let ajaxUrl = 'CRUD/save/' + tableName + urlSearchParams+' #' + tableName+'_'+id+' > *';
+                                    console.log("Ajax url : '"+ajaxUrl+"'")
                                     sendAndSet(
                                         entity
                                             .children('.tabWrapper')
@@ -326,7 +330,7 @@
                                             .children('.AttributeWrapper')
                                             .children('input, textarea'),
                                         entity,
-                                        'CRUD/save/' + tableName + urlSearchParams+' #' + tableName+'_'+id+' > *',
+                                        ajaxUrl,
                                         function( response, status, xhr ) {
                                             if( status === "error" ) {
                                                 entity.replaceWith("");
@@ -374,6 +378,9 @@
                                 function sendAndSet(fromSelector, intoSelector, url, callback) {
                                     var params = {};
                                     fromSelector.each(function () { params[this.name] = this.value; });
+                                    console.log("The following will be sent:")
+                                    $.each(params, function(key, data) {console.log(key + ' -> ' + data);});
+                                    console.log("Sending...")
                                     intoSelector.html("").load(url, params, callback);
                                 }
 

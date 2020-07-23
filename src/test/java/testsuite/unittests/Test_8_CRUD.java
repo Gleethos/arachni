@@ -422,7 +422,11 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("oninput=\"noteOnInputFor('value','tails','1')\">blabla</textarea>");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert compact.contains("name=\"name\"value=\"FirstTag\"");
-        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("deleteEntity('tails','1')");
+        assert compact.contains("deleteEntity('tails',(outerID==='')?'new':outerID);");
+        assert compact.contains("deleteEntity('tail_relations',(relationID==='')?'new':relationID);");
+        assert compact.contains("deleteEntity('tails',(outerID==='')?'new':outerID)");
+        assert compact.contains("deleteEntity('tail_relations',(relationID==='')?'new':relationID)");
         assert compact.contains("id=\"tags_1_description\"");
         assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
         assert !body.contains("content-length: 0");
@@ -552,7 +556,9 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String compact = body.replace(" ", "");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert compact.contains("name=\"name\"value=\"FirstTag\"");
-        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("onclick=\"deleteEntity('tails','1')");
+        assert compact.contains("deleteEntity('tags',(outerID==='')?'new':outerID);");
+        assert compact.contains("deleteEntity('tail_tag_relations',(relationID==='')?'new':relationID);");
         assert compact.contains("id=\"tags_1_description\"");
         assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
         assert res.getContentType().contains("text/html");
@@ -566,7 +572,9 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String otherBody = getBody(res).toString();
         assert body.length()==otherBody.length();
         double similarity = TestUtility.similarity(body, otherBody);
-        assert similarity > 0.995;
+        assert similarity > 0.98;
+        assert TestUtility.similarity("ac","rt")==0.0;
+        assert TestUtility.similarity("ac","at")==0.5;
     }
 
     @Test
@@ -595,7 +603,9 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String compact = body.replace(" ", "");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert compact.contains("name=\"name\"value=\"FirstTag\"");
-        assert compact.contains("onclick=\"deleteEntity('tags','1')");
+        assert compact.contains("onclick=\"deleteEntity('tails','1')");
+        assert compact.contains("deleteEntity('tags',(outerID==='')?'new':outerID);");
+        assert compact.contains("deleteEntity('tail_tag_relations',(relationID==='')?'new':relationID);");
         assert compact.contains("id=\"tags_1_description\"");
         assert compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
         assert res.getContentType().contains("text/html");
@@ -623,6 +633,8 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !compact.contains("onclick=\"deleteEntity('tags','1')");
         assert !compact.contains("id=\"tags_1_description\"");
         assert !compact.contains("oninput=\"noteOnInputFor('deleted','tail_tag_relations','1')\"");
+        assert !compact.contains("deleteEntity('tags',(outerID==='')?'new':outerID);");
+        assert !compact.contains("deleteEntity('tail_tag_relations',(relationID==='')?'new':relationID);");
         assert res.getContentType().contains("text/html");
 
     }
