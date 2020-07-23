@@ -214,10 +214,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private void _find(IRequest req,  IResponse response)
     {
         response.setContentType("text/html");
-        ArrayList<String> searchAttributes = new ArrayList<>();
         String tableName = req.getUrl().getFileName();
-        String outerTableName = "";
-        
+
         Map<String, String> paramTable = new TreeMap<>();
         Map<String, String> settingTable = _defaultEntitySetting(req, paramTable);
         if(req.getUrl().getParameter().containsKey("id")) paramTable = Map.of("id", req.getUrl().getParameter().get("id"));
@@ -225,73 +223,22 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         boolean quickSearch = settingTable.get("searchQuickly").equals("true");
 
         Map<String, List<String>> tables = _tablesSpace();
-        if ( tableName.contains("->") ) { // Relational quick search!!
-            String[] parts = tableName.split("->");
-            tableName = parts[0];
-            outerTableName = parts[1];
-        }
-        if ( !tables.containsKey(tableName) ) {
-            response.setStatusCode(500);
-            response.setContent("Cannot find entity '"+tableName+"'! : Table not found in database!");
-            _close();
-            return;
-        }
-        if ( !outerTableName.isBlank() && !tables.containsKey(outerTableName) ) {
-            response.setStatusCode(500);
-            response.setContent("Cannot find entity '"+outerTableName+"'! : Table not found in database!");
-            _close();
-            return;
-        }
-        if ( quickSearch) {
-            if ( req.getMethod().equals("GET") ) {
-                String message = "";
-                if ( !paramTable.containsKey(tableName+"_quick_search_parameter") ) {
-                    message += "ERROR : Quick-Search expects url parameter '"+tableName+"_quick_search_parameter'!\n";
-                }
-                if ( !outerTableName.isBlank() ){
-                    if ( !paramTable.containsKey(outerTableName+"_quick_search_parameter") ) {
-                        message += "ERROR : Quick-Search expects url parameter '"+outerTableName+"_quick_search_parameter'!\n";
-                    }
-                    if ( !paramTable.containsKey("relation_table_name") ) {
-                        message += "ERROR : Quick-Search expects url parameter 'relation_table_name'!\n";
-                    } else if ( !tables.containsKey(paramTable.get("relation_table_name")) ) {
-                        message += "ERROR : Relation table with name '"+paramTable.get("relation_table_name")+"' not found!";
-                    }
-                    if ( !paramTable.containsKey("key_relation") ) {
-                        message += "ERROR : Quick-Search expects url parameter 'key_relation'!\n";
-                    } else if ( !paramTable.get("key_relation").contains("->") ) {
-                        message += "ERROR : Quick-Search expects value '"+paramTable.get("key_relation")
-                                +"' of url parameter 'key_relation' to contain '->' identifier!\n";
-                    }
-                }
-                if ( !message.isBlank() ) {
-                    response.setStatusCode(500);
-                    response.setContent(message);
-                    _close();
-                    return;
-                }
-            }
-        }
-
-
-        //!!
 
         Map<String, List<Object>> map =
                 (quickSearch) ?
                         __findQuickly(
+                                response,
+                                req,
                                 tables,
                             tableName,
-                            searchAttributes,
                             paramTable
                         )
                         :
                         __findEntities(
                                 tables,
                             tableName,
-                            searchAttributes,
                             paramTable
                         );
-        //!!!
 
         String result = "";
         if ( quickSearch )
@@ -328,11 +275,60 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     }
 
     private Map<String, List<Object>> __findQuickly(
+            IResponse response,
+            IRequest req,
             Map<String, List<String>> tables,
             String innerTableName,
-            List<String> searchAttributes,
             Map<String, String> paramTable
     ){
+        String outerTableName = "";
+        if ( innerTableName.contains("->") ) { // Relational quick search!!
+            String[] parts = innerTableName.split("->");
+            innerTableName = parts[0];
+            outerTableName = parts[1];
+        }
+        if ( !tables.containsKey(innerTableName) ) {
+            response.setStatusCode(500);
+            response.setContent("Cannot find entity '"+innerTableName+"'! : Table not found in database!");
+            _close();
+            return null;
+        }
+        if ( !outerTableName.isBlank() && !tables.containsKey(outerTableName) ) {
+            response.setStatusCode(500);
+            response.setContent("Cannot find entity '"+outerTableName+"'! : Table not found in database!");
+            _close();
+            return null;
+        }
+        if ( req.getMethod().equals("GET") ) {
+            String message = "";
+            if ( !paramTable.containsKey(innerTableName+"_quick_search_parameter") ) {
+                message += "ERROR : Quick-Search expects url parameter '"+innerTableName+"_quick_search_parameter'!\n";
+            }
+            if ( !outerTableName.isBlank() ){
+                if ( !paramTable.containsKey(outerTableName+"_quick_search_parameter") ) {
+                    message += "ERROR : Quick-Search expects url parameter '"+outerTableName+"_quick_search_parameter'!\n";
+                }
+                if ( !paramTable.containsKey("relation_table_name") ) {
+                    message += "ERROR : Quick-Search expects url parameter 'relation_table_name'!\n";
+                } else if ( !tables.containsKey(paramTable.get("relation_table_name")) ) {
+                    message += "ERROR : Relation table with name '"+paramTable.get("relation_table_name")+"' not found!";
+                }
+                if ( !paramTable.containsKey("key_relation") ) {
+                    message += "ERROR : Quick-Search expects url parameter 'key_relation'!\n";
+                } else if ( !paramTable.get("key_relation").contains("->") ) {
+                    message += "ERROR : Quick-Search expects value '"+paramTable.get("key_relation")
+                            +"' of url parameter 'key_relation' to contain '->' identifier!\n";
+                }
+            }
+            if ( !message.isBlank() ) {
+                response.setStatusCode(500);
+                response.setContent(message);
+                _close();
+                return null;
+            }
+        }
+
+        ArrayList<String> searchAttributes = new ArrayList<>();
         Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(innerTableName));
 
         List<String> attributes = new ArrayList<>(attributesProperties.keySet());
@@ -359,6 +355,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         List<Object> values = new ArrayList<>();
         StringBuilder sql = new StringBuilder("SELECT id, "+keyAttribute+" FROM " + innerTableName);
+
         if ( !searchAttributes.isEmpty() ) sql.append(" WHERE ");
         for ( int i=0; i < searchAttributes.size(); i++ ) {
             String type = attributesProperties.get(searchAttributes.get(i)).get(0);
@@ -371,15 +368,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             if ( i < searchAttributes.size()-1 ) sql.append("OR ");
         }
+
         return _query(sql.toString(), values);
     }
 
     private Map<String, List<Object>> __findEntities(
             Map<String, List<String>> tables,
             String tableName,
-            List<String> searchAttributes,
             Map<String, String> paramTable
     ){
+        ArrayList<String> searchAttributes = new ArrayList<>();
         Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(tableName));
 
         List<String> attributes = new ArrayList<>(attributesProperties.keySet());
