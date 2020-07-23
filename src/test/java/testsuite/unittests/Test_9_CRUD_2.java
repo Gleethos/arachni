@@ -358,7 +358,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert body.contains("Cannot find entity 'OUTER_FAIL_TABLE'! : Table not found in database!");
     }
 
-    @Test
+    //@Test
     public void relational_quick_search_with_GET_method_returns_expected_result() throws Exception
     {
         Test_9_Provider provider = createInstance();

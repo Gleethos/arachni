@@ -224,62 +224,62 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         Map<String, List<String>> tables = _tablesSpace();
 
-        Map<String, List<Object>> map =
+        String result =
                 (quickSearch) ?
                         __findQuickly(
                                 response,
                                 req,
                                 tables,
                             tableName,
-                            paramTable
+                            paramTable,
+                                map->{
+                                    return "";
+                                },
+                                map -> {
+                                    String keyAttribute = map.keySet().stream().findFirst().get();
+                                    CRUDBuilder b = new CRUDBuilder( tables );
+                                    b.$("<div id=\""+tableName+"_quick_search_result\" class=\"row\">")
+                                            .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    b.$("<span><h3> "+b._snakeToTitle(keyAttribute)+"(s) :</h3></span>");
+                                    b.$("</div>");
+
+                                    int numberOfFound = map.get(keyAttribute).size();
+                                    for( int i=0; i<numberOfFound; i++ ) {
+                                        Object value = map.get(keyAttribute).get(i);
+                                        b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 contentBox\">");
+                                        b.$("<a style=\"padding:0.25em;\" onclick=\"")
+                                                .$("$('#"+tableName+"_id_search_input').val('"+map.get("id").get(i)+"');")
+                                                .$("loadFoundForEntity('").$(
+                                                tableName
+                                        ).$("');$('#"+tableName+"_quick_search_result').replaceWith('');\">")
+                                                .$(value.toString())
+                                                .$("</a>");
+                                        b.$("</div>");
+                                    }
+                                    b.$("</div>");
+                                    return b.toString();
+                                }
                         )
                         :
                         __findEntities(
                                 tables,
                             tableName,
-                            paramTable
+                            paramTable,
+                                map->new CRUDBuilder(tables).entitiesToForm( tableName, map, settingTable ).toString()
                         );
 
-        String result = "";
-        if ( quickSearch )
-        {
-            String keyAttribute = map.keySet().stream().findFirst().get();
-            CRUDBuilder b = new CRUDBuilder( tables );
-            b.$("<div id=\""+tableName+"_quick_search_result\" class=\"row\">")
-                .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-            b.$("<span><h3> "+b._snakeToTitle(keyAttribute)+"(s) :</h3></span>");
-            b.$("</div>");
-
-            int numberOfFound = map.get(keyAttribute).size();
-            for( int i=0; i<numberOfFound; i++ ) {
-                Object value = map.get(keyAttribute).get(i);
-                b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 contentBox\">");
-                b.$("<a style=\"padding:0.25em;\" onclick=\"")
-                        .$("$('#"+tableName+"_id_search_input').val('"+map.get("id").get(i)+"');")
-                        .$("loadFoundForEntity('").$(
-                        tableName
-                ).$("');$('#"+tableName+"_quick_search_result').replaceWith('');\">")
-                        .$(value.toString())
-                        .$("</a>");
-                b.$("</div>");
-            }
-            b.$("</div>");
-            result = b.toString();
-        }
-        else
-        {
-            result = new CRUDBuilder(tables).entitiesToForm( tableName, map, settingTable ).toString();
-        }
         if(result.isBlank())  response.setContent("Nothing found!");
         else response.setContent(result);
     }
 
-    private Map<String, List<Object>> __findQuickly(
+    private String __findQuickly(
             IResponse response,
             IRequest req,
             Map<String, List<String>> tables,
             String innerTableName,
-            Map<String, String> paramTable
+            Map<String, String> paramTable,
+            Function<Map<String, List<Object>>, String> resultConsumer,
+            Function<Map<String, List<Object>>, String> defaultConsumer
     ){
         String outerTableName = "";
         if ( innerTableName.contains("->") ) { // Relational quick search!!
@@ -328,20 +328,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
         }
 
-        ArrayList<String> searchAttributes = new ArrayList<>();
-        Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(innerTableName));
-
-        List<String> attributes = new ArrayList<>(attributesProperties.keySet());
-
-        if ( paramTable.containsKey( innerTableName+"_quick_search_parameter" ) ) {
-            for ( String a : attributes ) paramTable.put( a, paramTable.get(innerTableName+"_quick_search_parameter") );
-        }
-
-        for ( String a : attributes ) {
-            if ( paramTable.containsKey(a) && !paramTable.get(a).equals("") ) searchAttributes.add(a);
-        }
-
-
         Function<List<String>, String> findBestAttribute = (attributeList)->{
             String bestAttribute = "id";
             String[] preferenceList = new String[]{ "description", "name", "title" };
@@ -356,32 +342,114 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             return bestAttribute;
         };
-        String keyAttribute = findBestAttribute.apply(attributes);
-
 
         List<Object> values = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT id, "+keyAttribute+" FROM " + innerTableName);
+        StringBuilder sql = new StringBuilder();
 
-        if ( !searchAttributes.isEmpty() ) sql.append(" WHERE ");
-        for ( int i=0; i < searchAttributes.size(); i++ ) {
-            String type = attributesProperties.get(searchAttributes.get(i)).get(0);
-            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
-                sql.append(searchAttributes.get(i)).append(" LIKE ? ");
-                values.add("%"+paramTable.get(searchAttributes.get(i))+"%");
-            } else {
-                sql.append(searchAttributes.get(i)).append(" = ? ");
-                values.add(paramTable.get(searchAttributes.get(i)));
+        if( !outerTableName.isBlank() ) { // Relational quicksearch :
+            String relationTableName = paramTable.get("relation_table_name");
+            String innerKey = paramTable.get("key_relation").split("->")[0];
+            String outerKey = paramTable.get("key_relation").split("->")[1];
+
+            Map<String, List<String>> innerAttributesProperties = __attributesPropertiesTableOf(tables.get(innerTableName));
+            Map<String, List<String>> outerAttributesProperties = __attributesPropertiesTableOf(tables.get(outerTableName));
+
+            List<String> innerAttributes = new ArrayList<>(innerAttributesProperties.keySet());
+            List<String> outerAttributes = new ArrayList<>(outerAttributesProperties.keySet());
+
+            String bestInnerDisplayAttribute = findBestAttribute.apply(innerAttributes);
+            String bestOuterDisplayAttribute = findBestAttribute.apply(outerAttributes);
+
+            String innerSearchParameter = paramTable.get(innerTableName+"_quick_search_parameter");
+            String outerSearchParameter = paramTable.get(outerTableName+"_quick_search_parameter");
+
+            sql.append(
+                    "SELECT \n" +
+                    innerTableName+".id, \n"+
+                    innerTableName +"."+bestInnerDisplayAttribute+", \n" +
+                    outerTableName +"."+bestOuterDisplayAttribute+", \n" +
+                    "FROM "+innerTableName+" \n");
+            sql.append("JOIN "+relationTableName+" ON "+relationTableName+"."+innerKey+" = "+innerTableName+".id \n");
+            sql.append("JOIN "+outerTableName+" ON "+relationTableName+"."+outerKey+" = "+outerTableName+".id \n");
+            if(!innerSearchParameter.isBlank() && !outerSearchParameter.isBlank()) sql.append(" WHERE ");
+            if(!innerSearchParameter.isBlank()){
+                Map<String, String> innerParams = new TreeMap<>();
+                for( String a : innerAttributes )innerParams.put(a, innerSearchParameter);
+                __appendSearchConditionsFor(
+                        innerTableName,
+                        innerAttributes,
+                        innerAttributesProperties,
+                        innerParams,
+                        sql, values
+                );
             }
-            if ( i < searchAttributes.size()-1 ) sql.append("OR ");
+            if(!outerSearchParameter.isBlank()) {
+                if(!innerSearchParameter.isBlank()) sql.append(" OR \n");
+                Map<String, String> outerParams = new TreeMap<>();
+                for( String a : outerAttributes ) outerParams.put(a, outerSearchParameter);
+                __appendSearchConditionsFor(
+                        outerTableName,
+                        outerAttributes,
+                        outerAttributesProperties,
+                        outerParams,
+                        sql, values
+                );
+            }
+            return resultConsumer.apply(_query(sql.toString(), values));
+        } else {
+            Map<String, List<String>> innerAttributesProperties = __attributesPropertiesTableOf(tables.get(innerTableName));
+            List<String> innerAttributes = new ArrayList<>(innerAttributesProperties.keySet());
+            String bestDisplayAttribute = findBestAttribute.apply(innerAttributes);
+
+            if ( paramTable.containsKey( innerTableName+"_quick_search_parameter" ) ) {
+                for ( String a : innerAttributes ) paramTable.put( a, paramTable.get(innerTableName+"_quick_search_parameter") );
+            }
+            innerAttributes = innerAttributes.stream().filter(a->paramTable.containsKey(a) && !paramTable.get(a).equals("")).collect(Collectors.toList());
+
+            sql.append("SELECT id, "+bestDisplayAttribute+" FROM " + innerTableName);
+            if ( !innerAttributes.isEmpty() ) {
+                sql.append(" WHERE \n");
+                __appendSearchConditionsFor(
+                        innerTableName,
+                        innerAttributes,
+                        innerAttributesProperties,
+                        paramTable,
+                        sql, values
+                );
+            }
+            return defaultConsumer.apply(_query(sql.toString(), values));
         }
 
-        return _query(sql.toString(), values);
+        //return _query(sql.toString(), values);
+
     }
 
-    private Map<String, List<Object>> __findEntities(
+    private void __appendSearchConditionsFor(
+            String tableName,
+            List<String> innerAttributes,
+            Map<String, List<String>> innerAttributesProperties,
+            Map<String, String> paramTable,
+            StringBuilder sql,
+            List<Object> values
+    ){
+        for ( int i=0; i < innerAttributes.size(); i++ ) {
+            String type = innerAttributesProperties.get(innerAttributes.get(i)).get(0);
+            if ( type.toLowerCase().contains("text") || type.toLowerCase().contains("char") ) {
+                sql.append(tableName+"."+innerAttributes.get(i)).append(" LIKE ? \n");
+                values.add("%"+paramTable.get(innerAttributes.get(i))+"%");
+            } else {
+                sql.append(tableName+"."+innerAttributes.get(i)).append(" = ? \n");
+                values.add(paramTable.get(innerAttributes.get(i)));
+            }
+            if ( i < innerAttributes.size()-1 ) sql.append("OR ");
+        }
+    }
+
+    private String __findEntities(
             Map<String, List<String>> tables,
             String tableName,
-            Map<String, String> paramTable
+            Map<String, String> paramTable,
+            Function<Map<String, List<Object>>, String> resultConsumer
     ){
         ArrayList<String> searchAttributes = new ArrayList<>();
         Map<String, List<String>> attributesProperties = __attributesPropertiesTableOf(tables.get(tableName));
@@ -406,7 +474,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             if ( i < searchAttributes.size()-1 ) sql.append("OR ");
         }
-        return _query(sql.toString(), values);
+        return resultConsumer.apply(_query(sql.toString(), values));
     }
 
 
