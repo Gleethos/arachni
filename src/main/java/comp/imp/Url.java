@@ -44,6 +44,7 @@ public class Url implements IUrl {
         _path = path.toString();
         if(parts.length>0){
             _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1].split("\\?")[0];
+            _filename = IPlugin.util.decodeValue(_filename);
             _extension = "";
             if(parts[parts.length-1].contains(".")) { // Only split after first ".", append the rest back on... :
                 String[] extensionParts = parts[parts.length-1].split("\\.");

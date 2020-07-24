@@ -298,7 +298,7 @@
                                 ) {
                                     let relationValue = $('#'+relationTableName+"_quick_search_joined_with_"+innerTableName+"_and_"+outerTableName).val();
                                     let outerValue = $('#'+outerTableName+"_quick_search_joined_with_"+relationTableName+"_and_"+innerTableName).val();
-                                    let innerValue = $('#'+innerTableName+"_quick_search_input");
+                                    let innerValue = $('#'+innerTableName+"_quick_search_input").val();
                                     let url =
                                     "CRUD/find/"+innerTableName+"->"+relationTableName+"->"+outerTableName+"?" +
                                     "searchQuickly=true&" +
