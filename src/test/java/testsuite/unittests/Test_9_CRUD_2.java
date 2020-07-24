@@ -216,7 +216,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
-                        "CRUD/find/attributes?searchQuickly=true&attribute_quick_search_parameter=Mysterious",
+                        "CRUD/find/attributes?searchQuickly=true&attribute_inner_quick_search_parameter=Mysterious",
                         "POST",
                         "name=Friendship"
                 )
@@ -235,7 +235,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
-                        "CRUD/find/attributes?searchQuickly=true&attributes_quick_search_parameter=Mysterious",
+                        "CRUD/find/attributes?searchQuickly=true&attributes_inner_quick_search_parameter=Mysterious",
                         "GET",
                         "name=Friendship"
                 )
@@ -281,8 +281,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/attributes->human_attribute_relations->humans?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=rie&" +
-                        "humans_quick_search_parameter=ean&" +
+                        "attributes_inner_quick_search_parameter=rie&" +
+                        "humans_outer_quick_search_parameter=ean&" +
                         "key_relation=FAIL",
                 "GET"
         )))).toString();
@@ -301,14 +301,13 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/attributes->FAIL->humans?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=rie&" +
-                        "humans_quick_search_parameter=ean&" +
+                        "attributes_inner_quick_search_parameter=rie&" +
+                        "humans_outer_quick_search_parameter=ean&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'attributes_inner_quick_search_parameter'!");
+        assert !body.contains("ERROR : Quick-Search expects url parameter 'humans_outer_quick_search_parameter'!");
         assert !body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
         assert !body.contains("ERROR : Quick-Search expects value 'FAIL' of url parameter 'key_relation' to contain '->' identifier!");
         assert body.contains("ERROR : Relation table with name 'FAIL' not found in database!");
@@ -324,9 +323,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/FAIL_TABLE->humans?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=rie&" +
-                        "humans_quick_search_parameter=ean&" +
-                        "relation_table_name=FAIL&" +
+                        "attributes_inner_quick_search_parameter=rie&" +
+                        "humans_outer_quick_search_parameter=ean&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
@@ -343,8 +341,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/attributes->FAIL->OUTER_FAIL_TABLE?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=rie&" +
-                        "humans_quick_search_parameter=ean&" +
+                        "attributes_inner_quick_search_parameter=rie&" +
+                        "humans_outer_quick_search_parameter=ean&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
@@ -361,9 +359,9 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/attributes->human_attribute_relations->humans?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=a&" +
-                        "humans_quick_search_parameter=e&" +
-                        "human_attribute_relations_quick_search_parameter=w&" +
+                        "attributes_inner_quick_search_parameter=a&" +
+                        "humans_outer_quick_search_parameter=e&" +
+                        "human_attribute_relations_relation_quick_search_parameter=w&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();

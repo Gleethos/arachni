@@ -235,13 +235,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             paramTable,
                                 map -> {
                                     CRUDBuilder b = new CRUDBuilder( tables );
-                                    b.$("<div id=\""+tableName+"_relational_quick_search_result\" class=\"row\">")
-                                            .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                                b.$("<span><h3> "+
-                                                        //b._snakeToTitle(keyAttribute)+
-                                                        "(s) :</h3></span>");
-                                             b.$("</div>");
-
+                                    b.$("<div id=\""+tableName+"_relational_quick_search_result\" class=\"row\">");
+                                    map.forEach( (currentTable, currentResult) -> {
+                                        String bestAttribute = currentResult.keySet().stream().filter(e -> !e.equals("id")).findFirst().get();
+                                        b.$("<div class=\"col-sm-4 col-md-4 col-lg-4\">");
+                                            b.$("<span><h3> "+ b._snakeToTitle(currentTable)+" : "+ b._snakeToTitle(bestAttribute)+ "(s) :</h3></span>");
+                                        b.$("</div>");
+                                    });
                                     int numberOfFound = map.get(tableName.split("->")[0]).size();
                                     for( int i=0; i<numberOfFound; i++ ) {
                                         int innerIndex = i;
@@ -333,18 +333,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         }
 
         if ( req.getMethod().equals("GET") ) {
-            if ( !paramTable.containsKey(innerTableName+"_quick_search_parameter") ) {
-                paramTable.put(innerTableName+"_quick_search_parameter", "");
+            if ( !paramTable.containsKey(innerTableName+"_inner_quick_search_parameter") ) {
+                paramTable.put(innerTableName+"_inner_quick_search_parameter", "");
             }
             if ( !outerTableName.isBlank() )
             {
-                if ( !paramTable.containsKey(outerTableName+"_quick_search_parameter") ) {
-                    paramTable.put(outerTableName+"_quick_search_parameter", "");
+                if ( !paramTable.containsKey(outerTableName+"_outer_quick_search_parameter") ) {
+                    paramTable.put(outerTableName+"_outer_quick_search_parameter", "");
                 }
                 if ( relationTableName.isBlank() ) {
                     message += "ERROR : Quick-Search expects relational search url to end with 'inner table'->'relation table'->'outer table'!\n";
-                } else if ( !paramTable.containsKey(relationTableName+"_quick_search_parameter") ) {
-                    paramTable.put(relationTableName+"_quick_search_parameter", "");
+                } else if ( !paramTable.containsKey(relationTableName+"_relation_quick_search_parameter") ) {
+                    paramTable.put(relationTableName+"_relation_quick_search_parameter", "");
                 }
                 if ( !paramTable.containsKey("key_relation") ) {
                     message += "ERROR : Quick-Search expects url parameter 'key_relation'!\n";
@@ -397,9 +397,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String bestRelationDisplayAttribute = findBestAttribute.apply(relationAttributes);
             String bestOuterDisplayAttribute = findBestAttribute.apply(outerAttributes);
 
-            String innerSearchParameter = paramTable.get(innerTableName+"_quick_search_parameter");
-            String relationSearchParameter = paramTable.get(relationTableName+"_quick_search_parameter");
-            String outerSearchParameter = paramTable.get(outerTableName+"_quick_search_parameter");
+            String innerSearchParameter = paramTable.get(innerTableName+"_inner_quick_search_parameter");
+            String relationSearchParameter = paramTable.get(relationTableName+"_relation_quick_search_parameter");
+            String outerSearchParameter = paramTable.get(outerTableName+"_outer_quick_search_parameter");
 
             sql.append(
                     "SELECT \n" +
@@ -477,8 +477,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             List<String> innerAttributes = new ArrayList<>(innerAttributesProperties.keySet());
             String bestDisplayAttribute = findBestAttribute.apply(innerAttributes);
 
-            if ( paramTable.containsKey( innerTableName+"_quick_search_parameter" ) ) {
-                for ( String a : innerAttributes ) paramTable.put( a, paramTable.get(innerTableName+"_quick_search_parameter") );
+            if ( paramTable.containsKey( innerTableName+"_inner_quick_search_parameter" ) ) {
+                for ( String a : innerAttributes ) paramTable.put( a, paramTable.get(innerTableName+"_inner_quick_search_parameter") );
             }
             innerAttributes = innerAttributes.stream().filter(a->paramTable.containsKey(a) && !paramTable.get(a).equals("")).collect(Collectors.toList());
 
@@ -684,80 +684,121 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         CRUDBuilder f = new CRUDBuilder(tables);
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
-                tableName -> {
+                innerTableName -> {
                     f.$("<div class = \"mainContentWrapper col-sm-12 col-md-12 col-lg-12\">")
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                .$("<h1>").$(f._snakeToTitle(tableName)).$("</h1>")
+                                .$("<h1>").$(f._snakeToTitle(innerTableName)).$("</h1>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+tableName).get("COUNT(*)").get(0)+"</label>")
+                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+innerTableName).get("COUNT(*)").get(0)+"</label>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<button onclick=\"$('#"+tableName+"_result').html('');\">CLEAR</button>")
-                                    .$("<button onclick=\"loadFoundForEntity('").$(tableName).$("')\">SEARCH</button>")
-                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(tableName).$("')\">QUICK SEARCH</button>")
+                                    .$("<button onclick=\"$('#"+innerTableName+"_result').html('');\">CLEAR</button>")
+                                    .$("<button onclick=\"loadFoundForEntity('").$(innerTableName).$("')\">SEARCH</button>")
+                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(innerTableName).$("')\">QUICK SEARCH</button>")
                                 .$("</div>");
 
-                    Map<String, Map<String, String>> relationTables = __findRelationTablesOf(tableName, tables, s->true);
-                    List<String> relationTableList = new ArrayList<>(relationTables.keySet());
-                    for ( String relationTableName : relationTableList ) {
-                        f._forRelationKeys(
-                                relationTables.get(relationTableName),
-                                tableName,
-                                (innerKey, outerKey, outerTable) ->{
-                                    // TODO!
-                                }
-                        );
-                    }
-                                List<String> columns = tables.get(tableName);
-                                f.tabsOf(
-                                        Map.of(
-                                                "quick",
-                                                searchType -> {
-                                                    f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                                                    f.$("<input style=\"width:100%;\"")
-                                                            .$("name=\"search\" ")
-                                                            .$("placeholder=\"anything\"")
-                                                            .$("id=\""+tableName+"_quick_search_input"+"\"")
-                                                            .$("oninput=\"");
-                                                    for(String c : columns){
-                                                        String attributeName = c.split(" ")[0];
-                                                        f.$("$('#").$(tableName+"_"+attributeName+"_search_input')")
-                                                                .$(".val($('#"+tableName+"_quick_search_input').val());\n"
-                                                        );
+                    List<String> columns = tables.get(innerTableName);
+                    f.tabsOf(
+                            Map.of(
+                                    "quick",
+                                    searchType -> {
+                                        f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                        String innerHTMLID = innerTableName+"_quick_search_input";
+                                        f.$("<input style=\"width:100%;\"")
+                                                .$("name=\"search\" ")
+                                                .$("placeholder=\"anything\"")
+                                                .$("id=\""+innerTableName+"_quick_search_input"+"\"")
+                                                .$("oninput=\"");
+                                        for(String c : columns) {
+                                            String attributeName = c.split(" ")[0];
+                                            f.$("$('#").$(innerTableName+"_"+attributeName+"_search_input')").$(".val($('#"+innerHTMLID+"').val());\n"
+                                            );
+                                        }
+                                                f.$("loadQuickSearchForEntity('"+innerTableName+"');");
+                                            f.$("\"")
+                                        .$(">");
+                                        f.$("</div>");
+                                        Map<String, Map<String, String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);
+                                        List<String> relationTableList = new ArrayList<>(relationTables.keySet());
+                                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12 row\">");
+                                        for ( String relationTableName : relationTableList ) {
+                                            f._forRelationKeys(
+                                                    relationTables.get(relationTableName),
+                                                    innerTableName,
+                                                    (innerKey, outerKey, outerTableName) ->{
+
+                                                        String relationQuickSearchTitle =
+                                                                innerTableName+"->id == "+innerKey+"<-"+relationTableName+"->"+outerKey+" == id<-"+outerTableName;
+                                                        String relationHTMLID = relationTableName+"_quick_search_joined_with_"+innerTableName+"_and_"+outerTableName;
+                                                        String outerHTMLID = outerTableName+"_quick_search_joined_with_"+relationTableName+"_and_"+innerTableName;
+
+                                                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                                        f.$("<span style=\"width:100%;\">").$(relationQuickSearchTitle).$("</span>");
+                                                        f.$("</div>");
+                                                        f.$("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                        f.$("<input style=\"width:100%;\"")
+                                                                .$("name=\"search\" ")
+                                                                .$("placeholder=\"anything "+relationTableName.replace("_", " ")+"\"")
+                                                                .$("id=\""+relationHTMLID+"\"")
+                                                                .$("oninput=\"loadRelationalQuickSearchForEntity(")
+                                                                .$("'"+innerTableName+"',")
+                                                                .$("'"+relationTableName+"',")
+                                                                .$("'"+outerTableName+"',")
+                                                                .$("'"+innerKey+"',")
+                                                                .$("'"+outerKey+"'")
+                                                                .$(");\"");
+                                                        f.$(">");
+                                                        f.$("</div>");
+                                                        f.$("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                        f.$("<input style=\"width:100%;\"")
+                                                                .$("name=\"search\" ")
+                                                                .$("placeholder=\"anything "+outerTableName.replace("_", " ")+"\"")
+                                                                .$("id=\""+outerHTMLID+"\"")
+                                                                .$("oninput=\"loadRelationalQuickSearchForEntity(")
+                                                                    .$("'"+innerTableName+"',")
+                                                                    .$("'"+relationTableName+"',")
+                                                                    .$("'"+outerTableName+"',")
+                                                                    .$("'"+innerKey+"',")
+                                                                    .$("'"+outerKey+"'")
+                                                                .$(");\"");
+                                                        f.$("\"").$(">");
+                                                        f.$("</div>");
+
                                                     }
-                                                            f.$("loadQuickSearchForEntity('"+tableName+"');");
-                                                            f.$("\"")
-                                                            .$(">");
-                                                    f.$("</div>");
-                                                },
-                                                "specific",
-                                                searchType -> {
-                                                    f.$("<div id=\"" + tableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                                                    for(String c : columns){
-                                                        String attributeName = c.split(" ")[0];
-                                                        f.$("<input ")
-                                                                .$("name=\"").$(attributeName).$("\" ")
-                                                                .$("placeholder=\"").$(c).$("\"")
-                                                                .$("id=\"").$(tableName+"_"+attributeName+"_search_input").$("\"")
-                                                        .$(">");
-                                                    }
-                                                    f.$("</div>");
-                                                }
-                                        ),
-                                        "noRow"
-                                );
+                                            );
+                                        }
+                                        f.$("</div>");
+                                        f.$("</div>");
+                                    },
+                                    "specific",
+                                    searchType -> {
+                                        f.$("<div id=\"" + innerTableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                        for(String c : columns){
+                                            String attributeName = c.split(" ")[0];
+                                            f.$("<input ")
+                                                    .$("name=\"").$(attributeName).$("\" ")
+                                                    .$("placeholder=\"").$(c).$("\"")
+                                                    .$("id=\"").$(innerTableName+"_"+attributeName+"_search_input").$("\"")
+                                            .$(">");
+                                        }
+                                        f.$("</div>");
+                                    }
+                            ),
+                            "noRow"
+                    );
                             f.$("</div>")
                             .$("<div class=\"row\">")
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                    .$("<div id=\"").$(tableName).$("_result\" class=\"SearchResult\"></div>")
+                                    .$("<div id=\"").$(innerTableName).$("_result\" class=\"SearchResult\"></div>")
                                 .$("</div>")
                             .$("</div>")
                                     .generateNewButton(
-                                    List.of(tableName),
-                                    e -> f.entitiesToForm(tableName, e.get(0), Map.of("appendRelations", "true")),
+                                    List.of(innerTableName),
+                                    e -> f.entitiesToForm(innerTableName, e.get(0), Map.of("appendRelations", "true")),
                                     "", ""
                             )
                         .$("</div>")
