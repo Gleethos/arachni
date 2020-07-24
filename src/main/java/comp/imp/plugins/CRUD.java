@@ -242,10 +242,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             b.$("<span><h3> "+ b._snakeToTitle(currentTable)+" : "+ b._snakeToTitle(bestAttribute)+ "(s) :</h3></span>");
                                         b.$("</div>");
                                     });
-                                    int numberOfFound = map.get(tableName.split("->")[0]).size();
+
+                                    int numberOfFound = map.values().stream().findFirst().get().size();
                                     for( int i=0; i<numberOfFound; i++ ) {
                                         int innerIndex = i;
                                         map.forEach( (currentTable, currentResult)->{
+                                            //String realTableName = tableName.split("->")[0].replace("inner-", "").replace("outer-", "");
                                             String bestAttribute = currentResult.keySet().stream().filter(e->!e.equals("id")).findFirst().get();
                                             Object value = currentResult.get(bestAttribute).get(innerIndex);
                                             b.$("<div class=\"col-sm-4 col-md-4 col-lg-4 contentBox\">");
@@ -403,26 +405,26 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
             sql.append(
                     "SELECT \n" +
-                    outerTableName+".id AS '"+outerTableName+".id' , \n"+
-                    outerTableName +"."+bestOuterDisplayAttribute+" AS '"+outerTableName+"."+bestOuterDisplayAttribute+"', \n" +
+                    "outerTable.id AS 'outer-"+outerTableName+".id' , \n"+
+                    "outerTable."+bestOuterDisplayAttribute+" AS 'outer-"+outerTableName+"."+bestOuterDisplayAttribute+"', \n" +
 
-                    relationTableName+".id AS '"+relationTableName+".id' , \n"+
-                    relationTableName +"."+bestRelationDisplayAttribute+" AS '"+relationTableName+"."+bestRelationDisplayAttribute+"', \n" +
+                    "relationTable.id AS '"+relationTableName+".id' , \n"+
+                    "relationTable."+bestRelationDisplayAttribute+" AS '"+relationTableName+"."+bestRelationDisplayAttribute+"', \n" +
 
-                    innerTableName+".id AS '"+innerTableName+".id' , \n"+
-                    innerTableName +"."+bestInnerDisplayAttribute+" AS '"+innerTableName+"."+bestInnerDisplayAttribute+"' \n" +
+                    "innerTable.id AS 'inner-"+innerTableName+".id' , \n"+
+                    "innerTable."+bestInnerDisplayAttribute+" AS 'inner-"+innerTableName+"."+bestInnerDisplayAttribute+"' \n" +
 
-                    "FROM "+relationTableName+" \n"
+                    "FROM "+relationTableName+" relationTable\n"
             );
-            sql.append("JOIN "+outerTableName+" ON "+relationTableName+"."+outerKey+" = "+outerTableName+".id \n");
-            sql.append("JOIN "+innerTableName+" ON "+relationTableName+"."+innerKey+" = "+innerTableName+".id \n");
+            sql.append("JOIN "+outerTableName+" outerTable ON relationTable."+outerKey+" = outerTable.id \n");
+            sql.append("JOIN "+innerTableName+" innerTable ON relationTable."+innerKey+" = innerTable.id \n");
 
             if( !outerSearchParameter.isBlank() || !relationSearchParameter.isBlank() ) sql.append("\nWHERE\n");
             if( !outerSearchParameter.isBlank() ) {
                 Map<String, String> outerParams = new TreeMap<>();
                 for( String a : outerAttributes ) outerParams.put(a, outerSearchParameter);
                 __appendSearchConditionsFor(
-                        outerTableName,
+                        "outerTable", //+outerTableName,
                         outerAttributes,
                         outerAttributesProperties,
                         outerParams,
@@ -434,7 +436,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 Map<String, String> relationParams = new TreeMap<>();
                 for( String a : relationAttributes ) relationParams.put(a, relationSearchParameter);
                 __appendSearchConditionsFor(
-                        relationTableName,
+                        "relationTable",
                         relationAttributes,
                         relationAttributesProperties,
                         relationParams,
@@ -446,7 +448,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 Map<String, String> innerParams = new TreeMap<>();
                 for( String a : innerAttributes ) innerParams.put(a, innerSearchParameter);
                 __appendSearchConditionsFor(
-                        innerTableName,
+                        "innerTable",//+innerTableName,
                         innerAttributes,
                         innerAttributesProperties,
                         innerParams,
