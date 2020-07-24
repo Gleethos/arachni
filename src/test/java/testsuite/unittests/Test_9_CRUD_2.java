@@ -248,7 +248,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
     }
 
     @Test
-    public void quick_search_with_GET_method_returns_error_message_because_search_parameter_is_missing() throws Exception
+    public void quick_search_with_GET_method_returns_expected_result_like_with_POST() throws Exception
     {
         Test_9_Provider provider = createInstance();
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
@@ -260,8 +260,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         );
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
-        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
-        assert body.contains("500");
+        assert body.contains("$('#attributes_quick_search_result').replaceWith('')");
+        assert body.contains("200");
     }
 
     @Test
@@ -273,24 +273,20 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
                 "CRUD/find/attributes->humans?searchQuickly=true", "GET"
         )))).toString();
-        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
-        assert body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
-        assert body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert body.contains("ERROR : Quick-Search expects relational search url to end with 'inner table'->'relation table'->'outer table'!");
         assert body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
+
         assert body.contains("500");
 
         body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/find/attributes->humans?" +
+                "CRUD/find/attributes->human_attribute_relations->humans?" +
                         "searchQuickly=true&" +
                         "attributes_quick_search_parameter=rie&" +
                         "humans_quick_search_parameter=ean&" +
-                        "relation_table_name=human_attribute_relations&" +
                         "key_relation=FAIL",
                 "GET"
         )))).toString();
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'humans_quick_search_parameter'!");
-        assert !body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
+        assert !body.contains("ERROR : Quick-Search expects relational search url to end with 'inner table'->'relation table'->'outer table'!");
         assert !body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
         assert body.contains("ERROR : Quick-Search expects value 'FAIL' of url parameter 'key_relation' to contain '->' identifier!");
         assert body.contains("500");
@@ -303,11 +299,10 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
 
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/find/attributes->humans?" +
+                "CRUD/find/attributes->FAIL->humans?" +
                         "searchQuickly=true&" +
                         "attributes_quick_search_parameter=rie&" +
                         "humans_quick_search_parameter=ean&" +
-                        "relation_table_name=FAIL&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
@@ -316,7 +311,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert !body.contains("ERROR : Quick-Search expects url parameter 'relation_table_name'!");
         assert !body.contains("ERROR : Quick-Search expects url parameter 'key_relation'!");
         assert !body.contains("ERROR : Quick-Search expects value 'FAIL' of url parameter 'key_relation' to contain '->' identifier!");
-        assert body.contains("ERROR : Relation table with name 'FAIL' not found!");
+        assert body.contains("ERROR : Relation table with name 'FAIL' not found in database!");
         assert body.contains("500");
     }
 
@@ -346,11 +341,10 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
 
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/find/attributes->OUTER_FAIL_TABLE?" +
+                "CRUD/find/attributes->FAIL->OUTER_FAIL_TABLE?" +
                         "searchQuickly=true&" +
                         "attributes_quick_search_parameter=rie&" +
                         "humans_quick_search_parameter=ean&" +
-                        "relation_table_name=FAIL&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
@@ -358,24 +352,28 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert body.contains("Cannot find entity 'OUTER_FAIL_TABLE'! : Table not found in database!");
     }
 
-    //@Test
+    @Test
     public void relational_quick_search_with_GET_method_returns_expected_result() throws Exception
     {
         Test_9_Provider provider = createInstance();
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
 
         String body = getBody(crud.handle(createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/find/attributes->humans?" +
+                "CRUD/find/attributes->human_attribute_relations->humans?" +
                         "searchQuickly=true&" +
-                        "attributes_quick_search_parameter=rie&" +
-                        "humans_quick_search_parameter=ean&" +
-                        "relation_table_name=human_attribute_relations&" +
+                        "attributes_quick_search_parameter=a&" +
+                        "humans_quick_search_parameter=e&" +
+                        "human_attribute_relations_quick_search_parameter=w&" +
                         "key_relation=attribute_id->human_id",
                 "GET"
         )))).toString();
         assert body.contains("200");
-        //TODO!
-        //assert body.contains("Cannot find entity 'OUTER_FAIL_TABLE'! : Table not found in database!");
+        assert body.contains(">Mysterious<");
+        assert body.contains(">Weirdness<");
+        assert body.contains(">Jup! John is mysterious. <");
+        assert body.contains(">John Doe<");
+        assert body.contains(">John is a weired person...<");
+        assert body.contains(".replaceWith('')");
     }
 
     @Test
@@ -391,8 +389,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         );
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
-        assert body.contains("ERROR : Quick-Search expects url parameter 'attributes_quick_search_parameter'!");
-        assert body.contains("500");
+        assert body.contains("$('#attributes_quick_search_result').replaceWith('')");
+        assert body.contains("200");
     }
 
     @Override
