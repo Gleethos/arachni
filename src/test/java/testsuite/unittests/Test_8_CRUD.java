@@ -163,7 +163,8 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "'INSERT INTO tail_relations\n" +
                 "(deleted, created, description)\n" +
                 "VALUES\n" +
-                "('Tomorrow','Today','ThisIsASavingTest')'\n" +
+                "('Tomorrow','Today','ThisIsASavingTest')\n" +
+                "'\n" +
                 "\n" +
                 "Reason:\n" +
                 "[SQLITE_CONSTRAINT]  Abort due to constraint violation (NOT NULL constraint failed: tail_relations.parent_tail_id)"
@@ -393,10 +394,11 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("content-length: 0");
 
         assert compact.contains("id=\"tails_quick_search_result\"");
-        assert compact.contains("onclick=\"$('#tails_id_search_input').val('2');loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
         assert compact.contains("ThirdTail");
         assert compact.contains("SecondTail");
         assert compact.contains("Name");
+        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'2'});loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
+        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'3'});loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
         assert res.getContentLength()<620;
     }
 
@@ -480,7 +482,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "'INSERT INTO tails\n" +
                 "(created, deleted)\n" +
                 "VALUES\n" +
-                "('"+date+"','InTheFuture')'\n" +
+                "('"+date+"','InTheFuture')\n'\n" +
                 "\n" +
                 "Reason:\n" +
                 "[SQLITE_CONSTRAINT]  Abort due to constraint violation (NOT NULL constraint failed: tails.name)"

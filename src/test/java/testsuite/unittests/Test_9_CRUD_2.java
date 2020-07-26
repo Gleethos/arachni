@@ -90,41 +90,65 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
                 "humans", "human_relations", "attributes", "human_attribute_relations"
         });
         TestUtility.check(!isTestworld, body, new String[]{"tails", "tail_relations", "tags"});// We are NOT in tailworld!
+        String template =
+                "<script>\n" +
+                "functionset_search_parameters_for_IDENTIFIER(value){\n" +
+                "if(typeofvalue==='string'||valueinstanceofString){\n";
+        String template2 =
+                "}else{\n" +
+                "for(varainvalue){\n$('#IDENTIFIER_'+a+'_search_input').val(value[a]);\n}\n" +
+                "}\n" +
+                "}\n" +
+                "</script>";
+        TestUtility.check(isTestworld, body, new String[]{
+                "<script>\n" +
+                "functionset_search_parameters_for_human_attribute_relations(value){\n" +
+                "if(typeofvalue==='string'||valueinstanceofString){\n" +
+                "$('#human_attribute_relations_id_search_input').val(value);\n" +
+                "$('#human_attribute_relations_created_search_input').val(value);\n" +
+                "$('#human_attribute_relations_deleted_search_input').val(value);\n" +
+                "$('#human_attribute_relations_human_id_search_input').val(value);\n" +
+                "$('#human_attribute_relations_description_search_input').val(value);\n" +
+                "$('#human_attribute_relations_attribute_id_search_input').val(value);\n" +
+                "}else{\n" +
+                "for(varainvalue){\n$('#human_attribute_relations_'+a+'_search_input').val(value[a]);\n}\n" +
+                "}\n" +
+                "}\n" +
+                "</script>",
+                template.replace("IDENTIFIER", "humans"),
+                template2.replace("IDENTIFIER", "humans"),
+                template.replace("IDENTIFIER", "attributes"),
+                template2.replace("IDENTIFIER", "attributes"),
+        });
         TestUtility.check(isTestworld, body, new String[] { // Quick search oninput events :
                 // human relations :
                 "id=\"human_relations_quick_search_input\"",
-                "oninput=\"$('#human_relations_id_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "$('#human_relations_created_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "$('#human_relations_deleted_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "$('#human_relations_description_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "$('#human_relations_superior_human_id_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "$('#human_relations_inferior_human_id_search_input').val($('#human_relations_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('human_relations');\"",
+                "oninput=\"\n" +
+                        "set_search_parameters_for_human_attribute_relations($('#human_attribute_relations_quick_search_input').val());\n" +
+                        "loadQuickSearchForEntity('human_attribute_relations');\n" +
+                        "set_search_parameters_for_human_attribute_relations('');\n" +
+                        "\"",
                 // humans :
                 "id=\"humans_quick_search_input\"",
-                "oninput=\"$('#humans_id_search_input').val($('#humans_quick_search_input').val());\n" +
-                        "$('#humans_name_search_input').val($('#humans_quick_search_input').val());\n" +
-                        "$('#humans_value_search_input').val($('#humans_quick_search_input').val());\n" +
-                        "$('#humans_created_search_input').val($('#humans_quick_search_input').val());\n" +
-                        "$('#humans_deleted_search_input').val($('#humans_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('humans');\"",
+                "oninput=\"\n" +
+                        "set_search_parameters_for_humans($('#humans_quick_search_input').val());\n" +
+                        "loadQuickSearchForEntity('humans');\n" +
+                        "set_search_parameters_for_humans('');\n" +
+                        "\"",
                 // attributes :
                 "id=\"attributes_quick_search_input\"",
-                "oninput=\"$('#attributes_id_search_input').val($('#attributes_quick_search_input').val());\n" +
-                        "$('#attributes_name_search_input').val($('#attributes_quick_search_input').val());\n" +
-                        "$('#attributes_created_search_input').val($('#attributes_quick_search_input').val());\n" +
-                        "$('#attributes_deleted_search_input').val($('#attributes_quick_search_input').val());\n" +
-                        "$('#attributes_description_search_input').val($('#attributes_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('attributes');\"",
+                "oninput=\"\n" +
+                        "set_search_parameters_for_attributes($('#attributes_quick_search_input').val());\n" +
+                        "loadQuickSearchForEntity('attributes');\n" +
+                        "set_search_parameters_for_attributes('');\n" +
+                        "\"",
                 // human attribute relations :
                 "id=\"human_attribute_relations_quick_search_input\"",
-                "oninput=\"$('#human_attribute_relations_id_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "$('#human_attribute_relations_created_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "$('#human_attribute_relations_deleted_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "$('#human_attribute_relations_human_id_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "$('#human_attribute_relations_description_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "$('#human_attribute_relations_attribute_id_search_input').val($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('human_attribute_relations');\"",
+                "oninput=\"\n" +
+                        "set_search_parameters_for_human_attribute_relations($('#human_attribute_relations_quick_search_input').val());\n" +
+                        "loadQuickSearchForEntity('human_attribute_relations');\n" +
+                        "set_search_parameters_for_human_attribute_relations('');\n" +
+                        "\"",
         });
         TestUtility.check(isTestworld, body, new String[]{
                 "<buttononclick=\"switchTab(event,'.HumanAttributeRelationsTab')\"",
