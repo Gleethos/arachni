@@ -222,12 +222,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         if(req.getUrl().getParameter().containsKey("id")) paramTable = Map.of("id", req.getUrl().getParameter().get("id"));
 
         boolean quickSearch = settingTable.get("searchQuickly").equals("true");
+        String uid = (paramTable.containsKey("uid"))?paramTable.get("uid"):"";
+
+        String uniqueInner = ((tableName.contains("->"))?tableName.split("->")[0]:tableName)+((uid.isBlank())?"":"_"+uid);
 
         Map<String, List<String>> tables = _tablesSpace();
         CRUDBuilder b = new CRUDBuilder( tables );
 
-        String resultSelectorID = ((tableName.contains("->"))?tableName.split("->")[0]:tableName)+"_quick_search_result";
-        String idSrcSelectorID = ((tableName.contains("->"))?tableName.split("->")[0]:tableName)+"_id_search_input";
+        String foundEntityAppenderFunctionName = (uid.isBlank())?"":"insert_chosen_into_new_"+uniqueInner+"();";
+        String resultSelectorID = uniqueInner+"_quick_search_result";
+        String idSrcSelectorID = uniqueInner+"_id_search_input";
         String resultHTML =
                 (quickSearch) ?
                         __findQuickly(
@@ -251,7 +255,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         String innerTableName = foundJoin.keySet().stream().filter(e->e.contains("inner-")).map(e->e.replace("inner-", "")).findFirst().get();
                                         Map<String, List<String>> innerResult = foundJoin.get("inner-"+innerTableName);
                                         foundJoin.forEach( (currentTable, currentResult) -> {
-                                            currentTable = (currentTable.contains("-"))?currentTable.split("-")[1]:currentTable;
                                             String bestAttribute = currentResult.keySet().stream().filter(e->!e.equals("id")).findFirst().get();
                                             Object value = currentResult.get(bestAttribute).get(innerIndex);
                                             b.$("<div class=\"col-sm-4 col-md-4 col-lg-4 contentBox\">");
@@ -261,7 +264,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     "').val('")
                                                         .$(innerResult.get("id").get(innerIndex))
                                                     .$("');")
-                                                    .$("loadFoundForEntity('").$(currentTable).$("');")
+                                                    .$("loadFoundForEntity('"+innerTableName+"', '"+uid+"', function(){"+foundEntityAppenderFunctionName+"});")
                                                     .$("$('#"+resultSelectorID+"').replaceWith('');")
                                                     .$("\">")
                                                     .$(value.toString())
@@ -274,7 +277,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 },
                                 found -> {
                                     String keyAttribute = found.keySet().stream().findFirst().get();
-                                    b.$("<div id=\""+tableName+"_quick_search_result\" class=\"row\">")
+                                    b.$("<div id=\""+resultSelectorID+"\" class=\"row\">")
                                             .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
                                             b.$("<span><h3> "+b._snakeToTitle(keyAttribute)+"(s) :</h3></span>");
                                             b.$("</div>");
@@ -286,9 +289,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         b.$("<a ")
                                                 .$("style=\"padding:0.25em;\" ")
                                                 .$("onclick=\"")
-                                                //.$("$('#"+idSrcSelectorID+"').val('"+found.get("id").get(i)+"');")
-                                                .$("set_search_parameters_for_"+tableName+"({'id':'"+found.get("id").get(i)+"'});")
-                                                .$("loadFoundForEntity('"+tableName+"');")
+                                                .$("set_search_parameters_for_"+uniqueInner+"({'id':'"+found.get("id").get(i)+"'});")
+                                                .$("loadFoundForEntity('"+tableName+"', '"+uid+"', function(){"+foundEntityAppenderFunctionName+"});")
                                                 .$("$('#"+resultSelectorID+"').replaceWith('');\"")
                                                 .$(">")
                                                 .$(value.toString())
@@ -368,7 +370,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             _close();
             return null; // Returning null indicates an error occurred!
         }
-
 
         Function<List<String>, String> findBestAttribute = attributeList -> {
             String bestAttribute = "id";
@@ -692,132 +693,27 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         CRUDBuilder f = new CRUDBuilder(tables);
         f.tabsOf(
                 new ArrayList<>(tables.keySet()),
-                innerTableName -> {
+                currentTableName -> {
                     f.$("<div class = \"mainContentWrapper col-sm-12 col-md-12 col-lg-12\">")
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                .$("<h1>").$(f._snakeToTitle(innerTableName)).$("</h1>")
+                                .$("<h1>").$(f._snakeToTitle(currentTableName)).$("</h1>")
                                 .$("</div>")
                                 .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+innerTableName).get("COUNT(*)").get(0)+"</label>")
-                                .$("</div>")
-                                .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<button onclick=\"$('#"+innerTableName+"_result').html('');\">CLEAR</button>")
-                                    .$("<button onclick=\"loadFoundForEntity('").$(innerTableName).$("')\">SEARCH</button>")
-                                    .$("<button onclick=\"loadQuickSearchForEntity('").$(innerTableName).$("')\">QUICK SEARCH</button>")
+                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+currentTableName).get("COUNT(*)").get(0)+"</label>")
                                 .$("</div>");
-
-                    List<String> columns = tables.get(innerTableName);
-                    f.tabsOf(
-                            Map.of(
-                                    "quick",
-                                    searchType -> {
-                                        String innerHTMLID = innerTableName+"_quick_search_input";
-                                        f.$("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">                   ")
-                                        .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">                               ")
-                                        .$("    <input style=\"width:100%;\"                                            ")
-                                        .$("        name=\"search\"                                                     ")
-                                        .$("        placeholder=\"anything\"                                            ")
-                                        .$("        id=\""+innerTableName+"_quick_search_input"+"\"                     ")
-                                        .$("        oninput=\"                                                          \n")
-                                        .$("            set_search_parameters_for_"+innerTableName+"($('#"+innerHTMLID+"').val());\n")
-                                        .$("            loadQuickSearchForEntity('"+innerTableName+"');                 \n")
-                                        .$("            set_search_parameters_for_"+innerTableName+"( '' );             \n")
-                                        .$("        \"                                                                  ")
-                                        .$(">                                                                           ")
-                                        .$("<script>                                                                    \n")
-                                        .$("function set_search_parameters_for_"+innerTableName+"(value){               \n")
-                                        .$("   if ( typeof value === 'string' || value instanceof String ) {            \n");
-                                        for(String c : columns) {
-                                            String attributeName = c.split(" ")[0];
-                                            f.$("$('#").$(innerTableName+"_"+attributeName+"_search_input').val(value);\n");
-                                        }
-                                        f.$("   } else {                                                                \n")
-                                        .$("      for (var a in value) {                                                \n")
-                                        .$("           $('#"+innerTableName+"_'+a+'_search_input').val(value[a]);       \n")
-                                        .$("      }                                                                     \n")
-                                        .$("  }\n")
-                                        .$("}\n")
-                                        .$("</script>")
-                                        .$("</div>");
-                                        Map<String, Map<String, String>> relationTables = __findRelationTablesOf(innerTableName, tables, s->true);
-                                        List<String> relationTableList = new ArrayList<>(relationTables.keySet());
-                                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12 row\">");
-                                        for ( String relationTableName : relationTableList ) {
-                                            f._forRelationKeys(
-                                                    relationTables.get(relationTableName),
-                                                    innerTableName,
-                                                    (innerKey, outerKey, outerTableName) ->{
-                                                        String relationQuickSearchTitle =
-                                                                innerTableName+"->id == "+innerKey+"<-"+relationTableName+"->"+outerKey+" == id<-"+outerTableName;
-                                                        String relationHTMLID = relationTableName+"_quick_search_joined_with_"+innerTableName+"_and_"+outerTableName;
-                                                        String outerHTMLID = outerTableName+"_quick_search_joined_with_"+relationTableName+"_and_"+innerTableName;
-
-                                                        f.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                                        f.$("<span style=\"width:100%;\">").$(relationQuickSearchTitle).$("</span>");
-                                                        f.$("</div>");
-                                                        f.$("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
-                                                        f.$("<input style=\"width:100%;\"")
-                                                                .$("name=\"search\" ")
-                                                                .$("placeholder=\"anything "+relationTableName.replace("_", " ")+"\"")
-                                                                .$("id=\""+relationHTMLID+"\"")
-                                                                .$("oninput=\"loadRelationalQuickSearchForEntity(       ")
-                                                                .$("    '"+innerTableName+"',                           ")
-                                                                .$("    '"+relationTableName+"',                        ")
-                                                                .$("    '"+outerTableName+"',                           ")
-                                                                .$("    '"+innerKey+"',                                 ")
-                                                                .$("    '"+outerKey+"'                                  ")
-                                                                .$(");\"");
-                                                        f.$(">");
-                                                        f.$("</div>");
-                                                        f.$("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
-                                                        f.$("<input style=\"width:100%;\"")
-                                                                .$("name=\"search\" ")
-                                                                .$("placeholder=\"anything "+outerTableName.replace("_", " ")+"\"")
-                                                                .$("id=\""+outerHTMLID+"\"")
-                                                                .$("oninput=\"loadRelationalQuickSearchForEntity(")
-                                                                    .$("'"+innerTableName+"',")
-                                                                    .$("'"+relationTableName+"',")
-                                                                    .$("'"+outerTableName+"',")
-                                                                    .$("'"+innerKey+"',")
-                                                                    .$("'"+outerKey+"'")
-                                                                .$(");\"");
-                                                        f.$("\"").$(">");
-                                                        f.$("</div>");
-
-                                                    }
-                                            );
-                                        }
-                                        f.$("</div>");
-                                        f.$("</div>");
-                                    },
-                                    "specific",
-                                    searchType -> {
-                                        f.$("<div id=\"" + innerTableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
-                                        for(String c : columns){
-                                            String attributeName = c.split(" ")[0];
-                                            f.$("<input ")
-                                                    .$("name=\"").$(attributeName).$("\" ")
-                                                    .$("placeholder=\"").$(c).$("\"")
-                                                    .$("id=\"").$(innerTableName+"_"+attributeName+"_search_input").$("\"")
-                                            .$(">");
-                                        }
-                                        f.$("</div>");
-                                    }
-                            ),
-                            "noRow"
-                    );
+                    f.buildQuickSearch(currentTableName, "", "");
                             f.$("</div>")
                             .$("<div class=\"row\">")
                                 .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                    .$("<div id=\"").$(innerTableName).$("_result\" class=\"SearchResult\"></div>")
+                                    .$("<div id=\""+currentTableName+"_result\" class=\"SearchResult\"></div>")
                                 .$("</div>")
                             .$("</div>")
                                     .generateNewButton(
-                                    List.of(innerTableName),
-                                    e -> f.entitiesToForm(innerTableName, e.get(0), Map.of("appendRelations", "true")),
-                                    "", ""
+                                    List.of(currentTableName),
+                                    e -> f.entitiesToForm(currentTableName, e.get(0), Map.of("appendRelations", "true")),
+                                    "", "", f._newUID()
                             )
                         .$("</div>")
                     .$("</div>");
@@ -826,7 +722,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         );
         response.setContent(f.toString());
     }
-
 
     /**
      * <-------------------------------------------------------------------------->
@@ -854,6 +749,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
+        public Map<String, List<String>> getTables(){
+            return _tables;
+        }
+
         private String _snakeToClass(String s){
             List<String> parts = Arrays.asList(s.split("_"))
                     .stream()
@@ -873,6 +772,131 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     .map(word->word.substring(0, 1).toUpperCase() + word.substring(1))
                     .collect(Collectors.toList());
             return String.join(" ", parts);
+        }
+
+        private CRUDBuilder buildQuickSearch(
+                String currentTableName,
+                String uid, String afterLoadCode // Search button onclick code appendix!
+        ){
+            String uniqueTableName = currentTableName + ((uid.isBlank())?"":"_"+uid);
+            $("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
+                    .$("<button class=\"ClearButton\" onclick=\"$('#"+uniqueTableName+"_result').html('');\">CLEAR</button>")
+            .$("</div>");
+            List<String> columns = _tables.get(currentTableName);
+            tabsOf(
+                    Map.of(
+                            "quick",
+                            searchType -> {
+                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                                        .$(
+                                                "<button " +
+                                                        "id=\""+uniqueTableName+"_quick_search_button\" " +
+                                                        "class=\"QuickSearchButton\" " +
+                                                        "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
+                                                        ">" +
+                                                        "QUICK SEARCH" +
+                                                        "</button>")
+                                .$("</div>");
+                                String innerHTMLID = uniqueTableName+"_quick_search_input";
+                                $("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">                   ")
+                                        .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">                               ")
+                                        .$("    <input style=\"width:100%;\"                                            ")
+                                        .$("        name=\"search\"                                                     ")
+                                        .$("        placeholder=\"anything\"                                            ")
+                                        .$("        id=\""+innerHTMLID+"\"                                              ")
+                                        .$("        oninput=\"                                                          \n")
+                                        .$("            set_search_parameters_for_"+uniqueTableName+"($('#"+innerHTMLID+"').val()); \n")
+                                        .$("            $('#"+uniqueTableName+"_quick_search_button').trigger('onclick');           \n")
+                                        //.$("            loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');  \n")
+                                        .$("            set_search_parameters_for_"+uniqueTableName+"( '' );           \n")
+                                        .$("        \"                                                                  ")
+                                        .$(">                                                                           ")
+                                        .$("<script>                                                                    \n")
+                                        .$("function set_search_parameters_for_"+uniqueTableName+"(value){             \n")
+                                        .$("   if ( typeof value === 'string' || value instanceof String ) {            \n");
+                                for(String c : columns) {
+                                    String attributeName = c.split(" ")[0];
+                                    $("$('#").$(uniqueTableName+"_"+attributeName+"_search_input').val(value);\n");
+                                }
+                                $("   } else {                                                                \n")
+                                        .$("      for (var a in value) {                                                \n")
+                                        .$("           $('#"+uniqueTableName+"_'+a+'_search_input').val(value[a]);     \n")
+                                        .$("      }                                                                     \n")
+                                        .$("  }\n")
+                                        .$("}\n")
+                                        .$("</script>")
+                                        .$("</div>");
+                                Map<String, Map<String, String>> relationTables = __findRelationTablesOf(currentTableName, _tables, s->true);
+                                List<String> relationTableList = new ArrayList<>(relationTables.keySet());
+                                $("<div class=\"col-sm-12 col-md-12 col-lg-12 row\">");
+                                for ( String relationTableName : relationTableList ) {
+                                    _forRelationKeys(
+                                            relationTables.get(relationTableName),
+                                            currentTableName,
+                                            (innerKey, outerKey, outerTableName) ->{
+                                                String relationQuickSearchTitle =
+                                                        currentTableName+"->id == "+innerKey+"<-"+relationTableName+"->"+outerKey+" == id<-"+outerTableName;
+                                                String relationHTMLID = relationTableName+"_quick_search_joined_with_"+uniqueTableName+"_"+innerKey+"_and_"+outerTableName+"_"+outerKey;
+                                                String outerHTMLID = outerTableName+"_"+outerKey+"_quick_search_joined_with_"+relationTableName+"_and_"+uniqueTableName+"_"+innerKey;
+                                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                                $("<span style=\"width:100%;\">"+relationQuickSearchTitle+"</span>");
+                                                $("</div>");
+                                                $("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                $("<input style=\"width:100%;\"")
+                                                        .$("name=\"search\" ")
+                                                        .$("placeholder=\"anything "+relationTableName.replace("_", " ")+"\"")
+                                                        .$("id=\""+relationHTMLID+"\"")
+                                                        .$("oninput=\"loadRelationalQuickSearchForEntity(       ")
+                                                        .$("    '"+currentTableName+"',                         ")
+                                                        .$("    '"+relationTableName+"',                        ")
+                                                        .$("    '"+outerTableName+"',                           ")
+                                                        .$("    '"+innerKey+"',                                 ")
+                                                        .$("    '"+outerKey+"',                                 ")
+                                                        .$("    '"+uid+"'                                       ")
+                                                        .$(");\"");
+                                                $(">");
+                                                $("</div>");
+                                                $("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                $("<input style=\"width:100%;\"")
+                                                        .$("name=\"search\" ")
+                                                        .$("placeholder=\"anything "+outerTableName.replace("_", " ")+"\"")
+                                                        .$("id=\""+outerHTMLID+"\"")
+                                                        .$("oninput=\"loadRelationalQuickSearchForEntity(")
+                                                        .$("    '"+currentTableName+"',                         ")
+                                                        .$("    '"+relationTableName+"',                        ")
+                                                        .$("    '"+outerTableName+"',                           ")
+                                                        .$("    '"+innerKey+"',                                 ")
+                                                        .$("    '"+outerKey+"',                                 ")
+                                                        .$("    '"+uid+"'                                       ")
+                                                        .$(");\"");
+                                                $("\"").$(">");
+                                                $("</div>");
+                                            }
+                                    );
+                                }
+                                $("</div>");
+                                $("</div>");
+                            },
+                            "specific",
+                            searchType -> {
+                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                                        .$("<button class=\"SearchButton\" onclick=\"loadFoundForEntity('"+currentTableName+"', '"+uid+"', function(){"+afterLoadCode+"});\">SEARCH</button>")
+                                .$("</div>");
+                                $("<div id=\"" + uniqueTableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                for(String c : columns){
+                                    String attributeName = c.split(" ")[0];
+                                    $("<input ")
+                                            .$("name=\"").$(attributeName).$("\" ")
+                                            .$("placeholder=\"").$(c).$("\"")
+                                            .$("id=\"").$(uniqueTableName+"_"+attributeName+"_search_input").$("\"")
+                                            .$(">");
+                                }
+                                $("</div>");
+                            }
+                    ),
+                    "default"
+            );
+            return this;
         }
 
         private CRUDBuilder folderFileButtonsForTarget(String path, String targetSelector, Function<File, Boolean> check){
@@ -928,7 +952,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         private CRUDBuilder generateNewButton (
                 List<String> tableNames,
                 Consumer< List<Map<String, List<Object>>>> templateLambda,
-                String id, String join
+                String id, String outerKey, String uid
         ) {
             String today = new java.sql.Date( System.currentTimeMillis() ).toString();
             List<Map<String, List<Object>>> templates = new ArrayList<>();
@@ -942,13 +966,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
             String table = String.join("_and_", tableNames);
             table = ( id.isBlank() ) ? table : table+"_"+id ;
-            table = ( join.isBlank() ) ? table : table + "_joined_on_"+join;
+            table = ( outerKey.isBlank() ) ? table : table + "_joined_on_"+outerKey;
             $("<script>");
-            $(" function new_"+table+"() {");
-            $("$('#").$(table).$("_result').append(`");
-            templateLambda.accept(templates);
-            $("`);");
-            $(" }");
+            $("function new_"+table+"() {                                        \n");
+            $("     let array = '"+uid+"'.split('');                             \n");
+            $("     array.sort(function(){return 0.5-Math.random();});           \n");// This creates a new uid for every new entity!
+            $("     newUID = array.join('');                                     \n");// ...
+            $("     let newForm = `");templateLambda.accept(templates);$("`;     \n");
+            $("     newForm = newForm.split('"+uid+"').join(newUID);             \n");
+            $("     $('#"+table+"_result').append(newForm);                      \n");
+            $("     return newUID;                                               \n");// Used by quicksearch for adding new relation to existing entity!
+            $("}                                                                 \n");
             $("</script>\n");
             $("<button onclick=\"new_"+table+"()\">");
             $("NEW "+table.replace("_", " ").toUpperCase());
@@ -968,9 +996,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             if(entities.isEmpty()) return "<div>Nothing found...</div>";
             String indexAttribute = entities.keySet().stream()
                     .filter(k->k.contains("id"))
-                    .sorted((x, y) -> Integer.compare(y.length(), x.length()))
-                    .findFirst()
-                    .get();
+                    .sorted(Comparator.comparingInt(String::length))
+                    .findFirst().get();
 
             Function<Map<String, String>, String> entityID = e -> (e.get(indexAttribute).equals(""))?"new":e.get(indexAttribute);
             Function<Map<String, String>, String> rowID = e -> tableName+"_"+entityID.apply(e)+((appendRelations)?"":"_related");
@@ -1191,22 +1218,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 }
                         );
 
-
-                        //for( String innerKey : foreignKeys ) { // := from one to...
-                        //    for( String outerKey : foreignKeys ) { // := many !
-                        //        if(
-                        //                ! innerKey.equals(outerKey) && // The inner key must reference the current table type!
-                        //                        relationTables.get(relationTableName).get(innerKey).contains("REFERENCES "+innerTableName)
-                        //        ) {
-                        //            String outerText = outerKey.replace("_id", "");
-                        //            hasManyRelations.put(
-                        //                    "found_"+__toPlural(outerText),
-                        //                    List.of(innerKey, outerKey) // one : many
-                        //            );
-                        //        }
-                        //    }
-                        //}
-
                         // Building tabs for each relation type within a given table... :
                         tabsOf(
                                 new ArrayList<>( hasManyRelations.keySet() ),
@@ -1221,8 +1232,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     int numberOfFound = relationResult.values().stream().findFirst().get().size();
 
                                     // This id will be targeted by the "new button" generated at the end of the loop below:
-                                    $("<div id=\""+relationTableName+"_and_"+outerTableName+"_"+id+"_joined_on_"+outerKey+"_result"+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                    $("<div class=\"\">");// The 'row' class is deliberately left out here!
+                                    String relatedEntitiesWrapperID = relationTableName+"_and_"+outerTableName+"_"+id+"_joined_on_"+outerKey+"_result";
+                                    $("<div id=\""+relatedEntitiesWrapperID+"\" class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    //$("<div class=\"\">");// The 'row' class is deliberately left out here!
                                     // -> creates a nice padding for some reason! :)
                                     for ( int i = 0; i < numberOfFound; i++ )
                                     {
@@ -1244,23 +1256,22 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         assert currentRelationEntity.get(outerKey).size()==1;
 
                                         Map<String, List<Object>> currentOuterEntity = _query(
-                                                "SELECT * FROM "+outerTableName+ " WHERE id = "+currentRelationEntity.get(outerKey).get(0)
+                                                "SELECT * FROM "+outerTableName+ " " +
+                                                     "WHERE id = "+currentRelationEntity.get(outerKey).get(0)
                                         );
                                         // There should not be more than one current
                                         assert currentOuterEntity.get("id").size() == 1;
 
                                         generateRelationEntity( // Will append the relation entity and the outer entity!
-                                                relationTableName,
-                                                currentRelationEntity,
-                                                outerTableName,
-                                                currentOuterEntity,
+                                                relationTableName, currentRelationEntity,
+                                                outerTableName, currentOuterEntity,
                                                 outerKey
                                         );
-
                                     } // :=  Entry loop end!
-                                    $("</div>");
+                                    //$("</div>");
                                     $("</div>");
                                     $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    String uid = _newUID();
                                     generateNewButton (
                                             List.of (
                                                     relationTableName,
@@ -1269,15 +1280,42 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             entities -> {
                                                 entities.get(0).put( innerKey, List.of(id) ); // Current inner id !
                                                 generateRelationEntity (
-                                                    relationTableName,
-                                                    entities.get(0),
-                                                    outerTableName,
-                                                    entities.get(1),
-                                                    outerKey
+                                                    relationTableName, entities.get(0),
+                                                    outerTableName, entities.get(1),
+                                                    outerKey, uid
                                                 );
                                             },
-                                            id, outerKey
+                                            id, outerKey, uid
                                     );
+                                    String uniqueOuter = outerTableName+"_"+uid;
+                                    String foundEntityAppenderFunctionName = "insert_chosen_into_new_"+uniqueOuter+"()";
+                                    buildQuickSearch(
+                                            outerTableName,
+                                            uid,
+                                            foundEntityAppenderFunctionName
+                                    );
+                                    String newEntityAppendID = relationTableName+"_and_"+outerTableName +
+                                            ( ( id.isBlank() ) ? "" : "_"+id ) +
+                                            ( ( outerKey.isBlank() ) ? "" : "_joined_on_"+outerKey );
+                                    // TODO: trigger "NEW" -> replace payload! -> set synchronize relation id from payload...
+                                    String resultContainerID = uniqueOuter+"_result";
+                                    $("<div id=\""+resultContainerID+"\" class=\"SearchResult\"></div>");
+                                    $("<script>                                                                         \n");
+                                    $("function "+foundEntityAppenderFunctionName+"{                                               \n");
+                                    $("    let newUID = new_"+newEntityAppendID+"();                                    \n");// Finds UID of just created new entity!
+                                    $("    console.log(\"Fetching result from #"+resultContainerID+" ;\");                 \n");
+                                    $("    let resultHTML = $('#"+resultContainerID+"').html();                         \n");// Gets found entity from container!
+                                    $("    console.log(\"New UID : \"+newUID);                                     \n");
+                                    $("    $('#"+resultContainerID+"').html('');                                        \n");// Removes found from container...
+                                    $("    let target = $('#"+outerTableName+"_'+newUID);       \n");
+                                    $("    let buttons = target.find('.EntityButtons').html();     \n");
+                                    $("    target.html(resultHTML);                           \n");// Puts found entity into new entity
+                                    $("    target.find('.EntityButtons').html(buttons);                   \n");
+                                    $("                                                          \n");
+                                    $("}                                               \n");
+                                    $("</script>");
+                                    // Results will go here! :
+
                                     $("</div>");
 
                                 }
@@ -1300,19 +1338,29 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 Map<String, List<Object>> currentOuterEntity,
                 String outerKey
         ) {
-            String uid = _newUID();
+            return generateRelationEntity(
+                relationTableName, currentRelationEntity,
+                outerTableName, currentOuterEntity,
+                outerKey, _newUID()
+            );
+        }
+
+        public CRUDBuilder generateRelationEntity (
+                String relationTableName,
+                Map<String, List<Object>> currentRelationEntity,
+                String outerTableName,
+                Map<String, List<Object>> currentOuterEntity,
+                String outerKey, String uid
+        ) {
             $("<div style=\"border: 1px solid grey; margin-bottom:1em;\">");
             String relationUID = relationTableName + "_" + uid;
-            $("<div " +
-                    "id=\"" + relationUID + "\" " +
-                    "class=\"col-sm-12 col-md-12 col-lg-12\" " +
-                    "style=\"margin-bottom:0.5em;\"" +
-                    ">"
+            $(
+                "<div " +
+                     "id=\"" + relationUID + "\"               " +
+                     "class=\"col-sm-12 col-md-12 col-lg-12\"  " +
+                     "style=\"margin-bottom:0.5em;\"           " +
+                ">"
             );
-            //Function<Map<String, String>, String> entityID = e ->
-            //    (currentRelationEntity.get("id").get(0).equals(""))?"new":currentRelationEntity.get("id").get(0).toString();
-            //Function<Map<String, String>, String> rowID = e -> relationTableName+"_"+entityID.apply(e)+"_related";
-
             entitiesToForm(relationTableName, currentRelationEntity, Map.of(), Map.of("appendRelations","false"));
             $("</div>");
             String outerUID = outerTableName + "_" + uid;
@@ -1322,20 +1370,19 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     "style=\"background-color:#fff;\"" +
                     ">"
             );
-            //Function<Map<String, String>, String> outerEntityID = e -> (e.get("id").equals(""))?"new":e.get("id");
-            //Function<Map<String, String>, String> outerRowID = e -> outerTableName+"_"+outerEntityID.apply(e)+"_related";
-
             String relationIDClass = _snakeToClass(relationTableName+"_id");
             String outerIDClass = _snakeToClass(outerTableName+"_id");
             entitiesToForm(
                     outerTableName,
                     currentOuterEntity,
                     Map.of(
-                            "close", e->
-                                    "$('#"+outerUID+ "').find('.EntityWrapper').replaceWith('');" +
+                            "close",
+                            e ->
+                                    "$('#"+outerUID+"').find('.EntityWrapper').replaceWith('');" +
                                     "$('#"+relationUID+"').find('.EntityWrapper').replaceWith('');"
                             ,
-                            "save", e->// vvv ! dirty but powerful little hack :D ! vvv (loaded buttons will not be know about the relation table...)
+                            "save",
+                            e->// vvv ! dirty but powerful little hack :D ! vvv (loaded buttons will not be know about the relation table...)
                                     "let buttons = $('#"+outerUID+"').find('.EntityButtons').html();" +
                                     "let relationID = $('#"+relationUID+"').find('."+relationIDClass+"').val();" +
                                     "let outerID = $('#"+outerUID+"').find('."+outerIDClass+"').val();" +
@@ -1352,7 +1399,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             "       $('#"+outerUID+"').find('.EntityButtons').html(buttons);" +
                                             "  }" +
                                     ");",
-                            "delete", e->
+                            "delete",
+                            e->
                                     "let relationID = $('#"+relationUID+"').find('."+relationIDClass+"').val();" +
                                     "let outerID = $('#"+outerUID+"').find('."+outerIDClass+"').val();" +
                                     "deleteEntity( '"+outerTableName+"', (outerID==='')?'new':outerID );"+

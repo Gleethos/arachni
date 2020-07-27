@@ -160,10 +160,15 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         TestUtility.check(isTestworld, body, new String[] {  // Some more relevant asserts :
                 "oninput=\"noteOnInputFor('id','human_relations','new')\"",
                 "onclick=\"$('#human_relation_attribute_relations_new').replaceWith('');",
-                "$('#human_relations_result').append(`", // This is the beginning of the code of a "new button" appending an empty entity...
+                "$('#human_relations_result').append(newForm);", // This is the beginning of the code of a "new button" appending an empty entity...
         });
         TestUtility.check(true, body, new String[] {  // Global asserts :
-                "</div>`);}</script>" // This is a snipped of the end of the code of a "new button" appending an empty entity...
+                "array.sort(function(){return0.5-Math.random();});",
+                "newForm=`<div",
+                "</div>`;", // This is a snipped of the end of the code of a "new button" appending an empty entity...
+                "_result').append(newForm);",
+                "').join(newUID);",
+                "newForm=newForm.split('"
         });
     }
 

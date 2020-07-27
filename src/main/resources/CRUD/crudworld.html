@@ -263,24 +263,31 @@
 
                             <script>
 
-                                function loadFoundForEntity( tableName ) {
+                                function loadFoundForEntity( tableName, uid, afterLoad ) {
+                                    let identifier = tableName + ((uid==='')?'':'_'+uid);
+                                    let urlAppend = (uid==='')?'':'?uid='+uid;
+                                    let appendRelations = (uid==='')?'':'&appendRelations=false';
                                     sendAndSet(
-                                        $('#' + tableName + '_search').children('input, textarea'),
-                                        $('#' + tableName + '_result'),
-                                        'CRUD/find/' + tableName,
+                                        $('#' + identifier + '_search').children('input, textarea'),
+                                        $('#' + identifier + '_result'),
+                                        'CRUD/find/' + tableName + urlAppend + appendRelations,
                                         function( response, status, xhr ) {
                                             if ( status === "error" ) {
                                                 alert('Finding failed!\nStatus: '+status+'\nResponse: '+response);
                                             }
+                                            afterLoad();
                                         }
                                     );
                                 }
 
-                                function loadQuickSearchForEntity( tableName ) {
+                                function loadQuickSearchForEntity( tableName, uid ) {
+                                    let identifier = tableName +((uid==='')?'':'_'+uid);
+                                    let uidAppend = (uid==='')?'':'&uid='+uid;
+                                    let appendRelations = (uid==='')?'':'&appendRelations=false';
                                     sendAndSet(
-                                        $('#' + tableName + '_search').children('input, textarea'), // from
-                                        $('#' + tableName + '_result'), // into
-                                        'CRUD/find/' + tableName + '?searchQuickly=true',
+                                        $('#' + identifier + '_search').children('input, textarea'), // from
+                                        $('#' + identifier + '_result'), // into
+                                        'CRUD/find/' + tableName + '?searchQuickly=true' + uidAppend + appendRelations,
                                         function( response, status, xhr ) {
                                             if ( status === "error" ) {
                                                 alert('Finding failed!\nStatus: '+status+'\nResponse: '+response);
@@ -294,20 +301,28 @@
                                     relationTableName,
                                     outerTableName,
                                     innerKey,
-                                    outerKey
+                                    outerKey,
+                                    uid
                                 ) {
-                                    let relationValue = $('#'+relationTableName+"_quick_search_joined_with_"+innerTableName+"_and_"+outerTableName).val();
-                                    let outerValue = $('#'+outerTableName+"_quick_search_joined_with_"+relationTableName+"_and_"+innerTableName).val();
-                                    let innerValue = $('#'+innerTableName+"_quick_search_input").val();
+                                    let uniqueInner = innerTableName + ((uid==='')?'':'_'+uid);
+                                    let uidAppend = (uid==='')?'':'&uid='+uid;
+                                    let appendRelations = (uid==='')?'':'&appendRelations=false';
+                                    console.log("Relational quick search for : '"+innerTableName+"' ; Unique: '"+uniqueInner+"'");
+                                    console.log("Relation : '"+relationTableName+"'");
+                                    console.log("Outer table : '"+outerTableName+"'");
+                                    let relationValue = $('#'+relationTableName+"_quick_search_joined_with_"+uniqueInner+"_"+innerKey+"_and_"+outerTableName+"_"+outerKey).val();
+                                    let outerValue = $('#'+outerTableName+"_"+outerKey+"_quick_search_joined_with_"+relationTableName+"_and_"+uniqueInner+"_"+innerKey).val();
+                                    let innerValue = $('#'+uniqueInner+"_quick_search_input").val();
                                     let url =
                                     "CRUD/find/"+innerTableName+"->"+relationTableName+"->"+outerTableName+"?" +
                                     "searchQuickly=true&" +
                                     innerTableName+"_inner_quick_search_parameter="+innerValue+"&" +
                                     relationTableName+"_relation_quick_search_parameter="+relationValue+"&" +
                                     outerTableName+"_outer_quick_search_parameter="+outerValue+"&" +
-                                    "key_relation="+innerKey+"->"+outerKey;
+                                    "key_relation="+innerKey+"->"+outerKey +
+                                    uidAppend+appendRelations;
                                     console.log("Loading for url : \n"+url);
-                                    $('#' + innerTableName + '_result').html("").load(url);
+                                    $('#' + uniqueInner + '_result').html("").load(url);
                                 }
 
                                 function loadSavedForRelation(
