@@ -8,21 +8,21 @@
         padding-bottom: 5em;
     }
 
-    #mainTile {
+    #main_content_tile {
         padding-left: 1%;
         padding-right: 1%;
     }
 
-    .dynamicSideMargin {
+    .DynamicSideMargin {
         margin-right: 0%;
         margin-left: 0%;
     }
 
-    .dynamicWidth {
+    .DynamicWidth {
         width: 100%
     }
 
-    .floatsUp {
+    .FloatsUp {
         top: -4em;
     }
 }
@@ -37,21 +37,21 @@
         padding-bottom: 5em;
     }
 
-    #mainTile {
+    #main_content_tile {
         padding-left: 3%;
         padding-right: 3%;
     }
 
-    .dynamicSideMargin {
+    .DynamicSideMargin {
         margin-right: 5%;
         margin-left: 5%;
     }
 
-    .dynamicWidth {
+    .DynamicWidth {
         width: 90%
     }
 
-    .floatsUp {
+    .FloatsUp {
         top: -3em;
     }
 }
@@ -66,21 +66,21 @@
         padding-bottom: 5em;
     }
 
-    #mainTile {
+    #main_content_tile {
         padding-left: 4%;
         padding-right: 4%;
     }
 
-    .dynamicSideMargin {
+    .DynamicSideMargin {
         margin-right: 10%;
         margin-left: 10%;
     }
 
-    .dynamicWidth {
+    .DynamicWidth {
         width: 80%
     }
 
-    .floatsUp {
+    .FloatsUp {
         top: -2em;
     }
 }
@@ -95,33 +95,33 @@
         padding-bottom: 5em;
     }
 
-    #mainTile {
+    #main_content_tile {
         padding-left: 5%;
         padding-right: 5%;
     }
 
-    .dynamicSideMargin {
+    .DynamicSideMargin {
         margin-right: 17%;
         margin-left: 17%;
     }
 
-    .dynamicWidth {
+    .DynamicWidth {
         width: 66%
     }
 
-    .floatsUp {
+    .FloatsUp {
         top: 0em;
     }
 }
 
 /*---*/
 @media (min-width: 2000px) {
-    .dynamicSideMargin {
+    .DynamicSideMargin {
         margin-right: 25%;
         margin-left: 25%;
     }
 
-    .dynamicWidth {
+    .DynamicWidth {
         width: 50%
     }
 }
@@ -141,7 +141,7 @@ main {
     padding-bottom: 5em;
 }
 
-.mainframe {
+.MainFrame {
     margin: 0px;
     padding-left: 0%;
     padding-right: 0%;
@@ -159,7 +159,7 @@ main {
 
 /* Parallax base styles: */
 /* ================== */
-.parallax {
+.Parallax {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -168,38 +168,38 @@ main {
     perspective: 1px;
 }
 
-.parallax__layer {
+.ParallaxLayer {
     position: absolute;
     top: 0;
     bottom: 0;
 }
 
-.parallax__layer--base {
+.ParallaxLayer--base {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 
-.parallax__layer--back {
+.ParallaxLayer--back {
     -webkit-transform: translateZ(-1px) scale(2);
     transform: translateZ(-1px) scale(2);
 }
 
 /* main styles */
-.parallax {
+.Parallax {
     width: 100%;
     padding-top: 0;
     margin-top: 0;
 }
 
 /* added some padding to force scrollbars */
-.parallax__layer {
+.ParallaxLayer {
     padding: 100vh 0;
     padding-top: 2.3em;
     padding-bottom: 0em;
     width: 100%;
 }
 
-.parallaxBox {
+.ParallaxBox {
     margin-top: 25em;
     float: left;
     width: 100%;
@@ -233,7 +233,7 @@ main {
     box-shadow: 0 0 15px 2px black;
 }
 
-#navTile {
+#top_most_nav_bar {
     background-color: black;
     z-index: 100;
     width: 100%;
@@ -249,13 +249,13 @@ main {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=0); /* IE6-9 */
 }
 
-#navContainer {
+#navigation_container {
     float: left;
     width: 100%;
 }
 
 
-#NavbarMenu {
+#navbar_menu {
     position: absolute;
     right: 1em;
     padding-bottom: 0.25em;
@@ -264,16 +264,16 @@ main {
     max-width: 26em;
 }
 
-#NavbarList {
+#navbar_list {
     border-radius: 0.5em;
     width: 100%;
 }
 
-#NavbarList img {
+#navbar_list img {
     width: 1.5em;
 }
 
-#NavbarList a
+#navbar_list a
 {
     width: 4em;
     height: 2em;
@@ -292,7 +292,7 @@ main {
     border: 0.1em solid black;
 }
 
-#NavbarList a:hover:not(.active) {
+#navbar_list a:hover:not(.active) {
     background: #1e5799; /* Old browsers */
     background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 16%, #88e7ea 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 16%, #88e7ea 100%); /* Chrome10-25,Safari5.1-6 */
@@ -331,7 +331,7 @@ header p {
     border-bottom: 2px solid black;
 }
 
-#mainTile {
+#main_content_tile {
     margin-top: 12em;
     margin-bottom: 2em;
     padding-bottom: 1em;
@@ -512,7 +512,21 @@ code {
     color: black;
 }
 
-.contentBox {
+.ContentWrapper {
+    background-color: rgb(217, 253, 255);
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.175em;
+    margin-bottom: 1em;
+
+    border: 0.02em solid black;
+    box-shadow: 0 0 3px 1px black;
+    border-radius: 0.2em;
+    color: black;
+    height: 100%
+}
+
+.ContentContainer {
     background-color: rgb(217, 253, 255);
     font-size: 1em;
     padding: 0.5em;
@@ -526,7 +540,7 @@ code {
     height: 100%
 }
 
-.contentBox img {
+.ContentContainer img {
     border: 0 solid white;
     margin: 15px;
     box-shadow: 0 0 0 0 white;
@@ -534,7 +548,7 @@ code {
     float: right;
 }
 
-.contentBox p { /*  border-bottom: 0.1em solid #2e505f;      */
+.ContentContainer p { /*  border-bottom: 0.1em solid #2e505f;      */
     padding: 0.08em;
     margin-top: 0;
     margin-left: 0;
@@ -544,7 +558,7 @@ code {
     float: left;
 }
 
-.contentBox h3 {
+.ContentContainer h3 {
     border-bottom: 0.1em solid black;
     box-shadow: 0 0 0.2em 0.02em #00033d;
     margin-bottom: 0.8em;
@@ -854,7 +868,7 @@ footer ul {
 
 .header-nav ul {
     background: #fff;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 0px);
     list-style: none;
     margin: 0;
     overflow-y: auto;
@@ -898,7 +912,7 @@ footer ul {
     line-height: 24px;
 
     overflow: hidden;
-    padding: 12px 60px 0px 12px;
+    padding: 0.99999em 60px 0 12px;
     margin: 0px 0px 0px 0px;
     position: relative;
     text-decoration: none;

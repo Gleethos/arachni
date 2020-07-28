@@ -25,6 +25,23 @@
         <!-----------------------------------VANTA---------------------------------------------->
         <script src="../../../../webroot/src/js/three.min.js"></script>
         <script src="../../../../webroot/src/js/vanta.birds.min.js"></script>
+        <script>
+            function updateTopBar( event ) {
+                let top = $('#main_with_parallax').scrollTop();
+                if( top > 25 && top < 2750 ) {
+                    let tippingPoint = 200;
+                    let smoothness = 25;
+                    let sig = 1-sigmoid((top-tippingPoint)/smoothness);
+                    let newTop = sig*65+5;
+                    $('.gaadiexp').css({top:(newTop/2)-5});
+                    $('.side-nav').css({top:37+(newTop/2)});
+                    $('#top_most_nav_bar').css({height: newTop});
+                    $('#navbar_menu').css({top:newTop/2});
+                    $('#crud_world_title').css({'font-size':(2+sig/2)+"rem"});
+                }
+            }
+            function sigmoid(t) {return 1/(1+Math.pow(Math.E, -t));}
+        </script>
         <style>
             .SearchWrapper {
                 -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
@@ -62,7 +79,6 @@
                 -moz-box-shadow: inset 0px 0px 19px -3px rgba(0,0,0,0.75);
                 box-shadow: inset 0px 0px 19px -3px rgba(0,0,0,0.75);
             }
-
             .AttributeWrapper {
                 background-color: lightblue;
                 border-radius: 0.5em;
@@ -93,15 +109,15 @@
     </head>
     <body>
         <div id="header">
-            <div id="BirdBox" class="mainframe" style="background-image: url('../../../../webroot/src/img/distant_bgr.jpg');">
+            <div id="BirdBox" class="MainFrame" style="background-image: url('../../../../webroot/src/img/distant_bgr.jpg');">
 
-                <nav class="" id="navTile">
-                    <div id="navContainer" class="">
-                        <div style = "" class = "topEarthGradient dynamicSideMargin">
+                <nav class="" id="top_most_nav_bar">
+                    <div id="navigation_container" class="">
+                        <div style = "" class = "topEarthGradient DynamicSideMargin">
                             <h1 id="crud_world_title">CRUDWORLD</h1>
                         </div>
-                        <div class="pull-right nightBox" id="NavbarMenu" >
-                            <ul class="nav navbar-right" id="NavbarList">
+                        <div class="pull-right nightBox" id="navbar_menu" >
+                            <ul class="nav navbar-right" id="navbar_list">
                                 <li>
                                     <a href="../../../../webroot/index.html">
                                         <img src="../../../../webroot/src/img/icons/house.png">
@@ -145,14 +161,14 @@
                 </nav>
 
                 <!----------------------------------LAYOUT------------------------------------------------->
-                <main class="parallax">
-                    <div style="left:-10px;" class="parallax__layer parallax__layer--back ">
+                <main class="Parallax" id="main_with_parallax" onscroll="updateTopBar(event);">
+                    <div style="left:-10px;" class="ParallaxLayer ParallaxLayer--back ">
                         <div>
                             <image src="src/img/parallax/woods.png"></image>
                         </div>
                     </div>
-                    <div class="parallax__layer">
-                        <div id="mainTile" class="cardBox dynamicSideMargin">
+                    <div class="ParallaxLayer">
+                        <div id="main_content_tile" class="cardBox DynamicSideMargin">
 
                             <div class = "mainContentWrapper">
                                 <div class = container-fluid>
@@ -205,7 +221,7 @@
                                                     <div class="col-sm-12 col-md-12">
                                                         <div
                                                                 id="set_crud_world_response_button"
-                                                                class="contentBox"
+                                                                class="ContentContainer"
                                                         >
                                                             ...response...
                                                         </div>

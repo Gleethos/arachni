@@ -24,6 +24,7 @@ public abstract class AbstractDatabaseConnection {
     /**
      * Connection settings: URL, User, Password!
      */
+    private boolean _AUTOCOMMIT = true;
     private String _url, _user, _pwd;
 
     private Map<Thread, Connection> _connections = new HashMap();
@@ -64,7 +65,7 @@ public abstract class AbstractDatabaseConnection {
         Connection connection = null;
         if(_user.equals("")||_pwd.equals("")) connection = DriverManager.getConnection(_url);
         else connection = DriverManager.getConnection(_url, _user, _pwd);
-        connection.setAutoCommit(false);
+        connection.setAutoCommit(_AUTOCOMMIT);
         _connections.put(Thread.currentThread(), connection);
     }
 
@@ -88,10 +89,10 @@ public abstract class AbstractDatabaseConnection {
     protected void _commit(IResponse response) {
         try {
             if(_connections.containsKey(Thread.currentThread()) && _connections.get(Thread.currentThread()) != null){
-                _connections.get(Thread.currentThread()).commit();
+                if(!_AUTOCOMMIT)_connections.get(Thread.currentThread()).commit();
             }
         } catch (SQLException e) {
-            response.setContent(e.getMessage());
+            if(response!=null) response.setContent(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -584,11 +585,8 @@ public abstract class AbstractDatabaseConnection {
             for(String command : commands){
                 _execute(command);
             }
-            try {
-                conn.commit();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            _commit(null);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

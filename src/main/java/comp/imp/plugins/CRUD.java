@@ -232,6 +232,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         String foundEntityAppenderFunctionName = (uid.isBlank())?"":"insert_chosen_into_new_"+uniqueInner+"();";
         String resultSelectorID = uniqueInner+"_quick_search_result";
         String idSrcSelectorID = uniqueInner+"_id_search_input";
+
+        Map<String, String> finalParamTable = paramTable;
         String resultHTML =
                 (quickSearch) ?
                         __findQuickly(
@@ -241,11 +243,16 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             tableName,
                             paramTable,
                                 foundJoin -> {
+                                    String innerKey = finalParamTable.get("key_relation").split("->")[0];
+                                    String outerKey = finalParamTable.get("key_relation").split("->")[1];
                                     b.$("<div id=\""+resultSelectorID+"\" class=\"row\">");
                                     foundJoin.forEach( (currentTable, currentResult) -> {
                                         String bestAttribute = currentResult.keySet().stream().filter(e -> !e.equals("id")).findFirst().get();
                                         b.$("<div class=\"col-sm-4 col-md-4 col-lg-4\">");
-                                            b.$("<span><h3> "+ b._snakeToTitle(currentTable)+" : "+ b._snakeToTitle(bestAttribute)+ "(s) :</h3></span>");
+                                            String title = currentTable;
+                                            if (title.contains("inner-")) title = innerKey.replace("_id", "");
+                                            if (title.contains("outer-")) title = outerKey.replace("_id", "");
+                                            b.$("<span><h3> "+ b._snakeToTitle(title)+" : "+ b._snakeToTitle(bestAttribute)+ "(s) :</h3></span>");
                                         b.$("</div>");
                                     });
 
@@ -254,16 +261,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         int innerIndex = i;
                                         String innerTableName = foundJoin.keySet().stream().filter(e->e.contains("inner-")).map(e->e.replace("inner-", "")).findFirst().get();
                                         Map<String, List<String>> innerResult = foundJoin.get("inner-"+innerTableName);
+                                        b.$("<div class=\"col-sm-12 col-md-12 col-lg-12 ContentWrapper\">");
+                                        b.$("<div class=\"row\">");
                                         foundJoin.forEach( (currentTable, currentResult) -> {
                                             String bestAttribute = currentResult.keySet().stream().filter(e->!e.equals("id")).findFirst().get();
                                             Object value = currentResult.get(bestAttribute).get(innerIndex);
-                                            b.$("<div class=\"col-sm-4 col-md-4 col-lg-4 contentBox\">");
-                                            b.$("<a style=\"padding:0.25em;\" onclick=\"")
-                                                    .$("$('#"+
-                                                        idSrcSelectorID+
-                                                    "').val('")
-                                                        .$(innerResult.get("id").get(innerIndex))
-                                                    .$("');")
+                                            b.$("<div class=\"col-sm-4 col-md-4 col-lg-4\">");
+                                            b.$("<a style=\"padding:0.55em 0.85em;border: solid black 1px;border-radius:0.5em;margin:0.2em;\" onclick=\"")
+                                                    .$("$('#"+ idSrcSelectorID+ "').val('"+innerResult.get("id").get(innerIndex)+"');")
                                                     .$("loadFoundForEntity('"+innerTableName+"', '"+uid+"', function(){"+foundEntityAppenderFunctionName+"});")
                                                     .$("$('#"+resultSelectorID+"').replaceWith('');")
                                                     .$("\">")
@@ -271,6 +276,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             .$("</a>");
                                             b.$("</div>");
                                         });
+                                        b.$("</div>");
+                                        b.$("</div>");
                                     }
                                     b.$("</div>");
                                     return b.toString();
@@ -285,9 +292,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     int numberOfFound = found.get(keyAttribute).size();
                                     for( int i=0; i<numberOfFound; i++ ) {
                                         Object value = found.get(keyAttribute).get(i);
-                                        b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 contentBox\">");
+                                        b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 ContentWrapper\">");
                                         b.$("<a ")
-                                                .$("style=\"padding:0.25em;\" ")
+                                                .$("style=\"padding:0.55em 0.85em;\" ")
                                                 .$("onclick=\"")
                                                 .$("set_search_parameters_for_"+uniqueInner+"({'id':'"+found.get("id").get(i)+"'});")
                                                 .$("loadFoundForEntity('"+tableName+"', '"+uid+"', function(){"+foundEntityAppenderFunctionName+"});")
@@ -685,7 +692,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     }
 
 
-
     private void _world( IRequest req, IResponse response )
     {
         response.setContentType("text/html");
@@ -697,11 +703,13 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     f.$("<div class = \"mainContentWrapper col-sm-12 col-md-12 col-lg-12\">")
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
-                                .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                                .$("<div class=\"col-sm-12 col-md-8 col-lg-9\">")
                                 .$("<h1>").$(f._snakeToTitle(currentTableName)).$("</h1>")
                                 .$("</div>")
-                                .$("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                                    .$("<label>Total stored: "+_query("SELECT COUNT(*) FROM "+currentTableName).get("COUNT(*)").get(0)+"</label>")
+                                .$("<div class=\"col-sm-12 col-md-4 col-lg-3\">")
+                                    .$("<label style=\"height:100%;width:100%\"><b>" +
+                                            "Total stored: "+_query("SELECT COUNT(*) FROM "+currentTableName).get("COUNT(*)").get(0)+
+                                       "</b></label>")
                                 .$("</div>");
                     f.buildQuickSearch(currentTableName, "", "");
                             f.$("</div>")
@@ -779,9 +787,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String uid, String afterLoadCode // Search button onclick code appendix!
         ){
             String uniqueTableName = currentTableName + ((uid.isBlank())?"":"_"+uid);
-            $("<div class=\"col-sm-12 col-md-6 col-lg-6\">")
-                    .$("<button class=\"ClearButton\" onclick=\"$('#"+uniqueTableName+"_result').html('');\">CLEAR</button>")
-            .$("</div>");
             List<String> columns = _tables.get(currentTableName);
             tabsOf(
                     Map.of(
@@ -793,13 +798,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                         "id=\""+uniqueTableName+"_quick_search_button\" " +
                                                         "class=\"QuickSearchButton\" " +
                                                         "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
+                                                        "style=\"width:100%;\"" +
                                                         ">" +
                                                         "QUICK SEARCH" +
                                                         "</button>")
                                 .$("</div>");
                                 String innerHTMLID = uniqueTableName+"_quick_search_input";
-                                $("<div class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">                   ")
-                                        .$("<div class=\"col-sm-12 col-md-12 col-lg-12\">                               ")
+                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">                   ")
+                                        .$("<div class=\"\">                               ")
                                         .$("    <input style=\"width:100%;\"                                            ")
                                         .$("        name=\"search\"                                                     ")
                                         .$("        placeholder=\"anything\"                                            ")
@@ -807,7 +813,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         .$("        oninput=\"                                                          \n")
                                         .$("            set_search_parameters_for_"+uniqueTableName+"($('#"+innerHTMLID+"').val()); \n")
                                         .$("            $('#"+uniqueTableName+"_quick_search_button').trigger('onclick');           \n")
-                                        //.$("            loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');  \n")
                                         .$("            set_search_parameters_for_"+uniqueTableName+"( '' );           \n")
                                         .$("        \"                                                                  ")
                                         .$(">                                                                           ")
@@ -825,23 +830,28 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         .$("  }\n")
                                         .$("}\n")
                                         .$("</script>")
-                                        .$("</div>");
+                                .$("</div>");
+
+                                $("</div>");
+                            },
+                            "Relational", searchType -> {
                                 Map<String, Map<String, String>> relationTables = __findRelationTablesOf(currentTableName, _tables, s->true);
                                 List<String> relationTableList = new ArrayList<>(relationTables.keySet());
-                                $("<div class=\"col-sm-12 col-md-12 col-lg-12 row\">");
                                 for ( String relationTableName : relationTableList ) {
+                                    $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                    $("<div class=\"row\">");
                                     _forRelationKeys(
                                             relationTables.get(relationTableName),
                                             currentTableName,
                                             (innerKey, outerKey, outerTableName) ->{
-                                                String relationQuickSearchTitle =
-                                                        currentTableName+"->id == "+innerKey+"<-"+relationTableName+"->"+outerKey+" == id<-"+outerTableName;
+                                                String relationQuickSearchTitle = _snakeToTitle(relationTableName);
                                                 String relationHTMLID = relationTableName+"_quick_search_joined_with_"+uniqueTableName+"_"+innerKey+"_and_"+outerTableName+"_"+outerKey;
                                                 String outerHTMLID = outerTableName+"_"+outerKey+"_quick_search_joined_with_"+relationTableName+"_and_"+uniqueTableName+"_"+innerKey;
                                                 $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                                $("<span style=\"width:100%;\">"+relationQuickSearchTitle+"</span>");
+                                                $("<span style=\"width:100%;padding-top:1.25em;border-bottom:2px solid black;\"><b>"+relationQuickSearchTitle+"</b></span>");
                                                 $("</div>");
-                                                $("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                $("<div class=\"col-sm-5 col-md-4 col-lg-3\"><span>"+_snakeToTitle(relationTableName)+"</span></div>");
+                                                $("<div class=\"col-sm-7 col-md-8 col-lg-9\">");
                                                 $("<input style=\"width:100%;\"")
                                                         .$("name=\"search\" ")
                                                         .$("placeholder=\"anything "+relationTableName.replace("_", " ")+"\"")
@@ -856,7 +866,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                         .$(");\"");
                                                 $(">");
                                                 $("</div>");
-                                                $("<div class=\"col-sm-6 col-md-6 col-lg-6\">");
+                                                $("<div class=\"col-sm-5 col-md-4 col-lg-3\"><span>"+_snakeToTitle(outerKey.replace("_id", ""))+"</span></div>");
+                                                $("<div class=\"col-sm-7 col-md-8 col-lg-9\">");
                                                 $("<input style=\"width:100%;\"")
                                                         .$("name=\"search\" ")
                                                         .$("placeholder=\"anything "+outerTableName.replace("_", " ")+"\"")
@@ -873,16 +884,20 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                 $("</div>");
                                             }
                                     );
+                                    $("</div>");
+                                    $("</div>");
                                 }
-                                $("</div>");
-                                $("</div>");
                             },
-                            "specific",
-                            searchType -> {
+                            "specific", searchType -> {
                                 $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                        .$("<button class=\"SearchButton\" onclick=\"loadFoundForEntity('"+currentTableName+"', '"+uid+"', function(){"+afterLoadCode+"});\">SEARCH</button>")
+                                        .$("<button " +
+                                                "class=\"SearchButton\" " +
+                                                "onclick=\"loadFoundForEntity('"+currentTableName+"', '"+uid+"', function(){"+afterLoadCode+"});\"" +
+                                                "style=\"width:100%;\"" +
+                                           ">SEARCH</button>")
                                 .$("</div>");
-                                $("<div id=\"" + uniqueTableName + "_search\" class=\"SearchHead col-sm-12 col-md-12 col-lg-12\">");
+                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                $("<div id=\"" + uniqueTableName + "_search\" class=\"\">");
                                 for(String c : columns){
                                     String attributeName = c.split(" ")[0];
                                     $("<input ")
@@ -892,10 +907,20 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             .$(">");
                                 }
                                 $("</div>");
+                                $("</div>");
                             }
                     ),
                     "default"
             );
+            $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
+                    .$("<button " +
+                            "class=\"ClearButton\" " +
+                            "onclick=\"$('#"+uniqueTableName+"_result').html('');\"" +
+                            "style=\"width:100%\"" +
+                            ">" +
+                            "CLEAR" +
+                            "</button>")
+                    .$("</div>");
             return this;
         }
 

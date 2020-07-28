@@ -1,9 +1,9 @@
 
-S	java:S106@"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍþÿÿÿÿ
 Q	java:S1258"<This block of commented-out lines of code should be removed.(àÑ í
-7
-java:S1643;"Use a StringBuilder instead.(‘ÛÓ®ÿÿÿÿÿ
+S	java:S106@"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍþÿÿÿÿ
 b
 java:S1871T"LThis branch's code block is the same as the block for the branch on line 82.(õþ…É
+7
+java:S1643;"Use a StringBuilder instead.(‘ÛÓ®ÿÿÿÿÿ
 h
 java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ûí”

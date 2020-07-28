@@ -1,170 +1,174 @@
 
+n
+java:S1192ô"KDefine a constant instead of duplicating this literal "<div id=\"" 8 times.(Íª¤ãúÿÿÿÿ8ûëÜØ¸.
+=
+java:S2676²
+"Use the original value instead.(•üŠİ8Ÿ“Ø‹¹.
+i
+java:S1192ğ"FDefine a constant instead of duplicating this literal "close" 4 times.(“¤ä‰şÿÿÿÿ8úı¨…¹.
+O
+java:S1144ë",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8É©üØ¸.
+
+java:S1192ß"^Define a constant instead of duplicating this literal "_outer_quick_search_parameter" 3 times.(œÁ‚ûùÿÿÿÿ8É©üØ¸.
+G
+java:S3398à"$Move this method into "CRUDBuilder".(†ÌƒÀüÿÿÿÿ8É©üØ¸.
+e
+java:S1192ÿ"GDefine a constant instead of duplicating this literal "inner-" 3 times.(ôúÕä8áåé¸.
+g
+java:S1192"JDefine a constant instead of duplicating this literal "</button>" 5 times.(€óúY8úı¨…¹.
+‰
+java:S1192å
+"kDefine a constant instead of duplicating this literal "').find('.EntityWrapper').replaceWith('');" 4 times.(­ë’8Ÿ“Ø‹¹.
 b
-java:S3358»"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8‡§í‘¸.
+java:S3358æ"DExtract this nested ternary operation into an independent statement.(Ğè‘Ì8úı¨…¹.
+‡
+java:S1192Õ"dDefine a constant instead of duplicating this literal "',                                 " 4 times.(ßáôÔøÿÿÿÿ8úı¨…¹.
+O
+java:S1612©",Replace this lambda with a method reference.(Ó¼Şäÿÿÿÿÿ8É©üØ¸.
+o
+java:S1192"MDefine a constant instead of duplicating this literal "jdbc:sqlite:" 4 times.(ÔÒó‘şÿÿÿÿ8Ä“—Š·.
+Z
+java:S3655‰"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8«³ê”·.
+f
+java:S1192Ê"HDefine a constant instead of duplicating this literal "</span>" 3 times.(¯ºõ8úı¨…¹.
+H
+java:S1172±"*Remove this unused method parameter "req".(Ë™¹½8É©üØ¸.
 O
 java:S1144u"-Remove this unused private "_setJDBC" method.(­·ç’ÿÿÿÿÿ8¿ÇŠµ.
-Y	java:S125›	"<This block of commented-out lines of code should be removed.(¾öäú8‡§í‘¸.
 i
-java:S1192ü"FDefine a constant instead of duplicating this literal "\">\n" 3 times.(˜å˜˜şÿÿÿÿ8‡§í‘¸.
-O
-java:S1612Õ",Replace this lambda with a method reference.(„¿¶õùÿÿÿÿ8Å‚ƒ¸.
+java:S1192ä"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8úı¨…¹.
+j
+java:S1192ü"LDefine a constant instead of duplicating this literal "REFERENCES " 4 times.(Íà¬´8É©üØ¸.
+f
+java:S1192"HDefine a constant instead of duplicating this literal "default" 3 times.(¶ÇÍ™8úı¨…¹.
+?	java:S131á""Add a default case to this switch.(òüÜÁ8É©üØ¸.
 n
-java:S1192î"KDefine a constant instead of duplicating this literal "<div id=\"" 7 times.(¡öĞûÿÿÿÿ8Å‚ƒ¸.
-M
-java:S1172"*Remove this unused method parameter "req".(ôÛĞ¦ÿÿÿÿÿ8ÿü“‡·.
-‘
-java:S1192“"nDefine a constant instead of duplicating this literal "<div class=\"col-sm-12 col-md-12 col-lg-12\">" 6 times.(ªÀ¯ùÿÿÿÿ8ÿü“‡·.
+java:S1192÷"PDefine a constant instead of duplicating this literal "deleteEntity( '" 3 times.(è°Úş8úı¨…¹.
 h
-java:S1192å"JDefine a constant instead of duplicating this literal "</button>" 4 times.(Ãôìë8‡§í‘¸.
+java:S1192ë
+"JDefine a constant instead of duplicating this literal "').val();" 4 times.(å¼ÛÉ8Ÿ“Ø‹¹.
 I
-java:S1144ª"+Remove this unused private "_world" method.(Ë™¹½8È›ö˜·.
-^	java:S125‘
-"<This block of commented-out lines of code should be removed.(š„ßªùÿÿÿÿ8‡§í‘¸.
-h
-java:S1192˜"JDefine a constant instead of duplicating this literal ".id' , \n" 3 times.(ì­ûş8Å‚ƒ¸.
-€
-java:S1192©"bDefine a constant instead of duplicating this literal "'! : Table not found in database!" 3 times.(Á–Ù8Å‚ƒ¸.
-S
-java:S36554"7Call "Optional#isPresent()" before accessing the value.(È½î 8Å‚ƒ¸.
+java:S3011`",This accessibility update should be removed.(Ó«§¯8¨ºˆó¶.
+i
+java:S1192¤"FDefine a constant instead of duplicating this literal "\">\n" 3 times.(˜å˜˜şÿÿÿÿ8úı¨…¹.
+‘
+java:S1192™"nDefine a constant instead of duplicating this literal "<div class=\"col-sm-12 col-md-12 col-lg-12\">" 7 times.(ªÀ¯ùÿÿÿÿ8ûëÜØ¸.
+
+java:S1192¡"^Define a constant instead of duplicating this literal "col-sm-12 col-md-12 col-lg-12" 3 times.(ã¦î¾şÿÿÿÿ8úı¨…¹.
 p
-java:S3776Ò"RRefactor this method to reduce its Cognitive Complexity from 70 to the 15 allowed.(ŠÀö8‡§í‘¸.
-e
-java:S1192Ì"GDefine a constant instead of duplicating this literal "delete" 4 times.(è°Úş8‡§í‘¸.
-k
-java:S1192¹"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8‡§í‘¸.
-g
-java:S3358Ê"DExtract this nested ternary operation into an independent statement.(Œáƒ¸şÿÿÿÿ8‡§í‘¸.
-Z
-java:S3655Ş"7Call "Optional#isPresent()" before accessing the value.(–²úûøÿÿÿÿ8«³ê”·.
-=
-java:S2676ü	"Use the original value instead.(•üŠİ8‡§í‘¸.
-Z
-java:S3655ß"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8ŞäÖ‘¸.
-c
-java:S1192’"FDefine a constant instead of duplicating this literal "noRow" 4 times.(ËÔùG8——âå¶.
-?	java:S131Ï""Add a default case to this switch.(òüÜÁ8ÿü“‡·.
+java:S3776¼"RRefactor this method to reduce its Cognitive Complexity from 75 to the 15 allowed.(ÍŸØš8É©üØ¸.
+s
+java:S4276†"URefactor this code to use the more specialised Functional Interface 'Predicate<File>'(âİÒ8úı¨…¹.
+F
+java:S1125â"(Remove the literal "true" boolean value.(ô¾­à8úı¨…¹.
+t
+java:S4276·"WRefactor this code to use the more specialised Functional Interface 'Predicate<String>'(Éí©a8É©üØ¸.
 b
-java:S3358¸"DExtract this nested ternary operation into an independent statement.(´È÷½8‡§í‘¸.
+java:S3358ã"DExtract this nested ternary operation into an independent statement.(´È÷½8ªïè¸.
+r
+java:S1192‹"ODefine a constant instead of duplicating this literal "', function(){" 3 times.(ÒâÉ£úÿÿÿÿ8ÿ‚±Œ¹.
 H
 java:S1144Ÿ"*Remove this unused private "_save" method.(¥Å8ÿü“‡·.
+g
+java:S3358ä"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8úı¨…¹.
+c
+java:S1192’"FDefine a constant instead of duplicating this literal "false" 4 times.(ËÔùG8ÿü“‡·.
+M
+java:S5411Ä"*Use the primitive boolean expression here.(†ù¢İşÿÿÿÿ8É©üØ¸.
+n
+java:S1192…"KDefine a constant instead of duplicating this literal "sql_source" 3 times.(…¬Úøÿÿÿÿ8ÿü“‡·.
+I
+java:S1144±"+Remove this unused private "_world" method.(Ë™¹½8É©üØ¸.
+„
+java:S1192ä"aDefine a constant instead of duplicating this literal "_relation_quick_search_parameter" 3 times.(®¥ƒ‹ÿÿÿÿÿ8É©üØ¸.
+Q
+java:S10660"/Merge this if statement with the enclosing one.(ÁöÚıÿÿÿÿ8Ö›Û²¶.
+o
+java:S3776H"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÛÓîë8¿ÇŠµ.
+c
+java:S1192’"FDefine a constant instead of duplicating this literal "noRow" 3 times.(ËÔùG8——âå¶.
+g
+java:S2147n"ECombine this catch with the one at line 102, which has the same body.(ÿŠïıÿÿÿÿ8¿ÇŠµ.
+B
+java:S2676³
+"Use the original value instead.(„áƒÃùÿÿÿÿ8úı¨…¹.
+b
+java:S2147j"ECombine this catch with the one at line 102, which has the same body.(™è“î8¿ÇŠµ.
+i
+java:S1192ë
+"KDefine a constant instead of duplicating this literal "').find('." 4 times.(å¼ÛÉ8Ÿ“Ø‹¹.
+u
+java:S3776³"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Õş›…ıÿÿÿÿ8É©üØ¸.
+S
+java:S1481²	"0Remove this unused "foreignKeys" local variable.(“é’Åşÿÿÿÿ8úı¨…¹.
+d
+java:S1192™"FDefine a constant instead of duplicating this literal "id=\"" 6 times.(ŞÍèÉ8Ÿ¸¨…¹.
+^	java:S125÷	"<This block of commented-out lines of code should be removed.(ÂìÌøÿÿÿÿ8ûÕù…¹.
+O
+java:S1612Ü",Replace this lambda with a method reference.(„¿¶õùÿÿÿÿ8É©üØ¸.
+O
+java:S1144ü"1Remove this unused private "_snakeToText" method.(˜ÒÉ8ùßøı¸.
+U
+java:S3655å"7Call "Optional#isPresent()" before accessing the value.(ºÏòõ8úı¨…¹.
+m
+java:S1192¢"ODefine a constant instead of duplicating this literal "SELECT * FROM " 3 times.(ñ©Šõ8ûëÜØ¸.
 l
 java:S1192O"JDefine a constant instead of duplicating this literal "text/html" 7 times.(ÕÍ×äøÿÿÿÿ8¿ÇŠµ.
 k
+java:S1192ä"HDefine a constant instead of duplicating this literal "content" 4 times.(¦ãõ°ıÿÿÿÿ8úı¨…¹.
+k
 java:S1192±"HDefine a constant instead of duplicating this literal "created" 5 times.(À®¼«ùÿÿÿÿ8ÿü“‡·.
-i
-java:S1192â"FDefine a constant instead of duplicating this literal "_and_" 4 times.(¢¾íèÿÿÿÿÿ8•–ä‘¸.
-^	java:S125
-"<This block of commented-out lines of code should be removed.(ò¸—‚ÿÿÿÿÿ8‡§í‘¸.
-e
-java:S1192æ"HDefine a constant instead of duplicating this literal "</span>" 3 times.(•Äû8Â×‘¸.
-h
-java:S1192¬
-"JDefine a constant instead of duplicating this literal "').val();" 4 times.(å¼ÛÉ8‡§í‘¸.
-‰
-java:S1192§
-"kDefine a constant instead of duplicating this literal "').find('.EntityWrapper').replaceWith('');" 4 times.(­ë’8‡§í‘¸.
-o
-java:S1192Ê"QDefine a constant instead of duplicating this literal "name=\"search\" " 3 times.(²‡ßŒ8Ğ³·¸.
-g
-java:S3358¹"DExtract this nested ternary operation into an independent statement.(¦ãõ°ıÿÿÿÿ8ŞäÖ‘¸.
-j
-java:S1192õ"LDefine a constant instead of duplicating this literal "REFERENCES " 4 times.(Íà¬´8ÿü“‡·.
-b
-java:S2147j"ECombine this catch with the one at line 102, which has the same body.(™è“î8¿ÇŠµ.
-z
-java:S1192É"]Define a constant instead of duplicating this literal "<input style=\"width:100%;\"" 3 times.(Ï‰8Ğ³·¸.
-W
-java:S1128":Remove this unused import 'java.util.function.BiFunction'.(ô¿°×8Å‚ƒ¸.
-c
-java:S1192’"FDefine a constant instead of duplicating this literal "false" 4 times.(ËÔùG8ÿü“‡·.
-|
-java:S1192Ò"^Define a constant instead of duplicating this literal "_inner_quick_search_parameter" 5 times.(¹¿«‡8×Åô’¸.
-s
-java:S1192‘"PDefine a constant instead of duplicating this literal "appendRelations" 6 times.(Ä¿Ó¡ÿÿÿÿÿ8——âå¶.
-i
-java:S1192Ì"FDefine a constant instead of duplicating this literal "id=\"" 6 times.(õì›Îÿÿÿÿÿ8Å‚ƒ¸.
-n
-java:S1192Ì"PDefine a constant instead of duplicating this literal "deleteEntity( '" 3 times.(è°Úş8‡§í‘¸.
-t
-java:S4276°"WRefactor this code to use the more specialised Functional Interface 'Predicate<String>'(Éí©a8ÿü“‡·.
-Z
-java:S3655İ"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8‡§í‘¸.
-i
-java:S1192¹"FDefine a constant instead of duplicating this literal "value" 4 times.(¦ãõ°ıÿÿÿÿ8‡§í‘¸.
-Y	java:S125 	"<This block of commented-out lines of code should be removed.(¬å’º8‡§í‘¸.
-F
-java:S1125¶"(Remove the literal "true" boolean value.(ô¾­à8‡§í‘¸.
-U
-java:S3655¹"7Call "Optional#isPresent()" before accessing the value.(ºÏòõ8‡§í‘¸.
-u
-java:S3776¬"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Õş›…ıÿÿÿÿ8ÿü“‡·.
-i
-java:S1192Å"FDefine a constant instead of duplicating this literal "close" 4 times.(“¤ä‰şÿÿÿÿ8‡§í‘¸.
-S
-java:S1481‡	"0Remove this unused "foreignKeys" local variable.(“é’Åşÿÿÿÿ8‡§í‘¸.
-O
-java:S1144Î"1Remove this unused private "__toSingular" method.(Âù¡–8ÿü“‡·.
-o
-java:S1192"MDefine a constant instead of duplicating this literal "jdbc:sqlite:" 4 times.(ÔÒó‘şÿÿÿÿ8Ä“—Š·.
-z
-java:S1192ò"]Define a constant instead of duplicating this literal "<div style=\"float:right;\">" 4 times.(•ÑÆ_8‡§í‘¸.
-^	java:S125ú"<This block of commented-out lines of code should be removed.(®¶™µüÿÿÿÿ8§Åƒ—¸.
 Y
 java:S36553"7Call "Optional#isPresent()" before accessing the value.(‹Œ½Òúÿÿÿÿ8Ö›Û²¶.
+O
+java:S1135”
+"2Complete the task associated to this TODO comment.(ÔåÁ|8úı¨…¹.
+O
+java:S1144Õ"1Remove this unused private "__toSingular" method.(Âù¡–8É©üØ¸.
+p
+java:S1192ç"MDefine a constant instead of duplicating this literal "key_relation" 5 times.(ã™¶Úûÿÿÿÿ8É©üØ¸.
+Z
+java:S3655Š"7Call "Optional#isPresent()" before accessing the value.(«¾¾›úÿÿÿÿ8úı¨…¹.
+S
+java:S36554"7Call "Optional#isPresent()" before accessing the value.(È½î 8Å‚ƒ¸.
+Z
+java:S3655ˆ"7Call "Optional#isPresent()" before accessing the value.(Ã¡©øÿÿÿÿ8ªïè¸.
+M
+java:S1172–"*Remove this unused method parameter "req".(ôÛĞ¦ÿÿÿÿÿ8É©üØ¸.
+g
+java:S3358õ"DExtract this nested ternary operation into an independent statement.(Œáƒ¸şÿÿÿÿ8úı¨…¹.
+o
+java:S1192É"LDefine a constant instead of duplicating this literal "_joined_on_" 3 times.(âÃç şÿÿÿÿ8úı¨…¹.
+h
+java:S1192Ÿ"JDefine a constant instead of duplicating this literal ".id' , \n" 3 times.(ì­ûş8É©üØ¸.
+?	java:S131Ö""Add a default case to this switch.(òüÜÁ8É©üØ¸.
+k
+java:S1192£"HDefine a constant instead of duplicating this literal " WHERE " 4 times.(„Š‰Èúÿÿÿÿ8É©üØ¸.
+W
+java:S1128":Remove this unused import 'java.util.function.BiFunction'.(ô¿°×8Å‚ƒ¸.
+p
+java:S3776ı"RRefactor this method to reduce its Cognitive Complexity from 70 to the 15 allowed.(ŠÀö8úı¨…¹.
+s
+java:S1192‘"PDefine a constant instead of duplicating this literal "appendRelations" 6 times.(Ä¿Ó¡ÿÿÿÿÿ8——âå¶.
+J
+java:S1612¡",Replace this lambda with a method reference.(ëŒ›Ú8É©üØ¸.
 q
 java:S1192“"NDefine a constant instead of duplicating this literal "appendButtons" 3 times.(¥Òğêûÿÿÿÿ8ÿü“‡·.
-k
-java:S1192ó"HDefine a constant instead of duplicating this literal "</div>" 35 times.(ÖÙ¿Øıÿÿÿÿ8ÿü“‡·.
-f
-java:S1858­"H"entitiesToForm" returns a string, there's no need to call "toString()".(ĞàÓß8Å‚ƒ¸.
-s
-java:S4276Ş"URefactor this code to use the more specialised Functional Interface 'Predicate<File>'(âİÒ8‡§í‘¸.
+z
+java:S1192"]Define a constant instead of duplicating this literal "<div style=\"float:right;\">" 4 times.(•ÑÆ_8úı¨…¹.
+€
+java:S1192©"bDefine a constant instead of duplicating this literal "'! : Table not found in database!" 3 times.(Á–Ù8Å‚ƒ¸.
 H
-java:S1172ª"*Remove this unused method parameter "req".(Ë™¹½8È›ö˜·.
-p
-java:S1192ß"MDefine a constant instead of duplicating this literal "key_relation" 5 times.(ã™¶Úûÿÿÿÿ8Å‚ƒ¸.
-o
-java:S3776H"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÛÓîë8¿ÇŠµ.
-n
-java:S1192…"KDefine a constant instead of duplicating this literal "sql_source" 3 times.(…¬Úøÿÿÿÿ8ÿü“‡·.
+java:S5411‰"*Use the primitive boolean expression here.(šöÄ€8úı¨…¹.
 M
-java:S1144"*Remove this unused private "_view" method.(ôÛĞ¦ÿÿÿÿÿ8ÿü“‡·.
-B
-java:S2676ı	"Use the original value instead.(„áƒÃùÿÿÿÿ8ŞäÖ‘¸.
-g
-java:S2147n"ECombine this catch with the one at line 102, which has the same body.(ÿŠïıÿÿÿÿ8¿ÇŠµ.
-M
-java:S5411½"*Use the primitive boolean expression here.(†ù¢İşÿÿÿÿ8ÿü“‡·.
-„
-java:S1192Ü"aDefine a constant instead of duplicating this literal "_relation_quick_search_parameter" 3 times.(®¥ƒ‹ÿÿÿÿÿ8ÓÁó’¸.
-p
-java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 75 to the 15 allowed.(ÍŸØš8Å‚ƒ¸.
-k
-java:S1192œ"HDefine a constant instead of duplicating this literal " WHERE " 4 times.(„Š‰Èúÿÿÿÿ8Å‚ƒ¸.
-Q
-java:S10660"/Merge this if statement with the enclosing one.(ÁöÚıÿÿÿÿ8Ö›Û²¶.
-J
-java:S1612š",Replace this lambda with a method reference.(ëŒ›Ú8È›ö˜·.
-
-java:S1192ù"^Define a constant instead of duplicating this literal "col-sm-12 col-md-12 col-lg-12" 3 times.(ã¦î¾şÿÿÿÿ8‡§í‘¸.
-I
-java:S3011`",This accessibility update should be removed.(Ó«§¯8¨ºˆó¶.
-O
-java:S1144ä",Remove this unused private "_delete" method.(õµá²ûÿÿÿÿ8ÿü“‡·.
-H
-java:S5411á"*Use the primitive boolean expression here.(šöÄ€8‡§í‘¸.
-O
-java:S1612¢",Replace this lambda with a method reference.(Ó¼Şäÿÿÿÿÿ8ç¹÷˜·.
+java:S1144–"*Remove this unused private "_view" method.(ôÛĞ¦ÿÿÿÿÿ8É©üØ¸.
 i
-java:S1192¬
-"KDefine a constant instead of duplicating this literal "').find('." 4 times.(å¼ÛÉ8‡§í‘¸.
-m
-java:S1192›"ODefine a constant instead of duplicating this literal "SELECT * FROM " 3 times.(ñ©Šõ8ë”çæ¶.
-G
-java:S3398Ù"$Move this method into "CRUDBuilder".(†ÌƒÀüÿÿÿÿ8Å‚ƒ¸.
-
-java:S1192×"^Define a constant instead of duplicating this literal "_outer_quick_search_parameter" 3 times.(œÁ‚ûùÿÿÿÿ8ß»û’¸.
-?	java:S131Ú""Add a default case to this switch.(òüÜÁ8Å‚ƒ¸.
-O
-java:S1144Ñ"1Remove this unused private "_snakeToText" method.(˜ÒÉ8‡§í‘¸.
-^	java:S125¥	"<This block of commented-out lines of code should be removed.(¼è÷ïøÿÿÿÿ8‡§í‘¸.
+java:S1192Ç"FDefine a constant instead of duplicating this literal "_and_" 5 times.(àãªüÿÿÿÿ8úı¨…¹.
+k
+java:S1192ù"HDefine a constant instead of duplicating this literal "</div>" 36 times.(ÖÙ¿Øıÿÿÿÿ8ûëÜØ¸.
+e
+java:S1192Ò"GDefine a constant instead of duplicating this literal "    '" 12 times.(€Ş÷Ã8úı¨…¹.
+e
+java:S1192÷"GDefine a constant instead of duplicating this literal "delete" 4 times.(è°Úş8úı¨…¹.
+|
+java:S1192Ú"^Define a constant instead of duplicating this literal "_inner_quick_search_parameter" 5 times.(¹¿«‡8É©üØ¸.
