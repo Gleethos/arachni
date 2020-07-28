@@ -36,7 +36,11 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("switchTab(src,target)");
         assert compact.contains("tabBody.children().css(\"display\",\"none\");");
         assert compact.contains(".children('textarea').first().focus();");
-        assert compact.contains("$('#'+tableName+'_search').children('input,textarea')");
+        assert compact.contains(".children('input,textarea')");
+        assert compact.contains("letentity=$('#'+tableName+'_'+id);");
+        assert compact.contains("letelement=$('#'+tableName+'_'+id+'_'+attribute+'_span');");
+        assert compact.contains("functionswitchTab(src,target){");
+        assert compact.contains("functionloadFoundForEntity(tableName,uid,afterLoad){");
     }
 
     @Test
@@ -397,9 +401,9 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("ThirdTail");
         assert compact.contains("SecondTail");
         assert compact.contains("Name");
-        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'2'});loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
-        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'3'});loadFoundForEntity('tails');$('#tails_quick_search_result').replaceWith('');\"");
-        assert res.getContentLength()<620;
+        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'2'});loadFoundForEntity('tails','',function(){});$('#tails_quick_search_result').replaceWith('');\"");
+        assert compact.contains("onclick=\"set_search_parameters_for_tails({'id':'3'});loadFoundForEntity('tails','',function(){});$('#tails_quick_search_result').replaceWith('');\"");
+        assert res.getContentLength()<660;
     }
 
     @Test
@@ -574,7 +578,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String otherBody = getBody(res).toString();
         assert body.length()==otherBody.length();
         double similarity = TestUtility.similarity(body, otherBody);
-        assert similarity > 0.98;
+        assert similarity > 0.975;
         assert TestUtility.similarity("ac","rt")==0.0;
         assert TestUtility.similarity("ac","at")==0.5;
     }

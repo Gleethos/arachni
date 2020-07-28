@@ -257,7 +257,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     });
 
                                     int numberOfFound = foundJoin.values().stream().findFirst().get().size();
-                                    for( int i=0; i<numberOfFound; i++ ) {
+                                    for( int i=0; i<numberOfFound; i++ )
+                                    {
+                                        if ( b.isDone(i, 45, numberOfFound) ) break;
                                         int innerIndex = i;
                                         String innerTableName = foundJoin.keySet().stream().filter(e->e.contains("inner-")).map(e->e.replace("inner-", "")).findFirst().get();
                                         Map<String, List<String>> innerResult = foundJoin.get("inner-"+innerTableName);
@@ -290,7 +292,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             b.$("</div>");
 
                                     int numberOfFound = found.get(keyAttribute).size();
-                                    for( int i=0; i<numberOfFound; i++ ) {
+                                    for( int i=0; i<numberOfFound; i++ )
+                                    {
+                                        if ( b.isDone(i, 45, numberOfFound) ) break;
                                         Object value = found.get(keyAttribute).get(i);
                                         b.$("<div class=\"col-sm-12 col-md-6 col-lg-4 ContentWrapper\">");
                                         b.$("<a ")
@@ -1054,11 +1058,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             boolean appendRelations = settingsTable.get("appendRelations").equals("true");
 
             CRUDBuilder f = this;
-            int rowCount = entities.values().stream().findFirst().get().size();
+            int numberOfFound = entities.values().stream().findFirst().get().size();
             String indexAttribute = entities.keySet().stream().filter(k->k.equals("id")).findFirst().get();
             if(indexAttribute.isBlank()) indexAttribute = entities.keySet().stream().filter(k->k.contains("id")).findFirst().get();
-            for( int i=0; i < rowCount; i++ )
+            for( int i=0; i < numberOfFound; i++ )
             {
+                if ( isDone(i, 15, numberOfFound) ) break;
                 int inner = i;
                 Map<String, String> currentEntity = new TreeMap<>(entities).entrySet().stream().collect(
                         Collectors.toMap(
@@ -1263,6 +1268,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     // -> creates a nice padding for some reason! :)
                                     for ( int i = 0; i < numberOfFound; i++ )
                                     {
+                                        if ( isDone(i, 15, numberOfFound) ) break;
                                         int index = i;
                                         assert numberOfFound == relationResult.values().stream().findFirst().get().size();
                                         Map<String, List<Object>> currentRelationEntity =
@@ -1438,6 +1444,15 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("</div>");
             $("</div>");
             return this;
+        }
+
+        public boolean isDone(int index, int max, int found){
+            if ( index > max ) {
+                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                $("<b>... "+(found-index)+" more results ...</b>");
+                $("</div>");
+                return true;
+            } else return false;
         }
 
         @Override

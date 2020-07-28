@@ -125,28 +125,28 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
                 "id=\"human_relations_quick_search_input\"",
                 "oninput=\"\n" +
                         "set_search_parameters_for_human_attribute_relations($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('human_attribute_relations');\n" +
+                        "$('#human_attribute_relations_quick_search_button').trigger('onclick');\n" +
                         "set_search_parameters_for_human_attribute_relations('');\n" +
                         "\"",
                 // humans :
                 "id=\"humans_quick_search_input\"",
                 "oninput=\"\n" +
                         "set_search_parameters_for_humans($('#humans_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('humans');\n" +
+                        "$('#humans_quick_search_button').trigger('onclick');\n" +
                         "set_search_parameters_for_humans('');\n" +
                         "\"",
                 // attributes :
                 "id=\"attributes_quick_search_input\"",
                 "oninput=\"\n" +
                         "set_search_parameters_for_attributes($('#attributes_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('attributes');\n" +
+                        "$('#attributes_quick_search_button').trigger('onclick');\n" +
                         "set_search_parameters_for_attributes('');\n" +
                         "\"",
                 // human attribute relations :
                 "id=\"human_attribute_relations_quick_search_input\"",
                 "oninput=\"\n" +
                         "set_search_parameters_for_human_attribute_relations($('#human_attribute_relations_quick_search_input').val());\n" +
-                        "loadQuickSearchForEntity('human_attribute_relations');\n" +
+                        "$('#human_attribute_relations_quick_search_button').trigger('onclick');\n" +
                         "set_search_parameters_for_human_attribute_relations('');\n" +
                         "\"",
         });
@@ -419,6 +419,62 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert body.contains("$('#attributes_quick_search_result').replaceWith('')");
         assert body.contains("200");
     }
+
+    /**
+     *      This test creates 50 new records.
+     *      It checks if they are stored correctly and makes sure
+     *      that when trying to find them the number of returned
+     *      entries does not supersede certain limits for quick-search and
+     *      default search requests...
+     */
+    @Test
+    public void saving_stress_test_in_testworld_and_find_returns_not_all() throws Exception
+    {
+        Test_9_Provider provider = createInstance();
+        IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
+
+        for( int i=0; i<50; i++ ){
+            IRequest req = createInstance().getRequest(RequestHelper.getValidRequestStream(
+                    "CRUD/save/humans?appendRelations=false&appendButtons=false",
+                    "POST", "value=STRESS_TEST_VALUE&name=STRESS_TEST_NAME"
+            ));
+            IResponse res = crud.handle(req);
+            String body = getBody(res).toString();
+            // However the description of the newly saved entity should be included :
+            assert body.contains(">STRESS_TEST_VALUE<");
+            assert body.contains("value=\"STRESS_TEST_NAME\"");
+            assert body.split("STRESS_TEST_VALUE").length==2;
+            assert body.split("STRESS_TEST_NAME").length==2;
+            // However the name of the newly saved entity should be included :
+            assert body.contains("switchTab(event, '.ContentTab')");
+            assert !body.toLowerCase().contains("save");
+            assert !body.toLowerCase().contains("close");
+        }
+        test_quick_search :
+        {
+            IRequest req = createInstance().getRequest(RequestHelper.getValidRequestStream(
+                    "CRUD/find/humans?searchQuickly=true",
+                    "POST", "name=STRESS_TEST_NAME"
+            ));
+            IResponse res = crud.handle(req);
+            String body = getBody(res).toString();
+            assert body.contains("<div class=\"col-sm-12 col-md-12 col-lg-12\"><b>... 4 more results ...</b></div></div>");
+            assert body.split("STRESS_TEST_NAME").length == 47;
+        }
+        test_default_search :
+        {
+            IRequest req = createInstance().getRequest(RequestHelper.getValidRequestStream(
+                    "CRUD/find/humans",
+                    "POST", "name=STRESS_TEST_NAME"
+            ));
+            IResponse res = crud.handle(req);
+            String body = getBody(res).toString();
+            assert body.contains("<div class=\"col-sm-12 col-md-12 col-lg-12\"><b>... 34 more results ...</b></div>");
+            assert body.split("STRESS_TEST_NAME").length == 17;
+        }
+
+    }
+
 
     @Override
     protected Test_9_Provider createInstance() {

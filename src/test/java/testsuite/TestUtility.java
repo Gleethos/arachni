@@ -41,6 +41,7 @@ public class TestUtility {
 
     public static void assertContains(String s, String[] fragments){
         for( String f : fragments ) assert s.contains(f);
+
     }
 
     public static void assertNotContains(String s, String[] fragments){
