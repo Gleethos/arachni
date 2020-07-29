@@ -26,7 +26,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
     }
 
     public TemperatureReader() {
-        super("jdbc:sqlite:C:/sqlite/db/TempDB", "", "");
+        super("TempDB", "", "");
         Connection conn = null;
         try {
             _createAndOrConnectToDatabase();
@@ -92,7 +92,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 try {
                     _execute(command);
                     try {
-                        iotConn.commit();
+                        if ( !_AUTOCOMMIT ) iotConn.commit();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

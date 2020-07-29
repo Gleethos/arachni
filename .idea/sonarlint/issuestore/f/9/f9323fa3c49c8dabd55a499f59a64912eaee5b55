@@ -1,7 +1,0 @@
-
-S	java:S106w"9Replace this use of System.out or System.err by a logger.(ˆÙ½€ùÿÿÿÿ
-<	java:S1315""Add a default case to this switch.(é•µùøÿÿÿÿ
-`
-java:S2095k"JUse try-with-resources or close this "ServerSocket" in a "finally" clause.(¿í„•
-B
-java:S1602:",Remove useless curly braces around statement(ÏéŒÊ

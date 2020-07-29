@@ -47,7 +47,7 @@ public class PluginManager implements IPluginManager {
                 if(!loadPlugin(plugin,"build/classes/java/main/comp/imp/plugins")){
                     if(!loadPlugin(plugin,"build/classes/java/test/testsuite/unittests/mocks")){
                         if(!loadPlugin(plugin,"plugins")) {
-                            throw new IllegalStateException("Plugin not found!");
+                            throw new IllegalStateException("Plugin '"+plugin+"' not found!");
                         }
                     }
                 }
@@ -74,20 +74,21 @@ public class PluginManager implements IPluginManager {
         try {
             url = location.toURI().toURL();
         } catch (MalformedURLException e) {
-
+            e.printStackTrace();
         }
+        System.out.println("Searching for plugins at: "+url);
         URL[] urls = new URL[]{ url };
         URLClassLoader classLoader = new URLClassLoader(urls);
         try {
-            for(int i=0; i<pluginLocations.length; i++){
-                String[] fragments = pluginLocations[i].toPath().getFileName().toString().split("\\.");
+            for (File pluginLocation : pluginLocations) {
+                String[] fragments = pluginLocation.toPath().getFileName().toString().split("\\.");
                 String foundFileName = fragments[0];
                 fragments = pluginName.split("\\.");
-                pluginName = fragments[fragments.length-1];
-                if(foundFileName.equals(pluginName)){
+                pluginName = fragments[fragments.length - 1];
+                if (foundFileName.equals(pluginName)) {
                     // Instantiate plugin:
                     //==============================================================================================\\
-                    IPlugin target = (IPlugin)classLoader.loadClass(packagePraefix+foundFileName).newInstance();
+                    IPlugin target = (IPlugin) classLoader.loadClass(packagePraefix + foundFileName).newInstance();
                     //==============================================================================================\\
                     _plugins.put(foundFileName, target);
                     try {

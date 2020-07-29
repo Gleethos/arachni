@@ -1,250 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-0b617e7d-258a-4035-83b0-c2222abdde4d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-155865c5-8c60-4bf1-9e29-2badfcdc99f7.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-15aec6e1-f89c-4bfe-8df8-fa26214603d3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-1b13975f-9550-4d52-87cf-74e321b03b12.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-27a6bb85-d33c-4a2e-9d21-df69b463a8e6.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-2824969d-3ce2-4373-bc69-41777577aaa6.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-285db620-85cb-4f44-8b08-ce94732fe8a3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-2c5bed8f-1665-48c5-bd6b-dd07d86abfab.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-3593222b-2ecc-43f6-a1ef-53b527de9ac0.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-380a55f1-02f5-43dd-a5f7-9c8f7ae2bdaf.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-3c092c92-a791-4934-ace1-514d7a4cc7c5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-460ac1d3-9251-47ab-bcb7-86da8e1e024b.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-5d3612df-c97c-495c-bd8c-56e4a8b92e52.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-665a46fd-aaa8-4b5c-ad1f-0752c377b5a0.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-6735075e-ecbd-49bd-8d45-0d289259d894.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-8e79fed8-3d35-4bcd-b81e-ff540f5fb065.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-981ba52b-b963-4a76-9199-d0b9f7d2154e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-b926789e-7f4e-463a-b3c4-6175631eac48.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-cb325937-26b8-4f55-bf55-6ab6fc89f9db.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-e5cc4dff-e03a-4183-91f6-155987d69ca7.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp-static-files/foo-ec6f910d-40a3-4f81-b342-b432de5fa2c3.txt" afterDir="false" />
+    <list default="true" id="7d3c74a1-d7e0-4401-9b48-f76b34694f6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.2/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/04c6304ea14ae8062ccc3f0b7d4549196624a3a6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05efc8b1657769a27696d478ded1e95f38737233" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14acc09f1412b17b71b83e8ae288f3b85fba45bc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/1959c4e986cfb15d5f588fb9d325a50992c83435" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/206ebe34db97b1e9e1d23e8c454996aa39a6be3e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/223b3e4b5c7e104f0d1c77aee66df97f8b32f053" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/28591e2c8d40914bff3539cf0ab96bf41a274eae" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2aad32ed979ad75c25ddc6062bcec5abb5ee68e5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/326a30ce935b08be31ecabd4bcb6436a8511ee04" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e3ef456655c85766b449a25bff91f41b7ab893c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/689ea7346e5bb2ad2ea9047c0a780f1bfb47ae8a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/c/6c2cd7711ae1e0954188e367151c6877ab4c5cb9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77e9a3f957ff5781e09c1ffddb5556f3cfea1d9d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c8e13f1ef880dc8f666f92d21587250d59e1337" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f43b926072c70fecb4287d840eef3b907874fbd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/824e42f958c861a7bbf0c289c564b98e4bf21c6d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/84cf02b6cebe36c5bc9aaa5ac5da1d76435405b9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8d29e33e2ed6ed1ec1cc652b8dd0c5aeef8fbeb1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b59ce4000f91c674683efe9522b3a6d80477f3ab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c36f403d00dd6ae39cd4c64f6a886aea419590a0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d268541c6c781e889ac81da872e1f1a51462d636" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d86a1c61e3a543ed7ae28be875e4c6dcd2b59cc8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9a21f43e6c2504c88c3d39146da32a2079abccd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e231cdec916cc5e56cef86deafc0e17b181ea4ba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e44a8606ce010ad9b89aafdfcee2ab49afbf6d10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/ed75f81a29e47459758539be76c94152e73eca98" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f52aa6d17fd8d2e2e141adc4d699b4edc9849495" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5d3de1b88a1a8beddf0d15f146a663478cd2f3b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/6/f6013a00b362253c64368d6eebc50ea2131754e2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f9323fa3c49c8dabd55a499f59a64912eaee5b55" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/b/fb953d747085f80a0ce9120f6e8e6defcbfbf214" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webio.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/PluginManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/AbstractDatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/CRUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/TestUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/TestUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/TestWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/TestWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/dbs/TestWorldDB" beforeDir="false" afterPath="$PROJECT_DIR$/storage/dbs/TestWorldDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/db/TestDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/db/TestDB-saving" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestDB-saving" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/db/TestWorldDB" beforeDir="false" afterPath="$PROJECT_DIR$/test/db/TestWorldDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/comp/imp/plugins/TemperatureReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/developmentjavastudiumarachnistoragedbsTestWorldDB" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/dbs/CRUD_WORLD_DB" beforeDir="false" afterPath="$PROJECT_DIR$/storage/dbs/CRUD_WORLD_DB" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
-  </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/webio$TestWeb.ic" NAME="TestWeb Coverage Results" MODIFIED="1578323035598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BIF.SWE1.*</FILTER>
-    </SUITE>
-  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="arachni" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="arachni" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="arachni" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="arachni" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
-  </component>
-  <component name="ProjectId" id="1ZR6fXbm9FJYcpclMyDXKhYffW4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1fKWGnf2SBWFDZigSKGi2aJElVz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583342465070" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/db/testworld" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Images" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\development\java\studium\arachni\storage\sql" />
-      <recent name="D:\development\java\studium\arachni\storage\db" />
-      <recent name="D:\development\java\studium\arachni\src\main\resources\CRUD" />
-      <recent name="D:\development\java\studium\arachni\db\temperature" />
-      <recent name="D:\development\java\studium\arachni\db\tailworld" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
+      <recent name="K:\Project_Record\webdev\java\arachni" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\development\java\studium\arachni\db\testworld" />
-      <recent name="D:\development\java\studium\arachni\webroot\src\css" />
-      <recent name="D:\development\java\studium\arachni\webroot\src" />
-      <recent name="D:\development\java\remoteTest\webio\webroot\src\main" />
-      <recent name="D:\development\java\remoteTest\webio\webroot" />
+      <recent name="K:\Project_Record\webdev\java\arachni" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.arachni [test]">
-    <configuration name="Test_8_CRUD.test_CRUD_finding_POST_request" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;testsuite.unittests.Test_8_CRUD.test_CRUD_finding_POST_request&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_8_CRUD.test_default_CRUD_response" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;testsuite.unittests.Test_8_CRUD.test_default_CRUD_response&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_9_CRUD_2.saving_stress_test_in_testworld_and_find_returns_not_all" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;testsuite.unittests.Test_9_CRUD_2.saving_stress_test_in_testworld_and_find_returns_not_all&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_9_CRUD_2.test_CRUD_response_in_testworld" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;testsuite.unittests.Test_9_CRUD_2.test_CRUD_response_in_testworld&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="arachni [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="JAR Application.arachni.jar (1)">
+    <configuration name="arachni [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -255,7 +117,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="test" />
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -263,13 +125,26 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="arachni-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/arachni-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="arachni.jar (1)" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/arachni.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="arachni.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/arachni.jar" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.arachni [test]" />
-        <item itemvalue="Gradle.Test_9_CRUD_2.saving_stress_test_in_testworld_and_find_returns_not_all" />
-        <item itemvalue="Gradle.Test_9_CRUD_2.test_CRUD_response_in_testworld" />
-        <item itemvalue="Gradle.Test_8_CRUD.test_default_CRUD_response" />
-        <item itemvalue="Gradle.Test_8_CRUD.test_CRUD_finding_POST_request" />
+        <item itemvalue="JAR Application.arachni.jar (1)" />
+        <item itemvalue="Gradle.arachni [jar]" />
+        <item itemvalue="JAR Application.arachni.jar" />
+        <item itemvalue="JAR Application.arachni-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -278,751 +153,111 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="13195972-a5c4-4ea7-a947-b47e5ff51a4e" name="Default Changelist" comment="" />
-      <created>1568646694270</created>
+      <changelist id="7d3c74a1-d7e0-4401-9b48-f76b34694f6e" name="Default Changelist" comment="" />
+      <created>1595967170322</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1568646694270</updated>
-      <workItem from="1568646699421" duration="6071000" />
-      <workItem from="1568723083354" duration="599000" />
-      <workItem from="1568841761421" duration="18000" />
-      <workItem from="1568896268546" duration="9348000" />
-      <workItem from="1568910739173" duration="68000" />
-      <workItem from="1569058599255" duration="8074000" />
-      <workItem from="1569098175829" duration="2248000" />
-      <workItem from="1569151285904" duration="912000" />
-      <workItem from="1569225954977" duration="20000" />
-      <workItem from="1569252883289" duration="7702000" />
-      <workItem from="1569260770018" duration="394000" />
-      <workItem from="1569337450258" duration="5560000" />
-      <workItem from="1569585675751" duration="4798000" />
-      <workItem from="1569933753688" duration="11217000" />
-      <workItem from="1570088357337" duration="4770000" />
-      <workItem from="1570113370704" duration="14000" />
-      <workItem from="1570698210816" duration="18458000" />
-      <workItem from="1571161552706" duration="5172000" />
-      <workItem from="1571301227970" duration="99000" />
-      <workItem from="1571306572001" duration="6919000" />
-      <workItem from="1571333244797" duration="1194000" />
-      <workItem from="1571909371962" duration="4834000" />
-      <workItem from="1572352772232" duration="10833000" />
-      <workItem from="1572446233843" duration="12659000" />
-      <workItem from="1572504800826" duration="178000" />
-      <workItem from="1572525277561" duration="1560000" />
-      <workItem from="1573134379208" duration="4142000" />
-      <workItem from="1573153481382" duration="596000" />
-      <workItem from="1573470951811" duration="713000" />
-      <workItem from="1573542100834" duration="48000" />
-      <workItem from="1573730068343" duration="10706000" />
-      <workItem from="1574691670134" duration="1844000" />
-      <workItem from="1574766667364" duration="23000" />
-      <workItem from="1574949412657" duration="3507000" />
-      <workItem from="1574964118732" duration="17000" />
-      <workItem from="1575370011105" duration="9811000" />
-      <workItem from="1575800362468" duration="14374000" />
-      <workItem from="1576929743128" duration="9948000" />
-      <workItem from="1577634986459" duration="9154000" />
-      <workItem from="1577646630792" duration="4150000" />
-      <workItem from="1577695799074" duration="6000" />
-      <workItem from="1577710684596" duration="848000" />
-      <workItem from="1577714204022" duration="12000" />
-      <workItem from="1577719554590" duration="180000" />
-      <workItem from="1577719832962" duration="427000" />
-      <workItem from="1577724403022" duration="1477000" />
-      <workItem from="1577726945162" duration="162000" />
-      <workItem from="1577727584278" duration="73000" />
-      <workItem from="1578314418274" duration="483000" />
-      <workItem from="1578321911221" duration="5504000" />
-      <workItem from="1578394439648" duration="34000" />
-      <workItem from="1578476068609" duration="30225000" />
-      <workItem from="1578553710737" duration="5410000" />
-      <workItem from="1578561867716" duration="3928000" />
-      <workItem from="1578606128157" duration="50000" />
-      <workItem from="1579448596983" duration="789000" />
-      <workItem from="1579603003254" duration="7158000" />
-      <workItem from="1579617647731" duration="3139000" />
-      <workItem from="1579775565576" duration="48000" />
-      <workItem from="1580912872701" duration="4268000" />
-      <workItem from="1580990415045" duration="5000" />
-      <workItem from="1581026120900" duration="4022000" />
-      <workItem from="1583337978712" duration="1554000" />
-      <workItem from="1584789666476" duration="934000" />
-      <workItem from="1584815951640" duration="1279000" />
-      <workItem from="1584830019160" duration="575000" />
-      <workItem from="1584869991087" duration="354000" />
-      <workItem from="1585247354218" duration="1404000" />
-      <workItem from="1585264146233" duration="679000" />
-      <workItem from="1587812528768" duration="461000" />
-      <workItem from="1587816769531" duration="15935000" />
-      <workItem from="1587853388885" duration="668000" />
-      <workItem from="1587892661237" duration="1640000" />
-      <workItem from="1588069405073" duration="49000" />
-      <workItem from="1588069512836" duration="3457000" />
-      <workItem from="1588145031563" duration="96000" />
-      <workItem from="1588268680005" duration="7596000" />
-      <workItem from="1588370119338" duration="37000" />
-      <workItem from="1588629759518" duration="3278000" />
-      <workItem from="1588712239648" duration="3877000" />
-      <workItem from="1588761826605" duration="624000" />
-      <workItem from="1588763486976" duration="1005000" />
-      <workItem from="1588925381723" duration="3000" />
-      <workItem from="1588977921914" duration="15000" />
-      <workItem from="1590068629494" duration="89000" />
-      <workItem from="1590083756847" duration="857000" />
-      <workItem from="1590085747150" duration="620000" />
-      <workItem from="1593680039510" duration="6881000" />
-      <workItem from="1593719354469" duration="10066000" />
-      <workItem from="1593767499584" duration="24798000" />
-      <workItem from="1593854505235" duration="5240000" />
-      <workItem from="1593942363832" duration="74748000" />
-      <workItem from="1594200177315" duration="1590000" />
-      <workItem from="1594201787364" duration="9547000" />
-      <workItem from="1594223986182" duration="26117000" />
-      <workItem from="1594304674053" duration="16257000" />
-      <workItem from="1594395776639" duration="56510000" />
-      <workItem from="1594753276471" duration="10038000" />
-      <workItem from="1594837019197" duration="349000" />
-      <workItem from="1594837384136" duration="30934000" />
-      <workItem from="1594973856281" duration="13222000" />
-      <workItem from="1595149821439" duration="41631000" />
-      <workItem from="1595271962768" duration="5623000" />
-      <workItem from="1595284766962" duration="2495000" />
-      <workItem from="1595323497657" duration="29575000" />
-      <workItem from="1595413125521" duration="901000" />
-      <workItem from="1595416808614" duration="6151000" />
-      <workItem from="1595493843732" duration="41240000" />
-      <workItem from="1595613921030" duration="13661000" />
-      <workItem from="1595665887317" duration="27000" />
-      <workItem from="1595701062740" duration="849000" />
-      <workItem from="1595766271159" duration="39072000" />
-      <workItem from="1595877133641" duration="886000" />
-      <workItem from="1595924717479" duration="11771000" />
-      <workItem from="1595951921214" duration="8439000" />
+      <updated>1595967170322</updated>
+      <workItem from="1595967176213" duration="2306000" />
+      <workItem from="1596010853883" duration="3302000" />
     </task>
-    <task id="LOCAL-00014" summary="update">
-      <created>1594248536553</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
+    <task id="LOCAL-00001" summary="update">
+      <created>1595967264219</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1594248536553</updated>
+      <updated>1595967264219</updated>
     </task>
-    <task id="LOCAL-00015" summary="update">
-      <created>1594286867299</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1594286867299</updated>
-    </task>
-    <task id="LOCAL-00016" summary="update">
-      <created>1594287152680</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1594287152680</updated>
-    </task>
-    <task id="LOCAL-00017" summary="update">
-      <created>1594289540966</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1594289540966</updated>
-    </task>
-    <task id="LOCAL-00018" summary="update">
-      <created>1594389710014</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1594389710014</updated>
-    </task>
-    <task id="LOCAL-00019" summary="update">
-      <created>1594396634557</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1594396634557</updated>
-    </task>
-    <task id="LOCAL-00020" summary="update">
-      <created>1594397923207</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1594397923207</updated>
-    </task>
-    <task id="LOCAL-00021" summary="update">
-      <created>1594577468960</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1594577468960</updated>
-    </task>
-    <task id="LOCAL-00022" summary="update">
-      <created>1594588994251</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1594588994251</updated>
-    </task>
-    <task id="LOCAL-00023" summary="update">
-      <created>1594638703244</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1594638703244</updated>
-    </task>
-    <task id="LOCAL-00024" summary="update">
-      <created>1594643921568</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1594643921568</updated>
-    </task>
-    <task id="LOCAL-00025" summary="update">
-      <created>1594652345076</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1594652345076</updated>
-    </task>
-    <task id="LOCAL-00026" summary="update">
-      <created>1594652439062</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1594652439062</updated>
-    </task>
-    <task id="LOCAL-00027" summary="update">
-      <created>1594720294319</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1594720294319</updated>
-    </task>
-    <task id="LOCAL-00028" summary="update">
-      <created>1594721214158</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1594721214158</updated>
-    </task>
-    <task id="LOCAL-00029" summary="update">
-      <created>1594722218902</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1594722218902</updated>
-    </task>
-    <task id="LOCAL-00030" summary="update">
-      <created>1594761836530</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1594761836530</updated>
-    </task>
-    <task id="LOCAL-00031" summary="update">
-      <created>1594896332377</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1594896332377</updated>
-    </task>
-    <task id="LOCAL-00032" summary="update">
-      <created>1594904458690</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1594904458690</updated>
-    </task>
-    <task id="LOCAL-00033" summary="update">
-      <created>1594910143506</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1594910143506</updated>
-    </task>
-    <task id="LOCAL-00034" summary="update">
-      <created>1594939184383</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1594939184383</updated>
-    </task>
-    <task id="LOCAL-00035" summary="update">
-      <created>1594978385940</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1594978385940</updated>
-    </task>
-    <task id="LOCAL-00036" summary="update">
-      <created>1594982984503</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1594982984503</updated>
-    </task>
-    <task id="LOCAL-00037" summary="update">
-      <created>1595159349214</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1595159349214</updated>
-    </task>
-    <task id="LOCAL-00038" summary="update">
-      <created>1595193859306</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1595193859306</updated>
-    </task>
-    <task id="LOCAL-00039" summary="update">
-      <created>1595193882151</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1595193882151</updated>
-    </task>
-    <task id="LOCAL-00040" summary="update">
-      <created>1595244740180</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1595244740180</updated>
-    </task>
-    <task id="LOCAL-00041" summary="update">
-      <created>1595244847830</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1595244847830</updated>
-    </task>
-    <task id="LOCAL-00042" summary="update">
-      <created>1595257903720</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1595257903720</updated>
-    </task>
-    <task id="LOCAL-00043" summary="update">
-      <created>1595263604525</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1595263604525</updated>
-    </task>
-    <task id="LOCAL-00044" summary="update">
-      <created>1595275656324</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1595275656324</updated>
-    </task>
-    <task id="LOCAL-00045" summary="update">
-      <created>1595275879351</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1595275879351</updated>
-    </task>
-    <task id="LOCAL-00046" summary="update">
-      <created>1595287211582</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1595287211582</updated>
-    </task>
-    <task id="LOCAL-00047" summary="update">
-      <created>1595333679406</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1595333679406</updated>
-    </task>
-    <task id="LOCAL-00048" summary="update">
-      <created>1595351059650</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1595351059650</updated>
-    </task>
-    <task id="LOCAL-00049" summary="update">
-      <created>1595364886716</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1595364886716</updated>
-    </task>
-    <task id="LOCAL-00050" summary="update">
-      <created>1595365868706</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1595365868707</updated>
-    </task>
-    <task id="LOCAL-00051" summary="update">
-      <created>1595413963739</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1595413963739</updated>
-    </task>
-    <task id="LOCAL-00052" summary="update">
-      <created>1595501024861</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1595501024863</updated>
-    </task>
-    <task id="LOCAL-00053" summary="update">
-      <created>1595531776356</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1595531776356</updated>
-    </task>
-    <task id="LOCAL-00054" summary="update">
-      <created>1595532370882</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1595532370882</updated>
-    </task>
-    <task id="LOCAL-00055" summary="update">
-      <created>1595538592193</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1595538592193</updated>
-    </task>
-    <task id="LOCAL-00056" summary="update">
-      <created>1595543750393</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1595543750393</updated>
-    </task>
-    <task id="LOCAL-00057" summary="update">
-      <created>1595597609879</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1595597609879</updated>
-    </task>
-    <task id="LOCAL-00058" summary="update">
-      <created>1595620369115</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1595620369115</updated>
-    </task>
-    <task id="LOCAL-00059" summary="update">
-      <created>1595621070369</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1595621070369</updated>
-    </task>
-    <task id="LOCAL-00060" summary="update">
-      <created>1595628675143</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1595628675143</updated>
-    </task>
-    <task id="LOCAL-00061" summary="update">
-      <created>1595804219798</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1595804219798</updated>
-    </task>
-    <task id="LOCAL-00062" summary="update">
-      <created>1595877054551</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1595877054551</updated>
-    </task>
-    <option name="localTasksCounter" value="63" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="606" y="275" key="#Notifications" timestamp="1595416824618">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="668" y="198" key="#arachni.jar" timestamp="1596011242779">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="606" y="275" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1595416824618" />
-    <state x="372" y="16" key="#TestWeb.testServerStart" timestamp="1587853429149">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="668" y="198" key="#arachni.jar/0.0.1920.1160@0.0.1920.1160" timestamp="1596011242779" />
+    <state x="584" y="147" key="CommitChangelistDialog2" timestamp="1595967263356">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="372" y="16" key="#TestWeb.testServerStart/0.0.1536.824@0.0.1536.824" timestamp="1587853429149" />
-    <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1595333999944">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="584" y="147" key="CommitChangelistDialog2/0.0.1920.1160@0.0.1920.1160" timestamp="1595967263356" />
+    <state x="738" y="320" key="FileChooserDialogImpl" timestamp="1596011237702">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1595333999944" />
-    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1595284550381">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="738" y="320" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1596011237702" />
+    <state width="1875" height="321" key="GridCell.Tab.0.bottom" timestamp="1596013503344">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1595284550381" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593859897852">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1596013503344" />
+    <state width="1875" height="321" key="GridCell.Tab.0.center" timestamp="1596013503344">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593859897852" />
-    <state x="352" y="0" key="CommitChangelistDialog2" timestamp="1595877053127">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="321" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1596013503344" />
+    <state width="1875" height="321" key="GridCell.Tab.0.left" timestamp="1596013503344">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="352" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595877053127" />
-    <state width="1534" height="440" key="DebuggerActiveHint" timestamp="1595337011552">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="321" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1596013503344" />
+    <state width="1875" height="321" key="GridCell.Tab.0.right" timestamp="1596013503344">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1534" height="440" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1595337011552" />
-    <state x="94" y="94" width="1349" height="637" key="DiffContextDialog" timestamp="1595497217191">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="321" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1596013503344" />
+    <state width="1875" height="395" key="GridCell.Tab.1.bottom" timestamp="1596013132016">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="94" y="94" width="1349" height="637" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595497217191" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1595286198310">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="395" key="GridCell.Tab.1.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1596013132016" />
+    <state width="1875" height="395" key="GridCell.Tab.1.center" timestamp="1596013132016">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595286198310" />
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="395" key="GridCell.Tab.1.center/0.0.1920.1160@0.0.1920.1160" timestamp="1596013132016" />
+    <state width="1875" height="395" key="GridCell.Tab.1.left" timestamp="1596013132016">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="395" key="GridCell.Tab.1.left/0.0.1920.1160@0.0.1920.1160" timestamp="1596013132016" />
+    <state width="1875" height="395" key="GridCell.Tab.1.right" timestamp="1596013132016">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="395" key="GridCell.Tab.1.right/0.0.1920.1160@0.0.1920.1160" timestamp="1596013132016" />
+    <state x="460" y="224" key="SettingsEditor" timestamp="1596011108137">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="460" y="224" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1596011108137" />
+    <state x="551" y="312" key="Vcs.Push.Dialog.v2" timestamp="1595967290756">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.1.bottom" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="551" y="312" key="Vcs.Push.Dialog.v2/0.0.1920.1160@0.0.1920.1160" timestamp="1595967290756" />
+    <state x="667" y="313" width="585" height="534" key="find.popup" timestamp="1596012584210">
+      <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state width="1491" height="248" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.1.center" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.1.left" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.1.right" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.2.bottom" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.2.center" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.2.left" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.2.right" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.3.bottom" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.3.center" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.3.left" timestamp="1595960306997">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306997" />
-    <state width="1491" height="248" key="GridCell.Tab.3.right" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.4.bottom" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.4.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.4.center" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.4.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.4.left" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.4.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.4.right" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.5.bottom" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.5.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.5.center" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.5.center/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.5.left" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.5.left/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="1491" height="248" key="GridCell.Tab.5.right" timestamp="1595960306998">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1491" height="248" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1595960306998" />
-    <state width="202" height="463" key="HiddenNamespacesPopup" timestamp="1595336658201">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="202" height="463" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1595336658201" />
-    <state x="526" y="115" key="RollbackChangesDialog" timestamp="1595256896858">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="526" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595256896858" />
-    <state x="0" y="0" key="SettingsEditor" timestamp="1595353675487">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595353675487" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595538595838">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595538595838" />
-    <state width="1289" height="271" key="XDebugger.FullValuePopup" timestamp="1595960292174">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1289" height="271" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1595960292174" />
-    <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595364419091">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="373" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1595364419091" />
-    <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595353017773">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595353017773" />
-    <state x="398" y="149" width="579" height="592" key="find.popup" timestamp="1595936661643">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="398" y="149" width="579" height="592" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1595936661643" />
-    <state width="332" height="82" key="javadoc.popup.new" timestamp="1595839576404">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="332" height="82" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1595839576404" />
-    <state x="181" y="23" key="new project wizard" timestamp="1595371745499">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="181" y="23" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1595371745499" />
-    <state x="476" y="170" key="refactoring.ChangeSignatureDialog" timestamp="1594134409786">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="476" y="170" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1594134409785" />
-    <state x="426" y="188" key="run.anything.popup" timestamp="1595617893499">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="426" y="188" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595617893499" />
-    <state x="432" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595938321562">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="432" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595938321562" />
+    <state x="667" y="313" width="585" height="534" key="find.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1596012584210" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/libs/neureka-0.0.0.jar!/neureka/acceleration/opencl/OpenCLPlatform.class</url>
-          <line>81</line>
-          <option name="timeStamp" value="261" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/libs/neureka-0.0.0.jar!/neureka/acceleration/opencl/OpenCLPlatform.class</url>
-          <line>83</line>
-          <option name="timeStamp" value="262" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/TemperatureReader.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
-          <line>306</line>
-          <option name="timeStamp" value="386" />
+          <line>33</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>239</line>
-          <option name="timeStamp" value="540" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/AbstractDatabaseConnection.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>240</line>
-          <option name="timeStamp" value="541" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>370</line>
-          <option name="timeStamp" value="618" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>341</line>
-          <option name="timeStamp" value="632" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/plugins/CRUD.java</url>
-          <line>381</line>
-          <option name="timeStamp" value="635" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>418</line>
-          <option name="timeStamp" value="641" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="682" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>483</line>
-          <option name="timeStamp" value="685" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="687" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>580</line>
-          <option name="timeStamp" value="718" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_8_CRUD.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="719" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="720" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/testsuite/unittests/Test_9_CRUD_2.java</url>
-          <line>470</line>
-          <option name="timeStamp" value="727" />
+          <url>file://$PROJECT_DIR$/src/main/java/comp/imp/PluginManager.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

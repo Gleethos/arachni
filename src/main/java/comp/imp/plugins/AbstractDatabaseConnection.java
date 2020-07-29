@@ -24,13 +24,16 @@ public abstract class AbstractDatabaseConnection {
     /**
      * Connection settings: URL, User, Password!
      */
-    private boolean _AUTOCOMMIT = true;
+    protected boolean _AUTOCOMMIT = true;
     private String _url, _user, _pwd;
 
     private Map<Thread, Connection> _connections = new HashMap();
 
-    AbstractDatabaseConnection(String url, String name, String password){
-        _url = url;
+    AbstractDatabaseConnection(String url, String name, String password) {
+        if(!url.contains("jdbc:sqlite:")) {
+            String path = new File("").getAbsolutePath().replace("\\","/");
+            _url = "jdbc:sqlite:"+path+"/"+url;
+        } else _url = url;
         _user = name;
         _pwd = password;
     }
