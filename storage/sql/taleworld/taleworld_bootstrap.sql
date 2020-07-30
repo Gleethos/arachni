@@ -1,14 +1,14 @@
 PRAGMA foreign_keys = ON;
 --<#SPLIT#>--
-DROP TABLE IF EXISTS tail_tag_relations;
+DROP TABLE IF EXISTS tale_tag_relations;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS tags;
 --<#SPLIT#>--
-DROP TABLE IF EXISTS tail_relations;
+DROP TABLE IF EXISTS tale_relations;
 --<#SPLIT#>--
-DROP TABLE IF EXISTS tails;
+DROP TABLE IF EXISTS tales;
 --<#SPLIT#>--
-CREATE TABLE tails(
+CREATE TABLE tales(
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   value TEXT NOT NULL,
@@ -16,15 +16,15 @@ CREATE TABLE tails(
   deleted TEXT
 );
 --<#SPLIT#>--
-CREATE TABLE tail_relations(
+CREATE TABLE tale_relations(
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  parent_tail_id INTEGER NOT NULL,
-  child_tail_id INTEGER NOT NULL,
+  parent_tale_id INTEGER NOT NULL,
+  child_tale_id INTEGER NOT NULL,
   description TEXT NOT NULL,
   created TEXT NOT NULL,
   deleted TEXT,
-  FOREIGN KEY (parent_tail_id) REFERENCES tails (id),
-  FOREIGN KEY (child_tail_id) REFERENCES tails (id)
+  FOREIGN KEY (parent_tale_id) REFERENCES tales (id),
+  FOREIGN KEY (child_tale_id) REFERENCES tales (id)
 );
 
 --<#SPLIT#>--
@@ -36,13 +36,13 @@ CREATE TABLE tags(
   deleted TEXT
 );
 --<#SPLIT#>--
-CREATE TABLE tail_tag_relations(
+CREATE TABLE tale_tag_relations(
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  tail_id INTEGER NOT NULL,
+  tale_id INTEGER NOT NULL,
   tag_id INTEGER NOT NULL,
   created TEXT NOT NULL,
   deleted TEXT,
-  FOREIGN KEY (tail_id) REFERENCES tails (id),
+  FOREIGN KEY (tale_id) REFERENCES tales (id),
   FOREIGN KEY (tag_id) REFERENCES tags (id)
 );
 

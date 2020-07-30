@@ -41,6 +41,35 @@
                 }
             }
             function sigmoid(t) {return 1/(1+Math.pow(Math.E, -t));}
+
+            // Prevent the backspace key from navigating back.
+            $(document).unbind('keydown').bind('keydown', function (event) {
+                if (event.keyCode === 8) {
+                    var doPrevent = true;
+                    var types = ["text", "password", "file", "search", "email", "number", "date", "color", "datetime", "datetime-local", "month", "range", "search", "tel", "time", "url", "week"];
+                    var d = $(event.srcElement || event.target);
+                    var disabled = d.prop("readonly") || d.prop("disabled");
+                    if (!disabled) {
+                        if (d[0].isContentEditable) {
+                            doPrevent = false;
+                        } else if (d.is("input")) {
+                            var type = d.attr("type");
+                            if (type) {
+                                type = type.toLowerCase();
+                            }
+                            if (types.indexOf(type) > -1) {
+                                doPrevent = false;
+                            }
+                        } else if (d.is("textarea")) {
+                            doPrevent = false;
+                        }
+                    }
+                    if (doPrevent) {
+                        event.preventDefault();
+                        return false;
+                    }
+                }
+            });
         </script>
         <style>
             .SearchWrapper {
@@ -50,7 +79,7 @@
                 border-bottom: solid black 1px;
                 margin-bottom: 0.25em;
                 padding-bottom: 0.25em;
-                padding-top: 0.25em;
+                padding-top: 1em;
                 border-radius: 1em;
                 background-color: lightblue;
             }
@@ -67,6 +96,8 @@
             .EntityWrapper {
                 padding-bottom:1.25em;
                 padding-top: 1.5em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
             }
             .EntityShadow {
                 border-radius: 1em;
@@ -181,12 +212,29 @@
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <div class="tabWrapper">
                                             <div class="tabHead">
-                                                <button onclick="switchTab(event, '.ContentTab')" class="selected">Hello</button>
+                                                <button onclick="switchTab(event, '.ContentTab')" class="selected">Welcome</button>
                                                 <button onclick="switchTab(event, '.MachinaTab')">Settings</button>
                                             </div>
                                             <div class="tabBody">
                                                 <div class="ContentTab row">
-                                                    <h2> Hello! This is the CRUD plugin! </h2>
+                                                    <div class="col-sm-12 col-md-12">
+                                                        <h2> What is 'CRUD-World' ? </h2>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 ContentWrapper">
+                                                        <p>
+                                                            'CRUD' means Create-Read-Update-Write!<br>
+                                                            This Web-Interface is the skin of a so called CRUD-Controller.<br>
+                                                            Which is a complicated piece of software responsible for building
+                                                            a user friendly experience for managing Data-Entities! :) <br>
+                                                            <br>
+                                                            Data-Entity? <br>
+                                                            Basically, it is a simple entry within a table stored in a
+                                                            database. An entry is merely one row of a given table.
+                                                            Such entities are converted into modifiable forms which
+                                                            can be created, read, updated, and deleted.<br>
+                                                            That's it! :) Have fun!
+                                                        </p>
+                                                    </div>
                                                 </div>
                                                 <div class="MachinaTab row" style="display:none">
                                                     <div class="col-sm-12 col-md-12">
@@ -436,13 +484,13 @@
                                     intoSelector.html("").load(url, params, callback);
                                 }
 
-                                function noteOnInputFor( attribute, tableName, id )
+                                function noteOnInputFor( attribute, tableName, id, saveFunction ) // This needs to be fixed!
                                 {
                                     let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
                                     element.attr('value',parseInt(element.attr('value'))+1);
-                                    if( parseInt(element.attr('value'))>175 ) {
+                                    if( parseInt(element.attr('value'))>10 ) {
                                         element.attr('value',0);
-                                        loadSavedForEntity(tableName, id);
+                                        saveFunction();
                                     }
                                 }
 

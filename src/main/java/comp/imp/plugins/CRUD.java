@@ -1008,7 +1008,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("}                                                                 \n");
             $("</script>\n");
             $("<button onclick=\"new_"+table+"()\">");
-            $("NEW "+table.replace("_", " ").toUpperCase());
+            $("NEW "+outerKey.replace("_id", "").replace("_", " ").toUpperCase());
             $("</button>\n");
 
             return this;
@@ -1152,10 +1152,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                             (lowerKey.contains("id"))
                                     ?(lowerKey.equals("id"))?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
                                     : (lowerKey.contains("value")||lowerKey.contains("content"))
-                                    ?"col-sm-12 col-md-12 col-lg-12"
-                                    :(lowerKey.contains("deleted")||lowerKey.contains("created"))
-                                    ?"col-sm-12 col-md-4 col-lg-4"
-                                    :"col-sm-12 col-md-6 col-lg-4";
+                                        ?"col-sm-12 col-md-12 col-lg-12"
+                                        :(lowerKey.contains("deleted")||lowerKey.contains("created"))
+                                            ?"col-sm-12 col-md-4 col-lg-4"
+                                            :(lowerKey.contains("description"))
+                                                ?"col-sm-12 col-md-12 col-lg-6"
+                                                :"col-sm-12 col-md-6 col-lg-4";
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
                     //---
@@ -1172,7 +1174,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     "      class=\""+_snakeToClass(tableName+"_"+attribute)+"\"     " +
                                     "      name=\""+attribute+"\"                       " +
                                     ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
-                                    "      oninput=\"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')\"                                           " +
+                                    "      oninput=\"" +
+                                    //"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"', function(){"+onclickGenerators.get("save").apply(currentEntity)+"})" +
+                                    "\"                                           " +
                                     ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
                     );
                     ic.$("</div>");
