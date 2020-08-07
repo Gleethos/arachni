@@ -178,11 +178,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 paramTable.put("created", new java.sql.Date(System.currentTimeMillis()).toString());
             }
         }
-        //_query(
-        //        __generateSaveSQLFor(paramTable, tableName),
-        //        new ArrayList<>(paramTable.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList())
-        //)
-
         if(
                 !_execute(
                         __generateSaveSQLFor(paramTable, tableName),
@@ -1188,6 +1183,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
                                     "      oninput=\"" +
                                     //"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"', function(){"+onclickGenerators.get("save").apply(currentEntity)+"})" +
+                                    "noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')" +
                                     "\"                                           " +
                                     ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
                     );

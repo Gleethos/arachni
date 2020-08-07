@@ -108,7 +108,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("content-length: 0");
         String compact = body.replace(" ", "");
         assert compact.replace(" ","").contains("<spanvalue=\"0\"");
-        //assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tale_relations'");
+        assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tale_relations'");
         assert compact.contains("col-sm-");
         assert compact.contains("col-md-");
         assert compact.contains("col-lg-4");
@@ -149,7 +149,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("id=\"tale_relations_2_id\"");
         String compact = body.replace(" ", "");
         assert compact.replace(" ","").contains("<spanvalue=\"0\"");
-        //assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tale_relations'");
+        assert compact.replace(" ", "").contains("oninput=\"noteOnInputFor('id','tale_relations'");
 
         assert res.getContentType().contains("text/html");
 
@@ -187,7 +187,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("Today");
         assert body.contains("Tomorrow");
         assert body.contains("Today");
-        //assert body.contains("oninput=\"noteOnInputFor('parent_tale_id','tale_relations'");
+        assert body.contains("oninput=\"noteOnInputFor('parent_tale_id','tale_relations'");
         assert body.contains("value=\"ThisIsASavingTest\"");
         assert body.contains("name=\"child_tale_id\"");
         assert !body.contains("textarea");
@@ -206,17 +206,17 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\"AlsoTomorrow\"");
         assert body.contains("id=\"tales_4_name\"");
         assert body.contains("id=\"tales_4_id\"");
-        //assert body.contains("oninput=\"noteOnInputFor('name','tales','4')");
+        assert body.contains("oninput=\"noteOnInputFor('name','tales','4')");
         assert body.contains("id=\"tales_4\"");
         assert body.contains("textarea");
         assert !body.contains("content-length: 0");
         compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_value_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_created_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_deleted_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_name_span\">");
-        //assert compact.contains("<textareaid=\"tales_4_value\"class=\"TalesValue\"name=\"value\"oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
+        assert compact.contains("<textareaid=\"tales_4_value\"class=\"TalesValue\"name=\"value\"oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
     }
 
     @Test
@@ -253,7 +253,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "id=\"tales_4_related_buttons\"",
         });
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
     }
 
     @Test
@@ -291,7 +291,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "content-length: 0",
         });
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
     }
 
     @Test
@@ -329,7 +329,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
             "content-length: 0", "buttons", "SAVE", "DELETE", "CLEAR"
         });
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
     }
 
     @Test
@@ -367,7 +367,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "content-length: 0",
         });
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
     }
 
     @Test
@@ -425,7 +425,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\""+date+"\""); // Autofill for created!
         assert !body.contains("value=\"bla bla\"");
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert compact.contains("name=\"name\"value=\"FirstTag\"");
         assert compact.contains("deleteEntity('tales','1')");
@@ -434,7 +434,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("deleteEntity('tales',(outerID==='')?'new':outerID)");
         assert compact.contains("deleteEntity('tale_relations',(relationID==='')?'new':relationID)");
         assert compact.contains("id=\"tags_1_description\"");
-        //assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
         assert !body.contains("content-length: 0");
     }
 
@@ -457,7 +457,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\""+date+"\""); // Autofill for created!
         assert !body.contains("value=\"bla bla\"");
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert !compact.contains("name=\"name\"value=\"FirstTag\"");
         assert !compact.contains("onclick=\"deleteEntity('tags','1')");
@@ -533,7 +533,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("value=\"hiA\"");
         assert !body.contains("content-length: 0");
         String compact = body.replace(" " , "");
-        //assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">hiA</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">hiA</textarea>");
 
     }
 
@@ -556,7 +556,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\"First Tale\"");
         assert body.contains("value=\"Second Tale\""); // It also contains second tale as relation entity!
         assert !body.contains("value=\"Third Tale\"");
-        //assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
         assert body.contains("id=\"tales_1_created\"");
         assert !body.contains("content-length: 0");
         String compact = body.replace(" ", "");
@@ -566,7 +566,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("deleteEntity('tags',(outerID==='')?'new':outerID);");
         assert compact.contains("deleteEntity('tale_tag_relations',(relationID==='')?'new':relationID);");
         assert compact.contains("id=\"tags_1_description\"");
-        //assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
         assert res.getContentType().contains("text/html");
         req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
@@ -603,7 +603,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\"First Tale\"");
         assert body.contains("value=\"Second Tale\""); // It also contains second tale as relation entity!
         assert !body.contains("value=\"Third Tale\"");
-        //assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
         assert body.contains("id=\"tales_1_created\"");
         assert !body.contains("content-length: 0");
         String compact = body.replace(" ", "");
@@ -613,7 +613,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("deleteEntity('tags',(outerID==='')?'new':outerID);");
         assert compact.contains("deleteEntity('tale_tag_relations',(relationID==='')?'new':relationID);");
         assert compact.contains("id=\"tags_1_description\"");
-        //assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
+        assert compact.contains("oninput=\"noteOnInputFor('deleted','tale_tag_relations','1')\"");
         assert res.getContentType().contains("text/html");
 
         req = createInstance().getRequest(
@@ -630,7 +630,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\"First Tale\"");
         assert !body.contains("value=\"Second Tale\""); // Now it does not contain second tale as relation entity!
         assert !body.contains("value=\"Third Tale\"");
-        //assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
         assert body.contains("id=\"tales_1_created\"");
         assert !body.contains("content-length: 0");
         compact = body.replace(" ", "");
@@ -664,7 +664,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\"First Tale\"");
         assert body.contains("value=\"Second Tale\""); // It also contains the second tale as relational entity!
         assert !body.contains("value=\"Third Tale\"");
-        //assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tales','1')\"");
         assert body.contains("id=\"tales_1_created\"");
         assert res.getContentType().contains("text/html");
         String compact = body.replace(" ", "");
@@ -730,7 +730,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("200 OK");
         assert body.contains("EntityWrapper");
         assert body.contains("value=\"SomeDescription\"");
-        //assert body.contains("oninput=\"noteOnInputFor('id','tale_relations','2')\"");
+        assert body.contains("oninput=\"noteOnInputFor('id','tale_relations','2')\"");
         assert body.contains("id=\"tale_relations_2_created\"");
         assert body.contains("id=\"tale_relations_2\"");
         assert body.contains("id=\"tale_relations_2_parent_tale_id\"");

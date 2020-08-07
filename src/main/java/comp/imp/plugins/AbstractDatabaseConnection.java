@@ -17,6 +17,7 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public abstract class AbstractDatabaseConnection {
@@ -352,6 +353,12 @@ public abstract class AbstractDatabaseConnection {
      * @param sql
      */
     protected boolean _execute(String sql, List<Object> values, IResponse response){
+        Function<String, String> exceptionMessageCreator = (s)->{
+            String[] parts = s.split(" \\? ");
+            String joined = String.join(",",values.stream().map(v->"'"+v.toString()+"'").collect(Collectors.toList()));
+            return parts[0]+joined+parts[parts.length-1];
+        };
+
         Connection conn = _connections.get(Thread.currentThread());
         if ( values!=null ){
             try {
@@ -360,13 +367,13 @@ public abstract class AbstractDatabaseConnection {
                     boolean state = pstmt.execute();
                     pstmt.close();
                 } catch (SQLException e) {
-                    response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                    response.setContent("Execution for the following query failed:\n'"+exceptionMessageCreator.apply(sql)+"'\n\nReason:\n"+e.getMessage());
                     response.setStatusCode(500);
                     pstmt.close();
                     return false;
                 }
             } catch (SQLException e) {
-                response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                response.setContent("Execution for the following query failed:\n'"+exceptionMessageCreator.apply(sql)+"'\n\nReason:\n"+e.getMessage());
                 response.setStatusCode(500);
                 return false;
             }

@@ -484,14 +484,14 @@
                                     intoSelector.html("").load(url, params, callback);
                                 }
 
-                                function noteOnInputFor( attribute, tableName, id, saveFunction ) // This needs to be fixed!
+                                function noteOnInputFor( attribute, tableName, id ) //, saveFunction // This needs to be fixed!
                                 {
-                                    let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
-                                    element.attr('value',parseInt(element.attr('value'))+1);
-                                    if( parseInt(element.attr('value'))>10 ) {
-                                        element.attr('value',0);
-                                        saveFunction();
-                                    }
+                                    //let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
+                                    //element.attr('value',parseInt(element.attr('value'))+1);
+                                    //if( parseInt(element.attr('value'))>10 ) {
+                                    //    element.attr('value',0);
+                                    //    saveFunction();
+                                    //}
                                 }
 
                                 function switchTab(src, target) {
