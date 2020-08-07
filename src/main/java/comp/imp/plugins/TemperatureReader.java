@@ -102,7 +102,7 @@ public class TemperatureReader extends AbstractDatabaseConnection implements IPl
                 _close();
             }
         });
-        iot.start();
+        //iot.start();
 
     }
 

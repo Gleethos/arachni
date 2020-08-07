@@ -71,8 +71,8 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         body = getBody(crud.handle(createInstance().getRequest(
                 RequestHelper.getValidRequestStream("CRUD/setJDBC?db_url=TestWorldDB&sql_source=testworld") // ...to testworld
         ))).toString();
-
-        assert body.contains("JDBC url set to : 'jdbc:sqlite:D:\\development\\java\\studium\\arachni\\storage\\dbs\\TestWorldDB'.\n");
+        path = new File("storage/dbs").getAbsolutePath();
+        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"\\TestWorldDB'.\n");
         assert body.contains("SQL source set to : 'testworld'.");
 
         body = getBody(crud.handle(createInstance().getRequest(

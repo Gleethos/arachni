@@ -2,9 +2,9 @@ PRAGMA foreign_keys = ON;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS tale_tag_relations;
 --<#SPLIT#>--
-DROP TABLE IF EXISTS tags;
---<#SPLIT#>--
 DROP TABLE IF EXISTS tale_relations;
+--<#SPLIT#>--
+DROP TABLE IF EXISTS tags;
 --<#SPLIT#>--
 DROP TABLE IF EXISTS tales;
 --<#SPLIT#>--

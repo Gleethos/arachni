@@ -344,7 +344,35 @@ public abstract class AbstractDatabaseConnection {
      * @param sql
      */
     protected boolean _execute(String sql, IResponse response){
+        return _execute(sql, null, response);
+    }
+
+    /**
+     * SQL execution on connection!
+     * @param sql
+     */
+    protected boolean _execute(String sql, List<Object> values, IResponse response){
         Connection conn = _connections.get(Thread.currentThread());
+        if ( values!=null ){
+            try {
+                PreparedStatement pstmt = _newPreparedStatement(sql, values);
+                try {
+                    boolean state = pstmt.execute();
+                    pstmt.close();
+                } catch (SQLException e) {
+                    response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                    response.setStatusCode(500);
+                    pstmt.close();
+                    return false;
+                }
+            } catch (SQLException e) {
+                response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+                response.setStatusCode(500);
+                return false;
+            }
+            return true;
+        }
+
         try {
             Statement stmt = conn.createStatement();
             try {
@@ -359,6 +387,7 @@ public abstract class AbstractDatabaseConnection {
             }
         } catch (SQLException e) {
             response.setContent("Execution for the following query failed:\n'"+sql+"'\n\nReason:\n"+e.getMessage());
+            response.setStatusCode(500);
             return false;
         }
     }
@@ -577,7 +606,7 @@ public abstract class AbstractDatabaseConnection {
 
 
     protected void _executeFile(String name){
-        Connection conn = _connections.get(Thread.currentThread());//_connection;
+        //Connection conn = _connections.get(Thread.currentThread());//_connection;
         String[] commands;
         File file = (name.contains(":"))?new File(name):new File("storage/sql/", name);
         int fileLength = (int) file.length();

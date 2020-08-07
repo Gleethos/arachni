@@ -178,7 +178,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 paramTable.put("created", new java.sql.Date(System.currentTimeMillis()).toString());
             }
         }
-        if(!_execute(__generateSaveSQLFor(paramTable, tableName), response)) return;
+        //_query(
+        //        __generateSaveSQLFor(paramTable, tableName),
+        //        new ArrayList<>(paramTable.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList())
+        //)
+
+        if(
+                !_execute(
+                        __generateSaveSQLFor(paramTable, tableName),
+                        new ArrayList<>(paramTable.values()).stream().map(o->o).collect(Collectors.toList()),
+                        response
+                )
+        ) return;
         int lastID = _lastInsertID();
         _commit(response);
         _close();
@@ -194,7 +205,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
     private String __generateSaveSQLFor(Map<String, String> inserts, String tableName)
     {
         List<String> attributes = new ArrayList<>(inserts.keySet());
-        List<String> values = new ArrayList<>(inserts.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList());
+        //List<String> values = new ArrayList<>(inserts.values()).stream().map(o->"'"+o+"'").collect(Collectors.toList());
+        List<String> values = new ArrayList<>(inserts.values()).stream().map(o->" ? ").collect(Collectors.toList());
 
         String id = (inserts.get("id")==null || inserts.get("id").equals(""))?"":inserts.get("id");
         if(id.equals("")) {
@@ -1222,7 +1234,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return this;
         }
 
-        private CRUDBuilder buildRelationForms (
+        public CRUDBuilder buildRelationForms (
                 String innerTableName,
                 String id
         ) {
