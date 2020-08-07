@@ -31,7 +31,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         path = new File("storage/sql").getAbsolutePath().replace("\\", "/");
         value = new File("storage/sql").getAbsolutePath();
         TestUtility.assertContains(body, new String[]{
-                "<button onclick=\"$('#sql_world_source').val('"+path+"/tailworld');\">"+value+"\\tailworld</button>",
+                "<button onclick=\"$('#sql_world_source').val('"+path+"/taleworld');\">"+value+"\\taleworld</button>",
                 "<button onclick=\"$('#sql_world_source').val('"+path+"/temperature');\">"+value+"\\temperature</button>",
                 "<button onclick=\"$('#sql_world_source').val('"+path+"/testworld');\">"+value+"\\testworld</button>"
         });
@@ -56,7 +56,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
     public void test_switching_worlds_via_setJDBC() throws Exception
     {
         Test_9_Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB", "tailworld"); // From tailworld...
+        IPlugin crud = provider.getCRUDPlugin("TestDB", "taleworld"); // From taleworld...
         String path = new File("test/db").getAbsolutePath().replace("\\","/");
 
         assert crud instanceof CRUD;
@@ -89,7 +89,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         TestUtility.check(isTestworld, body, new String[]{ // Contains all tables by name!
                 "humans", "human_relations", "attributes", "human_attribute_relations"
         });
-        TestUtility.check(!isTestworld, body, new String[]{"tails", "tail_relations", "tags"});// We are NOT in tailworld!
+        TestUtility.check(!isTestworld, body, new String[]{"tales", "tale_relations", "tags"});// We are NOT in taleworld!
         String template =
                 "<script>\n" +
                 "functionset_search_parameters_for_IDENTIFIER(value){\n" +
@@ -158,7 +158,7 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
                 "<buttononclick=\"switchTab(event,'.HumanRelationsTab')\""
         });
         TestUtility.check(isTestworld, body, new String[] {  // Some more relevant asserts :
-                "oninput=\"noteOnInputFor('id','human_relations','new')\"",
+                //"oninput=\"noteOnInputFor('id','human_relations','new')\"",
                 "onclick=\"$('#human_relation_attribute_relations_new').replaceWith('');",
                 "$('#human_relations_result').append(newForm);", // This is the beginning of the code of a "new button" appending an empty entity...
         });
@@ -180,14 +180,14 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         IPlugin crud = provider.getCRUDPlugin("TestWorldDB", "testworld");
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream(
-                        "CRUD/save/tails?appendRelations=false&appendButtons=false",
+                        "CRUD/save/tales?appendRelations=false&appendButtons=false",
                         "POST",
                         "description=TEST_DESCRIPTION&name=TEST_NAME" // 'e' is contained in all other 'name' attributes...
                 )
         );
         IResponse res = crud.handle(req);
         String body = getBody(res).toString();
-        assert body.contains("Cannot save entity 'tails'! : Table not found in database!");
+        assert body.contains("Cannot save entity 'tales'! : Table not found in database!");
     }
 
     /**
