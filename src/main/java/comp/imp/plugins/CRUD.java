@@ -254,7 +254,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                     String outerKey = finalParamTable.get("key_relation").split("->")[1];
                                     b.$("<div id=\""+resultSelectorID+"\" class=\"row\">");
                                     foundJoin.forEach( (currentTable, currentResult) -> {
-                                        String bestAttribute = currentResult.keySet().stream().filter(e -> !e.equals("id")).findFirst().get();
+                                        String bestAttribute =
+                                                ( currentResult.keySet().size()==1 )
+                                                        ? currentResult.keySet().stream().findFirst().get()
+                                                        : currentResult.keySet().stream().filter(e -> !e.equals("id")).findFirst().get();
                                         b.$("<div class=\"col-sm-4 col-md-4 col-lg-4\">");
                                             String title = currentTable;
                                             if (title.contains("inner-")) title = innerKey.replace("_id", "");
@@ -262,8 +265,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                             b.$("<span><h3> "+ b._snakeToTitle(title)+" : "+ b._snakeToTitle(bestAttribute)+ "(s) :</h3></span>");
                                         b.$("</div>");
                                     });
+                                    int numberOfFound = foundJoin.values().stream()
+                                                            .findFirst().get().values().stream()
+                                                            .findFirst().get().size();
 
-                                    int numberOfFound = foundJoin.values().stream().findFirst().get().size();
                                     for( int i=0; i<numberOfFound; i++ )
                                     {
                                         if ( b.isDone(i, 45, numberOfFound) ) break;
@@ -273,7 +278,10 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                         b.$("<div class=\"col-sm-12 col-md-12 col-lg-12 ContentWrapper\">");
                                         b.$("<div class=\"row\">");
                                         foundJoin.forEach( (currentTable, currentResult) -> {
-                                            String bestAttribute = currentResult.keySet().stream().filter(e->!e.equals("id")).findFirst().get();
+                                            String bestAttribute =
+                                                    ( currentResult.keySet().size()==1 )
+                                                        ? currentResult.keySet().stream().findFirst().get()
+                                                        : currentResult.keySet().stream().filter(e -> !e.equals("id")).findFirst().get();
                                             Object value = currentResult.get(bestAttribute).get(innerIndex);
                                             b.$("<div class=\"col-sm-4 col-md-4 col-lg-4\">");
                                             b.$("<a style=\"padding:0.55em 0.85em;border: solid black 1px;border-radius:0.5em;margin:0.2em;\" onclick=\"")
@@ -282,9 +290,21 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                     .$("$('#"+resultSelectorID+"').replaceWith('');")
                                                     .$("\">")
                                                     .$(value.toString())
-                                            .$("</a>");
+                                                    .$("</a>");
                                             b.$("</div>");
                                         });
+                                        b.$("</div>");
+                                        b.$("</div>");
+                                    }
+                                    if ( numberOfFound == 0 ) {
+                                        b.$("<div class=\"col-sm-12 col-md-12 col-lg-12 ContentWrapper\">");
+                                        b.$("<div class=\"row\">");
+                                        b.$("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
+                                        b.$("<a style=\"padding:0.55em 0.85em;border: solid black 1px;border-radius:0.5em;margin:0.2em;\"")
+                                                .$(">")
+                                                .$("NOTHING FOUND")
+                                                .$("</a>");
+                                        b.$("</div>");
                                         b.$("</div>");
                                         b.$("</div>");
                                     }
@@ -309,8 +329,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                                 .$("onclick=\"")
                                                 .$("set_search_parameters_for_"+uniqueInner+"({'id':'"+found.get("id").get(i)+"'});")
                                                 .$("loadFoundForEntity('"+tableName+"', '"+uid+"', function(){"+foundEntityAppenderFunctionName+"});")
-                                                .$("$('#"+resultSelectorID+"').replaceWith('');\"")
-                                                .$(">")
+                                                .$("$('#"+resultSelectorID+"').replaceWith('');")
+                                                .$("set_search_parameters_for_"+uniqueInner+"({'id':''});")
+                                                .$("\">")
                                                 .$(value.toString())
                                                 .$("</a>");
                                         b.$("</div>");
@@ -1087,9 +1108,9 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 if(!onclickGenerators.isEmpty()){
                     f.$("<div id=\""+rowID+"_buttons\" class=\"EntityButtons "+colSizes+" ml-auto\">"); // ml-auto := float right for col classes...
                     f.$(
-                            "<div style=\"float:right;\">" +
-                                    "<span style=\"padding:0.25em;\">" +
-                                    tableName.replace("_", " ")+
+                            "<div style=\"float:left;\" class=\"TitleBadge\">" +
+                                    "<span>" +
+                                    __toSingular(f._snakeToTitle(tableName))+
                                     "</span>" +
                             "</div>"
                     );

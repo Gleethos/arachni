@@ -486,12 +486,21 @@
 
                                 function noteOnInputFor( attribute, tableName, id ) //, saveFunction // This needs to be fixed!
                                 {
-                                    //let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
-                                    //element.attr('value',parseInt(element.attr('value'))+1);
-                                    //if( parseInt(element.attr('value'))>10 ) {
-                                    //    element.attr('value',0);
-                                    //    saveFunction();
-                                    //}
+                                    let element = $('#'+tableName+'_'+id+'_'+attribute+'_span');
+                                    element.attr('value',parseInt(element.attr('value'))+1);
+                                    let title = $('#'+tableName+'_'+id+'_buttons').find('.TitleBadge');
+                                    let count = parseInt(element.attr('value'));
+                                    if( count > 0 ) {
+                                        count = (count <= 255) ? count : 255;
+                                        let redness = (130+125*(count/255));
+                                        element.css("color", "rgb("+count+", 0, 0)");
+                                        title.css("background-color", "rgb("+redness+", "+(255-count)+", "+(255-redness)+")");
+                                        title.css("color", "rgb("+count+", "+redness+", "+count+")");
+                                        let text = title.html();
+                                        if ( !text.endsWith(" (unsaved)") ) {
+                                            title.html(title.html()+" (unsaved)");
+                                        }
+                                    }
                                 }
 
                                 function switchTab(src, target) {

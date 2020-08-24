@@ -401,9 +401,9 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert compact.contains("ThirdTale");
         assert compact.contains("SecondTale");
         assert compact.contains("Name");
-        assert compact.contains("onclick=\"set_search_parameters_for_tales({'id':'2'});loadFoundForEntity('tales','',function(){});$('#tales_quick_search_result').replaceWith('');\"");
-        assert compact.contains("onclick=\"set_search_parameters_for_tales({'id':'3'});loadFoundForEntity('tales','',function(){});$('#tales_quick_search_result').replaceWith('');\"");
-        assert res.getContentLength()<660;
+        assert compact.contains("onclick=\"set_search_parameters_for_tales({'id':'2'});loadFoundForEntity('tales','',function(){});$('#tales_quick_search_result').replaceWith('');set_search_parameters_for_tales({'id':''});\"");
+        assert compact.contains("onclick=\"set_search_parameters_for_tales({'id':'3'});loadFoundForEntity('tales','',function(){});$('#tales_quick_search_result').replaceWith('');set_search_parameters_for_tales({'id':''});\"");
+        assert res.getContentLength()<750;
     }
 
     @Test
