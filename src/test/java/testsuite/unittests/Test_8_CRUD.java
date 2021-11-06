@@ -785,10 +785,10 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
     public void test_CRUD_setJDBC() throws Exception
     {
         Test_8_Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB", "taleworld");
+        IPlugin crud = provider.getCRUDPlugin("SetTestDB", "taleworld");
         String path = new File("test/db").getAbsolutePath().replace("\\","/");
         assert crud instanceof CRUD;
-        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
+        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/SetTestDB");
 
         IRequest req = createInstance().getRequest(
                 RequestHelper.getValidRequestStream("CRUD/setJDBC?db_url=THIS_IS_A_TEST_VALUE")
@@ -807,7 +807,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !test_file.exists(); // Note : The file will be created AGAIN when switching to another database!
         // ... like right here:
         req = createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/setJDBC?db_url=jdbc:sqlite:"+path+"/TestDB"
+                "CRUD/setJDBC?db_url=jdbc:sqlite:"+path+"/SetTestDB"
         ));
         res = crud.handle(req);
         body = getBody(res).toString();
@@ -823,21 +823,21 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
          */
         assert test_file.exists(); // File will be created a second time by the crud plugin ! (internal reasons...)
         assert test_file.delete(); // Would not be possible if the file was still locked ! (connection not closed...)
-        assert !test_file.exists();
+          assert !test_file.exists();
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/TestDB'");
-        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
+        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/SetTestDB'");
+        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/SetTestDB");
         assert res.getContentType().contains("text/html");
 
         req = createInstance().getRequest(RequestHelper.getValidRequestStream(
-                "CRUD/setJDBC?db_url="+path+"/TestDB"// Without prefix should work too!
+                "CRUD/setJDBC?db_url="+path+"/SetTestDB"// Without prefix should work too!
         ));
         res = crud.handle(req);
         body = getBody(res).toString();
 
-        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/TestDB'");
-        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
+        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"/SetTestDB'");
+        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/SetTestDB");
         assert res.getContentType().contains("text/html");
 
     }

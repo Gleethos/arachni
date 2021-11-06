@@ -5,6 +5,8 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
 import comp.imp.Url;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 
 public class CRUD extends AbstractDatabaseConnection implements IPlugin
 {
+    private static final Logger _LOG = LoggerFactory.getLogger(CRUD.class);
 
     public CRUD() {
         super("jdbc:sqlite:"+new File("storage/dbs").getAbsolutePath()+"/CRUD_WORLD_DB", "", "");
@@ -958,12 +961,17 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
         private CRUDBuilder folderFileButtonsForTarget(String path, String targetSelector, Function<File, Boolean> check){
             File folder = new File( path );
-            for ( final File f : folder.listFiles() ) {
-                if ( check.apply(f) ) {
-                    String filePath = f.getAbsolutePath().replace("\\", "/");
-                    $("<button onclick=\"$('#"+targetSelector+"').val('"+filePath+"');\">");
-                    $(f.getAbsoluteFile());
-                    $("</button>");
+            File[] files = folder.listFiles();
+            if ( files == null ) {
+                _LOG.error("Could not find any files at path '"+path+"'!");
+            } else {
+                for (final File f : files) {
+                    if (check.apply(f)) {
+                        String filePath = f.getAbsolutePath().replace("\\", "/");
+                        $("<button onclick=\"$('#" + targetSelector + "').val('" + filePath + "');\">");
+                        $(f.getAbsoluteFile());
+                        $("</button>");
+                    }
                 }
             }
             return this;
@@ -1176,16 +1184,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     }
                     //--- Form variables:
                     String lowerKey = k.toLowerCase();
-                    String bootstrapClasses =
-                            (lowerKey.contains("id"))
-                                    ?(lowerKey.equals("id"))?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
-                                    : (lowerKey.contains("value")||lowerKey.contains("content"))
-                                        ?"col-sm-12 col-md-12 col-lg-12"
-                                        :(lowerKey.contains("deleted")||lowerKey.contains("created"))
-                                            ?"col-sm-12 col-md-4 col-lg-4"
-                                            :(lowerKey.contains("description"))
-                                                ?"col-sm-12 col-md-12 col-lg-6"
-                                                :"col-sm-12 col-md-6 col-lg-4";
+                    String bootstrapClasses = _bootstrapColClassifier(lowerKey);
+
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
                     //---
@@ -1230,6 +1230,43 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             return f.toString();
         }
 
+        private String _bootstrapColClassifier(String lowerKey) {
+            return // TODO: Make this smarter!!
+                    (lowerKey.contains("id"))
+                            ?(lowerKey.equals("id"))?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
+                            : (lowerKey.contains("value")||lowerKey.contains("content"))
+                            ?"col-sm-12 col-md-12 col-lg-12"
+                            :(lowerKey.contains("deleted")||lowerKey.contains("created"))
+                            ?"col-sm-12 col-md-4 col-lg-4"
+                            :(lowerKey.contains("description"))
+                            ?"col-sm-12 col-md-12 col-lg-6"
+                            :"col-sm-12 col-md-6 col-lg-4";
+        }
+
+        private class Entry {
+
+            private final String _key;
+            private final String _value;
+            private final String _sizeClass;
+
+            //public List<Entry> listFrom( Map<String,String> map ) {
+//
+            //    List<Integer> sizes = map.entrySet().stream().map( e -> {
+            //        if ( e.getKey().equals("id") || e.getKey().endsWith("_id") ) {
+            //
+            //        }
+            //    })
+            //
+//
+            //}
+
+            private Entry( String key, String value, String sizeClass ) {
+                this._key = key;
+                this._value = value;
+                this._sizeClass = sizeClass;
+            }
+
+        }
 
         private CRUDBuilder _forRelationKeys(
                 Map<String,String> relationTable,

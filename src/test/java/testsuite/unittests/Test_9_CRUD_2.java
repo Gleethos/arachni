@@ -56,11 +56,11 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
     public void test_switching_worlds_via_setJDBC() throws Exception
     {
         Test_9_Provider provider = createInstance();
-        IPlugin crud = provider.getCRUDPlugin("TestDB", "taleworld"); // From taleworld...
+        IPlugin crud = provider.getCRUDPlugin("SwitchTestDB", "taleworld"); // From taleworld...
         String path = new File("test/db").getAbsolutePath().replace("\\","/");
 
         assert crud instanceof CRUD;
-        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/TestDB");
+        assert ((CRUD)crud).getURL().equals("jdbc:sqlite:"+path+"/SwitchTestDB");
 
         String body = getBody(crud.handle(createInstance().getRequest(
                 RequestHelper.getValidRequestStream("CRUD/world")
@@ -69,10 +69,10 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
         assert_default_testworld_response(false, body);
 
         body = getBody(crud.handle(createInstance().getRequest(
-                RequestHelper.getValidRequestStream("CRUD/setJDBC?db_url=TestWorldDB&sql_source=testworld") // ...to testworld
+                RequestHelper.getValidRequestStream("CRUD/setJDBC?db_url=SwitchTestDB&sql_source=testworld") // ...to testworld
         ))).toString();
         path = new File("storage/dbs").getAbsolutePath();
-        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"\\TestWorldDB'.\n");
+        assert body.contains("JDBC url set to : 'jdbc:sqlite:"+path+"\\SwitchTestDB'.\n");
         assert body.contains("SQL source set to : 'testworld'.");
 
         body = getBody(crud.handle(createInstance().getRequest(
