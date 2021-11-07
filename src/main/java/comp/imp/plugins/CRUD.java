@@ -5,6 +5,7 @@ import comp.IRequest;
 import comp.IResponse;
 import comp.imp.Response;
 import comp.imp.Url;
+import comp.imp.plugins.html.AbstractHTMLBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +13,6 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -647,7 +647,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         return word;
     }
 
-    private String __toPlural( String word ) {
+    private static String __toPlural( String word ) {
         switch ( word ) {
             case "person" : return "people";
             case "man" : return "men";
@@ -778,18 +778,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
     private interface FrontendConsumer { FrontendConsumer $(Object s); }
 
-    private class CRUDBuilder
+    private class CRUDBuilder extends AbstractHTMLBuilder<CRUDBuilder>
     {
-        private StringBuilder _builder = new StringBuilder();
-        private Map<String, List<String>> _tables;
+        private final Map<String, List<String>> _tables;
 
         CRUDBuilder(Map<String, List<String>> tables){
             _tables = tables;
-        }
-
-        public CRUDBuilder $(Object o) {
-            _builder.append( ( o==null ) ? "" : o.toString() );
-            return this;
         }
 
         public Map<String, List<String>> getTables(){
@@ -1175,6 +1169,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         return this;
                     }
                 };
+                //List<Entry> entryList = Entry.listFrom(currentEntity);
                 currentEntity.forEach(
                 (k,currentValue) ->
                 {
@@ -1233,39 +1228,15 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
         private String _bootstrapColClassifier(String lowerKey) {
             return // TODO: Make this smarter!!
                     (lowerKey.contains("id"))
-                            ?(lowerKey.equals("id"))?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
-                            : (lowerKey.contains("value")||lowerKey.contains("content"))
-                            ?"col-sm-12 col-md-12 col-lg-12"
-                            :(lowerKey.contains("deleted")||lowerKey.contains("created"))
-                            ?"col-sm-12 col-md-4 col-lg-4"
-                            :(lowerKey.contains("description"))
-                            ?"col-sm-12 col-md-12 col-lg-6"
-                            :"col-sm-12 col-md-6 col-lg-4";
-        }
-
-        private class Entry {
-
-            private final String _key;
-            private final String _value;
-            private final String _sizeClass;
-
-            //public List<Entry> listFrom( Map<String,String> map ) {
-//
-            //    List<Integer> sizes = map.entrySet().stream().map( e -> {
-            //        if ( e.getKey().equals("id") || e.getKey().endsWith("_id") ) {
-            //
-            //        }
-            //    })
-            //
-//
-            //}
-
-            private Entry( String key, String value, String sizeClass ) {
-                this._key = key;
-                this._value = value;
-                this._sizeClass = sizeClass;
-            }
-
+                            ?   (lowerKey.equals("id"))
+                                    ?"col-sm-4 col-md-3 col-lg-2":"col-sm-5 col-md-4 col-lg-3"
+                                    : (lowerKey.contains("value")||lowerKey.contains("content"))
+                                        ?"col-sm-12 col-md-12 col-lg-12"
+                                        :(lowerKey.contains("deleted")||lowerKey.contains("created"))
+                                            ?"col-sm-12 col-md-4 col-lg-4"
+                                            :(lowerKey.contains("description"))
+                                                ?"col-sm-12 col-md-12 col-lg-6"
+                                                :"col-sm-12 col-md-6 col-lg-4";
         }
 
         private CRUDBuilder _forRelationKeys(
@@ -1525,10 +1496,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             } else return false;
         }
 
-        @Override
-        public String toString(){
-            return _builder.toString();
-        }
     }
 
 

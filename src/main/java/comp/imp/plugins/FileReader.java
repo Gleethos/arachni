@@ -11,7 +11,7 @@ import java.util.Date;
 public class FileReader implements IPlugin {
 
     // VERBOSE mode
-    private static final boolean VERBOSE = true;
+    private static final boolean VERBOSE = false;
 
     @Override
     public float canHandle(IRequest req) {

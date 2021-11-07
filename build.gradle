@@ -2,13 +2,13 @@ plugins {
     id 'java'
     id 'idea'
     id 'application'
-    id 'maven'
+    //id 'maven'
 }
 
 group 'com.webio'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ dependencies {
 
 jar {
     mainClassName = 'Main'
-    from configurations.compile.collect{ zipTree it }
+    from configurations.runtimeClasspath.collect{ zipTree it }
     manifest.attributes "Main-Class" : "Main"
 }
 

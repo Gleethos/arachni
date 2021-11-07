@@ -26,10 +26,6 @@ public class TestPlugin implements IPlugin
         }
         FileReader reader = new FileReader();
         return reader.handle(req);
-        //IResponse r = new Response();
-        //r.setStatusCode(200);
-        //r.setContent(req.getContentBytes());
-        //return r;
     }
 
     @Override

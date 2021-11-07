@@ -62,12 +62,12 @@ public class Response implements IResponse {
             throw new RuntimeException("[RESPONSE]: ERROR. Status code not set!");
         }
         String code = String.valueOf(_status_code);
-        switch(_status_code){
-            case 200: return code+"ok";
-            case 404: return code+"notfound";
-            case 500: return code+"internalservererror";
-        }
-        return code;
+        return switch (_status_code) {
+            case 200 -> code + "ok";
+            case 404 -> code + "notfound";
+            case 500 -> code + "internalservererror";
+            default -> code;
+        };
     }
 
     public String _getStatus(){
@@ -75,12 +75,12 @@ public class Response implements IResponse {
             throw new RuntimeException("[RESPONSE]: ERROR. Status code not set!");
         }
         String code = String.valueOf(_status_code);
-        switch(_status_code){
-            case 200: return code+" OK";
-            case 404: return code+" Not Found";
-            case 500: return code+" Internal Server Error";
-        }
-        return code;
+        return switch (_status_code) {
+            case 200 -> code + " OK";
+            case 404 -> code + " Not Found";
+            case 500 -> code + " Internal Server Error";
+            default -> code;
+        };
     }
 
     @Override
@@ -117,7 +117,7 @@ public class Response implements IResponse {
     @Override
     public void setContent(InputStream stream) {//_socket.getStream()...
         BufferedReader in = new BufferedReader(new InputStreamReader(stream));
-        // get first line of the request from the client
+        // get sm line of the request from the client
         String input = null;
         try {
             input = in.readLine();

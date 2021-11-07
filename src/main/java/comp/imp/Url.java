@@ -46,7 +46,7 @@ public class Url implements IUrl {
             _filename = (parts[parts.length-1].contains("."))?parts[parts.length-1].split("\\.")[0]:parts[parts.length-1].split("\\?")[0];
             _filename = IPlugin.util.decodeValue(_filename);
             _extension = "";
-            if(parts[parts.length-1].contains(".")) { // Only split after first ".", append the rest back on... :
+            if(parts[parts.length-1].contains(".")) { // Only split after sm ".", append the rest back on... :
                 String[] extensionParts = parts[parts.length-1].split("\\.");
                 for(int i=1; i<extensionParts.length; i++) _extension += (extensionParts[i]+".");
                 _extension = _extension.substring(0, _extension.length()-1);
@@ -79,9 +79,9 @@ public class Url implements IUrl {
 
     @Override
     public String[] getSegments() {
-        return (getRawUrl().substring(0, 1).equals("/"))
-                ?getRawUrl().substring(1, getRawUrl().length()).split("/")
-                :getRawUrl().split("/");
+        return (getRawUrl().charAt(0) == '/')
+                    ?getRawUrl().substring(1).split("/")
+                    :getRawUrl().split("/");
     }
 
     @Override

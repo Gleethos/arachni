@@ -7,6 +7,7 @@ import comp.IUrl;
 import comp.imp.Response;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 public class ToLower implements IPlugin
@@ -19,10 +20,10 @@ public class ToLower implements IPlugin
         if (raw.contains(this.toString()) || raw.contains("Lowering") || raw.contains("ToLower") || raw.contains("ToBeLower")) {
             abillity *= 1 + (6 * (1 - abillity));
         }
-        if (url.getExtension() == "") {
+        if (Objects.equals(url.getExtension(), "")) {
             abillity *= 1 + (0.1 * (1 - abillity));
         }
-        if (url.getFileName() == "") {
+        if (Objects.equals(url.getFileName(), "")) {
             abillity *= 1 + (0.1 * (1 - abillity));
         }
         return abillity;

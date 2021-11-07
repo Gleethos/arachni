@@ -111,14 +111,14 @@ public class PluginManager implements IPluginManager {
     }
 
     private String _resolvePackagePrefix(String path){
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String[] parts = path.replace("\\", "/").split("/");
         boolean javaFound = false;
         for(String part : parts){
-            result += (javaFound&&!part.equals("main")&&!part.equals("test")) ?part+"." :"";
-            javaFound = (part.equals("java"))?true:javaFound;
+            result.append((javaFound && !part.equals("main") && !part.equals("test")) ? part + "." : "");
+            javaFound = part.equals("java") || javaFound;
         }
-        return result;
+        return result.toString();
     }
 
 

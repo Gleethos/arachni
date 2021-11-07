@@ -1,12 +1,14 @@
 
 # IDE files:
 .idea/
+.idea
 
 # virtual machine crash logs:
 hs_err_pid*
 
 ### Gradle ###
 .gradle
+.gradle/
 /build/
 
 # Ignore Gradle GUI config
