@@ -929,25 +929,37 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 }
                             },
                             "specific", searchType -> {
-                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                        .$("<button " +
-                                                "class=\"SearchButton\" " +
-                                                "onclick=\"loadFoundForEntity('"+currentTableName+"', '"+uid+"', function(){"+afterLoadCode+"});\"" +
-                                                "style=\"width:100%;\"" +
-                                           ">SEARCH</button>")
+                                $("<div class=\"col-sm-9 col-md-10 col-lg-11\">");
+                                    $("<div id=\"" + uniqueTableName + "_search\" class=\"\">");
+                                    for(String c : columns){
+                                        c = c.replace("INTEGER", "INT");
+                                        String attributeName = c.split(" ")[0];
+                                        int ems = (int) Math.min(10, Math.max(2, c.length()/1.70));
+                                        if ( attributeName.equals("id") || attributeName.endsWith("_id") ) {
+                                            ems = (int) Math.min(10,Math.max(2, attributeName.length()/1.70));
+                                            c = attributeName;
+                                        }
+                                        String style = ("width:"+ems+"em");
+                                        $("<input ")
+                                                .$("name=\"").$(attributeName).$("\" ")
+                                                .$("placeholder=\"").$(c).$("\"")
+                                                .$("id=\"").$(uniqueTableName+"_"+attributeName+"_search_input").$("\"")
+                                                .$("style=\"").$(style).$("\"")
+                                        .$(">");
+                                    }
+                                    $("</div>");
+                                $("</div>");
+                                $("<div class=\"col-sm-3 col-md-2 col-lg-1\">")
+                                        .$(
+                                                "<button " +
+                                                        "class=\"SearchButton\" " +
+                                                        "onclick=\"loadFoundForEntity('"+currentTableName+"', '"+uid+"', function(){"+afterLoadCode+"});\"" +
+                                                        "style=\"width:100%;\"" +
+                                                        ">" +
+                                                        "&#128269;" +
+                                                "</button>"
+                                        )
                                 .$("</div>");
-                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">");
-                                $("<div id=\"" + uniqueTableName + "_search\" class=\"\">");
-                                for(String c : columns){
-                                    String attributeName = c.split(" ")[0];
-                                    $("<input ")
-                                            .$("name=\"").$(attributeName).$("\" ")
-                                            .$("placeholder=\"").$(c).$("\"")
-                                            .$("id=\"").$(uniqueTableName+"_"+attributeName+"_search_input").$("\"")
-                                            .$(">");
-                                }
-                                $("</div>");
-                                $("</div>");
                             }
                     ),
                     "default"
@@ -1113,7 +1125,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 String entityID = entities.get(indexAttribute).get(i).toString().equals("")?"new":entities.get(indexAttribute).get(i).toString();
                 String rowID = tableName+"_"+entityID+((appendRelations)?"":"_related");
                 String entityShadow = (appendRelations)?"EntityShadow":"EntityShadowInset";
-                f.$("<div id=\""+rowID+"\" class=\"EntityWrapper "+entityShadow+" row\">");
+                f.$("<div id=\""+rowID+"\" class=\"EntityWrapper "+entityShadow+"\">");//row?!?
                 String colSizes = "col-sm-12 col-md-12 col-lg-12";
                 if(!onclickGenerators.isEmpty()){
                     f.$("<div id=\""+rowID+"_buttons\" class=\"EntityButtons "+colSizes+" ml-auto\">"); // ml-auto := float right for col classes...
@@ -1432,12 +1444,12 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                 Map<String, List<Object>> currentOuterEntity,
                 String outerKey, String uid
         ) {
-            $("<div style=\"border: 1px solid grey; margin-bottom:1em;\">");
+            $("<div class=\"row g-0\" style=\"border: 1px solid grey; margin-bottom:1em;\">");
             String relationUID = relationTableName + "_" + uid;
             $(
                 "<div " +
                      "id=\"" + relationUID + "\"               " +
-                     "class=\"col-sm-12 col-md-12 col-lg-12\"  " +
+                     "class=\"col-sm-12 col-md-6 col-lg-4\"  " +
                      "style=\"margin-bottom:0.5em;\"           " +
                 ">"
             );
@@ -1446,7 +1458,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             String outerUID = outerTableName + "_" + uid;
             $("<div " +
                     "id=\"" + outerUID + "\" " +
-                    "class=\"col-sm-12 col-md-12 col-lg-12\" " +
+                    "class=\"col-sm-12 col-md-6 col-lg-8\" " +
                     "style=\"background-color:#fff;\"" +
                     ">"
             );

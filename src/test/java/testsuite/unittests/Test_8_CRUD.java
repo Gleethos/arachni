@@ -236,7 +236,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String date = new java.sql.Date(System.currentTimeMillis()).toString();
         String body = getBody(res).toString();
         TestUtility.assertContains(body, new String[]{
-                "id=\"tales_4_buttons\"", "class=\"EntityWrapper EntityShadow row\"",
+                "id=\"tales_4_buttons\"", "class=\"EntityWrapper EntityShadow\"",
                 "id=\"tales_4\"",
                 "id=\"tags_new_related_buttons\"",
                 "value=\""+date+"\"", // Autofill for created!
@@ -355,7 +355,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         String date = new java.sql.Date(System.currentTimeMillis()).toString();
         String body = getBody(res).toString();
         TestUtility.assertContains(body, new String[]{
-                "class=\"EntityWrapper EntityShadow row\"",
+                "class=\"EntityWrapper EntityShadow\"",
                 "id=\"tags_new_related_buttons\"", // <- 'New relations' entity inside RELATION buttons!
                 "value=\""+date+"\"", // Autofill for created!
                 "value=\"InTheFuture\"",

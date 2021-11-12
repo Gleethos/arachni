@@ -403,6 +403,8 @@ header p {
 .tabBody {
     padding-top: 0.37575em;
     padding-bottom: 0.1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 .LightTopShadow {
@@ -432,10 +434,10 @@ header p {
     background-color: #00b9d3;
     box-shadow: inset 0 0 55px 7px #00cdff;
     border-radius: 2.0em;
-    margin-top: 2em;
+    margin-top: 0.9em;
     margin-bottom: 2em;
     padding-bottom: 3.5em;
-    padding-top: 2.25em;
+    padding-top: 0.9em;
     height: 100%;
     background: rgba(200, 200, 255, 0.3);
     text-align: center;
