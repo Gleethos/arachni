@@ -8,8 +8,9 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.function.Supplier;
 
-public class WebioServer
+public class WebioServer implements Runnable
 {
     private final ThreadPoolExecutor _pool =
             (ThreadPoolExecutor) Executors.newFixedThreadPool(
@@ -17,44 +18,71 @@ public class WebioServer
             );
 
     /**  Main port used to connect to WEBIO! */
-    private static final int PORT = 8080;// port to listen connection
+    private static final int DEFAULT_PORT = 8080;// port to listen connection
 
     /** Settings - Index Meaning:  **/
     private static final int IS_ALIVE = 0;
 
     /**  Plugins are loaded and stored here:  **/
-    private PluginManager _manager;
+    private final PluginManager _manager;
+    private final int _port;
+
+    /** Shared State:  (core.WebioServer Thread <-> User Thread communication!) **/
+    private final boolean[] settings = {
+            false, //alive / dead
+    };
+
+    private final Runnable _runnable;
+    private final Supplier<Commander> _workerOutput;
 
     /**==============================================================================================================**/
-    public WebioServer(){
+
+    public WebioServer(Commander user, String... args){
+        this(
+                DEFAULT_PORT,
+                user,
+                false,
+                ()->new IOFrame("Webio - core.WebioServer", 1000, false)
+        );
+    }
+
+    public WebioServer(int port, Commander user, boolean autoRun, Supplier<Commander> workerOutput){
+        _port = port;
         _manager = new PluginManager();
         _manager.add("FileReader");
         _manager.add("TestPlugin");
+        _runnable = () -> _run(user, autoRun);
+        _workerOutput = workerOutput;
     }
 
+    @Override
+    public void run() {
+        _runnable.run();
+    }
 
-    public void start()
-    {
+    private void _run(
+            Commander user,
+            boolean autoRun
+    ) {
         /** core.WebioServer Thread:  **/
         Thread serverRunner = null;
 
-        /** Shared State:  (core.WebioServer Thread <-> User Thread communication!) **/
-        boolean[] settings = {
-            false, //alive / dead
-        };
-
         /** User Interface: **/
-        IOFrame user = new IOFrame("Webio - core.WebioServer - commandline", 1000, true);
         boolean alive = true;
         while(alive)
         {
-            String command = user.read();
-            user.println(command);
-            switch(command)
-            {
-                case "run":
+            String command;
+            if ( autoRun ) {
+                command = "run";
+                autoRun = false;
+            } else {
+                command = user.read();
+            }
+            if ( !command.isBlank() ) user.println(command);
+            switch (command) {
+                case "run" -> {
                     user.println("[INFO]: starting server...");
-                    if(!settings[IS_ALIVE]) {
+                    if (!settings[IS_ALIVE]) {
                         serverRunner = new Thread(() -> {
                             _run(settings);// <= The Server Thread listening for clients!
                         });
@@ -63,36 +91,42 @@ public class WebioServer
                     } else {
                         user.println("[Warning]: core.WebioServer already running!");
                     }
-                    break;
-
-                case "stop":
+                }
+                case "stop" -> {
                     user.println("[INFO]: stopping server...");
-                    if(serverRunner!=null){
+                    if (serverRunner != null) {
                         settings[IS_ALIVE] = false;
                         serverRunner = null;
                     } else {
                         user.println("[Warning]: core.WebioServer not running!");
                     }
-                    break;
-                case "plugins":
+                }
+                case "plugins" -> {
                     user.println("[INFO](plugins): ");
                     for (IPlugin plugin : _manager.getPlugins()) {
                         user.println(plugin.toString());
                     }
                     user.println("");
-                    break;
-                case "quit":
-                    alive = false;
-                    break;
-                case "help":
+                }
+                case "quit" -> alive = false;
+                case "help" -> {
                     user.println("[INFO](help): Commands:");
                     user.println("'start' => Starts your server. It can now handle requests from clients!");
                     user.println("'stop' => Stops your server. It not handle requests from clients!");
                     user.println("'plugins' => List of plugins installed!");
                     user.println("'quit' => Shutdown Webio.\n");
-                    break;
+                }
             }
         }
+    }
+
+    public boolean isRunning() {
+        return settings[IS_ALIVE];
+    }
+
+    public void shutdown() {
+        this._pool.shutdown();
+        this._manager.clear();
     }
 
     /**
@@ -102,11 +136,11 @@ public class WebioServer
      */
     private void _run(boolean[]  settings)
     {
-        IOFrame log = new IOFrame("Webio - core.WebioServer", 1000, false);
+        Commander log = _workerOutput.get();
         try {
-            ServerSocket serverConnect = new ServerSocket(PORT);
+            ServerSocket serverConnect = new ServerSocket(_port);
             log.println("[SERVER]: started! ");
-            log.println("[SERVER]: Listening for connections on port : " + PORT + " ...\n");
+            log.println("[SERVER]: Listening for connections on port : " + _port + " ...\n");
             // we listen until user halts server execution
             while (settings[IS_ALIVE]) {
                 Socket client = serverConnect.accept();
@@ -119,6 +153,5 @@ public class WebioServer
             System.err.println("[SERVER]: Connection error : " + e.getMessage());
         }
     }
-
 
 }

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class IOFrame extends JFrame{
+public class IOFrame extends JFrame implements Commander{
 
 	JTextArea _output_field;
 	JTextField _input_field;
@@ -83,6 +83,7 @@ public class IOFrame extends JFrame{
 		this.setVisible(true);
 	}
 
+	@Override
 	public synchronized void println(String text) {
 		_output_field.setText(_output_field.getText() + text + "\n");
 		if (_output_field.getLineCount() > linecount) {
@@ -94,6 +95,7 @@ public class IOFrame extends JFrame{
 		}
 	}
 
+	@Override
 	public synchronized void print(String text) {
 		_output_field.setText(_output_field.getText() + text);
 		if (_output_field.getLineCount() > linecount) {
@@ -105,6 +107,7 @@ public class IOFrame extends JFrame{
 		}
 	}
 
+	@Override
 	public synchronized String read() {
 		_entered = false;
 		while (!_entered) {

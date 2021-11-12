@@ -40,12 +40,19 @@ public class TestUtility {
     }
 
     public static void assertContains(String s, String[] fragments){
-        for( String f : fragments ) assert s.contains(f);
-
+        for( String f : fragments ) {
+            if ( !s.contains(f) )
+                System.out.println("'"+f+"' not found in provided text!");
+            assert s.contains(f);
+        }
     }
 
     public static void assertNotContains(String s, String[] fragments){
-        for( String f : fragments ) assert !s.contains(f);
+        for( String f : fragments ) {
+            if ( s.contains(f) )
+                System.out.println("'"+f+"' found in provided text!");
+            assert !s.contains(f);
+        }
     }
 
 }

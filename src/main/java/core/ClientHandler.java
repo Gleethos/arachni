@@ -14,15 +14,15 @@ public class ClientHandler implements Runnable
     /**
      *  Represents the connection to the client!
      */
-    private Socket _socket;
+    private final Socket _socket;
     /**
      *  Loads and stores server plugins!
      */
-    private IPluginManager _manager;
+    private final IPluginManager _manager;
     /**
      *  Used to log connection specific events and errors
      */
-    private IOFrame _console;
+    private final Commander _console;
 
     /**
      * Constructor!
@@ -30,7 +30,7 @@ public class ClientHandler implements Runnable
      * @param manager
      * @param console
      */
-    public ClientHandler(Socket socket, IPluginManager manager, IOFrame console) {
+    public ClientHandler(Socket socket, IPluginManager manager, Commander console) {
         _socket = socket;
         _manager = manager;
         _console = console;

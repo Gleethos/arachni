@@ -739,12 +739,14 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                         .$("<div class = container-fluid>")
                             .$("<div class=\"SearchWrapper row\">")//row?
                                 .$("<div class=\"col-sm-12 col-md-8 col-lg-9\">")
-                                .$("<h1>").$(f._snakeToTitle(currentTableName)).$("</h1>")
+                                    .$("<h1 style=\"margin-top:-8px; text-align:left; font-family:Georgia,serif;\">")
+                                        .$(f._snakeToTitle(currentTableName))
+                                    .$("</h1>")
                                 .$("</div>")
-                                .$("<div class=\"col-sm-12 col-md-4 col-lg-3\">")
-                                    .$("<label style=\"height:100%;width:100%\"><b>" +
+                                .$("<div class=\"col-sm-12 col-md-4 col-lg-3\" >")
+                                    .$("<label style=\"height:100%;width:100%\">" +
                                             "Total stored: "+_query("SELECT COUNT(*) FROM "+currentTableName).get("COUNT(*)").get(0)+
-                                       "</b></label>")
+                                       "</label>")
                                 .$("</div>");
                     f.buildQuickSearch(currentTableName, "", "");
                             f.$("</div>")
@@ -821,19 +823,8 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     Map.of(
                             "quick",
                             searchType -> {
-                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                                        .$(
-                                                "<button " +
-                                                        "id=\""+uniqueTableName+"_quick_search_button\" " +
-                                                        "class=\"QuickSearchButton\" " +
-                                                        "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
-                                                        "style=\"width:100%;\"" +
-                                                        ">" +
-                                                        "QUICK SEARCH" +
-                                                        "</button>")
-                                .$("</div>");
                                 String innerHTMLID = uniqueTableName+"_quick_search_input";
-                                $("<div class=\"col-sm-12 col-md-12 col-lg-12\">                   ")
+                                $("<div class=\"col-sm-6 col-md-8 col-lg-9\">                   ")
                                         .$("<div class=\"\">                               ")
                                         .$("    <input style=\"width:100%;\"                                            ")
                                         .$("        name=\"search\"                                                     ")
@@ -862,6 +853,26 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                                 .$("</div>");
 
                                 $("</div>");
+                                $("<div class=\"col-sm-2 col-md-1 col-lg-1\">")
+                                        .$(
+                                                "<button " +
+                                                        "id=\""+uniqueTableName+"_quick_search_button\" " +
+                                                        "class=\"QuickSearchButton\" " +
+                                                        "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
+                                                        "style=\"width:100%;\"" +
+                                                        ">" +
+                                                        "&#128269;" +
+                                                        "</button>")
+                                        .$("</div>");
+                                $("<div class=\"col-sm-4 col-md-3 col-lg-2\">")
+                                        .$("<button " +
+                                                "class=\"ClearButton\" " +
+                                                "onclick=\"$('#"+uniqueTableName+"_result').html('');\"" +
+                                                "style=\"width:100%\"" +
+                                                ">" +
+                                                "CLEAR" +
+                                                "</button>")
+                                        .$("</div>");
                             },
                             "Relational", searchType -> {
                                 Map<String, Map<String, String>> relationTables = __findRelationTablesOf(currentTableName, _tables, s->true);
@@ -941,15 +952,6 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     ),
                     "default"
             );
-            $("<div class=\"col-sm-12 col-md-12 col-lg-12\">")
-                    .$("<button " +
-                            "class=\"ClearButton\" " +
-                            "onclick=\"$('#"+uniqueTableName+"_result').html('');\"" +
-                            "style=\"width:100%\"" +
-                            ">" +
-                            "CLEAR" +
-                            "</button>")
-                    .$("</div>");
             return this;
         }
 
@@ -991,12 +993,18 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             $("<div class=\"tabWrapper "+colSizes+"\">\n<div class=\"tabHead\" style=\""+additionalHeadStyles+"\">\n");
             String selected = "selected";
             for(String type : tabNames) {
-                $("<button onclick=\"switchTab(event, '."+_snakeToClass(type)+"Tab')\" class=\""+selected+"\">"+_snakeToTitle(type)+"</button>\n");
+                $(
+                        "<button " +
+                                "id=\""+type+"_tab_button"+"\"" +
+                                "onclick=\"switchTab(event, '."+_snakeToClass(type)+"Tab')\" " +
+                                "class=\""+selected+"\">"+_snakeToTitle(type)+"" +
+                           "</button>\n"
+                );
                 selected = "";
             }
             String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
             $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
-            String rowClass = (tabType.contains("root")||tabType.contains("noRow"))?"":"row";
+            String rowClass = (tabType.contains("root")||tabType.contains("noRow"))?"":"row g-1";
             String displayNone = "display:flex";
             for( String type : tabNames ) {
                 $("<div class=\""+_snakeToClass(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");

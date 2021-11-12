@@ -212,8 +212,8 @@
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <div class="tabWrapper">
                                             <div class="tabHead">
-                                                <button onclick="switchTab(event, '.ContentTab')" class="selected">Welcome</button>
-                                                <button onclick="switchTab(event, '.MachinaTab')">Settings</button>
+                                                <button id="welcome_introduction_button" onclick="switchTab(event, '.ContentTab')" class="selected">Welcome</button>
+                                                <button id="database_settings_button" onclick="switchTab(event, '.MachinaTab')">Settings</button>
                                             </div>
                                             <div class="tabBody">
                                                 <div class="ContentTab row">
@@ -250,7 +250,9 @@
                                                                 placeholder="sql-world source folder"
                                                         ><br>
                                                         <span>Available:</span><br>
-                                                        <div>--<#AVAILABLE#SQL#SOURCES#>--</div>
+                                                        <div id="sql_source_file_option_menu">
+                                                            --<#AVAILABLE#SQL#SOURCES#>--
+                                                        </div>
                                                         <button id="load_crud_world_sql_button">Bootstrap SQL</button>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12">
@@ -263,7 +265,9 @@
                                                                 placeholder="db-world source file"
                                                         ><br>
                                                         <span>Available:</span><br>
-                                                        <div>--<#AVAILABLE#DATABASES#>--</div>
+                                                        <div id="database_file_option_menu">
+                                                            --<#AVAILABLE#DATABASES#>--
+                                                        </div>
                                                         <button id="set_crud_world_db_button">Set DB</button>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12">

@@ -151,11 +151,11 @@ public class Test_9_CRUD_2 extends AbstractTestFixture<Test_9_Provider> {
                         "\"",
         });
         TestUtility.check(isTestworld, body, new String[]{
-                "<buttononclick=\"switchTab(event,'.HumanAttributeRelationsTab')\"",
-                "<buttononclick=\"switchTab(event,'.HumanRelationAttributeRelationsTab')\"",
-                "<buttononclick=\"switchTab(event,'.AttributesTab')\"",
-                "<buttononclick=\"switchTab(event,'.HumansTab')\"",
-                "<buttononclick=\"switchTab(event,'.HumanRelationsTab')\""
+                "<buttonid=\"human_attribute_relations_tab_button\"onclick=\"switchTab(event,'.HumanAttributeRelationsTab')\"",
+                "<buttonid=\"human_relation_attribute_relations_tab_button\"onclick=\"switchTab(event,'.HumanRelationAttributeRelationsTab')\"",
+                "<buttonid=\"attributes_tab_button\"onclick=\"switchTab(event,'.AttributesTab')\"",
+                "<buttonid=\"humans_tab_button\"onclick=\"switchTab(event,'.HumansTab')\"",
+                "<buttonid=\"human_relations_tab_button\"onclick=\"switchTab(event,'.HumanRelationsTab')\""
         });
         TestUtility.check(isTestworld, body, new String[] {  // Some more relevant asserts :
                 //"oninput=\"noteOnInputFor('id','human_relations','new')\"",
