@@ -145,7 +145,7 @@
                         <div style = "" class = "topEarthGradient DynamicSideMargin">
                             <h1 id="crud_world_title">CRUDWORLD</h1>
                         </div>
-                        <div class="pull-right nightBox" id="navbar_menu" >
+                        <div class="pull-right nightBox" id="navbar_menu" style="display:none">
                             <ul class="nav navbar-right" id="navbar_list">
                                 <li>
                                     <a href="../../../../webroot/index.html">
@@ -165,7 +165,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="navi">
+                    <div id="navi" style="display:none">
                         <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
                         <label for="mobile-nav" class="gaadiexp white" tabindex="0" style="margin-left: 0;"><span></span></label>
                         <div role="navigation" class="header-nav">
@@ -210,11 +210,11 @@
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <div class="tabWrapper">
                                             <div class="tabHead">
-                                                <button id="welcome_introduction_button" onclick="switchTab(event, '.ContentTab')" class="selected">Welcome</button>
+                                                <button id="welcome_introduction_button" onclick="switchTab(event, '.ContentTab')" class="">Welcome</button>
                                                 <button id="database_settings_button" onclick="switchTab(event, '.MachinaTab')">Settings</button>
                                             </div>
                                             <div class="tabBody">
-                                                <div class="ContentTab row">
+                                                <div class="ContentTab row" style="display:none">
                                                     <div class="col-sm-12 col-md-12">
                                                         <h2> What is 'CRUD-World' ? </h2>
                                                     </div>
