@@ -11,8 +11,10 @@ public class Main {
         var server = new WebioServer(
                                 new IOFrame("Webio - core.WebioServer - commandline", 1000, true)
                         );
+        var runner = new Thread(server);
+        runner.start();
         while ( server.isRunning() ) {
-            try { Thread.sleep(500); } catch ( Exception e ) {}
+            try { Thread.sleep(2_000); } catch ( Exception e ) {}
         }
     }
 
