@@ -5,6 +5,8 @@ import comp.IResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -21,6 +23,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public abstract class AbstractDatabaseConnection {
+
+    private static Logger _LOG = LoggerFactory.getLogger(AbstractDatabaseConnection.class);
 
     /**
      * Connection settings: URL, User, Password!
@@ -66,6 +70,12 @@ public abstract class AbstractDatabaseConnection {
      */
     protected void _createAndOrConnectToDatabase() throws SQLException
     {
+        _LOG.info("Establishing connection to database url '"+_url+"' now!");
+        try {
+            Class<?> dbDriver = Class.forName("org.sqlite.JDBC");
+        } catch (Exception e) {
+            _LOG.error("Faile to load 'org.sqlite.JDBC' class!");
+        }
         Connection connection = null;
         if(_user.equals("")||_pwd.equals("")) connection = DriverManager.getConnection(_url);
         else connection = DriverManager.getConnection(_url, _user, _pwd);

@@ -34,13 +34,14 @@ dependencies {
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.0.0'
 
     implementation 'org.jetbrains:annotations:22.0.0'
-    implementation group:'org.xerial', name:'sqlite-jdbc', version:'3.32.3'
+    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
 
     implementation files('libs/ojdbc7-12.1.0.2.jar') // For oracle server connection...
     //compile files('libs/neureka-0.0.0.jar')
     implementation ('org.json:json:20210307') // For sql plugins...
 
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
 
 }
 

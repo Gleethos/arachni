@@ -171,7 +171,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "'\n" +
                 "\n" +
                 "Reason:\n" +
-                "[SQLITE_CONSTRAINT]  Abort due to constraint violation (NOT NULL constraint failed: tale_relations.parent_tale_id)"
+                "[SQLITE_CONSTRAINT_NOTNULL]  A NOT NULL constraint failed (NOT NULL constraint failed: tale_relations.parent_tale_id)"
         );
 
         req = createInstance().getRequest(
@@ -489,7 +489,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "('"+date+"','InTheFuture')\n'\n" +
                 "\n" +
                 "Reason:\n" +
-                "[SQLITE_CONSTRAINT]  Abort due to constraint violation (NOT NULL constraint failed: tales.name)"
+                "[SQLITE_CONSTRAINT_NOTNULL]  A NOT NULL constraint failed (NOT NULL constraint failed: tales.name)"
         );
         assert res.getStatusCode()==500;
         assert res.getContentType().equals("text/html");
