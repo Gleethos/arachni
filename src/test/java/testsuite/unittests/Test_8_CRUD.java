@@ -211,12 +211,12 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("textarea");
         assert !body.contains("content-length: 0");
         compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContentJadida</textarea>");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_value_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_created_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_deleted_span\">");
         assert compact.contains("<spanvalue=\"0\"id=\"tales_4_name_span\">");
-        assert compact.contains("<textareaid=\"tales_4_value\"class=\"TalesValue\"name=\"value\"oninput=\"noteOnInputFor('value','tales','4')\">TaleContentJadida</textarea>");
+        assert compact.contains("<textareaid=\"tales_4_value\"class=\"TalesValue\"name=\"value\"oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContentJadida</textarea>");
     }
 
     @Test
@@ -253,7 +253,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "id=\"tales_4_related_buttons\"",
         });
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContent...</textarea>");
     }
 
     @Test
@@ -291,7 +291,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "content-length: 0",
         });
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContent...</textarea>");
     }
 
     @Test
@@ -329,7 +329,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
             "content-length: 0", "buttons", "SAVE", "DELETE", "CLEAR"
         });
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContent...</textarea>");
     }
 
     @Test
@@ -367,7 +367,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
                 "content-length: 0",
         });
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">TaleContent...</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">TaleContent...</textarea>");
     }
 
     @Test
@@ -425,7 +425,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\""+date+"\""); // Autofill for created!
         assert !body.contains("value=\"bla bla\"");
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1');autosize(this)\">blabla</textarea>");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert compact.contains("name=\"name\"value=\"FirstTag\"");
         assert compact.contains("deleteEntity('tales','1')");
@@ -457,7 +457,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert body.contains("value=\""+date+"\""); // Autofill for created!
         assert !body.contains("value=\"bla bla\"");
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1')\">blabla</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','1');autosize(this)\">blabla</textarea>");
         assert compact.contains("name=\"deleted\"value=\"\"");
         assert !compact.contains("name=\"name\"value=\"FirstTag\"");
         assert !compact.contains("onclick=\"deleteEntity('tags','1')");
@@ -533,7 +533,7 @@ public class Test_8_CRUD extends AbstractTestFixture<Test_8_Provider> {
         assert !body.contains("value=\"hiA\"");
         assert !body.contains("content-length: 0");
         String compact = body.replace(" " , "");
-        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4')\">hiA</textarea>");
+        assert compact.contains("oninput=\"noteOnInputFor('value','tales','4');autosize(this)\">hiA</textarea>");
 
     }
 

@@ -26,21 +26,26 @@
         <script src="../../../../webroot/src/js/three.min.js"></script>
         <script src="../../../../webroot/src/js/vanta.birds.min.js"></script>
         <script>
+            let currentTop = 0;
+            let topMode = 'large';
+
             function updateTopBar( event ) {
                 let top = $('#main_with_parallax').scrollTop();
-                if( top > 25 && top < 2750 ) {
-                    let tippingPoint = 200;
-                    let smoothness = 25;
-                    let sig = 1-sigmoid((top-tippingPoint)/smoothness);
-                    let newTop = sig*65+5;
-                    $('.gaadiexp').css({top:(newTop/2)-5});
-                    $('.side-nav').css({top:37+(newTop/2)});
-                    $('#top_most_nav_bar').css({height: newTop});
-                    $('#navbar_menu').css({top:newTop/2});
-                    $('#crud_world_title').css({'font-size':(2+sig/2)+"rem"});
+                if ( topMode === 'large' && top > 375 ) {
+                    animateTop( 1.0 );
+                    topMode = 'small';
+                } else if ( topMode === 'small' && top < 100 ) {
+                    animateTop( 0.0 )
+                    topMode = 'large';
                 }
             }
-            function sigmoid(t) {return 1/(1+Math.pow(Math.E, -t));}
+            function animateTop( modifier ) {
+                let sig = 1-modifier;
+                let newTop = sig*65+5;
+                $('#navbar_menu').animate({top:newTop-10}, 300);
+                $('#crud_world_title').animate({'font-size':(2+sig/2)+"rem"}, 200);
+                $('#top_most_nav_bar').animate({top: newTop-70}, 555);
+            }
 
             // Prevent the backspace key from navigating back.
             //$(document).unbind('keydown').bind('keydown', function (event) {
@@ -110,17 +115,16 @@
             }
             .AttributeWrapper {
                 background-color: lightblue;
-                border-radius: 0.5em;
+                border-radius: 0.45em;
                 -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
                 -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
                 box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-                padding: 0.25em;
-                padding-bottom:1em;
+                padding: 0.2em;
                 margin-top: 0.2222em;
                 margin-bottom: 0.2222em;
             }
-            .AttributeWrapper input{width: 99%}
-            .AttributeWrapper textarea{width: 99%}
+            .AttributeWrapper input{width: 99%; font-family: "sans-serif", cursive, serif;}
+            .AttributeWrapper textarea{width: 99%; padding: 0.45em; font-family: "sans-serif", cursive, serif;}
             .AttributeWrapper span{font-weight: bold;}
 
             .RelationWrapper {
@@ -138,51 +142,58 @@
     </head>
     <body>
         <div id="header">
-            <div id="BirdBox" class="MainFrame" style="background-image: url('../../../../webroot/src/img/distant_bgr.jpg');">
-
-                <nav class="" id="top_most_nav_bar">
-                    <div id="navigation_container" class="">
-                        <div style = "" class = "topEarthGradient DynamicSideMargin">
-                            <h1 id="crud_world_title">CRUDWORLD</h1>
+            <div id="BirdBox" class="MainFrame"
+                 style="
+                    background-image: url('../../../../webroot/src/img/distant_bgr.jpg');
+                    background-size:     cover;
+                    background-repeat:   no-repeat;
+                    background-position: center center;
+                ">
+                <nav class="FloatsUp">
+                    <div id="top_most_nav_bar">
+                        <div id="navigation_container" class="">
+                            <div style = "" class = "topEarthGradient DynamicSideMargin">
+                                <h1 id="crud_world_title">CRUDWORLD</h1>
+                            </div>
+                            <div class="pull-right nightBox" id="navbar_menu" style="display:none">
+                                <ul class="nav navbar-right" id="navbar_list">
+                                    <li>
+                                        <a href="../../../../webroot/index.html">
+                                            <img src="../../../../webroot/src/img/icons/house.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/Gleethos/arachni">
+                                            <img src="../../../../webroot/src/img/icons/github-logo.png">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="webroot/src/index.html">
+                                            <img src="../../../../webroot/src/img/icons/cogwheel.png">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="pull-right nightBox" id="navbar_menu" style="display:none">
-                            <ul class="nav navbar-right" id="navbar_list">
-                                <li>
-                                    <a href="../../../../webroot/index.html">
-                                        <img src="../../../../webroot/src/img/icons/house.png">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/Gleethos/arachni">
-                                        <img src="../../../../webroot/src/img/icons/github-logo.png">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="webroot/src/index.html">
-                                        <img src="../../../../webroot/src/img/icons/cogwheel.png">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="navi" style="display:none">
-                        <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
-                        <label for="mobile-nav" class="gaadiexp white" tabindex="0" style="margin-left: 0;"><span></span></label>
-                        <div role="navigation" class="header-nav">
-                            <div class="fixed-nav">
-                                <div class="menu">
-                                    <ul class="side-nav">
-                                        <li></li>
-                                        <li></li>
-                                        <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadCRUDView('../TOC')">Table Of Content</a></li>
-                                        <li><a target="_blank" href="../../../../webroot/index.html">Home</a></li>
-                                        <li><a target="_blank" href="main/index.html">Documentation</a></li>
-                                        <li><a target="_blank" href="https://github.com/Gleethos/arachni">Github</a></li>
-                                        <li><a target="_blank" href="">Introduction</a></li>
-                                        <li><a target="_blank" href="">Reasons</a></li>
-                                        <li><a target="" href="coverage/test/html/index.html">Code Coverage</a>
-                                        <li><a target="" href="coverage/test/html/jacoco-sessions.html">Last Test Session</a></li>
-                                    </ul>
+                        <div id="navi" style="display:none">
+                            <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+                            <label for="mobile-nav" class="gaadiexp white" tabindex="0" style="margin-left: 0;"><span></span></label>
+                            <div role="navigation" class="header-nav">
+                                <div class="fixed-nav">
+                                    <div class="menu">
+                                        <ul class="side-nav">
+                                            <li></li>
+                                            <li></li>
+                                            <li><a target="_blank" Style="cursor: pointer; color: cyan;" onclick="loadCRUDView('../TOC')">Table Of Content</a></li>
+                                            <li><a target="_blank" href="../../../../webroot/index.html">Home</a></li>
+                                            <li><a target="_blank" href="main/index.html">Documentation</a></li>
+                                            <li><a target="_blank" href="https://github.com/Gleethos/arachni">Github</a></li>
+                                            <li><a target="_blank" href="">Introduction</a></li>
+                                            <li><a target="_blank" href="">Reasons</a></li>
+                                            <li><a target="" href="coverage/test/html/index.html">Code Coverage</a>
+                                            <li><a target="" href="coverage/test/html/jacoco-sessions.html">Last Test Session</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,10 +201,10 @@
                 </nav>
 
                 <!----------------------------------LAYOUT------------------------------------------------->
-                <main class="Parallax" id="main_with_parallax" onscroll="updateTopBar(event);">
+                <main id="main_with_parallax" class="Parallax" onscroll="updateTopBar(event);">
                     <div style="left:-10px;" class="ParallaxLayer ParallaxLayer--back ">
                         <div>
-                            <image src="src/img/parallax/woods.png"></image>
+                            <image src="src/img/parallax/woods.png" class="InverseDynamicWidth"></image>
                         </div>
                     </div>
                     <div class="ParallaxLayer">
@@ -503,6 +514,19 @@
                                             title.html(title.html()+" (unsaved)");
                                         }
                                     }
+                                }
+
+
+                                function autosize(caller){
+                                    var el = $(caller);
+                                    setTimeout(function(){
+                                        var oldHeight = el[0].offsetHeight;
+                                        var limit = Math.max(oldHeight, 400);
+                                        el.css('height', 'auto');
+                                        var newHeight = Math.min(el[0].scrollHeight, limit);
+                                        //console.log(oldHeight+" | "+limit+" | "+el[0].scrollHeight)
+                                        el.css('height', newHeight + 'px');
+                                    },100);
                                 }
 
                                 function switchTab(src, target) {

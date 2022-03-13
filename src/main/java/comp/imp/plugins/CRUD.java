@@ -1020,7 +1020,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
             }
             String additionalClasses = (tabType.contains("root"))?"":"LightTopShadow";
             $("</div>\n<div class=\"tabBody "+additionalClasses+"\">\n");
-            String rowClass = (tabType.contains("root")||tabType.contains("noRow"))?"":"row g-1";
+            String rowClass = (tabType.contains("root")||tabType.contains("noRow"))?"":"row g-1 justify-content-center";
             String displayNone = "display:flex";
             for( String type : tabNames ) {
                 $("<div class=\""+_snakeToClass(type)+"Tab "+rowClass+"\" style=\""+displayNone+"\">\n");
@@ -1216,6 +1216,7 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
 
                     String attribute = k.toLowerCase().replace(" ","_");
                     String attributeID = tableName+"_"+entityID+"_"+attribute;
+                    boolean doTextArea = (lowerKey.contains("value")||lowerKey.contains("content"));
                     //---
                     ic.$("<div class=\""+bootstrapClasses+"\">");
                     ic.$("<div class=\"AttributeWrapper\">");
@@ -1225,14 +1226,15 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                          ">                               "
                     ).$( _snakeToTitle(k) ).$(
                             "</span>" +
-                                    "<"+((lowerKey.contains("value")||lowerKey.contains("content"))?"textarea":"input") +
+                                    "<"+(doTextArea?"textarea":"input") +
                                     "      id=\""+attributeID+"\" " +
                                     "      class=\""+_snakeToClass(tableName+"_"+attribute)+"\"     " +
                                     "      name=\""+attribute+"\"                       " +
-                                    ((lowerKey.contains("value")||lowerKey.contains("content"))?"":"value=\""+currentValue+"\"") +
+                                    (doTextArea?"":"value=\""+currentValue+"\"") +
                                     "      oninput=\"" +
                                     //"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"', function(){"+onclickGenerators.get("save").apply(currentEntity)+"})" +
                                     "noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')" +
+                                    (doTextArea ? "; autosize(this)" : "") +
                                     "\"                                           " +
                                     ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
                     );
