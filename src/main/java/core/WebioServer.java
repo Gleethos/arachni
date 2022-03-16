@@ -35,7 +35,6 @@ public class WebioServer implements Runnable
     private final Runnable _runnable;
     private final Supplier<Commander> _workerOutput;
 
-    /**==============================================================================================================**/
 
     public WebioServer(Commander user, String... args){
         this(
@@ -112,7 +111,7 @@ public class WebioServer implements Runnable
                 case "help" -> {
                     user.println("[INFO](help): Commands:");
                     user.println("'start' => Starts your server. It can now handle requests from clients!");
-                    user.println("'stop' => Stops your server. It not handle requests from clients!");
+                    user.println("'stop' => Stops your server. It will not handle requests from clients!");
                     user.println("'plugins' => List of plugins installed!");
                     user.println("'quit' => Shutdown Webio.\n");
                 }
@@ -149,6 +148,7 @@ public class WebioServer implements Runnable
                 // Submit as task for the thread pool!
                 _pool.submit(handler);
             }
+            log.println("[SERVER]: Stopped listening for connections on port : " + _port + " !\n");
         } catch (IOException e) {
             System.err.println("[SERVER]: Connection error : " + e.getMessage());
         }

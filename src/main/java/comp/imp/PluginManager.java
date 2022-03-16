@@ -12,7 +12,7 @@ import java.util.*;
 
 public class PluginManager implements IPluginManager {
 
-    Map<String, IPlugin> _plugins = new HashMap<>();
+    private final Map<String, IPlugin> _plugins = new HashMap<>();
 
     public PluginManager(){
         this.add("TestPlugin");
@@ -56,13 +56,12 @@ public class PluginManager implements IPluginManager {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
     @Override
     public void clear() {
-        _plugins = new HashMap<>();
+        _plugins.clear();
     }
 
     public boolean loadPlugin(String pluginName, String packagePath) throws MalformedURLException, IOException, ClassNotFoundException
