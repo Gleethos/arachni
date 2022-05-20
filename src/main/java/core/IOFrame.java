@@ -5,19 +5,24 @@ import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class IOFrame extends JFrame implements Commander{
 
-	JTextArea _output_field;
-	JTextField _input_field;
-	boolean _entered = false;
-	boolean _receptive = true;
-	String _input = "";
-	int linecount;
+	private final JTextArea _output_field;
+	private final boolean _receptive = true;
+	private final int _lineCount;
+	private final List<String> _commands = new ArrayList<>();
+	private JTextField _input_field;
+	private boolean _entered;
+	private String _input;
 
-	public IOFrame(String title, int maxLineCount, boolean hasInput) {
-		linecount = maxLineCount;
+	public IOFrame(String title, int maxLineCount, boolean hasInput, String... args)
+	{
+		_commands.addAll(List.of(args));
+		_lineCount = maxLineCount;
 		_input = "";
 		_entered = false;
 		this.setTitle(title);
@@ -44,20 +49,6 @@ public class IOFrame extends JFrame implements Commander{
 		scroll.getVerticalScrollBar().setBackground(Color.DARK_GRAY);
 		scroll.getHorizontalScrollBar().setBackground(Color.DARK_GRAY);
 
-		//scroll.getVerticalScrollBar().addAdjustmentListener(
-		//		new AdjustmentListener() {
-		//			public void adjustmentValueChanged(AdjustmentEvent e) {
-		//				e.getAdjustable().setValue(
-		//						e.getAdjustable().getMaximum());
-		//			}
-		//		});
-		//scroll.getHorizontalScrollBar().addAdjustmentListener(
-		//		new AdjustmentListener() {
-		//			public void adjustmentValueChanged(AdjustmentEvent e) {
-		//				e.getAdjustable().setValue(
-		//						e.getAdjustable().getMaximum());
-		//			}
-		//		});
 		this.add(scroll, BorderLayout.CENTER);
 		if(hasInput) {
 			_input_field = new JTextField();
@@ -68,7 +59,6 @@ public class IOFrame extends JFrame implements Commander{
 			_input_field.setFont(txt);
 			this.add(_input_field, BorderLayout.PAGE_END);
 
-			// Eingabefeld Enter-Listener
 			_input_field.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (_receptive) {
@@ -86,7 +76,7 @@ public class IOFrame extends JFrame implements Commander{
 	@Override
 	public synchronized void println(String text) {
 		_output_field.setText(_output_field.getText() + text + "\n");
-		if (_output_field.getLineCount() > linecount) {
+		if (_output_field.getLineCount() > _lineCount) {
 			try {
 				_output_field.replaceRange("", 0, _output_field.getLineEndOffset(0));
 			} catch (BadLocationException e) {
@@ -98,7 +88,7 @@ public class IOFrame extends JFrame implements Commander{
 	@Override
 	public synchronized void print(String text) {
 		_output_field.setText(_output_field.getText() + text);
-		if (_output_field.getLineCount() > linecount) {
+		if (_output_field.getLineCount() > _lineCount) {
 			try {
 				_output_field.replaceRange("", 0, _output_field.getLineEndOffset(0));
 			} catch (BadLocationException e) {
@@ -109,6 +99,7 @@ public class IOFrame extends JFrame implements Commander{
 
 	@Override
 	public synchronized String read() {
+		if ( !_commands.isEmpty() ) return _commands.remove(0);
 		_entered = false;
 		while (!_entered) {
 			try {

@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class WebioServer implements Runnable
@@ -18,7 +19,7 @@ public class WebioServer implements Runnable
             );
 
     /**  Main port used to connect to WEBIO! */
-    private static final int DEFAULT_PORT = 8080;// port to listen connection
+    public static final int DEFAULT_PORT = 8080;// port to listen connection
 
     /** Settings - Index Meaning:  **/
     private static final int IS_ALIVE = 0;
@@ -33,19 +34,19 @@ public class WebioServer implements Runnable
     };
 
     private final Runnable _runnable;
-    private final Supplier<Commander> _workerOutput;
+    private final Function<String,Logger> _workerOutput;
 
 
-    public WebioServer(Commander user, String... args){
+    public WebioServer(Commander user){
         this(
                 DEFAULT_PORT,
                 user,
                 false,
-                ()->new IOFrame("Webio - core.WebioServer", 1000, false)
+                name -> new IOFrame("Webio - "+name, 1000, false)
         );
     }
 
-    public WebioServer(int port, Commander user, boolean autoRun, Supplier<Commander> workerOutput){
+    public WebioServer(int port, Commander user, boolean autoRun, Function<String,Logger> workerOutput){
         _port = port;
         _manager = new PluginManager();
         _manager.add("FileReader");
@@ -135,22 +136,22 @@ public class WebioServer implements Runnable
      */
     private void _run(boolean[]  settings)
     {
-        Commander log = _workerOutput.get();
+        Logger log = _workerOutput.apply("CLIENT HANDLING");
         try {
             ServerSocket serverConnect = new ServerSocket(_port);
-            log.println("[SERVER]: started! ");
-            log.println("[SERVER]: Listening for connections on port : " + _port + " ...\n");
+            log.println("started! ");
+            log.println("Listening for connections on port : " + _port + " ...\n");
             // we listen until user halts server execution
             while (settings[IS_ALIVE]) {
                 Socket client = serverConnect.accept();
-                log.println("[SERVER]: Connection opened with: "+client.toString()+" (" + new Date() + ")");
+                log.println("Connection opened with: "+client.toString()+" (" + new Date() + ")");
                 ClientHandler handler = new ClientHandler(client, _manager, log);
                 // Submit as task for the thread pool!
                 _pool.submit(handler);
             }
-            log.println("[SERVER]: Stopped listening for connections on port : " + _port + " !\n");
+            log.println("Stopped listening for connections on port : " + _port + " !\n");
         } catch (IOException e) {
-            System.err.println("[SERVER]: Connection error : " + e.getMessage());
+            System.err.println("Connection error : " + e.getMessage());
         }
     }
 

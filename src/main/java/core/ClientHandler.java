@@ -22,19 +22,19 @@ public class ClientHandler implements Runnable
     /**
      *  Used to log connection specific events and errors
      */
-    private final Commander _console;
+    private final Logger _log;
 
     /**
      * Constructor!
      * @param socket
      * @param manager
-     * @param console
+     * @param log
      */
-    public ClientHandler(Socket socket, IPluginManager manager, Commander console) {
+    public ClientHandler(Socket socket, IPluginManager manager, Logger log) {
         _socket = socket;
         _manager = manager;
-        _console = console;
-        _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Request handling...");
+        _log = log;
+        _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Request handling...");
     }
 
     /**
@@ -47,7 +47,7 @@ public class ClientHandler implements Runnable
     public void run() {
         try {
             IRequest request = new Request(_socket.getInputStream());
-            _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Request created!");
+            _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Request created!");
             float[] score = {0};
             IPlugin[] best = {null};
             _manager.getPlugins().forEach((plugin -> {
@@ -57,21 +57,21 @@ public class ClientHandler implements Runnable
                     score[0] = ability;
                 }
             }));
-            _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Plugin chosen: "+best[0].toString()+"; Response creation... ");
+            _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Plugin chosen: "+best[0].toString()+"; Response creation... ");
             IResponse response = best[0].handle(request);
-            _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Response created: "+response.toString());
+            _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Response created: "+response.toString());
             try {
                 response.send(_socket.getOutputStream());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Response sent! ");
-            _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Closing client socket now ... \n");
+            _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Response sent! ");
+            _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Closing client socket now ... \n");
             _socket.close();
         } catch (IOException ioe) {
-            _console.println("[ClientHandler][ERROR]: " + ioe);
+            _log.println("[ClientHandler][ERROR]: " + ioe);
         }
-        _console.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Client connection closed now!\n");
+        _log.println("[ClientHandler][CLIENT|"+_socket.getInetAddress()+"]: Client connection closed now!\n");
     }
 
 
