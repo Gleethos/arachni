@@ -825,54 +825,54 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     searchType -> {
                         String innerHTMLID = uniqueTableName+"_quick_search_input";
                         $("<div class=\"col-sm-6 col-md-8 col-lg-9\">                   ")
-                                .$("<div class=\"\">                               ")
-                                .$("    <input style=\"width:100%;\"                                            ")
-                                .$("        name=\"search\"                                                     ")
-                                .$("        placeholder=\"anything\"                                            ")
-                                .$("        id=\""+innerHTMLID+"\"                                              ")
-                                .$("        oninput=\"                                                          \n")
-                                .$("            set_search_parameters_for_"+uniqueTableName+"($('#"+innerHTMLID+"').val()); \n")
-                                .$("            $('#"+uniqueTableName+"_quick_search_button').trigger('onclick');           \n")
-                                .$("            set_search_parameters_for_"+uniqueTableName+"( '' );           \n")
-                                .$("        \"                                                                  ")
-                                .$(">                                                                           ")
-                                .$("<script>                                                                    \n")
-                                .$("function set_search_parameters_for_"+uniqueTableName+"(value){             \n")
-                                .$("   if ( typeof value === 'string' || value instanceof String ) {            \n");
+                        .$("<div class=\"\">                               ")
+                        .$("    <input style=\"width:100%;\"                                            ")
+                        .$("        name=\"search\"                                                     ")
+                        .$("        placeholder=\"anything\"                                            ")
+                        .$("        id=\""+innerHTMLID+"\"                                              ")
+                        .$("        oninput=\"                                                          \n")
+                        .$("            set_search_parameters_for_"+uniqueTableName+"($('#"+innerHTMLID+"').val()); \n")
+                        .$("            $('#"+uniqueTableName+"_quick_search_button').trigger('onclick');           \n")
+                        .$("            set_search_parameters_for_"+uniqueTableName+"( '' );           \n")
+                        .$("        \"                                                                  ")
+                        .$(">                                                                           ")
+                        .$("<script>                                                                    \n")
+                        .$("function set_search_parameters_for_"+uniqueTableName+"(value){             \n")
+                        .$("   if ( typeof value === 'string' || value instanceof String ) {            \n");
                         for(String c : columns) {
                             String attributeName = c.split(" ")[0];
                             $("$('#").$(uniqueTableName+"_"+attributeName+"_search_input').val(value);\n");
                         }
                         $("   } else {                                                                \n")
-                                .$("      for (var a in value) {                                                \n")
-                                .$("           $('#"+uniqueTableName+"_'+a+'_search_input').val(value[a]);     \n")
-                                .$("      }                                                                     \n")
-                                .$("  }\n")
-                                .$("}\n")
-                                .$("</script>")
-                                .$("</div>");
+                        .$("      for (var a in value) {                                                \n")
+                        .$("           $('#"+uniqueTableName+"_'+a+'_search_input').val(value[a]);     \n")
+                        .$("      }                                                                     \n")
+                        .$("  }\n")
+                        .$("}\n")
+                        .$("</script>")
+                        .$("</div>");
 
                         $("</div>");
                         $("<div class=\"col-sm-2 col-md-1 col-lg-1\">")
-                                .$(
-                                        "<button " +
-                                                "id=\""+uniqueTableName+"_quick_search_button\" " +
-                                                "class=\"QuickSearchButton\" " +
-                                                "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
-                                                "style=\"width:100%;\"" +
-                                                ">" +
-                                                "&#128269;" +
-                                                "</button>")
-                                .$("</div>");
+                            .$(
+                                    "<button " +
+                                            "id=\""+uniqueTableName+"_quick_search_button\" " +
+                                            "class=\"QuickSearchButton\" " +
+                                            "onclick=\"loadQuickSearchForEntity('"+currentTableName+"', '"+uid+"');\"" +
+                                            "style=\"width:100%;\"" +
+                                            ">" +
+                                            "&#128269;" +
+                                            "</button>")
+                            .$("</div>");
                         $("<div class=\"col-sm-4 col-md-3 col-lg-2\">")
-                                .$("<button " +
-                                        "class=\"ClearButton\" " +
-                                        "onclick=\"$('#"+uniqueTableName+"_result').html('');\"" +
-                                        "style=\"width:100%\"" +
-                                        ">" +
-                                        "CLEAR" +
-                                        "</button>")
-                                .$("</div>");
+                            .$("<button " +
+                                    "class=\"ClearButton\" " +
+                                    "onclick=\"$('#"+uniqueTableName+"_result').html('');\"" +
+                                    "style=\"width:100%\"" +
+                                    ">" +
+                                    "CLEAR" +
+                                    "</button>")
+                            .$("</div>");
                     }
             );
             Map<String, Map<String, String>> relationTables = __findRelationTablesOf(currentTableName, _tables, s->true);
@@ -1219,26 +1219,39 @@ public class CRUD extends AbstractDatabaseConnection implements IPlugin
                     boolean doTextArea = (lowerKey.contains("value")||lowerKey.contains("content"));
                     //---
                     ic.$("<div class=\""+bootstrapClasses+"\">");
-                    ic.$("<div class=\"AttributeWrapper\">");
-                    ic.$("<span                           " +
-                         "   value=\"0\"                  " + // Counts onInput events to trigger saving
-                         "   id=\""+attributeID+"_span\"       " +
-                         ">                               "
-                    ).$( _snakeToTitle(k) ).$(
-                            "</span>" +
-                                    "<"+(doTextArea?"textarea":"input") +
-                                    "      id=\""+attributeID+"\" " +
-                                    "      class=\""+_snakeToClass(tableName+"_"+attribute)+"\"     " +
-                                    "      name=\""+attribute+"\"                       " +
-                                    (doTextArea?"":"value=\""+currentValue+"\"") +
-                                    "      oninput=\"" +
-                                    //"noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"', function(){"+onclickGenerators.get("save").apply(currentEntity)+"})" +
-                                    "noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')" +
-                                    (doTextArea ? "; autosize(this)" : "") +
-                                    "\"                                           " +
-                                    ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
-                    );
-                    ic.$("</div>");
+                        ic.$("<div class=\"AttributeWrapper\">");
+                            ic.$("<span                           " +
+                                 "   value=\"0\"                  " + // Counts onInput events to trigger saving
+                                 "   id=\""+attributeID+"_span\"       " +
+                                 ">                               "
+                            )
+                            .$( _snakeToTitle(k) )
+                            .$("</span>");
+                            String id = "suggestions-"+Long.toHexString(new Random().nextLong());
+                            if (doTextArea) {
+                                ic
+                                .$("<button style=\"line-height: 12px;\n" +
+                                        "    font-family: tahoma;\n" +
+                                        "    margin-top: 5px;\n" +
+                                        "    margin-bottom: -5px;float: right\" onclick=\"getSuggestions('"+id+"', '"+attributeID+"', 'completion-AI-key');\">?</button>");
+                            }
+
+                            ic.$(
+                                "<"+(doTextArea?"textarea":"input") +
+                                "      id=\""+attributeID+"\" " +
+                                "      class=\""+_snakeToClass(tableName+"_"+attribute)+"\"     " +
+                                "      name=\""+attribute+"\"                       " +
+                                (doTextArea?"":"value=\""+currentValue+"\"") +
+                                "      oninput=\"" +
+                                "noteOnInputFor('"+attribute+"','"+tableName+"','"+entityID+"')" +
+                                (doTextArea ? "; autosize(this)" : "") +
+                                "\"                                           " +
+                                ">"+((lowerKey.contains("value")||lowerKey.contains("content"))?currentValue+"</textarea>":"")
+                            );
+                            if ( doTextArea ) {
+                                ic.$("<div id=\""+id+"\"></div>");
+                            }
+                        ic.$("</div>");
                     ic.$("</div>");
                 });
                 f.tabsOf(
